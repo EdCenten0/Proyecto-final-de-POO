@@ -18,7 +18,7 @@ public class Conexion {
     private static Connection con = null;
     private static String url = "jdbc:sqlserver://localhost;databaseName=hr;Persist Security Info=True;";
     private static String user = "sa";
-    private static String password = "Egonzalez87";
+    private static String password = "1234";
     
     //constructor
     private Conexion() {
