@@ -8,6 +8,6 @@ package entidades;
  *
  * @author cchav
  */
-public class Dt_clientes {
+public class Clientes {
     
 }
