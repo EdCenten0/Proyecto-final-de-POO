@@ -45,10 +45,7 @@ public class Dt_clientes {
             this.cargarDatos();
             while(rs.next()){
                 Clientes c = new Clientes();
-//                d.setDepartment_id(rs.getInt("department_id"));
-//                d.setDepartment_name(rs.getString("department_name"));
-//                d.setLocation_id(rs.getInt("location_id"));
-//                listaDepto.add(d);
+
                 c.setCliente_id(rs.getInt("ClienteID"));
                 c.setTienda_id(rs.getInt("TiendaID"));
                 c.setNombre(rs.getString("Nombre"));
