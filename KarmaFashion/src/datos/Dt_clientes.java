@@ -17,9 +17,9 @@ import java.util.ArrayList;
  */
 public class Dt_clientes {
     
-    Connection con = null;
-    PreparedStatement ps = null;
-    ResultSet rs = null;
+    private Connection con = null;
+    private PreparedStatement ps = null;
+    private ResultSet rs = null;
     
     
     @SuppressWarnings("CallToPrintStackTrace")
@@ -27,7 +27,7 @@ public class Dt_clientes {
     {
         try{
             con = Conexion.getConnection();
-            ps = con.prepareStatement("SELECT ClienteID, TiendaID, Nombre, Cedula, Numero_telefonico, Email, Direccion, Sexo, Estado FROM Cliente", 
+            ps = con.prepareStatement("SELECT ClienteID,TiendaID,Nombre,Cedula,Numero_telefonico,Email,Direccion,Sexo,Estado FROM Cliente", 
                     ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE, ResultSet.HOLD_CURSORS_OVER_COMMIT);
             rs = ps.executeQuery();
         }
@@ -37,9 +37,8 @@ public class Dt_clientes {
         }
     }
     
-    
     @SuppressWarnings("CallToPrintStackTrace")
-    public ArrayList<Clientes> listarDeptos(){
+    public ArrayList<Clientes> listarClientes(){
         ArrayList<Clientes> listarClientes = new ArrayList<Clientes>();
         try{
             this.cargarDatos();
