@@ -54,6 +54,8 @@ public class Dt_clientes {
                 c.setDireccion(rs.getString("Direccion"));
                 c.setSexo(rs.getInt("Sexo"));
                 c.setEstado(rs.getInt("Estado"));
+                listarClientes.add(c); 
+                
                 
                 
 
