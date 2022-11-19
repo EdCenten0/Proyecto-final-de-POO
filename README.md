@@ -2,10 +2,10 @@
 
 ------------------------
 
-<p>Universidad Centroamericana *UCA*</p>
+<p>Universidad Centroamericana <em>UCA</em></p>
 
 
-<p>*Creado por:*
+<p><em>Creado por:</em>
 Isabel Aguilar
 Carlos Centeno
 Francisco Melendez
