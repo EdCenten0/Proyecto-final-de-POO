@@ -56,9 +56,6 @@ public class Dt_clientes {
                 c.setEstado(rs.getInt("Estado"));
                 listarClientes.add(c); 
                 
-                
-                
-
             }     
         }catch(SQLException e){
             System.out.println("El error en listarClientes(): "+e.getMessage());
