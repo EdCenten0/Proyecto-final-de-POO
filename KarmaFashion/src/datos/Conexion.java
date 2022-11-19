@@ -67,7 +67,7 @@ public class Conexion {
         try {
            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
            con= DriverManager.getConnection(url, user, password);
-           System.out.println("Se conectó a la BD hr");
+           System.out.println("Se conectó a la BD karma_fashion_DB");
         } 
         catch (ClassNotFoundException e) {
            con=null;
@@ -91,16 +91,19 @@ public class Conexion {
             }
         }
     }
+    
+    
+    //Comprobacion del modulo de conexion
    
-    public static void main(String args[])
-    {
-          
-        //new Conexion().getConnection();
-        /*
-        Conexion con = new Conexion();
-        Connection cn = con.getConnection();
-        con.closeConexion(cn);
-        */
-    }
+//    public static void main(String args[])
+//    {
+//          
+//        new Conexion().getConnection();
+//        
+//        Conexion con = new Conexion();
+//        Connection cn = con.getConnection();
+//        con.closeConexion(cn);
+//        
+//    }
 
 }
