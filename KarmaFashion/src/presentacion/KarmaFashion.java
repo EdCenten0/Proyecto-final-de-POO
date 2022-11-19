@@ -14,8 +14,7 @@ public class KarmaFashion {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Form_clientes form_clientes = new Form_clientes();
-        form_clientes.setVisible(true);
+        
     }
     
 }
