@@ -47,15 +47,15 @@ public class Dt_Productos{
                 d.setDepartment_name(rs.getString("department_name"));
                 d.setLocation_id(rs.getInt("location_id"));
                 listaDepto.add(d);*/
-                p.setProducto_id(rs.getInt("producto_id"));
-                p.setTipo_producto(rs.getInt("tipo_producto"));
-                p.setInventario_id(rs.getInt("inventario_id"));
-                p.setNombre(rs.getString("nombre"));
-                p.setDescripcion(rs.getString("descripcion"));
-                p.setPrecio(rs.getFloat("precio"));
-                p.setMarca(rs.getString("marca"));
-                p.setFecha_ingreso(rs.getString("fecha_ingreso"));
-                p.setEstado(rs.getInt("estado"));
+                p.setProducto_id(rs.getInt("ProductoID"));
+                p.setTipo_producto(rs.getInt("TipoproductoID"));
+                p.setInventario_id(rs.getInt("InventarioID"));
+                p.setNombre(rs.getString("Nombre"));
+                p.setDescripcion(rs.getString("Descripcion"));
+                p.setPrecio(rs.getFloat("Precio"));
+                p.setMarca(rs.getString("Marca"));
+                p.setFecha_ingreso(rs.getString("Fecha_ingreso"));
+                p.setEstado(rs.getInt("Estado"));
                 listarProd.add(p);
             }     
         }catch(SQLException e){
