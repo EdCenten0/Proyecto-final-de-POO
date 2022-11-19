@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package datos;
-import entidades.Inventario;
+import entidades.Inventarios;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
  *
  * @author Francisco de Jesus Melendez Simplina
  */
-public class Dt_inventario {
+public class Dt_inventarios {
     private Connection con = null;
     private PreparedStatement ps = null;
     private ResultSet rs = null;
@@ -36,12 +36,12 @@ public class Dt_inventario {
     }
     
     @SuppressWarnings("CallToPrintStackTrace")
-    public ArrayList<Inventario> listarInventario(){
-        ArrayList<Inventario> listaInvent = new ArrayList<Inventario>();
+    public ArrayList<Inventarios> listarInventario(){
+        ArrayList<Inventarios> listaInvent = new ArrayList<Inventarios>();
         try{
             this.cargarDatos();
             while(rs.next()){
-                Inventario inv = new Inventario();
+                Inventarios inv = new Inventarios();
                 inv.setInventarioID(rs.getInt("InventarioID"));
                 inv.setBodegaoID(rs.getInt("BodegaID"));
                 inv.setCant_inicial(rs.getInt("Cant_inicial"));

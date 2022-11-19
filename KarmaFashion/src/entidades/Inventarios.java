@@ -8,7 +8,7 @@ package entidades;
  *
  * @author Francisco de Jesus Melendez Simplina
  */
-public class Inventario {
+public class Inventarios {
     private int inventarioID;
     private int bodegaoID;
     private int cant_inicial;
@@ -18,10 +18,10 @@ public class Inventario {
     private String fecha;
     private int estado;
 
-    public Inventario() {
+    public Inventarios() {
     }
 
-    public Inventario(int inventarioID, int bodegaoID, int cant_inicial, int movimiento_pos, int movimiento_neg, int precio, String fecha, int estado) {
+    public Inventarios(int inventarioID, int bodegaoID, int cant_inicial, int movimiento_pos, int movimiento_neg, int precio, String fecha, int estado) {
         this.inventarioID = inventarioID;
         this.bodegaoID = bodegaoID;
         this.cant_inicial = cant_inicial;
