@@ -14,7 +14,7 @@ import java.util.ArrayList;
  *
  * @author Francisco de Jesus Melendez Simplina
  */
-public class Dt_inventarios {
+public class Dt_Inventarios {
     private Connection con = null;
     private PreparedStatement ps = null;
     private ResultSet rs = null;

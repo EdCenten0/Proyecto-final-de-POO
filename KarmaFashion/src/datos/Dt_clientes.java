@@ -15,7 +15,7 @@ import java.util.ArrayList;
  *
  * @author cchav
  */
-public class Dt_clientes {
+public class Dt_Clientes {
     
     private Connection con = null;
     private PreparedStatement ps = null;
