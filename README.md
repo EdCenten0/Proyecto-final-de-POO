@@ -6,8 +6,10 @@
 
 
 <p><em>Creado por:</em>
-Isabel Aguilar
-Carlos Centeno
-Francisco Melendez
-Ana Zepeda
+<ol>  
+  <li>Isabel Aguilar</li>
+  <li>Carlos Centeno</li>
+  <li>Francisco Melendez</li>
+  <li>Ana Zepeda</li>
+</ol>
 </p>
