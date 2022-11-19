@@ -4,7 +4,7 @@
  */
 package presentacion;
 import entidades.Clientes;
-import datos.Dt_clientes;
+import datos.Dt_Clientes;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -13,17 +13,17 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author cchav
  */
-public class Form_clientes extends javax.swing.JFrame {
+public class FrmClientes extends javax.swing.JFrame {
 
     private Clientes clientes = new Clientes();
-    private Dt_clientes dt_clientes = new Dt_clientes();
+    private Dt_Clientes dt_clientes = new Dt_Clientes();
     private ArrayList<Clientes> listClientes = new ArrayList<Clientes>();
     
     DefaultTableModel myData = new DefaultTableModel();
     /**
      * Creates new form Clientes
      */
-    public Form_clientes() {
+    public FrmClientes() {
         initComponents();
         llenarTablaClientes();
     }
@@ -327,14 +327,18 @@ public class Form_clientes extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Form_clientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Form_clientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Form_clientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Form_clientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -343,7 +347,7 @@ public class Form_clientes extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Form_clientes().setVisible(true);
+                new FrmClientes().setVisible(true);
             }
         });
     }
