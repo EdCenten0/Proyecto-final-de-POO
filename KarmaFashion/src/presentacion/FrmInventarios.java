@@ -4,17 +4,28 @@
  */
 package presentacion;
 
+import datos.Dt_Productos;
+import entidades.Productos;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Francisco de Jesus Melendez Simplina
  */
 public class FrmInventarios extends javax.swing.JFrame {
-
+    private Productos productos = new Productos();
+    private Dt_Productos dt_productos = new Dt_Productos();
+    private ArrayList<Productos> listProductos = new ArrayList<Productos>();
+    
+    DefaultTableModel myData = new DefaultTableModel();
+    
     /**
      * Creates new form FrmInventario
      */
     public FrmInventarios() {
         initComponents();
+        llenarTablaProductos();
     }
 
     /**
@@ -28,7 +39,7 @@ public class FrmInventarios extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtInventario = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jf_bodega = new javax.swing.JTextField();
@@ -49,9 +60,9 @@ public class FrmInventarios extends javax.swing.JFrame {
         jb_guardar = new javax.swing.JButton();
         jb_eliminar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtInventario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -66,7 +77,7 @@ public class FrmInventarios extends javax.swing.JFrame {
                 java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true, true
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -77,9 +88,9 @@ public class FrmInventarios extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTable1.setName(""); // NOI18N
-        jScrollPane1.setViewportView(jTable1);
+        jtInventario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jtInventario.setName(""); // NOI18N
+        jScrollPane1.setViewportView(jtInventario);
 
         jPanel2.setBorder(new javax.swing.border.MatteBorder(null));
 
@@ -333,6 +344,42 @@ public class FrmInventarios extends javax.swing.JFrame {
             }
         });
     }
+        
+        private void llenarTablaProductos()
+    {
+         //llenamos la lista
+        listProductos = dt_productos.listarProductos();
+        
+        //creamos un arraylist con las columnas del modelo
+        ArrayList<Object> listNombreColumnas = new ArrayList<Object>();
+        listNombreColumnas.add("ProductoID");
+        listNombreColumnas.add("TipoproductoID");
+        listNombreColumnas.add("InventarioID");
+        listNombreColumnas.add("Nombre");
+        listNombreColumnas.add("Descripcion");
+        listNombreColumnas.add("Precio");
+        listNombreColumnas.add("Marca");
+        listNombreColumnas.add("Fecha_ingreso");
+        
+        //recorremos cada elemento del arraylist y creamos un objeto
+        for(Object column : listNombreColumnas){
+            //asignamos las columnas al modelo
+            myData.addColumn(column);
+        }
+        
+       //recorremos cada elemento de la lista y creamos el objeto
+        for(Productos pro: listProductos){
+            Object[] datosCli = new Object[]{pro.getProducto_id(), pro.getTipo_producto(), pro.getInventario_id(), pro.getNombre(),pro.getDescripcion(), pro.getPrecio(), pro.getMarca(), pro.getFecha_ingreso()};
+            //asignamos un arreglo de objetos a una fila del modelo
+            myData.addRow(datosCli);
+        }
+        //Asignamos el modelo y/o coleccion de datos a la tabla
+        jtInventario.setModel(myData);
+    }
+        
+        
+        
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -345,7 +392,6 @@ public class FrmInventarios extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton jb_agregar;
     private javax.swing.JButton jb_editar;
     private javax.swing.JButton jb_eliminar;
@@ -356,6 +402,7 @@ public class FrmInventarios extends javax.swing.JFrame {
     private javax.swing.JTextField jf_fecha;
     private javax.swing.JTextField jf_saldoTotal;
     private javax.swing.JTextField jf_ventas;
+    private javax.swing.JTable jtInventario;
     private javax.swing.JTextField tf_inventario;
     // End of variables declaration//GEN-END:variables
 }
