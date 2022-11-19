@@ -6,7 +6,7 @@ package presentacion;
 
 /**
  *
- * @author DELL
+ * @author Francisco de Jesus Melendez Simplina
  */
 public class FrmInventario extends javax.swing.JFrame {
 
@@ -92,7 +92,7 @@ public class FrmInventario extends javax.swing.JFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
-        jLabel4.setText("Inventario skkasID:");
+        jLabel4.setText("Inventario ID:");
 
         jTextField4.setEditable(false);
 
@@ -146,7 +146,7 @@ public class FrmInventario extends javax.swing.JFrame {
                         .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
                         .addComponent(jTextField2))
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
