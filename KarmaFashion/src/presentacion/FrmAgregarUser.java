@@ -29,17 +29,17 @@ public class FrmAgregarUser extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
-        jTextField1 = new javax.swing.JTextField();
+        jtfUsuario = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        jpfContra1 = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        jpfContra2 = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -60,8 +60,8 @@ public class FrmAgregarUser extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTextField1.setBackground(new java.awt.Color(255, 204, 204));
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
+        jtfUsuario.setBackground(new java.awt.Color(255, 204, 204));
+        jtfUsuario.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel2.setBackground(new java.awt.Color(255, 204, 204));
         jLabel2.setFont(new java.awt.Font("Serif", 0, 24)); // NOI18N
@@ -76,12 +76,12 @@ public class FrmAgregarUser extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Usuario");
 
-        jPasswordField1.setBackground(new java.awt.Color(255, 204, 204));
-        jPasswordField1.setForeground(new java.awt.Color(0, 0, 0));
-        jPasswordField1.setText("jPasswordField1");
-        jPasswordField1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jpfContra1.setBackground(new java.awt.Color(255, 204, 204));
+        jpfContra1.setForeground(new java.awt.Color(0, 0, 0));
+        jpfContra1.setText("jPasswordField1");
+        jpfContra1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPasswordField1MouseClicked(evt);
+                jpfContra1MouseClicked(evt);
             }
         });
 
@@ -89,17 +89,17 @@ public class FrmAgregarUser extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Confirmación de contraseña:");
 
-        jPasswordField2.setBackground(new java.awt.Color(255, 204, 204));
-        jPasswordField2.setForeground(new java.awt.Color(0, 0, 0));
-        jPasswordField2.setText("jPasswordField1");
-        jPasswordField2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jpfContra2.setBackground(new java.awt.Color(255, 204, 204));
+        jpfContra2.setForeground(new java.awt.Color(0, 0, 0));
+        jpfContra2.setText("jPasswordField1");
+        jpfContra2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPasswordField2MouseClicked(evt);
+                jpfContra2MouseClicked(evt);
             }
         });
-        jPasswordField2.addActionListener(new java.awt.event.ActionListener() {
+        jpfContra2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField2ActionPerformed(evt);
+                jpfContra2ActionPerformed(evt);
             }
         });
 
@@ -128,15 +128,15 @@ public class FrmAgregarUser extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel3)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE))
+                        .addComponent(jtfUsuario, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jpfContra1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE))
                     .addComponent(jLabel4)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jpfContra2, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -147,15 +147,15 @@ public class FrmAgregarUser extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jpfContra1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jpfContra2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -178,19 +178,19 @@ public class FrmAgregarUser extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPasswordField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField2ActionPerformed
+    private void jpfContra2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpfContra2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField2ActionPerformed
+    }//GEN-LAST:event_jpfContra2ActionPerformed
 
-    private void jPasswordField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MouseClicked
+    private void jpfContra1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpfContra1MouseClicked
         // TODO add your handling code here:
-        jPasswordField1.setText("");
-    }//GEN-LAST:event_jPasswordField1MouseClicked
+        jpfContra1.setText("");
+    }//GEN-LAST:event_jpfContra1MouseClicked
 
-    private void jPasswordField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField2MouseClicked
+    private void jpfContra2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpfContra2MouseClicked
         // TODO add your handling code here:
-        jPasswordField2.setText("");
-    }//GEN-LAST:event_jPasswordField2MouseClicked
+        jpfContra2.setText("");
+    }//GEN-LAST:event_jpfContra2MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -241,9 +241,9 @@ public class FrmAgregarUser extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPasswordField jpfContra1;
+    private javax.swing.JPasswordField jpfContra2;
+    private javax.swing.JTextField jtfUsuario;
     // End of variables declaration//GEN-END:variables
 }
