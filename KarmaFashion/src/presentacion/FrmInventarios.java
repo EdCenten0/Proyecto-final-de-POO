@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package presentacion;
+import presentacion.*;
 
 import datos.Dt_Productos;
 import entidades.Productos;
@@ -14,12 +15,9 @@ import javax.swing.table.DefaultTableModel;
  * @author Francisco de Jesus Melendez Simplina
  */
 public class FrmInventarios extends javax.swing.JFrame {
-    private Productos productos = new Productos();
-    private Dt_Productos dt_productos = new Dt_Productos();
-    private ArrayList<Productos> listProductos = new ArrayList<Productos>();
     
-    DefaultTableModel myData = new DefaultTableModel();
-    
+    FrmProductos frmP = new FrmProductos();
+
     /**
      * Creates new form FrmInventario
      */
@@ -60,7 +58,7 @@ public class FrmInventarios extends javax.swing.JFrame {
         jb_guardar = new javax.swing.JButton();
         jb_eliminar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jtInventario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -174,7 +172,7 @@ public class FrmInventarios extends javax.swing.JFrame {
                         .addComponent(jf_cantInicial, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
                         .addComponent(tf_inventario))
                     .addComponent(jf_bodega, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 257, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 255, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -240,7 +238,7 @@ public class FrmInventarios extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 822, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -287,6 +285,7 @@ public class FrmInventarios extends javax.swing.JFrame {
 
     private void jb_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_agregarActionPerformed
         // TODO add your handling code here:
+        frmP.setVisible(true);
     }//GEN-LAST:event_jb_agregarActionPerformed
 
     private void jf_bodegaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jf_bodegaActionPerformed
