@@ -37,13 +37,14 @@ public class Dt_usuarios {
     }
     
     @SuppressWarnings("CallToPrintStackTrace")
-    public ArrayList<Usuarios> listarInventario(){
+    public ArrayList<Usuarios> listarUsuarios(){
         ArrayList<Usuarios> listauser = new ArrayList<Usuarios>();
         try{
             this.cargarDatos();
             while(rs.next()){
                 Usuarios user = new Usuarios();
                 user.setUsuarioID(rs.getInt("UsuarioID"));
+                user.setUsuarioID(rs.getInt("RolID"));
                 user.setUsername(rs.getString("Username"));
                 user.setClave(rs.getString("Clave"));
                 user.setEstado(rs.getInt("Estado"));

@@ -3,19 +3,36 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package presentacion;
+import datos.Dt_usuarios;
 
+
+
+
+import entidades.Usuarios;
+
+
+
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Francisco de Jesus Melendez Simplina
  */
 public class FrmUsuarios extends javax.swing.JFrame {
-
+    
+    private Usuarios users = new Usuarios();
+    private Dt_usuarios dt_user = new Dt_usuarios();
+    private ArrayList<Usuarios> listUser = new ArrayList<Usuarios>();
+    
+    DefaultTableModel myData = new DefaultTableModel();
+    
     /**
      * Creates new form FrmUsuarios
      */
     public FrmUsuarios() {
         initComponents();
+        llenarTablaUsuarios();
     }
 
     /**
@@ -38,28 +55,29 @@ public class FrmUsuarios extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(0, 0));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setForeground(new java.awt.Color(204, 204, 204));
 
         jtUsuarios.setBackground(new java.awt.Color(204, 204, 204));
-        jtUsuarios.setForeground(new java.awt.Color(204, 204, 204));
+        jtUsuarios.setForeground(new java.awt.Color(0, 0, 0));
         jtUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Usuario ID", "Rol ID", "Rol", "Usuario", "Clave"
+                "Usuario ID", "Rol ID", "Usuario", "Clave"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -68,6 +86,15 @@ public class FrmUsuarios extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jtUsuarios.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jtUsuariosAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
         jScrollPane1.setViewportView(jtUsuarios);
@@ -184,6 +211,10 @@ public class FrmUsuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jtUsuariosAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jtUsuariosAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtUsuariosAncestorAdded
+
     /**
      * @param args the command line arguments
      */
@@ -217,6 +248,35 @@ public class FrmUsuarios extends javax.swing.JFrame {
                 new FrmUsuarios().setVisible(true);
             }
         });
+    }
+    
+     private void llenarTablaUsuarios()
+    {
+         //llenamos la lista
+        listUser = dt_user.listarUsuarios();
+        
+        //creamos un arraylist con las columnas del modelo
+        ArrayList<Object> listNombreColumnas = new ArrayList<Object>();
+        listNombreColumnas.add("UsuarioID");
+        listNombreColumnas.add("Username");
+        listNombreColumnas.add("Clave");
+  
+
+        
+        //recorremos cada elemento del arraylist y creamos un objeto
+        for(Object column : listNombreColumnas){
+            //asignamos las columnas al modelo
+            myData.addColumn(column);
+        }
+        
+       //recorremos cada elemento de la lista y creamos el objeto
+        for(Usuarios user: listUser){
+            Object[] datosUser = new Object[]{user.getUsuarioID(), user.getUsername(), user.getClave()};
+            //asignamos un arreglo de objetos a una fila del modelo
+            myData.addRow(datosUser);
+        }
+        //Asignamos el modelo y/o coleccion de datos a la tabla
+        jtUsuarios.setModel(myData);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
