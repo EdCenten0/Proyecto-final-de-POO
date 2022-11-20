@@ -3,9 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package presentacion;
+
 import presentacion.*;
 
 import datos.Dt_Productos;
+
 import entidades.Productos;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -17,6 +19,9 @@ import javax.swing.table.DefaultTableModel;
 public class FrmInventarios extends javax.swing.JFrame {
     
     FrmProductos frmP = new FrmProductos();
+    private Dt_Productos dt_productos = new Dt_Productos();
+    private ArrayList<Productos> listProductos = new ArrayList<Productos>();
+    DefaultTableModel myData = new DefaultTableModel();
 
     /**
      * Creates new form FrmInventario
