@@ -6,7 +6,7 @@ package presentacion;
 
 /**
  *
- * @author DELL
+ * @author Francisco de Jesus Melendez Simplina
  */
 public class FrmAgregarUser extends javax.swing.JFrame {
 
