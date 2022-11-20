@@ -14,7 +14,7 @@ public class KarmaFashion {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        FrmLogin1 frmLogin1 = new FrmLogin1();
+        FrmLogin frmLogin1 = new FrmLogin();
         frmLogin1.setVisible(true);
     }
     
