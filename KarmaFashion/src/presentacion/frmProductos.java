@@ -253,7 +253,15 @@ public class FrmProductos extends javax.swing.JFrame {
             new String [] {
                 "producto_id", "inventario_id", "tipo_producto_id", "nombre", "descripcion", "precio", "marca", "fecha_ingreso"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(jt_productos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -355,7 +363,7 @@ public class FrmProductos extends javax.swing.JFrame {
         //recorremos cada elemento de la lista y creamos el objeto
         for(Productos prod: listProductos){
             //Object[] datosDep = new Object[]{dep.getDepartment_id(), dep.getDepartment_name(), dep.getLocation_id()};
-            Object[] datosProd = new Object[]{prod.getProducto_id(), prod.getInventario_id(), prod.getTipo_producto(), prod.getNombre(), prod.getDescripcion(), prod.getDescripcion(), prod.getPrecio(), prod.getMarca(), prod.getFecha_ingreso()};
+            Object[] datosProd = new Object[]{prod.getProducto_id(), prod.getInventario_id(), prod.getTipo_producto(), prod.getNombre(), prod.getDescripcion(), prod.getPrecio(), prod.getMarca(), prod.getFecha_ingreso()};
             //asignamos un arreglo de objetos a una fila del modelo
             myData.addRow(datosProd);
         }
