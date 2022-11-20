@@ -3,31 +3,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package datos;
-import entidades.Clientes;
+import entidades.Productos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
 /**
  *
- * @author cchav
+ * @author Elsner
  */
-public class Dt_Clientes {
-    
+public class Dt_Productos{
+    //atributos
     private Connection con = null;
     private PreparedStatement ps = null;
     private ResultSet rs = null;
     
-    
-    @SuppressWarnings("CallToPrintStackTrace")
+     //metodos
+     @SuppressWarnings("CallToPrintStackTrace")
     public void cargarDatos()
     {
         try{
-            con = Conexion.getConnection();
-            ps = con.prepareStatement("SELECT ClienteID,TiendaID,Nombre,Cedula,Numero_telefonico,Email,Direccion,Sexo,Estado FROM Cliente", 
+            con = Conexion.getConnection(); //obtenemos la conexion a la base de datos
+            ps = con.prepareStatement("SELECT ProductoID, TipoproductoID, InventarioID, Nombre, Descripcion, Precio, Marca, Fecha_ingreso, Estado FROM Producto", 
                     ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE, ResultSet.HOLD_CURSORS_OVER_COMMIT);
             rs = ps.executeQuery();
         }
@@ -38,27 +37,29 @@ public class Dt_Clientes {
     }
     
     @SuppressWarnings("CallToPrintStackTrace")
-    public ArrayList<Clientes> listarClientes(){
-        ArrayList<Clientes> listarClientes = new ArrayList<Clientes>();
+    public ArrayList<Productos> listarProductos(){
+        ArrayList<Productos> listarProd = new ArrayList<Productos>();
         try{
             this.cargarDatos();
             while(rs.next()){
-                Clientes c = new Clientes();
-
-                c.setCliente_id(rs.getInt("ClienteID"));
-                c.setTienda_id(rs.getInt("TiendaID"));
-                c.setNombre(rs.getString("Nombre"));
-                c.setCedula(rs.getString("Cedula"));
-                c.setNumero_telefonico(rs.getString("Numero_telefonico"));
-                c.setEmail(rs.getString("Email"));
-                c.setDireccion(rs.getString("Direccion"));
-                c.setSexo(rs.getInt("Sexo"));
-                c.setEstado(rs.getInt("Estado"));
-                listarClientes.add(c); 
-                
+                Productos p = new Productos();
+                /*d.setDepartment_id(rs.getInt("department_id"));
+                d.setDepartment_name(rs.getString("department_name"));
+                d.setLocation_id(rs.getInt("location_id"));
+                listaDepto.add(d);*/
+                p.setProducto_id(rs.getInt("ProductoID"));
+                p.setTipo_producto(rs.getInt("TipoproductoID"));
+                p.setInventario_id(rs.getInt("InventarioID"));
+                p.setNombre(rs.getString("Nombre"));
+                p.setDescripcion(rs.getString("Descripcion"));
+                p.setPrecio(rs.getFloat("Precio"));
+                p.setMarca(rs.getString("Marca"));
+                p.setFecha_ingreso(rs.getString("Fecha_ingreso"));
+                p.setEstado(rs.getInt("Estado"));
+                listarProd.add(p);
             }     
         }catch(SQLException e){
-            System.out.println("El error en listarClientes(): "+e.getMessage());
+            System.out.println("El error en listarProd(): "+e.getMessage());
             e.printStackTrace();
         }
         finally{
@@ -78,7 +79,9 @@ public class Dt_Clientes {
         }
         
         
-        return listarClientes;      
+        return listarProd;      
     }
+    
+    
     
 }
