@@ -6,9 +6,9 @@ package presentacion;
 
 import presentacion.*;
 
-import datos.Dt_Productos;
+import datos.Dt_inventarios;
 
-import entidades.Productos;
+import entidades.Inventarios;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,8 +19,8 @@ import javax.swing.table.DefaultTableModel;
 public class FrmInventarios extends javax.swing.JFrame {
     
     FrmProductos frmP = new FrmProductos();
-    private Dt_Productos dt_productos = new Dt_Productos();
-    private ArrayList<Productos> listProductos = new ArrayList<Productos>();
+    private Dt_inventarios dt_inventario = new Dt_inventarios();
+    private ArrayList<Inventarios> listInventario = new ArrayList<Inventarios>();
     DefaultTableModel myData = new DefaultTableModel();
 
     /**
@@ -65,20 +65,20 @@ public class FrmInventarios extends javax.swing.JFrame {
 
         jtInventario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Producto ID", "Tipo Producto ID", "Inventario ID", "Nombre", "Descripcion", "Precio", "Marca", "Fecha de Ingreso"
+                "Inventario ID", "Bodega ID", "Cantidad inicial", "Movimientos positivos", "Movimientos negativos", "Sueldo final", "Fecha"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, true, true, true, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -355,18 +355,18 @@ public class FrmInventarios extends javax.swing.JFrame {
         private void llenarTablaProductos()
     {
          //llenamos la lista
-        listProductos = dt_productos.listarProductos();
+        listInventario = dt_inventario.listarInventario();
         
         //creamos un arraylist con las columnas del modelo
         ArrayList<Object> listNombreColumnas = new ArrayList<Object>();
-        listNombreColumnas.add("ProductoID");
-        listNombreColumnas.add("TipoproductoID");
         listNombreColumnas.add("InventarioID");
-        listNombreColumnas.add("Nombre");
-        listNombreColumnas.add("Descripcion");
-        listNombreColumnas.add("Precio");
-        listNombreColumnas.add("Marca");
-        listNombreColumnas.add("Fecha_ingreso");
+        listNombreColumnas.add("BodegaID");
+        listNombreColumnas.add("Cant_inicial");
+        listNombreColumnas.add("Movimiento_pos");
+        listNombreColumnas.add("Movimiento_neg");
+        listNombreColumnas.add("Saldo_final");
+        listNombreColumnas.add("Fecha");
+
         
         //recorremos cada elemento del arraylist y creamos un objeto
         for(Object column : listNombreColumnas){
@@ -375,10 +375,10 @@ public class FrmInventarios extends javax.swing.JFrame {
         }
         
        //recorremos cada elemento de la lista y creamos el objeto
-        for(Productos pro: listProductos){
-            Object[] datosCli = new Object[]{pro.getProducto_id(), pro.getTipo_producto(), pro.getInventario_id(), pro.getNombre(),pro.getDescripcion(), pro.getPrecio(), pro.getMarca(), pro.getFecha_ingreso()};
+        for(Inventarios inv: listInventario){
+            Object[] datosInv = new Object[]{inv.getInventarioID(), inv.getBodegaoID(),inv.getCant_inicial(), inv.getMovimiento_pos(), inv.getMovimiento_neg(),inv.getSaldo_final(), inv.getFecha()};
             //asignamos un arreglo de objetos a una fila del modelo
-            myData.addRow(datosCli);
+            myData.addRow(datosInv);
         }
         //Asignamos el modelo y/o coleccion de datos a la tabla
         jtInventario.setModel(myData);

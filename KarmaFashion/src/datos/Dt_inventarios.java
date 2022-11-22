@@ -47,7 +47,7 @@ public class Dt_inventarios {
                 inv.setCant_inicial(rs.getInt("Cant_inicial"));
                 inv.setMovimiento_pos(rs.getInt("Movimiento_pos"));
                 inv.setMovimiento_neg(rs.getInt("Movimiento_neg"));
-                inv.setPrecio(rs.getInt("Saldo_final"));
+                inv.setSaldo_final(rs.getInt("Saldo_final"));
                 inv.setFecha(rs.getString("Fecha"));
                 inv.setEstado(rs.getInt("estado"));
                 listaInvent.add(inv);

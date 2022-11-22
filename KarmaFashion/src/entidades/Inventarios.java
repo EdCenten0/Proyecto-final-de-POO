@@ -14,20 +14,20 @@ public class Inventarios {
     private int cant_inicial;
     private int movimiento_pos;
     private int movimiento_neg;
-    private int precio;
+    private int saldo_final;
     private String fecha;
     private int estado;
 
     public Inventarios() {
     }
 
-    public Inventarios(int inventarioID, int bodegaoID, int cant_inicial, int movimiento_pos, int movimiento_neg, int precio, String fecha, int estado) {
+    public Inventarios(int inventarioID, int bodegaoID, int cant_inicial, int movimiento_pos, int movimiento_neg, int saldo_final, String fecha, int estado) {
         this.inventarioID = inventarioID;
         this.bodegaoID = bodegaoID;
         this.cant_inicial = cant_inicial;
         this.movimiento_pos = movimiento_pos;
         this.movimiento_neg = movimiento_neg;
-        this.precio = precio;
+        this.saldo_final = saldo_final;
         this.fecha = fecha;
         this.estado = estado;
     }
@@ -72,12 +72,12 @@ public class Inventarios {
         this.movimiento_neg = movimiento_neg;
     }
 
-    public int getPrecio() {
-        return precio;
+    public int getSaldo_final() {
+        return saldo_final;
     }
 
-    public void setPrecio(int precio) {
-        this.precio = precio;
+    public void setSaldo_final(int precio) {
+        this.saldo_final = precio;
     }
 
     public String getFecha() {
