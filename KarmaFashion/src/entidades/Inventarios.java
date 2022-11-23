@@ -6,7 +6,7 @@ package entidades;
 
 /**
  *
- * @author Francisco de Jesus Melendez Simplina
+ * @author Francisco de Jesus Melendez Simplina.
  */
 public class Inventarios {
     private int inventarioID;
