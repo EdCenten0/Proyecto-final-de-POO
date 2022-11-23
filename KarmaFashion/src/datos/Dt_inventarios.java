@@ -43,7 +43,7 @@ public class Dt_inventarios {
             while(rs.next()){
                 Inventarios inv = new Inventarios();
                 inv.setInventarioID(rs.getInt("InventarioID"));
-                inv.setBodegaoID(rs.getInt("BodegaID"));
+                inv.setBodegaID(rs.getInt("BodegaID"));
                 inv.setCant_inicial(rs.getInt("Cant_inicial"));
                 inv.setMovimiento_pos(rs.getInt("Movimiento_pos"));
                 inv.setMovimiento_neg(rs.getInt("Movimiento_neg"));

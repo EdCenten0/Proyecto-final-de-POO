@@ -9,6 +9,7 @@ import presentacion.*;
 import datos.Dt_inventarios;
 
 import entidades.Inventarios;
+
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,7 +21,13 @@ public class FrmInventarios extends javax.swing.JFrame {
     
     FrmProductos frmP = new FrmProductos();
     private Dt_inventarios dt_inventario = new Dt_inventarios();
+    
+    
     private ArrayList<Inventarios> listInventario = new ArrayList<Inventarios>();
+    //private ArrayList<Bodega> listBodega = new ArrayList<Bodega>();
+    
+    Dt_inventarios dtInv = new Dt_inventarios();
+    
     DefaultTableModel myData = new DefaultTableModel();
 
     /**
@@ -29,6 +36,7 @@ public class FrmInventarios extends javax.swing.JFrame {
     public FrmInventarios() {
         initComponents();
         llenarTablaProductos();
+        llenarComboInventario();
     }
 
     /**
@@ -62,7 +70,7 @@ public class FrmInventarios extends javax.swing.JFrame {
         jb_Agregar = new javax.swing.JButton();
         jb_Eliminar = new javax.swing.JButton();
         jb_Editar = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jcb_BodegaID = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -117,7 +125,6 @@ public class FrmInventarios extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Compras:");
 
-        jf_compras.setEditable(false);
         jf_compras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jf_comprasActionPerformed(evt);
@@ -128,14 +135,11 @@ public class FrmInventarios extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Inventario ID:");
 
-        jf_cantInicial.setEditable(false);
-
         jLabel5.setBackground(new java.awt.Color(0, 0, 0));
         jLabel5.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Movimientos positivos:");
 
-        jf_ventas.setEditable(false);
         jf_ventas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jf_ventasActionPerformed(evt);
@@ -146,7 +150,6 @@ public class FrmInventarios extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Saldo Total:");
 
-        jf_fecha.setEditable(false);
         jf_fecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jf_fechaActionPerformed(evt);
@@ -157,7 +160,6 @@ public class FrmInventarios extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Cantidad inicial:");
 
-        jf_saldoTotal.setEditable(false);
         jf_saldoTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jf_saldoTotalActionPerformed(evt);
@@ -199,7 +201,7 @@ public class FrmInventarios extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcb_BodegaID.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -234,7 +236,7 @@ public class FrmInventarios extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(tf_inventario, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jcb_BodegaID, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -271,7 +273,7 @@ public class FrmInventarios extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jcb_BodegaID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jf_fecha)
@@ -442,7 +444,7 @@ public class FrmInventarios extends javax.swing.JFrame {
         
        //recorremos cada elemento de la lista y creamos el objeto
         for(Inventarios inv: listInventario){
-            Object[] datosInv = new Object[]{inv.getInventarioID(), inv.getBodegaoID(),inv.getCant_inicial(), inv.getMovimiento_pos(), inv.getMovimiento_neg(),inv.getSaldo_final(), inv.getFecha()};
+            Object[] datosInv = new Object[]{inv.getInventarioID(), inv.getBodegaID(),inv.getCant_inicial(), inv.getMovimiento_pos(), inv.getMovimiento_neg(),inv.getSaldo_final(), inv.getFecha()};
             //asignamos un arreglo de objetos a una fila del modelo
             myData.addRow(datosInv);
         }
@@ -450,12 +452,21 @@ public class FrmInventarios extends javax.swing.JFrame {
         jtInventario.setModel(myData);
     }
         
+        //Tengo que usar a bodega aqui 
+        private void llenarComboInventario(){
+        //llenamos la lista
+        listInventario = dtInv.listarInventario();
         
+        //recorremos cada elemento de la lista y creamos el objeto
+        for(Inventarios inv: listInventario){
+            //asignamos el objeto creado al combobox
+            this.jcb_BodegaID.addItem(inv);   
+        }
+         
         
-    
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -472,6 +483,7 @@ public class FrmInventarios extends javax.swing.JFrame {
     private javax.swing.JButton jb_Editar;
     private javax.swing.JButton jb_Eliminar;
     private javax.swing.JButton jb_Guardar;
+    private javax.swing.JComboBox<Object> jcb_BodegaID;
     private javax.swing.JTextField jf_cantInicial;
     private javax.swing.JTextField jf_compras;
     private javax.swing.JTextField jf_fecha;
