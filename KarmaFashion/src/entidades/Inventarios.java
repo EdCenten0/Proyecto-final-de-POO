@@ -44,7 +44,7 @@ public class Inventarios {
         return bodegaID;
     }
 
-    public void setBodegaID(int bodegaoID) {
+    public void setBodegaID(int bodegaID) {
         this.bodegaID = bodegaID;
     }
 
@@ -98,7 +98,7 @@ public class Inventarios {
 
     @Override
     public String toString() {
-        return "Inventarios{" + "bodegaoID=" + bodegaID + '}';
+        return  ""+bodegaID ;
     }
     
     
