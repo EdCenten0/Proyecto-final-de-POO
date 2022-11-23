@@ -9,6 +9,7 @@ package datos;
  * @author Elsner
  */
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 public class Conexion {
     
@@ -71,11 +72,13 @@ public class Conexion {
         } 
         catch (ClassNotFoundException e) {
            con=null;
-           System.out.println("Error al cargar el driver:" +e.getMessage());
+           JOptionPane.showMessageDialog(null, "Error al cargar el driver!", "ERROR", JOptionPane.WARNING_MESSAGE);
+           //System.out.println("Error al cargar el driver:" +e.getMessage());
         } 
         catch (SQLException e) {
            con=null;
-           System.out.println("Error al establecer la conexion:" +e.getMessage());
+           JOptionPane.showMessageDialog(null, "Error al establecer la conexion!", "ERROR", JOptionPane.WARNING_MESSAGE);
+           //System.out.println("Error al establecer la conexion:" +e.getMessage());
        }
     }
     
