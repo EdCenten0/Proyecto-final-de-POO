@@ -12,6 +12,7 @@ import entidades.Usuarios;
 import datos.Dt_usuarios;
 
 import presentacion.Principal;
+import presentacion.FrmAgregarUser;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -23,6 +24,7 @@ import javax.swing.JOptionPane;
 public class FrmLogin extends javax.swing.JFrame {
     
     Principal prin = new Principal();
+    FrmAgregarUser agregar = new FrmAgregarUser();
     private ArrayList<Usuarios> listUser = new ArrayList<Usuarios>();
     
     
@@ -265,6 +267,9 @@ public class FrmLogin extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("No tengo un usuario...");
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel5MouseEntered(evt);
             }
@@ -480,6 +485,11 @@ public class FrmLogin extends javax.swing.JFrame {
         }
            
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        // TODO add your handling code here:
+        agregar.setVisible(true);
+    }//GEN-LAST:event_jLabel5MouseClicked
 
     /**
      * @param args the command line arguments
