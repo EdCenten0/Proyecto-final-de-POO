@@ -4,11 +4,16 @@
  */
 package presentacion;
 
-import datos.Dt_usuarios;
-import entidades.Usuarios;
+
 import java.awt.Color;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
+import entidades.Usuarios;
+import datos.Dt_usuarios;
+
+import presentacion.Principal;
+import presentacion.FrmAgregarUser;
+
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -17,12 +22,15 @@ import javax.swing.JOptionPane;
  * @author cchav
  */
 public class FrmLogin extends javax.swing.JFrame {
-
+    
     Principal prin = new Principal();
+    FrmAgregarUser agregar = new FrmAgregarUser();
     private ArrayList<Usuarios> listUser = new ArrayList<Usuarios>();
     
     
     Dt_usuarios dtUser = new Dt_usuarios();
+    
+    
     
     int xMouse, yMouse;
     /**
@@ -67,6 +75,8 @@ public class FrmLogin extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jlabel_date = new javax.swing.JLabel();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
         setLocationByPlatform(true);
         setUndecorated(true);
         setResizable(false);
@@ -260,6 +270,9 @@ public class FrmLogin extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("No tengo un usuario...");
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel5MouseEntered(evt);
             }
@@ -361,18 +374,6 @@ public class FrmLogin extends javax.swing.JFrame {
         this.setLocation(x - xMouse,y - yMouse);
     }//GEN-LAST:event_jPanel3MouseDragged
 
-    private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
-        // TODO add your handling code here:
-        jPanel4.setBackground(Color.PINK);
-        jLabel3.setForeground(Color.white);
-    }//GEN-LAST:event_jPanel4MouseEntered
-
-    private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
-        // TODO add your handling code here:
-        jPanel4.setBackground(new Color(255,204,204));
-        jLabel3.setForeground(Color.black);
-    }//GEN-LAST:event_jPanel4MouseExited
-
     private void jtUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtUsuarioMousePressed
         // TODO add your handling code here:
         jtUsuario.setText("");
@@ -431,8 +432,19 @@ public class FrmLogin extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel4MouseClicked
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
         // TODO add your handling code here:
+        jPanel4.setBackground(new Color(255,204,204));
+        jLabel3.setForeground(Color.black);
+    }//GEN-LAST:event_jPanel4MouseExited
+
+    private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
+        // TODO add your handling code here:
+        jPanel4.setBackground(Color.PINK);
+        jLabel3.setForeground(Color.white);
+    }//GEN-LAST:event_jPanel4MouseEntered
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         // TODO add your handling code here:
         
         listUser = dtUser.listarUsuarios();
@@ -459,6 +471,7 @@ public class FrmLogin extends javax.swing.JFrame {
             
             if(DatosUsuario.get(i).equals(jtUsuario.getText()) && DatosContraseña.get(i).equals(jpContraseña.getText())){
                 this.setVisible(false);
+                JOptionPane.showMessageDialog(null, "Usuario y contraseña correcta, Bienvenido "+DatosUsuario.get(i),"Bienvenida",JOptionPane.INFORMATION_MESSAGE);
                 prin.setVisible(true);
                 confirmar = false;
                 
@@ -474,7 +487,15 @@ public class FrmLogin extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "Error De inicio de sesión, Usuario y contraseña no valida!", "Error de inicio de sesión", JOptionPane.WARNING_MESSAGE);
         }
+        
+        
+           
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        // TODO add your handling code here:
+        agregar.setVisible(true);
+    }//GEN-LAST:event_jLabel5MouseClicked
 
     /**
      * @param args the command line arguments

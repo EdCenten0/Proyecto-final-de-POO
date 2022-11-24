@@ -35,7 +35,7 @@ public class Dt_rol {
     }
     
     @SuppressWarnings("CallToPrintStackTrace")
-    public ArrayList<Roles> listarInventario(){
+    public ArrayList<Roles> listarRol(){
         ArrayList<Roles> listarol = new ArrayList<Roles>();
         try{
             this.cargarDatos();
@@ -44,6 +44,7 @@ public class Dt_rol {
                 rol.setRolID(rs.getInt("RolID"));
                 rol.setRol_name(rs.getString("Rol_name"));
                 rol.setEstado(rs.getInt("Estado"));
+                
                 listarol.add(rol);
             }     
         }catch(SQLException e){

@@ -11,6 +11,7 @@ import datos.Dt_inventarios;
 import entidades.Inventarios;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FrmInventarios extends javax.swing.JFrame {
     
-    FrmProductos frmP = new FrmProductos();
+
     private Dt_inventarios dt_inventario = new Dt_inventarios();
     
     
@@ -74,6 +75,7 @@ public class FrmInventarios extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Inventario");
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
