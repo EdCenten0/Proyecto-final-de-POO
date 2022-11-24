@@ -267,6 +267,7 @@ public class FrmAgregarUser extends javax.swing.JFrame {
                 if(dtUsuario.guardarUsuario(u)){
                     JOptionPane.showMessageDialog (this, "El registro fue almacenado con éxito!", 
                       "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                    this.setVisible(false);
                 }
                 else{
                    JOptionPane.showMessageDialog(this, 
