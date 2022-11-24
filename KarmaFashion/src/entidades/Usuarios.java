@@ -10,6 +10,7 @@ package entidades;
  */
 public class Usuarios {
     private int usuarioID;
+    private int rolID;
     private String username;
     private String clave;
     private int estado;
@@ -17,8 +18,9 @@ public class Usuarios {
     public Usuarios() {
     }
 
-    public Usuarios(int usuarioID, String username, String clave, int estado) {
+    public Usuarios(int usuarioID,int rolID, String username, String clave, int estado) {
         this.usuarioID = usuarioID;
+        this.rolID = rolID;
         this.username = username;
         this.clave = clave;
         this.estado = estado;
@@ -54,6 +56,14 @@ public class Usuarios {
 
     public void setEstado(int estado) {
         this.estado = estado;
+    }
+
+    public int getRolID() {
+        return rolID;
+    }
+
+    public void setRolID(int rolID) {
+        this.rolID = rolID;
     }
     
     

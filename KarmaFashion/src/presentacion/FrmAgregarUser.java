@@ -5,24 +5,35 @@
 package presentacion;
 
 import datos.Dt_usuarios;
+import datos.Dt_rol;
 import entidades.Usuarios;
+import entidades.Roles;
 import java.util.ArrayList;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Francisco de Jesus Melendez Simplina
  */
 public class FrmAgregarUser extends javax.swing.JFrame {
-
     
-   
+    private Usuarios users = new Usuarios();
+    private Dt_usuarios dt_user = new Dt_usuarios();
+    private ArrayList<Usuarios> listUser = new ArrayList<Usuarios>();
+    ArrayList<Roles> listaRol = new ArrayList<Roles>();
+    
+    Usuarios u = new Usuarios();
+    Roles r = new Roles();
+    
+    Dt_rol dtR = new Dt_rol();
+    Dt_usuarios dtUsuario = new Dt_usuarios();
     
     /**
      * Creates new form FrmAgregarUser
      */
     public FrmAgregarUser() {
         initComponents();
+        llenarComboRol();
     }
 
     /**
@@ -47,6 +58,8 @@ public class FrmAgregarUser extends javax.swing.JFrame {
         jpfContra2 = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jcRol = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -107,7 +120,7 @@ public class FrmAgregarUser extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Confirmación de contraseña:");
+        jLabel4.setText("Rol del usuario:");
 
         jpfContra2.setBackground(new java.awt.Color(255, 204, 204));
         jpfContra2.setForeground(new java.awt.Color(0, 0, 0));
@@ -141,6 +154,12 @@ public class FrmAgregarUser extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Confirmación de contraseña:");
+
+        jcRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione..." }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -156,12 +175,14 @@ public class FrmAgregarUser extends javax.swing.JFrame {
                         .addComponent(jtfUsuario, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jpfContra1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE))
                     .addComponent(jLabel4)
+                    .addComponent(jLabel5)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jcRol, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jpfContra2, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jpfContra2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -169,19 +190,23 @@ public class FrmAgregarUser extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel2)
-                .addGap(42, 42, 42)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jtfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpfContra1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpfContra2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(jcRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -224,6 +249,45 @@ public class FrmAgregarUser extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        //validamos que todos los campos sean ingresados por el usuario 
+        
+        if(jtfUsuario.getText().equals("") || jpfContra1.getText().equals("") || jpfContra1.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            //construimos nuestro objeto con los valores del formulario
+            //r=(Usuarios);
+            r = (Roles)this.jcRol.getSelectedItem();
+            u.setRolID(r.getRolID());
+            u.setUsername(jtfUsuario.getText());
+            u.setClave(jpfContra1.getText());
+            
+            
+            
+            
+            //validamos que el id no exista en la tabla de la bd
+            //if(dt_user.existeUsuario(u.getUsername())){
+                //JOptionPane.showMessageDialog(this, "El Id de pais ya existe!", 
+                    //"ERROR", JOptionPane.WARNING_MESSAGE);
+                //jtfUsuario.setText("");
+                //jtfUsuario.grabFocus(); 
+            //}
+            //else{
+            
+                //validamos que el metodo guardar devuelve un true
+                if(dtUsuario.guardarUsuario(u)){
+                    JOptionPane.showMessageDialog (this, "El registro fue almacenado con éxito!", 
+                      "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                    this.setVisible(false);
+                }
+                else{
+                   JOptionPane.showMessageDialog(this, 
+                      "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                      "ERROR", JOptionPane.ERROR_MESSAGE); 
+                }
+            //}
+        }
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -262,8 +326,18 @@ public class FrmAgregarUser extends javax.swing.JFrame {
         });
     }
     
-    
-    
+    private void llenarComboRol(){
+        //llenamos la lista
+        listaRol = dtR.listarRol();
+
+        //recorremos cada elemento de la lista y creamos el objeto
+        for(Roles rl: listaRol){
+            //asignamos el objeto creado al combobox
+            this.jcRol.addItem(rl);   
+        }
+        
+        
+    }
     
     
 
@@ -278,6 +352,7 @@ public class FrmAgregarUser extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JComboBox<Object> jcRol;
     private javax.swing.JPasswordField jpfContra1;
     private javax.swing.JPasswordField jpfContra2;
     private javax.swing.JTextField jtfUsuario;

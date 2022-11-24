@@ -4,12 +4,16 @@
  */
 package presentacion;
 
-import datos.Dt_usuarios;
-import entidades.Usuarios;
-import presentacion.FrmAgregarUser;
+
 import java.awt.Color;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
+import entidades.Usuarios;
+import datos.Dt_usuarios;
+
+import presentacion.Principal;
+import presentacion.FrmAgregarUser;
+
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -18,10 +22,13 @@ import javax.swing.JOptionPane;
  * @author cchav
  */
 public class FrmLogin extends javax.swing.JFrame {
-
+    
     Principal prin = new Principal();
-    FrmAgregarUser AgregarUser = new FrmAgregarUser();
+    FrmAgregarUser agregar = new FrmAgregarUser();
     private ArrayList<Usuarios> listUser = new ArrayList<Usuarios>();
+    
+    
+    Dt_usuarios dtUser = new Dt_usuarios();
     
     
     Dt_usuarios dtUser = new Dt_usuarios();
@@ -366,18 +373,6 @@ public class FrmLogin extends javax.swing.JFrame {
         this.setLocation(x - xMouse,y - yMouse);
     }//GEN-LAST:event_jPanel3MouseDragged
 
-    private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
-        // TODO add your handling code here:
-        jPanel4.setBackground(Color.PINK);
-        jLabel3.setForeground(Color.white);
-    }//GEN-LAST:event_jPanel4MouseEntered
-
-    private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
-        // TODO add your handling code here:
-        jPanel4.setBackground(new Color(255,204,204));
-        jLabel3.setForeground(Color.black);
-    }//GEN-LAST:event_jPanel4MouseExited
-
     private void jtUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtUsuarioMousePressed
         // TODO add your handling code here:
         jtUsuario.setText("");
@@ -436,15 +431,27 @@ public class FrmLogin extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel4MouseClicked
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
         // TODO add your handling code here:
+        jPanel4.setBackground(new Color(255,204,204));
+        jLabel3.setForeground(Color.black);
+    }//GEN-LAST:event_jPanel4MouseExited
+
+    private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
+        // TODO add your handling code here:
+        jPanel4.setBackground(Color.PINK);
+        jLabel3.setForeground(Color.white);
+    }//GEN-LAST:event_jPanel4MouseEntered
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         // TODO add your handling code here:
         
         listUser = dtUser.listarUsuarios();
         
         boolean Acesso = true; //Prueba si el usuario y clave son verdaderos o falso
         boolean confirmar = true; //confirma si es verdadera la el usuario y clave, esto para no entrar al mensaje en pantalla cuando se salga del bucle
-
+        
+        
         
         ArrayList DatosUsuario = new ArrayList();
         ArrayList DatosContraseña = new ArrayList();
@@ -475,15 +482,15 @@ public class FrmLogin extends javax.swing.JFrame {
         }   
         
         if(Acesso==false && confirmar==true)
-            {
-                JOptionPane.showMessageDialog(null, "Error De inicio de sesión, Usuario y contraseña no valida!", "Error de inicio de sesión", JOptionPane.WARNING_MESSAGE);
-            }
-        
+        {
+            JOptionPane.showMessageDialog(null, "Error De inicio de sesión, Usuario y contraseña no valida!", "Error de inicio de sesión", JOptionPane.WARNING_MESSAGE);
+        }
+           
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
-        AgregarUser.setVisible(true);
+        agregar.setVisible(true);
     }//GEN-LAST:event_jLabel5MouseClicked
 
     /**
