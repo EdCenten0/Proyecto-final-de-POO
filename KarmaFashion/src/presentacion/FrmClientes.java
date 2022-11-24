@@ -8,6 +8,9 @@ import datos.Dt_Clientes;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+
+// Filter 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.RowFilter;
@@ -30,6 +33,7 @@ public class FrmClientes extends javax.swing.JFrame {
     public FrmClientes() {
         initComponents();
         llenarTablaClientes();
+        limpiarCampos();
     }
 
     /**
@@ -110,11 +114,12 @@ public class FrmClientes extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable_clientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable_clientesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable_clientes);
-        if (jTable_clientes.getColumnModel().getColumnCount() > 0) {
-            jTable_clientes.getColumnModel().getColumn(2).setResizable(false);
-            jTable_clientes.getColumnModel().getColumn(5).setResizable(false);
-        }
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -188,7 +193,7 @@ public class FrmClientes extends javax.swing.JFrame {
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(tf_sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(6, 6, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -243,7 +248,17 @@ public class FrmClientes extends javax.swing.JFrame {
 
         jButton5.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
         jButton5.setText("Vaciar campos");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
+        jtf_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtf_buscarActionPerformed(evt);
+            }
+        });
         jtf_buscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtf_buscarKeyTyped(evt);
@@ -263,17 +278,6 @@ public class FrmClientes extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(15, 15, 15)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jtf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jButton1)
                                 .addGap(39, 39, 39)
@@ -284,7 +288,16 @@ public class FrmClientes extends javax.swing.JFrame {
                                 .addComponent(jButton4)
                                 .addGap(48, 48, 48)
                                 .addComponent(jButton5)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                                        .addComponent(jtf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -305,8 +318,8 @@ public class FrmClientes extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -343,17 +356,48 @@ public class FrmClientes extends javax.swing.JFrame {
         // TODO add your handling code here:
         jtf_buscar.addKeyListener(new KeyAdapter() {
             
+            @Override
             public void keyReleased(final KeyEvent e){
                String cadena = (jtf_buscar.getText()).toUpperCase();
                jtf_buscar.setText(cadena);
-                repaint();
-                filtrarTabla();
+               repaint();
+               filtrarTabla();
+                
                 
             }
         
         });
+        trsfiltro = new TableRowSorter(jTable_clientes.getModel());
+        jTable_clientes.setRowSorter(trsfiltro);
     
     }//GEN-LAST:event_jtf_buscarKeyTyped
+
+    private void jTable_clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_clientesMouseClicked
+        // TODO add your handling code here:
+        int fila = jTable_clientes.getSelectedRow();
+        
+        tf_clienteID.setText(jTable_clientes.getValueAt(fila, 0).toString());
+        tf_nombre.setText(jTable_clientes.getValueAt(fila, 2).toString());
+        tf_cedula.setText(jTable_clientes.getValueAt(fila, 1).toString());
+        tf_numero_telefonico.setText(jTable_clientes.getValueAt(fila, 3).toString());
+        tf_email.setText(jTable_clientes.getValueAt(fila, 4).toString());
+        tf_sexo.setText(jTable_clientes.getValueAt(fila, 5).toString());
+        ta_direccion.setText(jTable_clientes.getValueAt(fila, 6).toString());
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jTable_clientesMouseClicked
+
+    private void jtf_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtf_buscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtf_buscarActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        limpiarCampos();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -397,6 +441,12 @@ public class FrmClientes extends javax.swing.JFrame {
         });
     }
     
+    private void actualizarTabla(){
+        myData.setColumnCount(0);
+        myData.setRowCount(0);
+        this.llenarTablaClientes();
+    }
+    
     private void llenarTablaClientes()
     {
          //llenamos la lista
@@ -428,10 +478,22 @@ public class FrmClientes extends javax.swing.JFrame {
         jTable_clientes.setModel(myData);
     }
     
+        private void limpiarCampos(){
+        this.tf_clienteID.setText("");
+        this.tf_cedula.setText("");
+        this.tf_nombre.setText("");
+        this.tf_email.setText("");
+        this.tf_numero_telefonico.setText("");
+        this.tf_sexo.setText("");
+        this.ta_direccion.setText("");
+        
+        
+    }
+    
     
     
     private void filtrarTabla(){
-       trsfiltro.setRowFilter(RowFilter.regexFilter(jtf_buscar.getText(), 3));
+       trsfiltro.setRowFilter(RowFilter.regexFilter(jtf_buscar.getText(), 2));
     }
     
 
