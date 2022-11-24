@@ -65,10 +65,9 @@ public class FrmClientes extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         ta_direccion = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        bt_eliminar = new javax.swing.JButton();
+        bt_guardar = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jtf_buscar = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -229,20 +228,27 @@ public class FrmClientes extends javax.swing.JFrame {
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
-        jButton1.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
-        jButton1.setText("Nuevo");
-
         jButton2.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
         jButton2.setText("Editar");
-
-        jButton3.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
-        jButton3.setText("Eliminar");
-
-        jButton4.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
-        jButton4.setText("Guardar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        bt_eliminar.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
+        bt_eliminar.setText("Eliminar");
+        bt_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_eliminarActionPerformed(evt);
+            }
+        });
+
+        bt_guardar.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
+        bt_guardar.setText("Guardar");
+        bt_guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_guardarActionPerformed(evt);
             }
         });
 
@@ -278,26 +284,23 @@ public class FrmClientes extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 683, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(39, 39, 39)
-                                .addComponent(jButton2)
-                                .addGap(38, 38, 38)
-                                .addComponent(jButton3)
-                                .addGap(45, 45, 45)
-                                .addComponent(jButton4)
-                                .addGap(48, 48, 48)
-                                .addComponent(jButton5)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                                        .addComponent(jtf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                                .addComponent(jtf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jButton5)
+                        .addGap(20, 20, 20)
+                        .addComponent(jButton2)
+                        .addGap(21, 21, 21)
+                        .addComponent(bt_eliminar)
+                        .addGap(21, 21, 21)
+                        .addComponent(bt_guardar)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -309,11 +312,11 @@ public class FrmClientes extends javax.swing.JFrame {
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1)
                     .addComponent(jButton5)
-                    .addComponent(jButton4)
-                    .addComponent(jButton3))
+                    .addComponent(bt_guardar)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(bt_eliminar)
+                        .addComponent(jButton2)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -348,9 +351,43 @@ public class FrmClientes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_clienteIDActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void bt_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_guardarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+        if(tf_cedula.getText().equals("") || tf_nombre.getText().equals("") || tf_numero_telefonico.getText().equals("") || tf_email.getText().equals("") || tf_sexo.getText().equals("") || ta_direccion.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            clientes.setTienda_id(1);
+            clientes.setCedula(tf_cedula.getText());
+            clientes.setNombre(tf_nombre.getText());
+            clientes.setNumero_telefonico(tf_numero_telefonico.getText());
+            clientes.setEmail(tf_email.getText());
+            clientes.setSexo(Integer.parseInt(tf_sexo.getText()));
+            clientes.setDireccion(ta_direccion.getText());
+            
+            
+//            VAlIDACION DE NOMBRES NO IGUALES
+//            if(dtc.existePais(c.getCountry_id())){
+//                JOptionPane.showMessageDialog(this, "El Id de pais ya existe!", 
+//                    "ERROR", JOptionPane.WARNING_MESSAGE);
+//                jtf_id.setText("");
+//                jtf_id.grabFocus(); 
+//            }
+
+            if(dt_clientes.guardarClientes(clientes)){
+                JOptionPane.showMessageDialog (this, "El registro fue almacenado con éxito!", 
+                      "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                    actualizarTabla();
+                    limpiarCampos();
+            } 
+            else{
+                   JOptionPane.showMessageDialog(this, 
+                      "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                      "ERROR", JOptionPane.ERROR_MESSAGE); 
+                }
+        }
+    }//GEN-LAST:event_bt_guardarActionPerformed
 
     private void jtf_buscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_buscarKeyTyped
         // TODO add your handling code here:
@@ -398,6 +435,65 @@ public class FrmClientes extends javax.swing.JFrame {
         // TODO add your handling code here:
         limpiarCampos();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        if(tf_clienteID.getText().equals("") || tf_cedula.getText().equals("") || tf_nombre.getText().equals("") || tf_numero_telefonico.getText().equals("") || tf_email.getText().equals("") || tf_sexo.getText().equals("") || ta_direccion.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            clientes.setCliente_id(Integer.parseInt(tf_clienteID.getText()));
+            clientes.setCedula(tf_cedula.getText());
+            clientes.setNombre(tf_nombre.getText());
+            clientes.setNumero_telefonico(tf_numero_telefonico.getText());
+            clientes.setEmail(tf_email.getText());
+            clientes.setSexo(Integer.parseInt(tf_sexo.getText()));
+            clientes.setDireccion(ta_direccion.getText());
+            
+            if(dt_clientes.editarCliente(clientes)){
+                JOptionPane.showMessageDialog (this, "El registro fue actualizado con éxito!", 
+                  "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                actualizarTabla();
+                limpiarCampos();
+            }
+            else{
+                JOptionPane.showMessageDialog(this, 
+                  "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                  "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void bt_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_eliminarActionPerformed
+        // TODO add your handling code here:
+        if(tf_clienteID.getText().equals("") || tf_cedula.getText().equals("") || tf_nombre.getText().equals("") || tf_numero_telefonico.getText().equals("") || tf_email.getText().equals("") || tf_sexo.getText().equals("") || ta_direccion.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            clientes.setCliente_id(Integer.parseInt(tf_clienteID.getText()));
+            clientes.setCedula(tf_cedula.getText());
+            clientes.setNombre(tf_nombre.getText());
+            clientes.setNumero_telefonico(tf_numero_telefonico.getText());
+            clientes.setEmail(tf_email.getText());
+            clientes.setSexo(Integer.parseInt(tf_sexo.getText()));
+            clientes.setDireccion(ta_direccion.getText());
+            
+            if(dt_clientes.borrarCliente(clientes.getCliente_id())){
+                 JOptionPane.showMessageDialog (this, "El registro fue eliminado con éxito!", 
+                  "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                actualizarTabla();
+                limpiarCampos();
+            }
+            else{
+               JOptionPane.showMessageDialog(this, 
+                  "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                  "ERROR", JOptionPane.ERROR_MESSAGE); 
+            }
+        }
+    }//GEN-LAST:event_bt_eliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -498,10 +594,9 @@ public class FrmClientes extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton bt_eliminar;
+    private javax.swing.JButton bt_guardar;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

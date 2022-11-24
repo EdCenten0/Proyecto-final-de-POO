@@ -82,4 +82,125 @@ public class Dt_Clientes {
         return listarClientes;      
     }
     
+    @SuppressWarnings("CallToPrintStackTrace")
+    public boolean guardarClientes(Clientes clientes){
+        boolean guardado = false;
+        try {
+            this.cargarDatos();
+            rs.moveToInsertRow();
+            rs.updateInt("TiendaID", clientes.getTienda_id());
+            rs.updateString("Nombre", clientes.getNombre());
+            rs.updateString("Cedula", clientes.getNombre());
+            rs.updateString("Numero_telefonico", clientes.getNumero_telefonico());
+            rs.updateString("Email", clientes.getEmail());
+            rs.updateString("Direccion", clientes.getDireccion());
+            rs.updateInt("Sexo", clientes.getSexo());
+            rs.insertRow();
+            rs.moveToCurrentRow();
+            
+            guardado = true;
+        } catch (SQLException e) {
+            System.out.println("ERROR guardarPais(): "+e.getMessage());
+            e.printStackTrace();
+        }
+        finally
+	{
+            try{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+                if(con!=null){
+                    Conexion.closeConexion(con);
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+	}
+        return guardado;
+    }
+    
+    @SuppressWarnings("CallToPrintStackTrace")
+    public boolean borrarCliente(int id){
+        boolean resp = false;
+        try {
+            this.cargarDatos();
+            rs.beforeFirst();
+            while(rs.next()){
+                if(rs.getInt("ClienteID")==(id)){
+                    rs.deleteRow();
+                    resp=true;
+                }
+            }	
+	} 
+        catch (SQLException e) {
+            System.out.println("Error deletePais(): "+e.getMessage());
+            e.printStackTrace();
+	}
+        finally{
+            try{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+                if(con!=null){
+                    Conexion.closeConexion(con);
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+        
+        return resp;
+    }
+    
+    @SuppressWarnings("CallToPrintStackTrace")
+    public boolean editarCliente(Clientes clientes){
+       boolean resp = false;
+       
+       try{
+          this.cargarDatos();
+          rs.beforeFirst();
+          while(rs.next()){
+              if(rs.getInt("ClienteID")==(clientes.getCliente_id())){
+                  rs.updateString("Cedula", clientes.getCedula());
+                  rs.updateString("Nombre", clientes.getNombre());
+                  rs.updateString("Numero_telefonico", clientes.getNumero_telefonico());
+                  rs.updateString("Email", clientes.getEmail());
+                  rs.updateString("Direccion", clientes.getDireccion());
+                  rs.updateInt("Sexo", clientes.getSexo());
+                  rs.updateRow();
+                  resp = true;
+                  break;
+              }
+          }
+       }
+       catch(SQLException e){
+           System.out.println("Error en editarPais(): "+e.getMessage());
+            e.printStackTrace();
+       }
+       finally{
+            try {
+                    if(rs!=null){
+                    rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                    if(con!=null){
+                        Conexion.closeConexion(con);
+                    }
+            }catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+            }
+        }
+        return resp;
+       
+    }
+    
 }
