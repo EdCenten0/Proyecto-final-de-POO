@@ -31,7 +31,6 @@ public class FrmLogin extends javax.swing.JFrame {
     Dt_usuarios dtUser = new Dt_usuarios();
     
     
-    Dt_usuarios dtUser = new Dt_usuarios();
     
     int xMouse, yMouse;
     /**
@@ -470,6 +469,7 @@ public class FrmLogin extends javax.swing.JFrame {
             
             if(DatosUsuario.get(i).equals(jtUsuario.getText()) && DatosContraseña.get(i).equals(jpContraseña.getText())){
                 this.setVisible(false);
+                JOptionPane.showMessageDialog(null, "Usuario y contraseña correcta, Bienvenido "+DatosUsuario.get(i),"Bienvenida",JOptionPane.INFORMATION_MESSAGE);
                 prin.setVisible(true);
                 confirmar = false;
                 
@@ -485,6 +485,8 @@ public class FrmLogin extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "Error De inicio de sesión, Usuario y contraseña no valida!", "Error de inicio de sesión", JOptionPane.WARNING_MESSAGE);
         }
+        
+        
            
     }//GEN-LAST:event_jLabel3MouseClicked
 
