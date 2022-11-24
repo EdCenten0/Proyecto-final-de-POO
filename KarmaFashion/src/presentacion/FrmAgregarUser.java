@@ -62,6 +62,7 @@ public class FrmAgregarUser extends javax.swing.JFrame {
         jcRol = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Registrar usuario");
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 

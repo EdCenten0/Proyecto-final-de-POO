@@ -75,6 +75,7 @@ public class FrmInventarios extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Inventario");
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
