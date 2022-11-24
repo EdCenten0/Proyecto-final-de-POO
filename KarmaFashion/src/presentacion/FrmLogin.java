@@ -6,6 +6,7 @@ package presentacion;
 
 import datos.Dt_usuarios;
 import entidades.Usuarios;
+import presentacion.FrmAgregarUser;
 import java.awt.Color;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -19,6 +20,7 @@ import javax.swing.JOptionPane;
 public class FrmLogin extends javax.swing.JFrame {
 
     Principal prin = new Principal();
+    FrmAgregarUser AgregarUser = new FrmAgregarUser();
     private ArrayList<Usuarios> listUser = new ArrayList<Usuarios>();
     
     
@@ -260,6 +262,9 @@ public class FrmLogin extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("No tengo un usuario...");
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel5MouseEntered(evt);
             }
@@ -439,8 +444,7 @@ public class FrmLogin extends javax.swing.JFrame {
         
         boolean Acesso = true; //Prueba si el usuario y clave son verdaderos o falso
         boolean confirmar = true; //confirma si es verdadera la el usuario y clave, esto para no entrar al mensaje en pantalla cuando se salga del bucle
-        
-        
+
         
         ArrayList DatosUsuario = new ArrayList();
         ArrayList DatosContraseña = new ArrayList();
@@ -471,10 +475,16 @@ public class FrmLogin extends javax.swing.JFrame {
         }   
         
         if(Acesso==false && confirmar==true)
-        {
-            JOptionPane.showMessageDialog(null, "Error De inicio de sesión, Usuario y contraseña no valida!", "Error de inicio de sesión", JOptionPane.WARNING_MESSAGE);
-        }
+            {
+                JOptionPane.showMessageDialog(null, "Error De inicio de sesión, Usuario y contraseña no valida!", "Error de inicio de sesión", JOptionPane.WARNING_MESSAGE);
+            }
+        
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        // TODO add your handling code here:
+        AgregarUser.setVisible(true);
+    }//GEN-LAST:event_jLabel5MouseClicked
 
     /**
      * @param args the command line arguments
