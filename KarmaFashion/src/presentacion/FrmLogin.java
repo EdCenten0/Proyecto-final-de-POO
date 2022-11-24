@@ -4,31 +4,37 @@
  */
 package presentacion;
 
+import datos.Dt_usuarios;
+import entidades.Usuarios;
 import java.awt.Color;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author cchav
  */
-public class FrmLogin1 extends javax.swing.JFrame {
+public class FrmLogin extends javax.swing.JFrame {
 
+    Principal prin = new Principal();
+    private ArrayList<Usuarios> listUser = new ArrayList<Usuarios>();
     
+    
+    Dt_usuarios dtUser = new Dt_usuarios();
     
     int xMouse, yMouse;
     /**
      * Creates new form Principal
      */
-    public FrmLogin1() {
+    public FrmLogin() {
         initComponents();
         LocalDate now = LocalDate.now();
         int year = now.getYear();
         int dia = now.getDayOfMonth();
         int month = now.getMonthValue();
-        String[] meses = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto"," ;Septiembre"
-            ,"Octubre","Noviembre","Diciemrbre"};
-        jlabel_date.setText("Hoy es "+dia+" de "+meses[month - 1]+" de "+year);
+        jlabel_date.setText(dia+"/"+month+"/"+year);
     }
 
     /**
@@ -50,11 +56,11 @@ public class FrmLogin1 extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jtUsuario = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel13 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        jpContraseña = new javax.swing.JPasswordField();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
@@ -173,14 +179,14 @@ public class FrmLogin1 extends javax.swing.JFrame {
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Usuario");
 
-        jTextField1.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField1.setText("Ingrese su nombre de usuario...");
-        jTextField1.setBorder(null);
-        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jtUsuario.setBackground(new java.awt.Color(204, 204, 204));
+        jtUsuario.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        jtUsuario.setForeground(new java.awt.Color(102, 102, 102));
+        jtUsuario.setText("Ingrese su nombre de usuario...");
+        jtUsuario.setBorder(null);
+        jtUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTextField1MousePressed(evt);
+                jtUsuarioMousePressed(evt);
             }
         });
 
@@ -189,14 +195,14 @@ public class FrmLogin1 extends javax.swing.JFrame {
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Contraseña");
 
-        jPasswordField1.setBackground(new java.awt.Color(204, 204, 204));
-        jPasswordField1.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(102, 102, 102));
-        jPasswordField1.setText("jPasswordField1");
-        jPasswordField1.setBorder(null);
-        jPasswordField1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jpContraseña.setBackground(new java.awt.Color(204, 204, 204));
+        jpContraseña.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
+        jpContraseña.setForeground(new java.awt.Color(102, 102, 102));
+        jpContraseña.setText("jPasswordField1");
+        jpContraseña.setBorder(null);
+        jpContraseña.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPasswordField1MousePressed(evt);
+                jpContraseñaMousePressed(evt);
             }
         });
 
@@ -215,6 +221,11 @@ public class FrmLogin1 extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Ingresar");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -268,8 +279,6 @@ public class FrmLogin1 extends javax.swing.JFrame {
             .addComponent(jLabel5)
         );
 
-        jLabel5.getAccessibleContext().setAccessibleName("No tengo un usuario...");
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -280,10 +289,10 @@ public class FrmLogin1 extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel12)
-                            .addComponent(jTextField1)
+                            .addComponent(jtUsuario)
                             .addComponent(jSeparator2)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jpContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -303,13 +312,13 @@ public class FrmLogin1 extends javax.swing.JFrame {
                 .addGap(63, 63, 63)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jpContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
@@ -364,16 +373,16 @@ public class FrmLogin1 extends javax.swing.JFrame {
         jLabel3.setForeground(Color.black);
     }//GEN-LAST:event_jPanel4MouseExited
 
-    private void jTextField1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MousePressed
+    private void jtUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtUsuarioMousePressed
         // TODO add your handling code here:
-        jTextField1.setText("");
+        jtUsuario.setText("");
         
-    }//GEN-LAST:event_jTextField1MousePressed
+    }//GEN-LAST:event_jtUsuarioMousePressed
 
-    private void jPasswordField1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MousePressed
+    private void jpContraseñaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpContraseñaMousePressed
         // TODO add your handling code here:
-        jPasswordField1.setText("");
-    }//GEN-LAST:event_jPasswordField1MousePressed
+        jpContraseña.setText("");
+    }//GEN-LAST:event_jpContraseñaMousePressed
 
     private void jPanel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseEntered
         // TODO add your handling code here:
@@ -422,6 +431,51 @@ public class FrmLogin1 extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel4MouseClicked
 
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        
+        listUser = dtUser.listarUsuarios();
+        
+        boolean Acesso = true; //Prueba si el usuario y clave son verdaderos o falso
+        boolean confirmar = true; //confirma si es verdadera la el usuario y clave, esto para no entrar al mensaje en pantalla cuando se salga del bucle
+        
+        
+        
+        ArrayList DatosUsuario = new ArrayList();
+        ArrayList DatosContraseña = new ArrayList();
+        
+        
+        //recorremos cada elemento de la lista y creamos el objeto
+        for(Usuarios us: listUser){
+            //asignamos el objeto creado al combobox
+            
+            DatosUsuario.add(us.getUsername());
+            DatosContraseña.add(us.getClave());
+        }
+        
+        
+        for(int i=0;i<=DatosUsuario.size()-1;i++){
+            
+            if(DatosUsuario.get(i).equals(jtUsuario.getText()) && DatosContraseña.get(i).equals(jpContraseña.getText())){
+                this.setVisible(false);
+                prin.setVisible(true);
+                confirmar = false;
+                
+            }else 
+                    {
+                        Acesso = false; 
+                        
+                    }
+ 
+        }   
+        
+        if(Acesso==false && confirmar==true)
+        {
+            JOptionPane.showMessageDialog(null, "Error De inicio de sesión, Usuario y contraseña no valida!", "Error de inicio de sesión", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jLabel3MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -439,14 +493,22 @@ public class FrmLogin1 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmLogin1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmLogin1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmLogin1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmLogin1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -459,7 +521,7 @@ public class FrmLogin1 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmLogin1().setVisible(true);
+                new FrmLogin().setVisible(true);
             }
         });
     }
@@ -479,11 +541,11 @@ public class FrmLogin1 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel jlabel_date;
+    private javax.swing.JPasswordField jpContraseña;
+    private javax.swing.JTextField jtUsuario;
     // End of variables declaration//GEN-END:variables
 }

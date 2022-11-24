@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package datos;
-import entidades.Inventarios;
+
+import entidades.Usuarios;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
  *
  * @author Francisco de Jesus Melendez Simplina
  */
-public class Dt_inventarios {
+public class Dt_usuarios {
     private Connection con = null;
     private PreparedStatement ps = null;
     private ResultSet rs = null;
@@ -25,7 +26,7 @@ public class Dt_inventarios {
     {
         try{
             con = Conexion.getConnection(); //obtenemos la conexion a la base de datos
-            ps = con.prepareStatement("SELECT InventarioID,BodegaID,Cant_inicial,Movimiento_pos,Movimiento_neg,Saldo_final,Fecha,estado FROM Inventario", 
+            ps = con.prepareStatement("SELECT UsuarioID,RolID,Username,Clave,Estado FROM Usuario", 
                     ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE, ResultSet.HOLD_CURSORS_OVER_COMMIT);
             rs = ps.executeQuery();
         }
@@ -36,21 +37,18 @@ public class Dt_inventarios {
     }
     
     @SuppressWarnings("CallToPrintStackTrace")
-    public ArrayList<Inventarios> listarInventario(){
-        ArrayList<Inventarios> listaInvent = new ArrayList<Inventarios>();
+    public ArrayList<Usuarios> listarUsuarios(){
+        ArrayList<Usuarios> listauser = new ArrayList<Usuarios>();
         try{
             this.cargarDatos();
             while(rs.next()){
-                Inventarios inv = new Inventarios();
-                inv.setInventarioID(rs.getInt("InventarioID"));
-                inv.setBodegaID(rs.getInt("BodegaID"));
-                inv.setCant_inicial(rs.getInt("Cant_inicial"));
-                inv.setMovimiento_pos(rs.getInt("Movimiento_pos"));
-                inv.setMovimiento_neg(rs.getInt("Movimiento_neg"));
-                inv.setSaldo_final(rs.getInt("Saldo_final"));
-                inv.setFecha(rs.getString("Fecha"));
-                inv.setEstado(rs.getInt("estado"));
-                listaInvent.add(inv);
+                Usuarios user = new Usuarios();
+                user.setUsuarioID(rs.getInt("UsuarioID"));
+                user.setUsuarioID(rs.getInt("RolID"));
+                user.setUsername(rs.getString("Username"));
+                user.setClave(rs.getString("Clave"));
+                user.setEstado(rs.getInt("Estado"));
+                listauser.add(user);
             }     
         }catch(SQLException e){
             System.out.println("El error en listarDeptos(): "+e.getMessage());
@@ -73,9 +71,6 @@ public class Dt_inventarios {
         }
         
         
-        return listaInvent;      
-    }
-    
-    
-   
+        return listauser;
+}
 }

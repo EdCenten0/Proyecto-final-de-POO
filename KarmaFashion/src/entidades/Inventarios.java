@@ -10,24 +10,24 @@ package entidades;
  */
 public class Inventarios {
     private int inventarioID;
-    private int bodegaoID;
+    private int bodegaID;
     private int cant_inicial;
     private int movimiento_pos;
     private int movimiento_neg;
-    private int precio;
+    private int saldo_final;
     private String fecha;
     private int estado;
 
     public Inventarios() {
     }
 
-    public Inventarios(int inventarioID, int bodegaoID, int cant_inicial, int movimiento_pos, int movimiento_neg, int precio, String fecha, int estado) {
+    public Inventarios(int inventarioID, int bodegaID, int cant_inicial, int movimiento_pos, int movimiento_neg, int saldo_final, String fecha, int estado) {
         this.inventarioID = inventarioID;
-        this.bodegaoID = bodegaoID;
+        this.bodegaID = bodegaID;
         this.cant_inicial = cant_inicial;
         this.movimiento_pos = movimiento_pos;
         this.movimiento_neg = movimiento_neg;
-        this.precio = precio;
+        this.saldo_final = saldo_final;
         this.fecha = fecha;
         this.estado = estado;
     }
@@ -40,12 +40,12 @@ public class Inventarios {
         this.inventarioID = inventarioID;
     }
 
-    public int getBodegaoID() {
-        return bodegaoID;
+    public int getBodegaID() {
+        return bodegaID;
     }
 
-    public void setBodegaoID(int bodegaoID) {
-        this.bodegaoID = bodegaoID;
+    public void setBodegaID(int bodegaID) {
+        this.bodegaID = bodegaID;
     }
 
     public int getCant_inicial() {
@@ -72,12 +72,12 @@ public class Inventarios {
         this.movimiento_neg = movimiento_neg;
     }
 
-    public int getPrecio() {
-        return precio;
+    public int getSaldo_final() {
+        return saldo_final;
     }
 
-    public void setPrecio(int precio) {
-        this.precio = precio;
+    public void setSaldo_final(int precio) {
+        this.saldo_final = precio;
     }
 
     public String getFecha() {
@@ -94,6 +94,11 @@ public class Inventarios {
 
     public void setEstado(int estado) {
         this.estado = estado;
+    }
+
+    @Override
+    public String toString() {
+        return  ""+bodegaID ;
     }
     
     
