@@ -310,6 +310,8 @@ public class FrmInventarios extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 204, 204));
         jPanel3.setBorder(new javax.swing.border.MatteBorder(null));
 
+        jtBuscar.setBackground(new java.awt.Color(255, 204, 204));
+        jtBuscar.setForeground(new java.awt.Color(0, 0, 0));
         jtBuscar.setText("Buscar...");
         jtBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
