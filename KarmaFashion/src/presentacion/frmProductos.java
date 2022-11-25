@@ -559,12 +559,7 @@ public class FrmProductos extends javax.swing.JFrame {
     private void actualizarTabla(){
         myData.setColumnCount(0);
         myData.setRowCount(0);
-        this.llenarTabla();
-     }
-    
-    private void llenarTabla(){        
-        //llenamos la lista
-        listProductos = dtp.listarProductos();
+        this.llenarTablaProd();
     }
     
     private void limpiarCampos(){
