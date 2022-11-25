@@ -107,7 +107,7 @@ public class Dt_Productos{
             guardado = true; //hacemos verdadera la bandera
 	}
 	catch (SQLException e) {
-            System.out.println("ERROR guardarPais(): "+e.getMessage());
+            System.out.println("ERROR guardarProductos(): "+e.getMessage());
             e.printStackTrace();
 	}
 	finally
@@ -138,13 +138,13 @@ public class Dt_Productos{
             this.cargarDatos();
             rs.beforeFirst();
             while(rs.next()){
-                if(rs.getString("nombre").equals(nombre)){
+                if(rs.getString("Nombre").equals(nombre)){
                     resp=true;
                 }
             }	
 	} 
         catch (SQLException e) {
-            System.out.println("Error existePais(): "+e.getMessage());
+            System.out.println("Error existeProducto(): "+e.getMessage());
             e.printStackTrace();
 	}
         finally{

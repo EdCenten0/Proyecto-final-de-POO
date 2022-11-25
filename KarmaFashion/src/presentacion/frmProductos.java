@@ -117,7 +117,6 @@ public class FrmProductos extends javax.swing.JFrame {
 
         jLabel8.setText("fecha_ingreso:");
 
-        jtf_prod_id.setEditable(false);
         jtf_prod_id.setPreferredSize(new java.awt.Dimension(50, 25));
         jtf_prod_id.setRequestFocusEnabled(false);
         jtf_prod_id.addActionListener(new java.awt.event.ActionListener() {
@@ -162,6 +161,12 @@ public class FrmProductos extends javax.swing.JFrame {
         });
 
         jbSuprimir.setText("Suprimir");
+
+        jtf_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtf_nombreKeyTyped(evt);
+            }
+        });
 
         jLabel9.setText("Buscar:");
 
@@ -358,7 +363,37 @@ public class FrmProductos extends javax.swing.JFrame {
     private void jtbl_productosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbl_productosMouseClicked
         // TODO add your handling code here:
         //obtenemos la fila seleccionada
-        int fila = jtbl_productos.getSelectedRow();
+        /*int fila = jtbl_productos.getSelectedRow();*/
+        
+        //obtenemos la fila seleccionada del jtable
+        int fila = this.jtbl_productos.getSelectedRow();
+        int idProd = 0; //guarda el idProductos que se obtiene de la tabla
+        int size = 0; //guarda la cantidad de elementos que hay en el jcombobx de Locations
+        int pos = 0; //variable de control para recorrer las posiciones de los elementos en el jcombobox
+        
+        //asignamos los valores a los campos del formulario
+        this.jtf_prod_id.setText(this.jtbl_productos.getValueAt(fila, 0).toString());
+        this.jtf_nombre.setText(this.jtbl_productos.getValueAt(fila, 1).toString());
+        
+        //obtenemos el idLocations del jtable
+        idProd = Integer.parseInt(this.jtbl_productos.getValueAt(fila, 2).toString());
+        System.out.println("idProd: "+idProd);
+  
+        size = this.jcb_producto_id.getItemCount(); //obtenemos la cantidad de elementos contenidos en el jcombobox
+        System.out.println("size: "+size);
+        do{
+            pos++;
+            productos = (Productos)this.jcb_producto_id.getItemAt(pos);
+            if(productos.getProducto_id()==idProd){
+                //selecciono el objeto del jcombobox
+                this.jcb_producto_id.setSelectedIndex(pos);
+                System.out.println("pos: "+pos);
+                break;
+            }
+            
+        }
+        while(pos<=size);
+        /*
 
         //asignamos los valores a los campos del formulario
         jtf_prod_id.setText(jtbl_productos.getValueAt(fila, 0).toString());
@@ -369,7 +404,7 @@ public class FrmProductos extends javax.swing.JFrame {
         jtf_fecha_ingreso.setText(jtbl_productos.getValueAt(fila, 7).toString());
         jtf_descripcion.setText(jtbl_productos.getValueAt(fila, 4).toString());
         jcb_producto_id.setSelectedIndex(Integer.parseInt(jtbl_productos.getValueAt(fila, 2).toString())-1);
-        
+        */
     }//GEN-LAST:event_jtbl_productosMouseClicked
 
     private void jcb_producto_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_producto_idActionPerformed
@@ -406,28 +441,19 @@ public class FrmProductos extends javax.swing.JFrame {
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         // TODO add your handling code here:
          //validamos que todos los campos sean ingresados por el usuario      
-        if(jtf_prod_id.getText().equals("") || jtf_nombre.getText().equals("") || jcb_producto_id.getSelectedIndex()==0){
+        if(jtf_nombre.getText().equals("") || jcb_producto_id.getSelectedIndex()==0){
             JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         else{
             //construimos nuestro objeto con los valores del formulario
-            //c.setCountry_id(jtf_id.getText());
-            //c.setCountry_name(jtf_Pais.getText());
-            //r = (Region)this.jcb_region.getSelectedItem();
-            //c.setRegion_id(r.getRegion_id());
             
             p.setNombre(jtf_nombre.getText());
-            p = (Productos)this.jcb_producto_id.getSelectedItem();
+            productos = (Productos)this.jcb_producto_id.getItemAt(this.jcb_producto_id.getSelectedIndex());
+            productos.setProducto_id(productos.getProducto_id());
+            //p = (Productos)this.jcb_producto_id.getSelectedItem();
             
-            //validamos que el id no exista en la tabla de la bd
-            if(dtp.existeProducto(p.getNombre())){
-                JOptionPane.showMessageDialog(this, "El nombre de producto ya existe!", 
-                    "ERROR", JOptionPane.WARNING_MESSAGE);
-                jtf_nombre.setText("");
-                jtf_nombre.grabFocus(); 
-            }
-            else{
+            
                 //validamos que el metodo guardar devuelve un true
                 if(dtp.guardarProductos(p)){
                     JOptionPane.showMessageDialog (this, "El registro fue almacenado con éxito!", 
@@ -440,9 +466,22 @@ public class FrmProductos extends javax.swing.JFrame {
                       "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
                       "ERROR", JOptionPane.ERROR_MESSAGE); 
                 }
-            }
         }
     }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jtf_nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_nombreKeyTyped
+        // TODO add your handling code here:
+        jtf_nombre.addKeyListener(new KeyAdapter(){
+            //Se ejecuta cuando el usuario libera una tecla
+            @Override
+            public void keyReleased(final KeyEvent e){
+                String cadena = (jtf_nombre.getText()).toUpperCase();
+                jtf_nombre.setText(cadena);
+                repaint();
+            }
+        });
+        
+    }//GEN-LAST:event_jtf_nombreKeyTyped
 
     /**
      * @param args the command line arguments
@@ -515,10 +554,17 @@ public class FrmProductos extends javax.swing.JFrame {
         jtbl_productos.setModel(myData);
     }
     
+    
+    
     private void actualizarTabla(){
         myData.setColumnCount(0);
         myData.setRowCount(0);
         this.llenarTabla();
+     }
+    
+    private void llenarTabla(){        
+        //llenamos la lista
+        listProductos = dtp.listarProductos();
     }
     
     private void limpiarCampos(){
