@@ -48,9 +48,9 @@ public class Roles {
 
     @Override
     public String toString() {
-        return "" + rol_name;
+        return "" + rol_name ;
     }
+
     
-    
-    
+     
 }
