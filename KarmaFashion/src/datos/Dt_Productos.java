@@ -83,5 +83,87 @@ public class Dt_Productos{
     }
     
     
+    @SuppressWarnings("CallToPrintStackTrace")
+    public boolean guardarProductos (Productos c)
+    {
+        //declaramos una bandera en falso
+	boolean guardado = false;
+	try {
+            this.cargarDatos();
+            rs.moveToInsertRow();
+            rs.updateInt("ProductoID", c.getProducto_id());
+            rs.updateInt("TipoproductoID", c.getTipo_producto());
+            rs.updateInt("InventarioID", c.getInventario_id());
+            rs.updateString("Nombre", c.getNombre());
+            rs.updateString("Descripcion", c.getDescripcion());
+            rs.updateFloat("Precio", c.getPrecio());
+            rs.updateString("Marca", c.getMarca());
+            rs.updateString("Fecha_ingreso", c.getFecha_ingreso());
+            rs.updateInt("Estado", c.getEstado());
+            //rs.updateInt("region_id", c.getRegion_id());
+            rs.insertRow();
+            rs.moveToCurrentRow();
+            //si el flujo llega hasta acá el registro se almacenó
+            guardado = true; //hacemos verdadera la bandera
+	}
+	catch (SQLException e) {
+            System.out.println("ERROR guardarPais(): "+e.getMessage());
+            e.printStackTrace();
+	}
+	finally
+	{
+            try{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+                if(con!=null){
+                    Conexion.closeConexion(con);
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+	}
+        //returnamos el valor de la bandera
+	return guardado;
+    }
+    
+    
+    @SuppressWarnings("CallToPrintStackTrace")
+    public boolean existeProducto(String nombre){
+	boolean resp=false;
+        try {
+            this.cargarDatos();
+            rs.beforeFirst();
+            while(rs.next()){
+                if(rs.getString("nombre").equals(nombre)){
+                    resp=true;
+                }
+            }	
+	} 
+        catch (SQLException e) {
+            System.out.println("Error existePais(): "+e.getMessage());
+            e.printStackTrace();
+	}
+        finally{
+            try{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+                if(con!=null){
+                    Conexion.closeConexion(con);
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+		
+        return resp;
+    }
     
 }

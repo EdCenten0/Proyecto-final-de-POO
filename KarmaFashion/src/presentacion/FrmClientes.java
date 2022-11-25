@@ -4,7 +4,7 @@
  */
 package presentacion;
 import entidades.Clientes;
-import datos.Dt_Clientes;
+import datos.Dt_clientes;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 public class FrmClientes extends javax.swing.JFrame {
 
     private Clientes clientes = new Clientes();
-    private Dt_Clientes dt_clientes = new Dt_Clientes();
+    private Dt_clientes dt_clientes = new Dt_clientes();
     private ArrayList<Clientes> listClientes = new ArrayList<Clientes>();
     
     DefaultTableModel myData = new DefaultTableModel();
