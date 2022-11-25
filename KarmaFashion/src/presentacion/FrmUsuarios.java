@@ -3,8 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package presentacion;
+import datos.Dt_rol;
 import datos.Dt_usuarios;
-
+import entidades.Roles;
+import presentacion.FrmAgregarUser;
 
 
 
@@ -21,6 +23,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FrmUsuarios extends javax.swing.JFrame {
     
+    private FrmAgregarUser AgregarUsuario = new FrmAgregarUser();
+    ArrayList<Roles> listaRol = new ArrayList<Roles>();
+    
+    Dt_rol dtR = new Dt_rol();
     private Usuarios users = new Usuarios();
     private Dt_usuarios dt_user = new Dt_usuarios();
     private ArrayList<Usuarios> listUser = new ArrayList<Usuarios>();
@@ -33,6 +39,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
     public FrmUsuarios() {
         initComponents();
         llenarTablaUsuarios();
+        llenarComboRol();
     }
 
     /**
@@ -80,11 +87,11 @@ public class FrmUsuarios extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Usuario ID", "Rol ", "Usuario", "Clave"
+                "Usuario ID", "Rol ID", "Usuario", "Clave"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
@@ -113,6 +120,11 @@ public class FrmUsuarios extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Agregar usuario");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(255, 204, 204));
         jButton2.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
@@ -298,6 +310,11 @@ public class FrmUsuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtUsuariosAncestorAdded
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        AgregarUsuario.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -341,6 +358,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
         //creamos un arraylist con las columnas del modelo
         ArrayList<Object> listNombreColumnas = new ArrayList<Object>();
         listNombreColumnas.add("UsuarioID");
+        listNombreColumnas.add("RolID");
         listNombreColumnas.add("Username");
         listNombreColumnas.add("Clave");
   
@@ -354,12 +372,25 @@ public class FrmUsuarios extends javax.swing.JFrame {
         
        //recorremos cada elemento de la lista y creamos el objeto
         for(Usuarios user: listUser){
-            Object[] datosUser = new Object[]{user.getUsuarioID(), user.getUsername(), user.getClave()};
+            Object[] datosUser = new Object[]{user.getUsuarioID(),user.getRolID(), user.getUsername(), user.getClave()};
             //asignamos un arreglo de objetos a una fila del modelo
             myData.addRow(datosUser);
         }
         //Asignamos el modelo y/o coleccion de datos a la tabla
         jtUsuarios.setModel(myData);
+    }
+     
+     private void llenarComboRol(){
+        //llenamos la lista
+        listaRol = dtR.listarRol();
+
+        //recorremos cada elemento de la lista y creamos el objeto
+        for(Roles rl: listaRol){
+            //asignamos el objeto creado al combobox
+            this.jcRol.addItem(rl);   
+        }
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

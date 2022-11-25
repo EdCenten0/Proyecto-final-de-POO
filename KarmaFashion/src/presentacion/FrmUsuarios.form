@@ -109,7 +109,7 @@
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="4" rowCount="4">
                     <Column editable="false" title="Usuario ID" type="java.lang.Integer"/>
-                    <Column editable="false" title="Rol " type="java.lang.String"/>
+                    <Column editable="false" title="Rol ID" type="java.lang.Integer"/>
                     <Column editable="false" title="Usuario" type="java.lang.String"/>
                     <Column editable="false" title="Clave" type="java.lang.String"/>
                   </Table>
@@ -161,6 +161,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Agregar usuario"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>

@@ -24,6 +24,7 @@ public class FrmInventarios extends javax.swing.JFrame {
     private Dt_inventarios dt_inventario = new Dt_inventarios();
     
     
+    
     private ArrayList<Inventarios> listInventario = new ArrayList<Inventarios>();
     //private ArrayList<Bodega> listBodega = new ArrayList<Bodega>();
     
@@ -205,6 +206,11 @@ public class FrmInventarios extends javax.swing.JFrame {
         });
 
         jcb_BodegaID.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
+        jcb_BodegaID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcb_BodegaIDActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -407,6 +413,10 @@ public class FrmInventarios extends javax.swing.JFrame {
         // TODO add your handling code here:
         jtBuscar.setText("");
     }//GEN-LAST:event_jtBuscarMouseClicked
+
+    private void jcb_BodegaIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_BodegaIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcb_BodegaIDActionPerformed
 
     /**
      * @param args the command line arguments
