@@ -518,7 +518,7 @@ public class FrmProductos extends javax.swing.JFrame {
     private void actualizarTabla(){
         myData.setColumnCount(0);
         myData.setRowCount(0);
-        this.llenarTabla();
+        this.llenarTablaProd();
     }
     
     private void limpiarCampos(){
