@@ -147,6 +147,44 @@ public class Dt_rol {
         return resp;
     }
     
-    
+    @SuppressWarnings("CallToPrintStackTrace")
+    public boolean editarRol(Roles rol)
+    {
+	boolean resp=false;
+        try
+        {
+            this.cargarDatos();
+            rs.beforeFirst();
+            while(rs.next()){
+                if(rs.getString("RolID").equals(rol.getRolID())){
+                    rs.updateString("Rol_name", rol.getRol_name());
+                    rs.updateRow();
+                    resp = true;
+                    break;
+                }
+            }
+        }
+        catch(SQLException e){
+            System.out.println("Error en editarPais(): "+e.getMessage());
+            e.printStackTrace();
+        }
+        finally{
+            try {
+                    if(rs!=null){
+                    rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                    if(con!=null){
+                        Conexion.closeConexion(con);
+                    }
+            }catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+            }
+        }
+        return resp;
+    } 
     
 }

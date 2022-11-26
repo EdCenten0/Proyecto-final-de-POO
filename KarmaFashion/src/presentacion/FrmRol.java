@@ -87,6 +87,11 @@ public class FrmRol extends javax.swing.JFrame {
         jbEditar.setBackground(new java.awt.Color(255, 204, 204));
         jbEditar.setForeground(new java.awt.Color(0, 0, 0));
         jbEditar.setText("Editar");
+        jbEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEditarActionPerformed(evt);
+            }
+        });
 
         jbLimpiar.setBackground(new java.awt.Color(255, 204, 204));
         jbLimpiar.setForeground(new java.awt.Color(0, 0, 0));
@@ -265,6 +270,7 @@ public class FrmRol extends javax.swing.JFrame {
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
@@ -324,6 +330,34 @@ public class FrmRol extends javax.swing.JFrame {
         jtRolID.setText(TablaRol.getValueAt(fila, 0).toString());
         jtRol.setText(TablaRol.getValueAt(fila, 1).toString());
     }//GEN-LAST:event_TablaRolMouseClicked
+
+    private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
+        // TODO add your handling code here:
+        //validamos que todos los campos sean ingresados por el usuario      
+        if(jtRolID.getText().equals("") || jtRolID.getText().equals("") ){
+            JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            //construimos nuestro objeto con los valores del formulario
+            rl.setRolID(Integer.parseInt(jtRolID.getText()));
+            rl.setRol_name(jtRol.getText());
+            
+            
+            //validamos que el metodo actualizar devuelve un true
+            if(dt_rol.editarRol(rl)){
+                JOptionPane.showMessageDialog (this, "El registro fue actualizado con éxito!", 
+                  "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                actualizarTabla();
+                limpiarCampos();
+            }
+            else{
+               JOptionPane.showMessageDialog(this, 
+                  "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                  "ERROR", JOptionPane.ERROR_MESSAGE); 
+            }
+        }   
+    }//GEN-LAST:event_jbEditarActionPerformed
 
     /**
      * @param args the command line arguments
