@@ -196,6 +196,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Editar Usuario"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbEditarActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel2">
           <Properties>
@@ -228,7 +231,7 @@
                                   <Component id="jtUsuario" max="32767" attributes="0"/>
                                   <Component id="jcRol" max="32767" attributes="0"/>
                                   <Component id="jtUsuarioID" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jfClave" alignment="0" min="-2" pref="514" max="-2" attributes="0"/>
+                                  <Component id="jtClave" alignment="0" min="-2" pref="514" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -258,7 +261,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jfClave" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtClave" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
                   </Group>
@@ -340,7 +343,7 @@
                 <Property name="text" type="java.lang.String" value="Clave:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jfClave">
+            <Component class="javax.swing.JTextField" name="jtClave">
             </Component>
           </SubComponents>
         </Container>

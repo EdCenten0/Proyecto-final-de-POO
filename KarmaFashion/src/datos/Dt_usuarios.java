@@ -191,6 +191,81 @@ public class Dt_usuarios {
 	return guardado;
     }
     
+    @SuppressWarnings("CallToPrintStackTrace")
+    public boolean eliminarUsuario(int id){
+	boolean resp=false;
+        try {
+            this.cargarDatos();
+            rs.beforeFirst();
+            while(rs.next()){
+                if(rs.getInt("RolID")==id){
+                    rs.deleteRow();
+                    resp=true;
+                }
+            }	
+	} 
+        catch (SQLException e) {
+            System.out.println("Error existePais(): "+e.getMessage());
+            e.printStackTrace();
+	}
+        finally{
+            try{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+                if(con!=null){
+                    Conexion.closeConexion(con);
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+		
+        return resp;
+    }
     
+    @SuppressWarnings("CallToPrintStackTrace")
+    public boolean editarUsuario(Usuarios user){
+	boolean resp=false;
+        try {
+            this.cargarDatos();
+            rs.beforeFirst();
+            while(rs.next()){
+                if(rs.getString("RolID").equals(user.getRolID())){
+                    rs.updateString("Username",user.getUsername() );
+                    rs.updateString("Clave",user.getClave() );
+                    rs.updateInt("RolID", user.getRolID());
+                    rs.updateRow();
+                    
+                    
+                    resp=true;
+                }
+            }	
+	} 
+        catch (SQLException e) {
+            System.out.println("Error existePais(): "+e.getMessage());
+            e.printStackTrace();
+	}
+        finally{
+            try{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+                if(con!=null){
+                    Conexion.closeConexion(con);
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+		
+        return resp;
+    }
     
 }

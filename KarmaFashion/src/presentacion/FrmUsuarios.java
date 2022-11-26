@@ -15,6 +15,7 @@ import entidades.Usuarios;
 
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -25,6 +26,8 @@ public class FrmUsuarios extends javax.swing.JFrame {
     
     private FrmAgregarUser AgregarUsuario = new FrmAgregarUser();
     ArrayList<Roles> listaRol = new ArrayList<Roles>();
+    
+    Roles r = new Roles();
     
     Dt_rol dtR = new Dt_rol();
     private Usuarios users = new Usuarios();
@@ -66,7 +69,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jtUsuarioID = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jfClave = new javax.swing.JTextField();
+        jtClave = new javax.swing.JTextField();
         jbLimpiar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jtbuscar = new javax.swing.JTextField();
@@ -145,6 +148,11 @@ public class FrmUsuarios extends javax.swing.JFrame {
         jbEditar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         jbEditar.setForeground(new java.awt.Color(0, 0, 0));
         jbEditar.setText("Editar Usuario");
+        jbEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEditarActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 204));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -191,7 +199,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
                             .addComponent(jtUsuario)
                             .addComponent(jcRol, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jtUsuarioID)
-                            .addComponent(jfClave, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jtClave, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -213,7 +221,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jfClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 12, Short.MAX_VALUE))
         );
 
@@ -310,6 +318,37 @@ public class FrmUsuarios extends javax.swing.JFrame {
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         // TODO add your handling code here:
+        
+        //validamos que todos los campos sean ingresados por el usuario      
+        if(jtUsuario.getText().equals("") || jtClave.getText().equals("") || jcRol.getSelectedIndex()==0){
+            JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            //construimos nuestro objeto con los valores del formulario
+            users.setRolID(Integer.parseInt(jtUsuarioID.getText()));
+            users.setUsername(jtUsuario.getText());
+            users.setClave(jtClave.getText());
+            r = (Roles)this.jcRol.getSelectedItem();
+            users.setRolID(r.getRolID());
+            
+            
+            //validamos que el metodo delete devuelve un true
+            if(dt_user.eliminarUsuario(users.getRolID())){
+                JOptionPane.showMessageDialog (this, "El registro fue eliminado con éxito!", 
+                  "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                actualizarTabla();
+                limpiarCampos();
+            }
+            else{
+               JOptionPane.showMessageDialog(this, 
+                  "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                  "ERROR", JOptionPane.ERROR_MESSAGE); 
+            }
+        }   
+        
+        
+        
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jtUsuariosAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jtUsuariosAncestorAdded
@@ -319,6 +358,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
     private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
         // TODO add your handling code here:
         AgregarUsuario.setVisible(true);
+        actualizarTabla();
     }//GEN-LAST:event_jbAgregarActionPerformed
 
     private void jtUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtUsuariosMouseClicked
@@ -327,11 +367,44 @@ public class FrmUsuarios extends javax.swing.JFrame {
 
         //asignamos los valores a los campos del formulario
         jtUsuarioID.setText(jtUsuarios.getValueAt(fila, 0).toString());
-        jtUsuario.setText(jtUsuarios.getValueAt(fila, 2).toString());
-        jfClave.setText(jtUsuarios.getValueAt(fila, 3).toString());
+         
         jcRol.setSelectedIndex(Integer.parseInt(jtUsuarios.getValueAt(fila, 1).toString()));  
+        jtUsuario.setText(jtUsuarios.getValueAt(fila, 2).toString());
+        jtClave.setText(jtUsuarios.getValueAt(fila, 3).toString());
              
     }//GEN-LAST:event_jtUsuariosMouseClicked
+
+    private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
+        // TODO add your handling code here:
+        
+        //validamos que todos los campos sean ingresados por el usuario      
+        if(jtUsuario.getText().equals("") || jtClave.getText().equals("") || jcRol.getSelectedIndex()==0){
+            JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            //construimos nuestro objeto con los valores del formulario
+            
+            users.setUsername(jtUsuario.getText());
+            users.setClave(jtClave.getText());
+            r = (Roles)this.jcRol.getSelectedItem();
+            users.setRolID(r.getRolID());
+            
+            
+            //validamos que el metodo delete devuelve un true
+            if(dt_user.editarUsuario(users)){
+                JOptionPane.showMessageDialog (this, "El registro fue eliminado con éxito!", 
+                  "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                actualizarTabla();
+                limpiarCampos();
+            }
+            else{
+               JOptionPane.showMessageDialog(this, 
+                  "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                  "ERROR", JOptionPane.ERROR_MESSAGE); 
+            }
+        }   
+    }//GEN-LAST:event_jbEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -420,7 +493,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
      private void limpiarCampos(){
         this.jtUsuario.setText("");
         this.jtUsuarioID.setText("");
-        this.jfClave.setText("");
+        this.jtClave.setText("");
         this.jcRol.setSelectedIndex(0);
     }
      
@@ -440,7 +513,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
     private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbLimpiar;
     private javax.swing.JComboBox<Object> jcRol;
-    private javax.swing.JTextField jfClave;
+    private javax.swing.JTextField jtClave;
     private javax.swing.JTextField jtUsuario;
     private javax.swing.JTextField jtUsuarioID;
     private javax.swing.JTable jtUsuarios;
