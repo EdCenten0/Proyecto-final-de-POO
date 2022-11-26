@@ -4,17 +4,32 @@
  */
 package presentacion;
 
+import datos.Dt_rol;
+import datos.Dt_rol;
+import entidades.Roles;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author DELL
  */
 public class FrmRol extends javax.swing.JFrame {
+    
+    ArrayList<Roles> listaRol = new ArrayList<Roles>();
+    
+    Dt_rol dtR = new Dt_rol();
+    private Roles rl = new Roles();
+    private Dt_rol dt_rol = new Dt_rol();
 
+    DefaultTableModel myData = new DefaultTableModel();
+    
     /**
      * Creates new form FrmRol
      */
     public FrmRol() {
         initComponents();
+        llenarTablarol();
     }
 
     /**
@@ -34,9 +49,9 @@ public class FrmRol extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jtRol = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jtRolID = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaRol = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
@@ -53,6 +68,11 @@ public class FrmRol extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 204, 204));
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Guardar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(255, 204, 204));
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
@@ -115,8 +135,8 @@ public class FrmRol extends javax.swing.JFrame {
                                     .addComponent(jLabel1))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jtRol, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtRolID, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 10, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -127,11 +147,11 @@ public class FrmRol extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtRolID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -142,7 +162,7 @@ public class FrmRol extends javax.swing.JFrame {
         );
 
         TablaRol.setBackground(new java.awt.Color(204, 204, 204));
-        TablaRol.setForeground(new java.awt.Color(204, 204, 204));
+        TablaRol.setForeground(new java.awt.Color(0, 0, 0));
         TablaRol.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -177,6 +197,11 @@ public class FrmRol extends javax.swing.JFrame {
         jTextField1.setBackground(new java.awt.Color(255, 204, 204));
         jTextField1.setForeground(new java.awt.Color(0, 0, 0));
         jTextField1.setText("Buscar...");
+        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -240,6 +265,17 @@ public class FrmRol extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
+        // TODO add your handling code here:
+         jTextField1.setText("");
+    }//GEN-LAST:event_jTextField1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -274,6 +310,49 @@ public class FrmRol extends javax.swing.JFrame {
             }
         });
     }
+    
+     private void llenarTablarol()
+    {
+         //llenamos la lista
+        listaRol = dt_rol.listarRol();
+        
+        //creamos un arraylist con las columnas del modelo
+        ArrayList<Object> listNombreColumnas = new ArrayList<Object>();
+        listNombreColumnas.add("RolID");
+        listNombreColumnas.add("Rol_name");
+
+  
+
+        
+        //recorremos cada elemento del arraylist y creamos un objeto
+        for(Object column : listNombreColumnas){
+            //asignamos las columnas al modelo
+            myData.addColumn(column);
+        }
+        
+       //recorremos cada elemento de la lista y creamos el objeto
+        for(Roles rol: listaRol){
+            Object[] datosRol= new Object[]{rol.getRolID(),rol.getRol_name()};
+            //asignamos un arreglo de objetos a una fila del modelo
+            myData.addRow(datosRol);
+        }
+        //Asignamos el modelo y/o coleccion de datos a la tabla
+        TablaRol.setModel(myData);
+ 
+    }
+     
+     private void actualizarTabla(){
+        myData.setColumnCount(0);
+        myData.setRowCount(0);
+        this.llenarTablarol();
+    }
+     
+     private void limpiarCampos(){
+        this.jtRolID.setText("");
+        this.jtRol.setText("");
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaRol;
@@ -289,7 +368,7 @@ public class FrmRol extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jtRol;
+    private javax.swing.JTextField jtRolID;
     // End of variables declaration//GEN-END:variables
 }
