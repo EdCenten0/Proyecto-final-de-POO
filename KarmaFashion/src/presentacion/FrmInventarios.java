@@ -6,6 +6,8 @@ package presentacion;
 
 import presentacion.*;
 
+
+
 import datos.Dt_inventarios;
 
 import entidades.Inventarios;
@@ -128,7 +130,7 @@ public class FrmInventarios extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Compras:");
+        jLabel3.setText("Movimientos negativos:");
 
         jf_compras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,6 +189,11 @@ public class FrmInventarios extends javax.swing.JFrame {
         jb_Agregar.setBackground(new java.awt.Color(255, 204, 204));
         jb_Agregar.setForeground(new java.awt.Color(0, 0, 0));
         jb_Agregar.setText("Guardar");
+        jb_Agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_AgregarActionPerformed(evt);
+            }
+        });
 
         jb_Eliminar.setBackground(new java.awt.Color(255, 204, 204));
         jb_Eliminar.setForeground(new java.awt.Color(0, 0, 0));
@@ -418,6 +425,13 @@ public class FrmInventarios extends javax.swing.JFrame {
     private void jcb_BodegaIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_BodegaIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcb_BodegaIDActionPerformed
+
+    private void jb_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_AgregarActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+    }//GEN-LAST:event_jb_AgregarActionPerformed
 
     /**
      * @param args the command line arguments
