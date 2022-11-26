@@ -14,7 +14,7 @@ import entidades.Inventarios;
 import java.time.LocalDate;
 
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
+
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -63,11 +63,11 @@ public class FrmInventarios extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jf_compras = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jf_cantInicial = new javax.swing.JTextField();
+        jf_Fecha = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jf_ventas = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jf_fecha = new javax.swing.JTextField();
+        jf_cantInicial = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jf_saldoTotal = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -113,6 +113,11 @@ public class FrmInventarios extends javax.swing.JFrame {
         });
         jtInventario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jtInventario.setName(""); // NOI18N
+        jtInventario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtInventarioMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtInventario);
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 204));
@@ -157,9 +162,9 @@ public class FrmInventarios extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Saldo Total:");
 
-        jf_fecha.addActionListener(new java.awt.event.ActionListener() {
+        jf_cantInicial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jf_fechaActionPerformed(evt);
+                jf_cantInicialActionPerformed(evt);
             }
         });
 
@@ -235,13 +240,13 @@ public class FrmInventarios extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(74, 74, 74)
-                                        .addComponent(jf_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jf_cantInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                                         .addComponent(jb_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jb_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jf_cantInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jf_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
@@ -294,7 +299,7 @@ public class FrmInventarios extends javax.swing.JFrame {
                             .addComponent(jcb_BodegaID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jf_fecha)
+                            .addComponent(jf_cantInicial)
                             .addComponent(jLabel7)
                             .addComponent(jb_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jb_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -317,7 +322,7 @@ public class FrmInventarios extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jf_cantInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jf_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
 
@@ -397,9 +402,9 @@ public class FrmInventarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jf_ventasActionPerformed
 
-    private void jf_fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jf_fechaActionPerformed
+    private void jf_cantInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jf_cantInicialActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jf_fechaActionPerformed
+    }//GEN-LAST:event_jf_cantInicialActionPerformed
 
     private void jf_saldoTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jf_saldoTotalActionPerformed
         // TODO add your handling code here:
@@ -432,6 +437,21 @@ public class FrmInventarios extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jb_AgregarActionPerformed
+
+    private void jtInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtInventarioMouseClicked
+        // TODO add your handling code here:
+        int fila = jtInventario.getSelectedRow();
+
+        //asignamos los valores a los campos del formulario
+        tf_inventario.setText(jtInventario.getValueAt(fila, 0).toString());
+        jf_cantInicial.setText(jtInventario.getValueAt(fila, 2).toString());
+        //jcb_region.setSelectedIndex(Integer.parseInt(jtInventario.getValueAt(fila, 2).toString()));  
+        jf_ventas.setText(jtInventario.getValueAt(fila, 3).toString());
+        jf_compras.setText(jtInventario.getValueAt(fila, 4).toString());
+        jf_saldoTotal.setText(jtInventario.getValueAt(fila, 5).toString());
+        jf_Fecha.setText(jtInventario.getValueAt(fila, 6).toString());
+        
+    }//GEN-LAST:event_jtInventarioMouseClicked
 
     /**
      * @param args the command line arguments
@@ -545,9 +565,9 @@ public class FrmInventarios extends javax.swing.JFrame {
     private javax.swing.JButton jb_Eliminar;
     private javax.swing.JButton jb_Guardar;
     private javax.swing.JComboBox<Object> jcb_BodegaID;
+    private javax.swing.JTextField jf_Fecha;
     private javax.swing.JTextField jf_cantInicial;
     private javax.swing.JTextField jf_compras;
-    private javax.swing.JTextField jf_fecha;
     private javax.swing.JTextField jf_saldoTotal;
     private javax.swing.JTextField jf_ventas;
     private javax.swing.JTextField jtBuscar;

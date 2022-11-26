@@ -142,6 +142,9 @@
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jtInventarioMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -171,14 +174,14 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                                              <Component id="jf_fecha" min="-2" pref="165" max="-2" attributes="0"/>
+                                              <Component id="jf_cantInicial" min="-2" pref="165" max="-2" attributes="0"/>
                                               <EmptySpace pref="33" max="32767" attributes="0"/>
                                               <Component id="jb_Agregar" min="-2" pref="90" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="jb_Eliminar" min="-2" pref="103" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jf_cantInicial" min="-2" pref="239" max="-2" attributes="0"/>
+                                              <Component id="jf_Fecha" min="-2" pref="239" max="-2" attributes="0"/>
                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -252,7 +255,7 @@
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jf_fecha" alignment="3" max="32767" attributes="0"/>
+                                  <Component id="jf_cantInicial" alignment="3" max="32767" attributes="0"/>
                                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jb_Guardar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                                   <Component id="jb_Editar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
@@ -282,7 +285,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="jf_cantInicial" min="-2" max="-2" attributes="0"/>
+                              <Component id="jf_Fecha" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -345,7 +348,7 @@
                 <Property name="text" type="java.lang.String" value="Inventario ID:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jf_cantInicial">
+            <Component class="javax.swing.JTextField" name="jf_Fecha">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
@@ -377,9 +380,9 @@
                 <Property name="text" type="java.lang.String" value="Saldo Total:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jf_fecha">
+            <Component class="javax.swing.JTextField" name="jf_cantInicial">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jf_fechaActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jf_cantInicialActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
