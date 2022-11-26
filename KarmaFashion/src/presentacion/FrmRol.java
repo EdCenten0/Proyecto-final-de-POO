@@ -270,6 +270,32 @@ public class FrmRol extends javax.swing.JFrame {
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         // TODO add your handling code here:
+         //validamos que todos los campos sean ingresados por el usuario      
+        if( jtRolID.getText().equals("") || jtRolID.getText().equals("") ){
+            JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            //construimos nuestro objeto con los valores del formulario
+            rl.setRolID(Integer.parseInt(jtRolID.getText()));
+            rl.setRol_name(jtRol.getText());
+            
+            
+            //validamos que el id no exista en la tabla de la bd
+            
+                //validamos que el metodo guardar devuelve un true
+                if(dt_rol.eliminarRol(rl)){
+                    JOptionPane.showMessageDialog (this, "El registro fue almacenado con éxito!", 
+                      "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                    actualizarTabla();
+                    limpiarCampos();
+                }
+                else{
+                   JOptionPane.showMessageDialog(this, 
+                      "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                      "ERROR", JOptionPane.ERROR_MESSAGE); 
+                }
+            }
         
     }//GEN-LAST:event_jbEliminarActionPerformed
 
