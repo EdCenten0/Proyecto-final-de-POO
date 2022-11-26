@@ -20,6 +20,7 @@ public class Principal extends javax.swing.JFrame {
     
     
     int xMouse, yMouse;
+    FrmClientes frmClientes = new FrmClientes();
     /**
      * Creates new form Principal
      */
@@ -33,7 +34,6 @@ public class Principal extends javax.swing.JFrame {
             ,"Octubre","Noviembre","Diciemrbre"};
        jlabel_date.setText("Hoy es "+dia+" de "+meses[month - 1]+" de "+year);
        
-        
         
     }
     
@@ -73,6 +73,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jlabel_date = new javax.swing.JLabel();
         content = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
 
         setLocationByPlatform(true);
         setUndecorated(true);
@@ -311,6 +316,27 @@ public class Principal extends javax.swing.JFrame {
 
         content.setBackground(new java.awt.Color(255, 255, 255));
         content.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Ana Marbell Zepeda Almendarez");
+        content.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, -1, -1));
+
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setText("Creadores:");
+        content.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, -1, -1));
+
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setText("Isabel Denisse Aguilar Vílchez");
+        content.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, -1, -1));
+
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel14.setText("Carlos Eduardo Chavarría Centeno");
+        content.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, -1, -1));
+
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel15.setText("Francisco de Jesús Meléndez Simplina");
+        content.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, -1, -1));
+
         jPanel1.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(197, 30, 870, 560));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 590));
@@ -435,7 +461,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
         // TODO add your handling code here:
-        FrmClientes frmClientes = new FrmClientes();
+        
         
         showPanel(frmClientes.getFondo());
         
@@ -502,7 +528,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel content;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
