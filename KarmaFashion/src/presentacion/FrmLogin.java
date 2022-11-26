@@ -447,45 +447,26 @@ public class FrmLogin extends javax.swing.JFrame {
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         // TODO add your handling code here:
         
-        listUser = dtUser.listarUsuarios();
+       // TODO add your handling code here:
+        String usuario = "";
+        String password = "";
         
-        boolean Acesso = true; //Prueba si el usuario y clave son verdaderos o falso
-        boolean confirmar = true; //confirma si es verdadera la el usuario y clave, esto para no entrar al mensaje en pantalla cuando se salga del bucle
+        usuario = jtUsuario.getText();
+        password = String.valueOf(jpContraseña.getPassword());
         
-        
-        
-        ArrayList DatosUsuario = new ArrayList();
-        ArrayList DatosContraseña = new ArrayList();
-        
-        
-        //recorremos cada elemento de la lista y creamos el objeto
-        for(Usuarios us: listUser){
-            //asignamos el objeto creado al combobox
+        if(dtUser.validarUsuario(usuario, password)){
+            this.dispose();
+            JOptionPane.showMessageDialog(null, "Usuario y contraseña correcta, Bienvenido "+jtUsuario.getText(),"Bienvenida",JOptionPane.INFORMATION_MESSAGE);
+            Principal frmP = new Principal();
+            frmP.setVisible(true);
             
-            DatosUsuario.add(us.getUsername());
-            DatosContraseña.add(us.getClave());
         }
-        
-        
-        for(int i=0;i<=DatosUsuario.size()-1;i++){
-            
-            if(DatosUsuario.get(i).equals(jtUsuario.getText()) && DatosContraseña.get(i).equals(jpContraseña.getText())){
-                this.setVisible(false);
-                JOptionPane.showMessageDialog(null, "Usuario y contraseña correcta, Bienvenido "+DatosUsuario.get(i),"Bienvenida",JOptionPane.INFORMATION_MESSAGE);
-                prin.setVisible(true);
-                confirmar = false;
-                
-            }else 
-                    {
-                        Acesso = false; 
-                        
-                    }
- 
-        }   
-        
-        if(Acesso==false && confirmar==true)
-        {
-            JOptionPane.showMessageDialog(null, "Error De inicio de sesión, Usuario y contraseña no valida!", "Error de inicio de sesión", JOptionPane.WARNING_MESSAGE);
+        else{
+            JOptionPane.showMessageDialog(this, 
+            "Sus datos de acceso no son válidos. Ingrese nuevamente sus datos e intente nuevamente!", 
+            "ERROR", JOptionPane.ERROR_MESSAGE); 
+            this.limpiarCampos();
+            this.jtUsuario.grabFocus();
         }
         
         
@@ -545,6 +526,11 @@ public class FrmLogin extends javax.swing.JFrame {
                 new FrmLogin().setVisible(true);
             }
         });
+    }
+    
+    private void limpiarCampos(){
+        jtUsuario.setText("");
+        jpContraseña.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

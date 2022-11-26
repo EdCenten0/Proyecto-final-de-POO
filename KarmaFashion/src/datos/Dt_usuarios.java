@@ -79,7 +79,41 @@ public class Dt_usuarios {
         return listauser;
 }
     
-    
+    @SuppressWarnings("CallToPrintStackTrace")
+    public boolean validarUsuario(String user, String pwd){
+	boolean acceso=false;
+        try {
+            this.cargarDatos();
+            rs.beforeFirst();
+            while(rs.next()){
+                if(rs.getString("Username").equals(user) && rs.getString("Clave").equals(pwd)){
+                    acceso=true;
+                }
+            }	
+	} 
+        catch (SQLException e) {
+            System.out.println("Error validarUsuario(): "+e.getMessage());
+            e.printStackTrace();
+	}
+        finally{
+            try{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+                if(con!=null){
+                    Conexion.closeConexion(con);
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+		
+        return acceso;
+    }
+
     
     @SuppressWarnings("CallToPrintStackTrace")
     public boolean existeUsuario(String username){
