@@ -189,6 +189,11 @@ public class FrmRol extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        TablaRol.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaRolMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(TablaRol);
 
         jPanel3.setBackground(new java.awt.Color(255, 204, 204));
@@ -275,6 +280,16 @@ public class FrmRol extends javax.swing.JFrame {
         // TODO add your handling code here:
          jTextField1.setText("");
     }//GEN-LAST:event_jTextField1MouseClicked
+
+    private void TablaRolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaRolMouseClicked
+        // TODO add your handling code here:
+        //obtenemos la fila seleccionada
+        int fila = TablaRol.getSelectedRow();
+
+        //asignamos los valores a los campos del formulario
+        jtRolID.setText(TablaRol.getValueAt(fila, 0).toString());
+        jtRol.setText(TablaRol.getValueAt(fila, 1).toString());
+    }//GEN-LAST:event_TablaRolMouseClicked
 
     /**
      * @param args the command line arguments

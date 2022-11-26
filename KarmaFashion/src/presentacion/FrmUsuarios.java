@@ -114,6 +114,11 @@ public class FrmUsuarios extends javax.swing.JFrame {
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
+        jtUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtUsuariosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtUsuarios);
 
         jbAgregar.setBackground(new java.awt.Color(255, 204, 204));
@@ -315,6 +320,18 @@ public class FrmUsuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
         AgregarUsuario.setVisible(true);
     }//GEN-LAST:event_jbAgregarActionPerformed
+
+    private void jtUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtUsuariosMouseClicked
+        // TODO add your handling code here:
+        int fila = jtUsuarios.getSelectedRow();
+
+        //asignamos los valores a los campos del formulario
+        jtUsuarioID.setText(jtUsuarios.getValueAt(fila, 0).toString());
+        jtUsuario.setText(jtUsuarios.getValueAt(fila, 2).toString());
+        jfClave.setText(jtUsuarios.getValueAt(fila, 3).toString());
+        jcRol.setSelectedIndex(Integer.parseInt(jtUsuarios.getValueAt(fila, 1).toString()));  
+             
+    }//GEN-LAST:event_jtUsuariosMouseClicked
 
     /**
      * @param args the command line arguments
