@@ -9,6 +9,7 @@ import presentacion.*;
 import datos.Dt_inventarios;
 
 import entidades.Inventarios;
+import java.time.LocalDate;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -496,9 +497,21 @@ public class FrmInventarios extends javax.swing.JFrame {
             //asignamos el objeto creado al combobox
             this.jcb_BodegaID.addItem(inv);   
         }
+        
+       
          
         
     }
+        
+        
+         private String fecha(){
+            String hoy;
+            LocalDate now = LocalDate.now();
+            int year = now.getYear();
+            int dia = now.getDayOfMonth();
+            int month = now.getMonthValue();
+            return hoy=(dia+"/"+month+"/"+year);
+        }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
