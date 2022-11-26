@@ -30,6 +30,8 @@ public class Principal extends javax.swing.JFrame {
             ,"Octubre","Noviembre","Diciemrbre"};
        jlabel_date.setText("Hoy es "+dia+" de "+meses[month - 1]+" de "+year);
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
