@@ -286,13 +286,13 @@ public class FrmRol extends javax.swing.JFrame {
             
             
             //validamos que el id no exista en la tabla de la bd
-            /*if(dt_rol.existeRol(rl.getRolID())){
+            if(dt_rol.existeRol(rl.getRol_name())){
                 JOptionPane.showMessageDialog(this, "El Id de pais ya existe!", 
                     "ERROR", JOptionPane.WARNING_MESSAGE);
                 jtRolID.setText("");
                 jtRolID.grabFocus(); 
             }
-            else{*/
+            else{
                 //validamos que el metodo guardar devuelve un true
                 if(dt_rol.guardarRol(rl)){
                     JOptionPane.showMessageDialog (this, "El registro fue almacenado con éxito!", 
@@ -305,7 +305,7 @@ public class FrmRol extends javax.swing.JFrame {
                       "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
                       "ERROR", JOptionPane.ERROR_MESSAGE); 
                 }
-            //}
+            }
         }
         
     }//GEN-LAST:event_jbGuardarActionPerformed
