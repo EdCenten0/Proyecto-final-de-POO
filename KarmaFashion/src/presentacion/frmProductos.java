@@ -117,6 +117,7 @@ public class FrmProductos extends javax.swing.JFrame {
 
         jLabel8.setText("fecha_ingreso:");
 
+        jtf_prod_id.setEditable(false);
         jtf_prod_id.setPreferredSize(new java.awt.Dimension(50, 25));
         jtf_prod_id.setRequestFocusEnabled(false);
         jtf_prod_id.addActionListener(new java.awt.event.ActionListener() {
@@ -125,14 +126,13 @@ public class FrmProductos extends javax.swing.JFrame {
             }
         });
 
-        jtf_inventario_id.setEditable(false);
         jtf_inventario_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtf_inventario_idActionPerformed(evt);
             }
         });
 
-        jcb_producto_id.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ropa", "Juguetes", "Accesorios", " " }));
+        jcb_producto_id.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione...", "Ropa", "Juguetes", "Accesorios", " " }));
         jcb_producto_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcb_producto_idActionPerformed(evt);
@@ -194,7 +194,7 @@ public class FrmProductos extends javax.swing.JFrame {
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jtf_nombre))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel3)
@@ -204,13 +204,14 @@ public class FrmProductos extends javax.swing.JFrame {
                                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jtf_prod_id, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jcb_producto_id, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(23, 23, 23))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jcb_producto_id, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(112, 112, 112)
+                                .addGap(89, 89, 89)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -231,7 +232,7 @@ public class FrmProductos extends javax.swing.JFrame {
                                     .addComponent(jbEditar)
                                     .addComponent(jbSuprimir)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(44, 44, 44)
+                                .addGap(21, 21, 21)
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jtf_descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -372,8 +373,14 @@ public class FrmProductos extends javax.swing.JFrame {
         int pos = 0; //variable de control para recorrer las posiciones de los elementos en el jcombobox
         
         //asignamos los valores a los campos del formulario
-        this.jtf_prod_id.setText(this.jtbl_productos.getValueAt(fila, 0).toString());
-        this.jtf_nombre.setText(this.jtbl_productos.getValueAt(fila, 1).toString());
+        jtf_prod_id.setText(jtbl_productos.getValueAt(fila, 0).toString());
+        jtf_inventario_id.setText(jtbl_productos.getValueAt(fila, 1).toString());
+        jtf_nombre.setText(jtbl_productos.getValueAt(fila, 3).toString());
+        jtf_precio.setText(jtbl_productos.getValueAt(fila, 5).toString());
+        jtf_marca.setText(jtbl_productos.getValueAt(fila, 6).toString());
+        jtf_fecha_ingreso.setText(jtbl_productos.getValueAt(fila, 7).toString());
+        jtf_descripcion.setText(jtbl_productos.getValueAt(fila, 4).toString());
+        jcb_producto_id.setSelectedIndex(Integer.parseInt(jtbl_productos.getValueAt(fila, 2).toString())-1);
         
         //obtenemos el idLocations del jtable
         idProd = Integer.parseInt(this.jtbl_productos.getValueAt(fila, 2).toString());
@@ -441,16 +448,24 @@ public class FrmProductos extends javax.swing.JFrame {
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         // TODO add your handling code here:
          //validamos que todos los campos sean ingresados por el usuario      
-        if(jtf_nombre.getText().equals("") || jcb_producto_id.getSelectedIndex()==0){
+        if(jtf_inventario_id.getText().equals("") || jtf_nombre.getText().equals("") || jtf_precio.getText().equals("") || jtf_marca.getText().equals("") || jtf_fecha_ingreso.getText().equals("") || jtf_descripcion.getText().equals("") || jcb_producto_id.getSelectedIndex()==0){
             JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         else{
             //construimos nuestro objeto con los valores del formulario
             
+            p.setInventario_id(Integer.parseInt(jtf_inventario_id.getText()));
+            p.setTipo_producto(jcb_producto_id.getSelectedIndex());
             p.setNombre(jtf_nombre.getText());
-            productos = (Productos)this.jcb_producto_id.getItemAt(this.jcb_producto_id.getSelectedIndex());
-            productos.setProducto_id(productos.getProducto_id());
+            p.setPrecio(Float.parseFloat(jtf_precio.getText()));
+            p.setMarca(jtf_marca.getText());
+            p.setFecha_ingreso(jtf_fecha_ingreso.getText());
+            //p.setPrecio(TOP_ALIGNMENT);
+            p.setDescripcion(jtf_descripcion.getText());
+            
+            //productos = (Productos)this.jcb_producto_id.getItemAt(this.jcb_producto_id.getSelectedIndex());
+            //p.setProducto_id(productos.getProducto_id());
             //p = (Productos)this.jcb_producto_id.getSelectedItem();
             
             
@@ -571,7 +586,7 @@ public class FrmProductos extends javax.swing.JFrame {
         this.jtf_fecha_ingreso.setText("");
         this.jtf_descripcion.setText("");
         //this.jtf_buscar.setText("");
-        this.jcb_producto_id.setSelectedIndex(0);
+        //this.jcb_producto_id.setSelectedIndex(0);
     }
 
     private void filtrarTabla(){

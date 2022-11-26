@@ -91,7 +91,7 @@ public class Dt_Productos{
 	try {
             this.cargarDatos();
             rs.moveToInsertRow();
-            rs.updateInt("ProductoID", c.getProducto_id());
+            //rs.updateInt("ProductoID", c.getProducto_id());
             rs.updateInt("TipoproductoID", c.getTipo_producto());
             rs.updateInt("InventarioID", c.getInventario_id());
             rs.updateString("Nombre", c.getNombre());
@@ -99,7 +99,7 @@ public class Dt_Productos{
             rs.updateFloat("Precio", c.getPrecio());
             rs.updateString("Marca", c.getMarca());
             rs.updateString("Fecha_ingreso", c.getFecha_ingreso());
-            rs.updateInt("Estado", c.getEstado());
+            //rs.updateInt("Estado", c.getEstado());
             //rs.updateInt("region_id", c.getRegion_id());
             rs.insertRow();
             rs.moveToCurrentRow();
