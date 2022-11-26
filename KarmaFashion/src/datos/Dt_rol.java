@@ -156,7 +156,7 @@ public class Dt_rol {
             this.cargarDatos();
             rs.beforeFirst();
             while(rs.next()){
-                if(rs.getString("RolID").equals(rol.getRolID())){
+                if(rs.getInt("RolID")==rol.getRolID()){
                     rs.updateString("Rol_name", rol.getRol_name());
                     rs.updateRow();
                     resp = true;
