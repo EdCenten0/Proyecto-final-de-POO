@@ -4,9 +4,12 @@
  */
 package presentacion;
 
+import entidades.Clientes;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import javax.swing.JPanel;
 
 /**
  *
@@ -29,6 +32,9 @@ public class Principal extends javax.swing.JFrame {
         String[] meses = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto"," ;Septiembre"
             ,"Octubre","Noviembre","Diciemrbre"};
        jlabel_date.setText("Hoy es "+dia+" de "+meses[month - 1]+" de "+year);
+       
+        
+        
     }
     
     
@@ -62,18 +68,18 @@ public class Principal extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        panel_primero = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jlabel_date = new javax.swing.JLabel();
+        content = new javax.swing.JPanel();
 
         setLocationByPlatform(true);
         setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 204));
@@ -88,6 +94,9 @@ public class Principal extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(255, 204, 204));
         jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel4MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel4MouseEntered(evt);
             }
@@ -101,6 +110,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel3.setText(" Clientes");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
         jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 20));
 
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 178, 190, 20));
@@ -247,22 +261,11 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 630));
 
-        panel_primero.setBackground(new java.awt.Color(255, 255, 255));
-        panel_primero.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                panel_primeroMouseDragged(evt);
-            }
-        });
-        panel_primero.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                panel_primeroMousePressed(evt);
-            }
-        });
-
         jPanel13.setBackground(new java.awt.Color(255, 213, 193));
 
         jPanel5.setBackground(new java.awt.Color(255, 213, 193));
         jPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -280,34 +283,20 @@ public class Principal extends javax.swing.JFrame {
                 jLabel4MouseExited(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel4))
-        );
+        jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 26, 30));
 
         jlabel_date.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         jlabel_date.setForeground(new java.awt.Color(0, 0, 0));
-        jlabel_date.setText("jLabel2");
+        jlabel_date.setText(" jLabel2");
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jlabel_date, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
+                .addGap(193, 193, 193)
+                .addComponent(jlabel_date, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 386, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel13Layout.setVerticalGroup(
@@ -318,41 +307,16 @@ public class Principal extends javax.swing.JFrame {
             .addComponent(jlabel_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout panel_primeroLayout = new javax.swing.GroupLayout(panel_primero);
-        panel_primero.setLayout(panel_primeroLayout);
-        panel_primeroLayout.setHorizontalGroup(
-            panel_primeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_primeroLayout.createSequentialGroup()
-                .addGap(0, 189, Short.MAX_VALUE)
-                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        panel_primeroLayout.setVerticalGroup(
-            panel_primeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_primeroLayout.createSequentialGroup()
-                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 598, Short.MAX_VALUE))
-        );
+        jPanel1.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, -1));
 
-        jPanel1.add(panel_primero, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 630));
+        content.setBackground(new java.awt.Color(255, 255, 255));
+        content.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(197, 30, 870, 560));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 590));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void panel_primeroMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_primeroMousePressed
-        // TODO add your handling code here:
-        xMouse = evt.getX();
-        yMouse = evt.getY();
-    }//GEN-LAST:event_panel_primeroMousePressed
-
-    private void panel_primeroMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_primeroMouseDragged
-        // TODO add your handling code here:
-        int x = evt.getXOnScreen();
-        int y = evt.getYOnScreen();
-        
-        this.setLocation(x - xMouse,y - yMouse);
-    }//GEN-LAST:event_panel_primeroMouseDragged
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         // TODO add your handling code here:
@@ -469,6 +433,33 @@ public class Principal extends javax.swing.JFrame {
         jLabel12.setForeground(Color.black);
     }//GEN-LAST:event_jPanel12MouseExited
 
+    private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
+        // TODO add your handling code here:
+        FrmClientes frmClientes = new FrmClientes();
+        
+        showPanel(frmClientes.getFondo());
+        
+    
+    }//GEN-LAST:event_jPanel4MouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void showPanel(JPanel p){
+        
+        p.setSize(680,420);
+        p.setLocation(0, 0);
+        
+        content.removeAll();
+        content.add(p,new org.netbeans.lib.awtextra.AbsoluteConstraints(0,0,-1,-1));
+        content.revalidate();
+        content.repaint();
+    }
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -508,6 +499,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel content;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -532,6 +524,5 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel jlabel_date;
-    private javax.swing.JPanel panel_primero;
     // End of variables declaration//GEN-END:variables
 }
