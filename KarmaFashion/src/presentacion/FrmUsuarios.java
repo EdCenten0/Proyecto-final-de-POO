@@ -28,6 +28,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
     ArrayList<Roles> listaRol = new ArrayList<Roles>();
     
     Roles r = new Roles();
+    Usuarios u = new Usuarios();
     
     Dt_rol dtR = new Dt_rol();
     private Usuarios users = new Usuarios();
@@ -357,8 +358,42 @@ public class FrmUsuarios extends javax.swing.JFrame {
 
     private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
         // TODO add your handling code here:
-        AgregarUsuario.setVisible(true);
-        actualizarTabla();
+        if(jtUsuario.getText().equals("") || jtClave.getText().equals("") || jcRol.getSelectedIndex()==0){
+            JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            //construimos nuestro objeto con los valores del formulario
+            //r=(Usuarios);
+            r = (Roles)this.jcRol.getSelectedItem();
+            u.setRolID(r.getRolID());
+            u.setUsername(jtUsuario.getText());
+            u.setClave(jtClave.getText());
+            
+            
+            
+            
+            //validamos que el id no exista en la tabla de la bd
+            //if(dt_user.existeUsuario(u.getUsername())){
+                //JOptionPane.showMessageDialog(this, "El Id de pais ya existe!", 
+                    //"ERROR", JOptionPane.WARNING_MESSAGE);
+                //jtfUsuario.setText("");
+                //jtfUsuario.grabFocus(); 
+            //}
+            //else{
+            
+                //validamos que el metodo guardar devuelve un true
+                if(dt_user.guardarUsuario(u)){
+                    JOptionPane.showMessageDialog (this, "El registro fue almacenado con éxito!", 
+                      "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else{
+                   JOptionPane.showMessageDialog(this, 
+                      "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                      "ERROR", JOptionPane.ERROR_MESSAGE); 
+                }
+            //}
+        }
     }//GEN-LAST:event_jbAgregarActionPerformed
 
     private void jtUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtUsuariosMouseClicked
@@ -393,7 +428,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
             
             //validamos que el metodo delete devuelve un true
             if(dt_user.editarUsuario(users)){
-                JOptionPane.showMessageDialog (this, "El registro fue eliminado con éxito!", 
+                JOptionPane.showMessageDialog (this, "El registro fue editado con éxito!", 
                   "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
                 actualizarTabla();
                 limpiarCampos();
@@ -404,6 +439,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
                   "ERROR", JOptionPane.ERROR_MESSAGE); 
             }
         }   
+
     }//GEN-LAST:event_jbEditarActionPerformed
 
     /**
@@ -487,7 +523,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
      private void actualizarTabla(){
         myData.setColumnCount(0);
         myData.setRowCount(0);
-        this.llenarTablaUsuarios();
+        llenarTablaUsuarios();
     }
      
      private void limpiarCampos(){

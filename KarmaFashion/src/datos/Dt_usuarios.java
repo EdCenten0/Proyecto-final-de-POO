@@ -234,7 +234,7 @@ public class Dt_usuarios {
             this.cargarDatos();
             rs.beforeFirst();
             while(rs.next()){
-                if(rs.getString("RolID").equals(user.getRolID())){
+                if(rs.getInt("RolID")==(user.getRolID())){
                     rs.updateString("Username",user.getUsername() );
                     rs.updateString("Clave",user.getClave() );
                     rs.updateInt("RolID", user.getRolID());
