@@ -248,6 +248,11 @@ public class FrmUsuarios extends javax.swing.JFrame {
         jtbuscar.setBackground(new java.awt.Color(255, 204, 204));
         jtbuscar.setForeground(new java.awt.Color(0, 0, 0));
         jtbuscar.setText("Buscar...");
+        jtbuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtbuscarMouseClicked(evt);
+            }
+        });
         jtbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtbuscarActionPerformed(evt);
@@ -480,6 +485,11 @@ public class FrmUsuarios extends javax.swing.JFrame {
         trsfiltro = new TableRowSorter(jtUsuarios.getModel());
         jtUsuarios.setRowSorter(trsfiltro);
     }//GEN-LAST:event_jtbuscarKeyTyped
+
+    private void jtbuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbuscarMouseClicked
+        // TODO add your handling code here:
+        jtbuscar.setText("");
+    }//GEN-LAST:event_jtbuscarMouseClicked
 
     /**
      * @param args the command line arguments
