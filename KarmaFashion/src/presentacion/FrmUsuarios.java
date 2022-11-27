@@ -3,17 +3,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package presentacion;
+import datos.Dt_rol;
 import datos.Dt_usuarios;
-
+import entidades.Roles;
+import presentacion.FrmAgregarUser;
 
 
 
 import entidades.Usuarios;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -21,10 +28,19 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FrmUsuarios extends javax.swing.JFrame {
     
+    private FrmAgregarUser AgregarUsuario = new FrmAgregarUser();
+    ArrayList<Roles> listaRol = new ArrayList<Roles>();
+    
+    Roles r = new Roles();
+    Usuarios u = new Usuarios();
+    
+    Dt_rol dtR = new Dt_rol();
     private Usuarios users = new Usuarios();
     private Dt_usuarios dt_user = new Dt_usuarios();
     private ArrayList<Usuarios> listUser = new ArrayList<Usuarios>();
     
+    //declaramos un filtro de datos para la tabla
+    TableRowSorter trsfiltro;
     DefaultTableModel myData = new DefaultTableModel();
     
     /**
@@ -33,6 +49,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
     public FrmUsuarios() {
         initComponents();
         llenarTablaUsuarios();
+        llenarComboRol();
     }
 
     /**
@@ -47,12 +64,22 @@ public class FrmUsuarios extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtUsuarios = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jbAgregar = new javax.swing.JButton();
+        jbEliminar = new javax.swing.JButton();
+        jbEditar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jtUsuario = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jcRol = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        jtUsuarioID = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jtClave = new javax.swing.JTextField();
+        jbLimpiar = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jtbuscar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(0, 0));
@@ -97,35 +124,68 @@ public class FrmUsuarios extends javax.swing.JFrame {
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
+        jtUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtUsuariosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtUsuarios);
 
-        jButton1.setBackground(new java.awt.Color(255, 204, 204));
-        jButton1.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Agregar usuario");
-
-        jButton2.setBackground(new java.awt.Color(255, 204, 204));
-        jButton2.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setText("Eliminar Usuario");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jbAgregar.setBackground(new java.awt.Color(255, 204, 204));
+        jbAgregar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jbAgregar.setForeground(new java.awt.Color(0, 0, 0));
+        jbAgregar.setText("Agregar usuario");
+        jbAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jbAgregarActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(255, 204, 204));
-        jButton3.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jButton3.setText("Editar Usuario");
+        jbEliminar.setBackground(new java.awt.Color(255, 204, 204));
+        jbEliminar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jbEliminar.setForeground(new java.awt.Color(0, 0, 0));
+        jbEliminar.setText("Eliminar Usuario");
+        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEliminarActionPerformed(evt);
+            }
+        });
+
+        jbEditar.setBackground(new java.awt.Color(255, 204, 204));
+        jbEditar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jbEditar.setForeground(new java.awt.Color(0, 0, 0));
+        jbEditar.setText("Editar Usuario");
+        jbEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEditarActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 204));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Serif", 0, 50)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Serif", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Usuarios");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Usuario ID:");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Rol:");
+
+        jcRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Usuario:");
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Clave:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -133,60 +193,125 @@ public class FrmUsuarios extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtUsuario)
+                            .addComponent(jcRol, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jtUsuarioID)
+                            .addComponent(jtClave, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jtUsuarioID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jcRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jtClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
-        jButton4.setBackground(new java.awt.Color(255, 204, 204));
-        jButton4.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(0, 0, 0));
-        jButton4.setText("Guardar cambios");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jbLimpiar.setBackground(new java.awt.Color(255, 204, 204));
+        jbLimpiar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jbLimpiar.setForeground(new java.awt.Color(0, 0, 0));
+        jbLimpiar.setText("Limpiar campos");
+        jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jbLimpiarActionPerformed(evt);
             }
         });
+
+        jPanel3.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel3.setBorder(new javax.swing.border.MatteBorder(null));
+
+        jtbuscar.setBackground(new java.awt.Color(255, 204, 204));
+        jtbuscar.setForeground(new java.awt.Color(0, 0, 0));
+        jtbuscar.setText("Buscar...");
+        jtbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtbuscarActionPerformed(evt);
+            }
+        });
+        jtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtbuscarKeyTyped(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jtbuscar)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 9, Short.MAX_VALUE)))
-                .addContainerGap())
             .addComponent(jScrollPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jbAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(jbEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 11, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbEditar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -203,17 +328,158 @@ public class FrmUsuarios extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+        limpiarCampos();
+    }//GEN-LAST:event_jbLimpiarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        
+        //validamos que todos los campos sean ingresados por el usuario      
+        if(jtUsuario.getText().equals("") || jtClave.getText().equals("") || jcRol.getSelectedIndex()==0){
+            JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            //construimos nuestro objeto con los valores del formulario
+            users.setRolID(Integer.parseInt(jtUsuarioID.getText()));
+            users.setUsername(jtUsuario.getText());
+            users.setClave(jtClave.getText());
+            r = (Roles)this.jcRol.getSelectedItem();
+            users.setRolID(r.getRolID());
+            
+            
+            
+            //validamos que el metodo delete devuelve un true
+            if(dt_user.eliminarUsuario(users.getRolID())){
+                JOptionPane.showMessageDialog (this, "El Usuario fue eliminado con éxito!", 
+                  "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                actualizarTabla();
+                limpiarCampos();
+            }
+            else{
+               JOptionPane.showMessageDialog(this, 
+                  "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                  "ERROR", JOptionPane.ERROR_MESSAGE); 
+            }
+        }   
+        
+        
+        
+    }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jtUsuariosAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jtUsuariosAncestorAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_jtUsuariosAncestorAdded
+
+    private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
+        // TODO add your handling code here:
+        if(jtUsuario.getText().equals("") || jtClave.getText().equals("") || jcRol.getSelectedIndex()==0){
+            JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            //construimos nuestro objeto con los valores del formulario
+            //r=(Usuarios);
+            r = (Roles)this.jcRol.getSelectedItem();
+            u.setRolID(r.getRolID());
+            u.setUsername(jtUsuario.getText());
+            u.setClave(jtClave.getText());
+            
+            //validamos que el id no exista en la tabla de la bd
+            if(dt_user.existeUsuario(u.getUsername())){
+                JOptionPane.showMessageDialog(this, "El nombre de Usuario ya existe, digite otro nombre!", 
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+                jtUsuario.setText("");
+                jtUsuario.grabFocus(); 
+                actualizarTabla();
+                limpiarCampos();
+            }
+            else{
+            
+                //validamos que el metodo guardar devuelve un true
+                if(dt_user.guardarUsuario(u)){
+                    JOptionPane.showMessageDialog (this, "El Usuario fue almacenado con éxito!", 
+                      "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                    actualizarTabla();
+                    limpiarCampos();
+                }
+                else{
+                   JOptionPane.showMessageDialog(this, 
+                      "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                      "ERROR", JOptionPane.ERROR_MESSAGE); 
+                }
+            }
+        }
+    }//GEN-LAST:event_jbAgregarActionPerformed
+
+    private void jtUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtUsuariosMouseClicked
+        // TODO add your handling code here:
+        int fila = jtUsuarios.getSelectedRow();
+
+        //asignamos los valores a los campos del formulario
+        jtUsuarioID.setText(jtUsuarios.getValueAt(fila, 0).toString());
+         
+        jcRol.setSelectedIndex(Integer.parseInt(jtUsuarios.getValueAt(fila, 1).toString()));  
+        jtUsuario.setText(jtUsuarios.getValueAt(fila, 2).toString());
+        jtClave.setText(jtUsuarios.getValueAt(fila, 3).toString());
+             
+    }//GEN-LAST:event_jtUsuariosMouseClicked
+
+    private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
+        // TODO add your handling code here:
+        
+        //validamos que todos los campos sean ingresados por el usuario      
+        if(jtUsuario.getText().equals("") || jtClave.getText().equals("") || jcRol.getSelectedIndex()==0){
+            JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            //construimos nuestro objeto con los valores del formulario
+            users.setUsuarioID(Integer.parseInt(jtUsuarioID.getText()));
+            users.setUsername(jtUsuario.getText());
+            users.setClave(jtClave.getText());
+            r = (Roles)this.jcRol.getSelectedItem();
+            users.setRolID(r.getRolID());
+            
+            
+            //validamos que el metodo delete devuelve un true
+            if(dt_user.editarUsuario(users)){
+                JOptionPane.showMessageDialog (this, "El Usuario fue editado con éxito!", 
+                  "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                actualizarTabla();
+                limpiarCampos();
+            }
+            else{
+               JOptionPane.showMessageDialog(this, 
+                  "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                  "ERROR", JOptionPane.ERROR_MESSAGE); 
+            }
+        }   
+
+    }//GEN-LAST:event_jbEditarActionPerformed
+
+    private void jtbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbuscarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jtbuscarActionPerformed
+
+    private void jtbuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtbuscarKeyTyped
+        // TODO add your handling code here:
+        jtbuscar.addKeyListener(new KeyAdapter(){
+            //Se ejecuta cuando el usuario libera una tecla
+            @Override
+            public void keyReleased(final KeyEvent e){
+                String cadena = (jtbuscar.getText());
+                jtbuscar.setText(cadena);
+                repaint();
+                filtrarTabla();
+            }
+        });
+        trsfiltro = new TableRowSorter(jtUsuarios.getModel());
+        jtUsuarios.setRowSorter(trsfiltro);
+    }//GEN-LAST:event_jtbuscarKeyTyped
 
     /**
      * @param args the command line arguments
@@ -258,6 +524,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
         //creamos un arraylist con las columnas del modelo
         ArrayList<Object> listNombreColumnas = new ArrayList<Object>();
         listNombreColumnas.add("UsuarioID");
+        listNombreColumnas.add("RolID");
         listNombreColumnas.add("Username");
         listNombreColumnas.add("Clave");
   
@@ -271,23 +538,64 @@ public class FrmUsuarios extends javax.swing.JFrame {
         
        //recorremos cada elemento de la lista y creamos el objeto
         for(Usuarios user: listUser){
-            Object[] datosUser = new Object[]{user.getUsuarioID(), user.getUsername(), user.getClave()};
+            Object[] datosUser = new Object[]{user.getUsuarioID(),user.getRolID(), user.getUsername(), user.getClave()};
             //asignamos un arreglo de objetos a una fila del modelo
             myData.addRow(datosUser);
         }
         //Asignamos el modelo y/o coleccion de datos a la tabla
         jtUsuarios.setModel(myData);
     }
+     
+     private void llenarComboRol(){
+        //llenamos la lista
+        listaRol = dtR.listarRol();
+
+        //recorremos cada elemento de la lista y creamos el objeto
+        for(Roles rl: listaRol){
+            //asignamos el objeto creado al combobox
+            this.jcRol.addItem(rl);   
+        }
+        
+        
+    }
+     
+     private void filtrarTabla(){
+       trsfiltro.setRowFilter(RowFilter.regexFilter(jtbuscar.getText(), 2));
+    }
+     
+     private void actualizarTabla(){
+        myData.setColumnCount(0);
+        myData.setRowCount(0);
+        llenarTablaUsuarios();
+    }
+     
+     private void limpiarCampos(){
+        this.jtUsuario.setText("");
+        this.jtUsuarioID.setText("");
+        this.jtClave.setText("");
+        this.jcRol.setSelectedIndex(0);
+    }
+     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbAgregar;
+    private javax.swing.JButton jbEditar;
+    private javax.swing.JButton jbEliminar;
+    private javax.swing.JButton jbLimpiar;
+    private javax.swing.JComboBox<Object> jcRol;
+    private javax.swing.JTextField jtClave;
+    private javax.swing.JTextField jtUsuario;
+    private javax.swing.JTextField jtUsuarioID;
     private javax.swing.JTable jtUsuarios;
+    private javax.swing.JTextField jtbuscar;
     // End of variables declaration//GEN-END:variables
 }

@@ -11,8 +11,9 @@ package datos;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
+
 public class Conexion {
-    
+   
     //la unica instancia que existe de esta clase
     private static Conexion conx = null;
     //atributos

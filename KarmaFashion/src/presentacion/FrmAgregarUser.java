@@ -264,21 +264,18 @@ public class FrmAgregarUser extends javax.swing.JFrame {
             u.setUsername(jtfUsuario.getText());
             u.setClave(jpfContra1.getText());
             
-            
-            
-            
             //validamos que el id no exista en la tabla de la bd
-            //if(dt_user.existeUsuario(u.getUsername())){
-                //JOptionPane.showMessageDialog(this, "El Id de pais ya existe!", 
-                    //"ERROR", JOptionPane.WARNING_MESSAGE);
-                //jtfUsuario.setText("");
-                //jtfUsuario.grabFocus(); 
-            //}
-            //else{
+            if(dt_user.existeUsuario(u.getUsername())){
+                JOptionPane.showMessageDialog(this, "El Usuario ya existe, digite otro!", 
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+                jtfUsuario.setText("");
+                jtfUsuario.grabFocus(); 
+            }
+            else{
             
                 //validamos que el metodo guardar devuelve un true
                 if(dtUsuario.guardarUsuario(u)){
-                    JOptionPane.showMessageDialog (this, "El registro fue almacenado con éxito!", 
+                    JOptionPane.showMessageDialog (this, "El Usuario fue almacenado con éxito!", 
                       "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
                     this.setVisible(false);
                 }
@@ -287,7 +284,7 @@ public class FrmAgregarUser extends javax.swing.JFrame {
                       "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
                       "ERROR", JOptionPane.ERROR_MESSAGE); 
                 }
-            //}
+            }
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed
