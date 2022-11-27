@@ -11,12 +11,16 @@ import presentacion.FrmAgregarUser;
 
 
 import entidades.Usuarios;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -35,6 +39,8 @@ public class FrmUsuarios extends javax.swing.JFrame {
     private Dt_usuarios dt_user = new Dt_usuarios();
     private ArrayList<Usuarios> listUser = new ArrayList<Usuarios>();
     
+    //declaramos un filtro de datos para la tabla
+    TableRowSorter trsfiltro;
     DefaultTableModel myData = new DefaultTableModel();
     
     /**
@@ -242,6 +248,16 @@ public class FrmUsuarios extends javax.swing.JFrame {
         jtbuscar.setBackground(new java.awt.Color(255, 204, 204));
         jtbuscar.setForeground(new java.awt.Color(0, 0, 0));
         jtbuscar.setText("Buscar...");
+        jtbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtbuscarActionPerformed(evt);
+            }
+        });
+        jtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtbuscarKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -337,7 +353,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
             
             //validamos que el metodo delete devuelve un true
             if(dt_user.eliminarUsuario(users.getRolID())){
-                JOptionPane.showMessageDialog (this, "El registro fue eliminado con éxito!", 
+                JOptionPane.showMessageDialog (this, "El Usuario fue eliminado con éxito!", 
                   "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
                 actualizarTabla();
                 limpiarCampos();
@@ -371,12 +387,9 @@ public class FrmUsuarios extends javax.swing.JFrame {
             u.setUsername(jtUsuario.getText());
             u.setClave(jtClave.getText());
             
-            
-            
-            
             //validamos que el id no exista en la tabla de la bd
             if(dt_user.existeUsuario(u.getUsername())){
-                JOptionPane.showMessageDialog(this, "El Id de pais ya existe!", 
+                JOptionPane.showMessageDialog(this, "El nombre de Usuario ya existe, digite otro nombre!", 
                     "ERROR", JOptionPane.WARNING_MESSAGE);
                 jtUsuario.setText("");
                 jtUsuario.grabFocus(); 
@@ -387,7 +400,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
             
                 //validamos que el metodo guardar devuelve un true
                 if(dt_user.guardarUsuario(u)){
-                    JOptionPane.showMessageDialog (this, "El registro fue almacenado con éxito!", 
+                    JOptionPane.showMessageDialog (this, "El Usuario fue almacenado con éxito!", 
                       "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
                     actualizarTabla();
                     limpiarCampos();
@@ -433,7 +446,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
             
             //validamos que el metodo delete devuelve un true
             if(dt_user.editarUsuario(users)){
-                JOptionPane.showMessageDialog (this, "El registro fue editado con éxito!", 
+                JOptionPane.showMessageDialog (this, "El Usuario fue editado con éxito!", 
                   "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
                 actualizarTabla();
                 limpiarCampos();
@@ -446,6 +459,27 @@ public class FrmUsuarios extends javax.swing.JFrame {
         }   
 
     }//GEN-LAST:event_jbEditarActionPerformed
+
+    private void jtbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbuscarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jtbuscarActionPerformed
+
+    private void jtbuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtbuscarKeyTyped
+        // TODO add your handling code here:
+        jtbuscar.addKeyListener(new KeyAdapter(){
+            //Se ejecuta cuando el usuario libera una tecla
+            @Override
+            public void keyReleased(final KeyEvent e){
+                String cadena = (jtbuscar.getText());
+                jtbuscar.setText(cadena);
+                repaint();
+                filtrarTabla();
+            }
+        });
+        trsfiltro = new TableRowSorter(jtUsuarios.getModel());
+        jtUsuarios.setRowSorter(trsfiltro);
+    }//GEN-LAST:event_jtbuscarKeyTyped
 
     /**
      * @param args the command line arguments
@@ -523,6 +557,10 @@ public class FrmUsuarios extends javax.swing.JFrame {
         }
         
         
+    }
+     
+     private void filtrarTabla(){
+       trsfiltro.setRowFilter(RowFilter.regexFilter(jtbuscar.getText(), 2));
     }
      
      private void actualizarTabla(){

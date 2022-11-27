@@ -7,9 +7,13 @@ package presentacion;
 import datos.Dt_rol;
 import datos.Dt_rol;
 import entidades.Roles;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -22,7 +26,9 @@ public class FrmRol extends javax.swing.JFrame {
     Dt_rol dtR = new Dt_rol();
     private Roles rl = new Roles();
     private Dt_rol dt_rol = new Dt_rol();
-
+    
+    //declaramos un filtro de datos para la tabla
+    TableRowSorter trsfiltro;
     DefaultTableModel myData = new DefaultTableModel();
     
     /**
@@ -56,7 +62,7 @@ public class FrmRol extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaRol = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        jtBuscar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -200,17 +206,27 @@ public class FrmRol extends javax.swing.JFrame {
                 TablaRolMouseClicked(evt);
             }
         });
+        TablaRol.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TablaRolKeyTyped(evt);
+            }
+        });
         jScrollPane1.setViewportView(TablaRol);
 
         jPanel3.setBackground(new java.awt.Color(255, 204, 204));
         jPanel3.setBorder(new javax.swing.border.MatteBorder(null));
 
-        jTextField1.setBackground(new java.awt.Color(255, 204, 204));
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.setText("Buscar...");
-        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jtBuscar.setBackground(new java.awt.Color(255, 204, 204));
+        jtBuscar.setForeground(new java.awt.Color(0, 0, 0));
+        jtBuscar.setText("Buscar...");
+        jtBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField1MouseClicked(evt);
+                jtBuscarMouseClicked(evt);
+            }
+        });
+        jtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtBuscarKeyTyped(evt);
             }
         });
 
@@ -220,14 +236,14 @@ public class FrmRol extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -280,12 +296,11 @@ public class FrmRol extends javax.swing.JFrame {
             rl.setRolID(Integer.parseInt(jtRolID.getText()));
             rl.setRol_name(jtRol.getText());
             
-            
             //validamos que el id no exista en la tabla de la bd
             
                 //validamos que el metodo guardar devuelve un true
                 if(dt_rol.eliminarRol(rl)){
-                    JOptionPane.showMessageDialog (this, "El registro fue almacenado con éxito!", 
+                    JOptionPane.showMessageDialog (this, "El Rol fue eliminado con éxito!", 
                       "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
                     actualizarTabla();
                     limpiarCampos();
@@ -319,7 +334,7 @@ public class FrmRol extends javax.swing.JFrame {
             
             //validamos que el id no exista en la tabla de la bd
             if(dt_rol.existeRol(rl.getRol_name())){
-                JOptionPane.showMessageDialog(this, "El Id de pais ya existe!", 
+                JOptionPane.showMessageDialog(this, "El rol ya existe, digite otro rol!", 
                     "ERROR", JOptionPane.WARNING_MESSAGE);
                 jtRolID.setText("");
                 jtRolID.grabFocus(); 
@@ -327,7 +342,7 @@ public class FrmRol extends javax.swing.JFrame {
             else{
                 //validamos que el metodo guardar devuelve un true
                 if(dt_rol.guardarRol(rl)){
-                    JOptionPane.showMessageDialog (this, "El registro fue almacenado con éxito!", 
+                    JOptionPane.showMessageDialog (this, "El rol fue almacenado con éxito!", 
                       "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
                     actualizarTabla();
                     limpiarCampos();
@@ -342,10 +357,10 @@ public class FrmRol extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jbGuardarActionPerformed
 
-    private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
+    private void jtBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtBuscarMouseClicked
         // TODO add your handling code here:
-         jTextField1.setText("");
-    }//GEN-LAST:event_jTextField1MouseClicked
+         jtBuscar.setText("");
+    }//GEN-LAST:event_jtBuscarMouseClicked
 
     private void TablaRolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaRolMouseClicked
         // TODO add your handling code here:
@@ -372,7 +387,7 @@ public class FrmRol extends javax.swing.JFrame {
             
             //validamos que el metodo actualizar devuelve un true
             if(dt_rol.editarRol(rl)){
-                JOptionPane.showMessageDialog (this, "El registro fue actualizado con éxito!", 
+                JOptionPane.showMessageDialog (this, "El rol fue actualizado con éxito!", 
                   "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
                 actualizarTabla();
                 limpiarCampos();
@@ -384,6 +399,28 @@ public class FrmRol extends javax.swing.JFrame {
             }
         }   
     }//GEN-LAST:event_jbEditarActionPerformed
+
+    private void TablaRolKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TablaRolKeyTyped
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_TablaRolKeyTyped
+
+    private void jtBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtBuscarKeyTyped
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        jtBuscar.addKeyListener(new KeyAdapter(){
+            //Se ejecuta cuando el usuario libera una tecla
+            @Override
+            public void keyReleased(final KeyEvent e){
+                String cadena = (jtBuscar.getText());
+                jtBuscar.setText(cadena);
+                repaint();
+                filtrarTabla();
+            }
+        });
+        trsfiltro = new TableRowSorter(TablaRol.getModel());
+        TablaRol.setRowSorter(trsfiltro);
+    }//GEN-LAST:event_jtBuscarKeyTyped
 
     /**
      * @param args the command line arguments
@@ -429,9 +466,6 @@ public class FrmRol extends javax.swing.JFrame {
         ArrayList<Object> listNombreColumnas = new ArrayList<Object>();
         listNombreColumnas.add("RolID");
         listNombreColumnas.add("Rol_name");
-
-  
-
         
         //recorremos cada elemento del arraylist y creamos un objeto
         for(Object column : listNombreColumnas){
@@ -460,6 +494,10 @@ public class FrmRol extends javax.swing.JFrame {
         this.jtRolID.setText("");
         this.jtRol.setText("");
     }
+     
+     private void filtrarTabla(){
+       trsfiltro.setRowFilter(RowFilter.regexFilter(jtBuscar.getText(), 1));
+    }
     
     
 
@@ -472,11 +510,11 @@ public class FrmRol extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton jbEditar;
     private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbLimpiar;
+    private javax.swing.JTextField jtBuscar;
     private javax.swing.JTextField jtRol;
     private javax.swing.JTextField jtRolID;
     // End of variables declaration//GEN-END:variables
