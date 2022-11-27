@@ -334,6 +334,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
             users.setRolID(r.getRolID());
             
             
+            
             //validamos que el metodo delete devuelve un true
             if(dt_user.eliminarUsuario(users.getRolID())){
                 JOptionPane.showMessageDialog (this, "El registro fue eliminado con éxito!", 
@@ -374,25 +375,29 @@ public class FrmUsuarios extends javax.swing.JFrame {
             
             
             //validamos que el id no exista en la tabla de la bd
-            //if(dt_user.existeUsuario(u.getUsername())){
-                //JOptionPane.showMessageDialog(this, "El Id de pais ya existe!", 
-                    //"ERROR", JOptionPane.WARNING_MESSAGE);
-                //jtfUsuario.setText("");
-                //jtfUsuario.grabFocus(); 
-            //}
-            //else{
+            if(dt_user.existeUsuario(u.getUsername())){
+                JOptionPane.showMessageDialog(this, "El Id de pais ya existe!", 
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+                jtUsuario.setText("");
+                jtUsuario.grabFocus(); 
+                actualizarTabla();
+                limpiarCampos();
+            }
+            else{
             
                 //validamos que el metodo guardar devuelve un true
                 if(dt_user.guardarUsuario(u)){
                     JOptionPane.showMessageDialog (this, "El registro fue almacenado con éxito!", 
                       "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                    actualizarTabla();
+                    limpiarCampos();
                 }
                 else{
                    JOptionPane.showMessageDialog(this, 
                       "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
                       "ERROR", JOptionPane.ERROR_MESSAGE); 
                 }
-            //}
+            }
         }
     }//GEN-LAST:event_jbAgregarActionPerformed
 
@@ -419,7 +424,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
         }
         else{
             //construimos nuestro objeto con los valores del formulario
-            
+            users.setUsuarioID(Integer.parseInt(jtUsuarioID.getText()));
             users.setUsername(jtUsuario.getText());
             users.setClave(jtClave.getText());
             r = (Roles)this.jcRol.getSelectedItem();
