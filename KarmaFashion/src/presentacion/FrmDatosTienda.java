@@ -4,6 +4,8 @@
  */
 package presentacion;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author DELL
@@ -246,6 +248,10 @@ public class FrmDatosTienda extends javax.swing.JFrame {
                 new FrmDatosTienda().setVisible(true);
             }
         });
+    }
+    
+    public JPanel getFondo(){
+        return jPanel1;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

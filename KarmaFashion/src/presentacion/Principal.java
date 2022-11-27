@@ -24,6 +24,8 @@ public class Principal extends javax.swing.JFrame {
     FrmBodegas frmBodegas = new FrmBodegas();
     FrmRol frmRol = new FrmRol();
     FrmUsuarios frmUsuarios = new FrmUsuarios();
+    FrmDatosTienda frmDatosTienda = new FrmDatosTienda();
+    FrmInventarios frmInventarios = new FrmInventarios();
     /**
      * Creates new form Principal
      */
@@ -136,6 +138,9 @@ public class Principal extends javax.swing.JFrame {
         jPanel12.setBackground(new java.awt.Color(255, 204, 204));
         jPanel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel12MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel12MouseEntered(evt);
             }
@@ -148,7 +153,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Segoe UI Symbol", 1, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(51, 51, 51));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel12.setText(" Venta y compras");
+        jLabel12.setText(" Datos de la tienda");
         jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel12MouseClicked(evt);
@@ -160,7 +165,7 @@ public class Principal extends javax.swing.JFrame {
                 jLabel12MouseExited(evt);
             }
         });
-        jPanel12.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 20));
+        jPanel12.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 20));
 
         jPanel2.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 190, -1));
 
@@ -229,6 +234,9 @@ public class Principal extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(255, 204, 204));
         jPanel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel8MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel8MouseEntered(evt);
             }
@@ -559,7 +567,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
         // TODO add your handling code here:
-        
+        showPanel(frmDatosTienda.getFondo());
     }//GEN-LAST:event_jLabel12MouseClicked
 
     private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
@@ -716,9 +724,19 @@ public class Principal extends javax.swing.JFrame {
         showPanel(frmUsuarios.getFondo());
     }//GEN-LAST:event_jLabel8MouseClicked
 
+    private void jPanel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel12MouseClicked
+        // TODO add your handling code here:
+        showPanel(frmDatosTienda.getFondo());
+    }//GEN-LAST:event_jPanel12MouseClicked
+
+    private void jPanel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseClicked
+        // TODO add your handling code here:
+        showPanel(frmInventarios.getFondo());
+    }//GEN-LAST:event_jPanel8MouseClicked
+
     private void showPanel(JPanel p){
         
-        p.setSize(700,440);
+        p.setSize(869, 495);
         p.setLocation(0, 0);
         
         content.removeAll();

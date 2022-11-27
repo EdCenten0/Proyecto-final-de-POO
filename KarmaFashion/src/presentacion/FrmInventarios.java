@@ -14,6 +14,7 @@ import entidades.Inventarios;
 import java.time.LocalDate;
 
 import java.util.ArrayList;
+import javax.swing.JPanel;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -82,7 +83,7 @@ public class FrmInventarios extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Inventario");
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jtInventario.setBackground(new java.awt.Color(204, 204, 204));
         jtInventario.setModel(new javax.swing.table.DefaultTableModel(
@@ -120,69 +121,86 @@ public class FrmInventarios extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jtInventario);
 
-        jPanel2.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(new javax.swing.border.MatteBorder(null));
 
-        jLabel1.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Bodega ID:");
 
-        jLabel2.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Fecha:");
 
         tf_inventario.setEditable(false);
+        tf_inventario.setBackground(new java.awt.Color(204, 204, 204));
+        tf_inventario.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
+        tf_inventario.setForeground(new java.awt.Color(0, 0, 0));
 
-        jLabel3.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Movimientos negativos:");
 
+        jf_compras.setBackground(new java.awt.Color(204, 204, 204));
+        jf_compras.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
+        jf_compras.setForeground(new java.awt.Color(0, 0, 0));
         jf_compras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jf_comprasActionPerformed(evt);
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Inventario ID:");
+
+        jf_Fecha.setBackground(new java.awt.Color(204, 204, 204));
+        jf_Fecha.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
+        jf_Fecha.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel5.setBackground(new java.awt.Color(0, 0, 0));
         jLabel5.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Movimientos positivos:");
 
+        jf_ventas.setBackground(new java.awt.Color(204, 204, 204));
+        jf_ventas.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
+        jf_ventas.setForeground(new java.awt.Color(0, 0, 0));
         jf_ventas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jf_ventasActionPerformed(evt);
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Saldo Total:");
 
+        jf_cantInicial.setBackground(new java.awt.Color(204, 204, 204));
+        jf_cantInicial.setForeground(new java.awt.Color(0, 0, 0));
         jf_cantInicial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jf_cantInicialActionPerformed(evt);
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Cantidad inicial:");
 
+        jf_saldoTotal.setBackground(new java.awt.Color(204, 204, 204));
+        jf_saldoTotal.setForeground(new java.awt.Color(0, 0, 0));
         jf_saldoTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jf_saldoTotalActionPerformed(evt);
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Serif", 0, 30)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI Symbol", 1, 30)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Inventario");
 
-        jb_Guardar.setBackground(new java.awt.Color(255, 204, 204));
+        jb_Guardar.setBackground(new java.awt.Color(153, 153, 153));
         jb_Guardar.setForeground(new java.awt.Color(0, 0, 0));
         jb_Guardar.setText("Limpiar campos");
         jb_Guardar.addActionListener(new java.awt.event.ActionListener() {
@@ -191,7 +209,8 @@ public class FrmInventarios extends javax.swing.JFrame {
             }
         });
 
-        jb_Agregar.setBackground(new java.awt.Color(255, 204, 204));
+        jb_Agregar.setBackground(new java.awt.Color(153, 153, 153));
+        jb_Agregar.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
         jb_Agregar.setForeground(new java.awt.Color(0, 0, 0));
         jb_Agregar.setText("Guardar");
         jb_Agregar.addActionListener(new java.awt.event.ActionListener() {
@@ -200,7 +219,7 @@ public class FrmInventarios extends javax.swing.JFrame {
             }
         });
 
-        jb_Eliminar.setBackground(new java.awt.Color(255, 204, 204));
+        jb_Eliminar.setBackground(new java.awt.Color(153, 153, 153));
         jb_Eliminar.setForeground(new java.awt.Color(0, 0, 0));
         jb_Eliminar.setText("Eliminar");
         jb_Eliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -209,7 +228,7 @@ public class FrmInventarios extends javax.swing.JFrame {
             }
         });
 
-        jb_Editar.setBackground(new java.awt.Color(255, 204, 204));
+        jb_Editar.setBackground(new java.awt.Color(153, 153, 153));
         jb_Editar.setForeground(new java.awt.Color(0, 0, 0));
         jb_Editar.setText("Editar");
         jb_Editar.addActionListener(new java.awt.event.ActionListener() {
@@ -218,6 +237,9 @@ public class FrmInventarios extends javax.swing.JFrame {
             }
         });
 
+        jcb_BodegaID.setBackground(new java.awt.Color(204, 204, 204));
+        jcb_BodegaID.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
+        jcb_BodegaID.setForeground(new java.awt.Color(0, 0, 0));
         jcb_BodegaID.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
         jcb_BodegaID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -239,9 +261,9 @@ public class FrmInventarios extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(74, 74, 74)
+                                        .addGap(86, 86, 86)
                                         .addComponent(jf_cantInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jb_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jb_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -259,8 +281,8 @@ public class FrmInventarios extends javax.swing.JFrame {
                                             .addComponent(jLabel1))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(tf_inventario, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                                            .addComponent(jcb_BodegaID, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                            .addComponent(tf_inventario)
+                                            .addComponent(jcb_BodegaID, 0, 185, Short.MAX_VALUE)))
                                     .addComponent(jLabel8))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,7 +298,7 @@ public class FrmInventarios extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jb_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(22, 357, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jf_ventas, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -326,10 +348,11 @@ public class FrmInventarios extends javax.swing.JFrame {
                         .addContainerGap())))
         );
 
-        jPanel3.setBackground(new java.awt.Color(255, 204, 204));
-        jPanel3.setBorder(new javax.swing.border.MatteBorder(null));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jtBuscar.setBackground(new java.awt.Color(255, 204, 204));
+        jtBuscar.setBackground(new java.awt.Color(204, 204, 204));
+        jtBuscar.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
         jtBuscar.setForeground(new java.awt.Color(0, 0, 0));
         jtBuscar.setText("Buscar...");
         jtBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -345,7 +368,7 @@ public class FrmInventarios extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 775, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -359,25 +382,26 @@ public class FrmInventarios extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -535,6 +559,7 @@ public class FrmInventarios extends javax.swing.JFrame {
        
          
         
+        
     }
         
         
@@ -547,6 +572,9 @@ public class FrmInventarios extends javax.swing.JFrame {
             return hoy=(dia+"/"+month+"/"+year);
         }
 
+    public JPanel getFondo(){
+        return jPanel1;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
