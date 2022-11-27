@@ -4,6 +4,8 @@
  */
 package presentacion;
 import entidades.Productos;
+import entidades.TipoProductos;
+import datos.dt_TipoProductos;
 import datos.Dt_Productos;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -23,10 +25,13 @@ public class FrmProductos extends javax.swing.JFrame {
     //atributos
     //se declaran las entidades
     private Productos productos = new Productos();
+    private TipoProductos tipo = new TipoProductos();
     //se declaran las clases de datos
+    private dt_TipoProductos dt_tipo = new dt_TipoProductos();
     private Dt_Productos dt_p = new Dt_Productos();
     //se declaran las listas de datos
     private ArrayList<Productos> listProductos = new ArrayList<Productos>();
+    private ArrayList<TipoProductos> listTipo = new ArrayList<TipoProductos>();
     //se declara el modelo de datos de la tabla
     DefaultTableModel myData = new DefaultTableModel();
     //se declara un filtro para los datos de la tabla
@@ -42,6 +47,7 @@ public class FrmProductos extends javax.swing.JFrame {
     public FrmProductos() {
         initComponents();
         llenarTablaProd();
+        llenarComboReg();
         limpiarCampos();
 
     }
@@ -132,7 +138,7 @@ public class FrmProductos extends javax.swing.JFrame {
             }
         });
 
-        jcb_producto_id.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione...", "Ropa", "Juguetes", "Accesorios", " " }));
+        jcb_producto_id.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione...", " " }));
         jcb_producto_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcb_producto_idActionPerformed(evt);
@@ -380,9 +386,9 @@ public class FrmProductos extends javax.swing.JFrame {
         jtf_marca.setText(jtbl_productos.getValueAt(fila, 6).toString());
         jtf_fecha_ingreso.setText(jtbl_productos.getValueAt(fila, 7).toString());
         jtf_descripcion.setText(jtbl_productos.getValueAt(fila, 4).toString());
-        jcb_producto_id.setSelectedIndex(Integer.parseInt(jtbl_productos.getValueAt(fila, 2).toString())-1);
+        jcb_producto_id.setSelectedIndex(Integer.parseInt(jtbl_productos.getValueAt(fila, 2).toString()));
         
-        //obtenemos el idLocations del jtable
+        /*//obtenemos el idLocations del jtable
         idProd = Integer.parseInt(this.jtbl_productos.getValueAt(fila, 2).toString());
         System.out.println("idProd: "+idProd);
   
@@ -569,6 +575,27 @@ public class FrmProductos extends javax.swing.JFrame {
         jtbl_productos.setModel(myData);
     }
     
+    
+     private void llenarComboReg(){
+        //llenamos la lista
+        listTipo = dt_tipo.listarTipoProductos();
+        /* removemos los ítems precargados en el combobox
+        this.jcb_region.removeAllItems(); */
+        //recorremos cada elemento de la lista y creamos el objeto
+        for(TipoProductos rg: listTipo){
+            //asignamos el objeto creado al combobox
+            this.jcb_producto_id.addItem(rg);   
+        }
+        
+        /*
+        Iterator iterator = listaRegion.iterator();
+        while(iterator.hasNext()){
+           r = (Region) iterator.next();
+           this.jcb_region.addItem(r);
+        }
+        */
+        
+    }
     
     
     private void actualizarTabla(){
