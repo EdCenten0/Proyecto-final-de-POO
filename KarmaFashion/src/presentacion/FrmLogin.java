@@ -4,11 +4,16 @@
  */
 package presentacion;
 
-import datos.Dt_usuarios;
-import entidades.Usuarios;
+
 import java.awt.Color;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
+import entidades.Usuarios;
+import datos.Dt_usuarios;
+
+import presentacion.Principal;
+import presentacion.FrmAgregarUser;
+
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -17,12 +22,15 @@ import javax.swing.JOptionPane;
  * @author cchav
  */
 public class FrmLogin extends javax.swing.JFrame {
-
+    
     Principal prin = new Principal();
+    FrmAgregarUser agregar = new FrmAgregarUser();
     private ArrayList<Usuarios> listUser = new ArrayList<Usuarios>();
     
     
     Dt_usuarios dtUser = new Dt_usuarios();
+    
+    
     
     int xMouse, yMouse;
     /**
@@ -67,6 +75,8 @@ public class FrmLogin extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jlabel_date = new javax.swing.JLabel();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
         setLocationByPlatform(true);
         setUndecorated(true);
         setResizable(false);
@@ -162,8 +172,8 @@ public class FrmLogin extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,6 +235,12 @@ public class FrmLogin extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel3MouseExited(evt);
+            }
         });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -260,6 +276,9 @@ public class FrmLogin extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("No tengo un usuario...");
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel5MouseEntered(evt);
             }
@@ -345,6 +364,7 @@ public class FrmLogin extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
@@ -360,18 +380,6 @@ public class FrmLogin extends javax.swing.JFrame {
 
         this.setLocation(x - xMouse,y - yMouse);
     }//GEN-LAST:event_jPanel3MouseDragged
-
-    private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
-        // TODO add your handling code here:
-        jPanel4.setBackground(Color.PINK);
-        jLabel3.setForeground(Color.white);
-    }//GEN-LAST:event_jPanel4MouseEntered
-
-    private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
-        // TODO add your handling code here:
-        jPanel4.setBackground(new Color(255,204,204));
-        jLabel3.setForeground(Color.black);
-    }//GEN-LAST:event_jPanel4MouseExited
 
     private void jtUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtUsuarioMousePressed
         // TODO add your handling code here:
@@ -431,50 +439,63 @@ public class FrmLogin extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel4MouseClicked
 
+    private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
+        // TODO add your handling code here:
+        jPanel4.setBackground(new Color(255,204,204));
+        jLabel3.setForeground(Color.black);
+    }//GEN-LAST:event_jPanel4MouseExited
+
+    private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
+        // TODO add your handling code here:
+        jPanel4.setBackground(Color.PINK);
+        jLabel3.setForeground(Color.white);
+    }//GEN-LAST:event_jPanel4MouseEntered
+
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         // TODO add your handling code here:
-        // TODO add your handling code here:
         
-        listUser = dtUser.listarUsuarios();
+       // TODO add your handling code here:
+        String usuario = "";
+        String password = "";
         
-        boolean Acesso = true; //Prueba si el usuario y clave son verdaderos o falso
-        boolean confirmar = true; //confirma si es verdadera la el usuario y clave, esto para no entrar al mensaje en pantalla cuando se salga del bucle
+        usuario = jtUsuario.getText();
+        password = String.valueOf(jpContraseña.getPassword());
         
-        
-        
-        ArrayList DatosUsuario = new ArrayList();
-        ArrayList DatosContraseña = new ArrayList();
-        
-        
-        //recorremos cada elemento de la lista y creamos el objeto
-        for(Usuarios us: listUser){
-            //asignamos el objeto creado al combobox
+        if(dtUser.validarUsuario(usuario, password)){
+            this.dispose();
+            JOptionPane.showMessageDialog(null, "Usuario y contraseña correcta, Bienvenido "+jtUsuario.getText(),"Bienvenida",JOptionPane.INFORMATION_MESSAGE);
+            Principal frmP = new Principal();
+            frmP.setVisible(true);
             
-            DatosUsuario.add(us.getUsername());
-            DatosContraseña.add(us.getClave());
+        }
+        else{
+            JOptionPane.showMessageDialog(this, 
+            "Sus datos de acceso no son válidos. Ingrese nuevamente sus datos e intente nuevamente!", 
+            "ERROR", JOptionPane.ERROR_MESSAGE); 
+            this.limpiarCampos();
+            this.jtUsuario.grabFocus();
         }
         
         
-        for(int i=0;i<=DatosUsuario.size()-1;i++){
-            
-            if(DatosUsuario.get(i).equals(jtUsuario.getText()) && DatosContraseña.get(i).equals(jpContraseña.getText())){
-                this.setVisible(false);
-                prin.setVisible(true);
-                confirmar = false;
-                
-            }else 
-                    {
-                        Acesso = false; 
-                        
-                    }
- 
-        }   
-        
-        if(Acesso==false && confirmar==true)
-        {
-            JOptionPane.showMessageDialog(null, "Error De inicio de sesión, Usuario y contraseña no valida!", "Error de inicio de sesión", JOptionPane.WARNING_MESSAGE);
-        }
+           
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        // TODO add your handling code here:
+        agregar.setVisible(true);
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
+        // TODO add your handling code here:
+        jPanel4.setBackground(Color.PINK);
+        jLabel3.setForeground(Color.white);
+    }//GEN-LAST:event_jLabel3MouseEntered
+
+    private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
+        // TODO add your handling code here:
+         jPanel4.setBackground(new Color(255,204,204));
+        jLabel3.setForeground(Color.black);
+    }//GEN-LAST:event_jLabel3MouseExited
 
     /**
      * @param args the command line arguments
@@ -524,6 +545,11 @@ public class FrmLogin extends javax.swing.JFrame {
                 new FrmLogin().setVisible(true);
             }
         });
+    }
+    
+    private void limpiarCampos(){
+        jtUsuario.setText("");
+        jpContraseña.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

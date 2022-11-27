@@ -45,7 +45,12 @@ public class Roles {
     public void setEstado(int estado) {
         this.estado = estado;
     }
+
+    @Override
+    public String toString() {
+        return "" + rol_name ;
+    }
+
     
-    
-    
+     
 }

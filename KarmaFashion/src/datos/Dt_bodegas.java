@@ -1,8 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package datos;
+
+import entidades.Bodegas;
 import entidades.Clientes;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,13 +8,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 
 /**
  *
  * @author cchav
  */
-public class Dt_Clientes {
+public class Dt_bodegas {
     
     private Connection con = null;
     private PreparedStatement ps = null;
@@ -28,7 +29,7 @@ public class Dt_Clientes {
     {
         try{
             con = Conexion.getConnection();
-            ps = con.prepareStatement("SELECT ClienteID,TiendaID,Nombre,Cedula,Numero_telefonico,Email,Direccion,Sexo,Estado FROM Cliente", 
+            ps = con.prepareStatement("SELECT BodegaID, TiendaID, Nombre, No_documento, Estado FROM Bodega", 
                     ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE, ResultSet.HOLD_CURSORS_OVER_COMMIT);
             rs = ps.executeQuery();
         }
@@ -38,28 +39,26 @@ public class Dt_Clientes {
         }
     }
     
-    @SuppressWarnings("CallToPrintStackTrace")
-    public ArrayList<Clientes> listarClientes(){
-        ArrayList<Clientes> listarClientes = new ArrayList<Clientes>();
+        @SuppressWarnings("CallToPrintStackTrace")
+    public ArrayList<Bodegas> listarBodegas(){
+        ArrayList<Bodegas> listarBodegas = new ArrayList<Bodegas>();
         try{
             this.cargarDatos();
             while(rs.next()){
-                Clientes c = new Clientes();
+                Bodegas b = new Bodegas();
 
-                c.setCliente_id(rs.getInt("ClienteID"));
-                c.setTienda_id(rs.getInt("TiendaID"));
-                c.setNombre(rs.getString("Nombre"));
-                c.setCedula(rs.getString("Cedula"));
-                c.setNumero_telefonico(rs.getString("Numero_telefonico"));
-                c.setEmail(rs.getString("Email"));
-                c.setDireccion(rs.getString("Direccion"));
-                c.setSexo(rs.getInt("Sexo"));
-                c.setEstado(rs.getInt("Estado"));
-                listarClientes.add(c); 
+                b.setBodegaID(rs.getInt("BodegaID"));
+                b.setTiendaID(rs.getInt("TiendaID"));
+                b.setNombre(rs.getString("Nombre"));
+                b.setNo_documento(rs.getString("No_documento"));
+                b.setEstado(rs.getInt("Estado"));
+                
+                
+                listarBodegas.add(b); 
                 
             }     
         }catch(SQLException e){
-            System.out.println("El error en listarClientes(): "+e.getMessage());
+            System.out.println("El error en listarBodegas(): "+e.getMessage());
             e.printStackTrace();
         }
         finally{
@@ -79,28 +78,24 @@ public class Dt_Clientes {
         }
         
         
-        return listarClientes;      
+        return listarBodegas;      
     }
     
     @SuppressWarnings("CallToPrintStackTrace")
-    public boolean guardarClientes(Clientes clientes){
+    public boolean guardarBodegas(Bodegas bodegas){
         boolean guardado = false;
         try {
             this.cargarDatos();
             rs.moveToInsertRow();
-            rs.updateInt("TiendaID", clientes.getTienda_id());
-            rs.updateString("Nombre", clientes.getNombre());
-            rs.updateString("Cedula", clientes.getCedula());
-            rs.updateString("Numero_telefonico", clientes.getNumero_telefonico());
-            rs.updateString("Email", clientes.getEmail());
-            rs.updateString("Direccion", clientes.getDireccion());
-            rs.updateInt("Sexo", clientes.getSexo());
+            rs.updateInt("TiendaID", bodegas.getTiendaID());
+            rs.updateString("Nombre", bodegas.getNombre());
+            rs.updateString("No_documento", bodegas.getNo_documento());
             rs.insertRow();
             rs.moveToCurrentRow();
             
             guardado = true;
         } catch (SQLException e) {
-            System.out.println("ERROR guardarPais(): "+e.getMessage());
+            System.out.println("ERROR guardarBodegas(): "+e.getMessage());
             e.printStackTrace();
         }
         finally
@@ -123,20 +118,20 @@ public class Dt_Clientes {
     }
     
     @SuppressWarnings("CallToPrintStackTrace")
-    public boolean borrarCliente(int id){
+    public boolean borrarBodega(int id){
         boolean resp = false;
         try {
             this.cargarDatos();
             rs.beforeFirst();
             while(rs.next()){
-                if(rs.getInt("ClienteID")==(id)){
+                if(rs.getInt("BodegaID")==(id)){
                     rs.deleteRow();
                     resp=true;
                 }
             }	
 	} 
         catch (SQLException e) {
-            System.out.println("Error deletePais(): "+e.getMessage());
+            System.out.println("Error deleteBodega(): "+e.getMessage());
             e.printStackTrace();
 	}
         finally{
@@ -159,21 +154,20 @@ public class Dt_Clientes {
     }
     
     @SuppressWarnings("CallToPrintStackTrace")
-    public boolean editarCliente(Clientes clientes){
+    public boolean editarBodega(Bodegas bodegas){
        boolean resp = false;
        
        try{
           this.cargarDatos();
           rs.beforeFirst();
           while(rs.next()){
-              if(rs.getInt("ClienteID")==(clientes.getCliente_id())){
-                  rs.updateString("Cedula", clientes.getCedula());
-                  rs.updateString("Nombre", clientes.getNombre());
-                  rs.updateString("Numero_telefonico", clientes.getNumero_telefonico());
-                  rs.updateString("Email", clientes.getEmail());
-                  rs.updateString("Direccion", clientes.getDireccion());
-                  rs.updateInt("Sexo", clientes.getSexo());
+              if(rs.getInt("BodegaID")==(bodegas.getBodegaID())){
+                  
+                    
+                  rs.updateString("Nombre", bodegas.getNombre());
+                  rs.updateString("No_documento", bodegas.getNo_documento());
                   rs.updateInt("Estado", 2);
+                  
                   rs.updateRow();
                   resp = true;
                   break;
@@ -181,7 +175,7 @@ public class Dt_Clientes {
           }
        }
        catch(SQLException e){
-           System.out.println("Error en editarPais(): "+e.getMessage());
+           System.out.println("Error en editarBodega(): "+e.getMessage());
             e.printStackTrace();
        }
        finally{
