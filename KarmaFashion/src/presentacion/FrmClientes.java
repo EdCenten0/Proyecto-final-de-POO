@@ -136,6 +136,11 @@ public class FrmClientes extends javax.swing.JFrame {
 
         tf_nombre.setBackground(new java.awt.Color(204, 204, 204));
         tf_nombre.setForeground(new java.awt.Color(0, 0, 0));
+        tf_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tf_nombreKeyTyped(evt);
+            }
+        });
 
         tf_cedula.setBackground(new java.awt.Color(204, 204, 204));
         tf_cedula.setForeground(new java.awt.Color(0, 0, 0));
@@ -518,6 +523,23 @@ public class FrmClientes extends javax.swing.JFrame {
         ta_direccion.setText(jTable_clientes.getValueAt(fila, 6).toString());
 
     }//GEN-LAST:event_jTable_clientesMouseClicked
+
+    private void tf_nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_nombreKeyTyped
+        // TODO add your handling code here:
+        tf_nombre.addKeyListener(new KeyAdapter() {
+            
+            @Override
+            public void keyReleased(final KeyEvent e){
+               String cadena = (tf_nombre.getText()).toUpperCase();
+               tf_nombre.setText(cadena);
+               
+                
+                
+            }
+        
+        });
+        
+    }//GEN-LAST:event_tf_nombreKeyTyped
 
     
     /**

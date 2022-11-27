@@ -295,7 +295,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI Symbol", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel8.setText(" Usuarios y Roles ");
+        jLabel8.setText(" Usuarios ");
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel8MouseEntered(evt);
@@ -323,7 +323,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Segoe UI Symbol", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(51, 51, 51));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel9.setText(" Sobre Nosotros");
+        jLabel9.setText(" Roles");
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel9MouseEntered(evt);

@@ -328,6 +328,9 @@
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tf_nombreKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="tf_cedula">
               <Properties>
