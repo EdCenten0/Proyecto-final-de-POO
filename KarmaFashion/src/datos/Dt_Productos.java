@@ -132,19 +132,102 @@ public class Dt_Productos{
     
     
     @SuppressWarnings("CallToPrintStackTrace")
-    public boolean existeProducto(String nombre){
+    public boolean existeProducto(Productos p){
 	boolean resp=false;
         try {
             this.cargarDatos();
             rs.beforeFirst();
             while(rs.next()){
-                if(rs.getString("Nombre").equals(nombre)){
+                if(rs.getString("Nombre").equals(p.getNombre())){
                     resp=true;
                 }
             }	
 	} 
         catch (SQLException e) {
             System.out.println("Error existeProducto(): "+e.getMessage());
+            e.printStackTrace();
+	}
+        finally{
+            try{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+                if(con!=null){
+                    Conexion.closeConexion(con);
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+		
+        return resp;
+    }
+    
+    
+    @SuppressWarnings("CallToPrintStackTrace")
+    public boolean editarProductos(Productos p)
+    {
+	boolean resp=false;
+        try
+        {
+            this.cargarDatos();
+            rs.beforeFirst();
+            while(rs.next()){
+                if(rs.getInt("ProductoID")==p.getProducto_id()){
+                    rs.updateInt("TipoproductoID", p.getTipo_producto());
+                    rs.updateInt("InventarioID", p.getInventario_id());
+                    rs.updateString("Nombre", p.getNombre());
+                    rs.updateFloat("Precio", p.getPrecio());
+                    rs.updateString("Marca", p.getMarca());
+                    rs.updateString("Fecha_ingreso", p.getFecha_ingreso());
+                    rs.updateString("Descripcion", p.getDescripcion());
+                    rs.updateRow();
+                    resp = true;
+                    break;
+                }
+            }
+        }
+        catch(SQLException e){
+            System.out.println("Error en editarProducto(): "+e.getMessage());
+            e.printStackTrace();
+        }
+        finally{
+            try {
+                    if(rs!=null){
+                    rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                    if(con!=null){
+                        Conexion.closeConexion(con);
+                    }
+            }catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+            }
+        }
+        return resp;
+    }    
+    
+    @SuppressWarnings("CallToPrintStackTrace")
+    public boolean deleteProductos(int id){
+	boolean resp=false;
+        try {
+            this.cargarDatos();
+            rs.beforeFirst();
+            while(rs.next()){
+                if(rs.getInt("ProductoID")==id){
+                    rs.deleteRow();
+                    resp=true;
+                }
+            }	
+	} 
+        catch (SQLException e) {
+            System.out.println("Error existeProductos(): "+e.getMessage());
             e.printStackTrace();
 	}
         finally{
