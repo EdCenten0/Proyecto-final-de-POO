@@ -173,6 +173,7 @@ public class Dt_Clientes {
                   rs.updateString("Email", clientes.getEmail());
                   rs.updateString("Direccion", clientes.getDireccion());
                   rs.updateInt("Sexo", clientes.getSexo());
+                  rs.updateInt("Estado", 2);
                   rs.updateRow();
                   resp = true;
                   break;

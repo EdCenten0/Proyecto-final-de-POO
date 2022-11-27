@@ -1,6 +1,7 @@
 package datos;
 
 import entidades.Bodegas;
+import entidades.Clientes;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,7 +29,7 @@ public class Dt_bodegas {
     {
         try{
             con = Conexion.getConnection();
-            ps = con.prepareStatement("SELECT TiendaID ,Nombre, No_documento, Estado FROM Bodega", 
+            ps = con.prepareStatement("SELECT BodegaID, TiendaID, Nombre, No_documento, Estado FROM Bodega", 
                     ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE, ResultSet.HOLD_CURSORS_OVER_COMMIT);
             rs = ps.executeQuery();
         }
@@ -39,21 +40,25 @@ public class Dt_bodegas {
     }
     
         @SuppressWarnings("CallToPrintStackTrace")
-    public ArrayList<Bodegas> listarClientes(){
-        ArrayList<Bodegas> listarClientes = new ArrayList<Bodegas>();
+    public ArrayList<Bodegas> listarBodegas(){
+        ArrayList<Bodegas> listarBodegas = new ArrayList<Bodegas>();
         try{
             this.cargarDatos();
             while(rs.next()){
                 Bodegas b = new Bodegas();
 
-                b.setTiendaID(rs.getInt(""));
+                b.setBodegaID(rs.getInt("BodegaID"));
+                b.setTiendaID(rs.getInt("TiendaID"));
+                b.setNombre(rs.getString("Nombre"));
+                b.setNo_documento(rs.getString("No_documento"));
+                b.setEstado(rs.getInt("Estado"));
                 
                 
-                listarClientes.add(b); 
+                listarBodegas.add(b); 
                 
             }     
         }catch(SQLException e){
-            System.out.println("El error en listarClientes(): "+e.getMessage());
+            System.out.println("El error en listarBodegas(): "+e.getMessage());
             e.printStackTrace();
         }
         finally{
@@ -73,8 +78,124 @@ public class Dt_bodegas {
         }
         
         
-        return listarClientes;      
+        return listarBodegas;      
     }
     
+    @SuppressWarnings("CallToPrintStackTrace")
+    public boolean guardarBodegas(Bodegas bodegas){
+        boolean guardado = false;
+        try {
+            this.cargarDatos();
+            rs.moveToInsertRow();
+            rs.updateInt("TiendaID", bodegas.getTiendaID());
+            rs.updateString("Nombre", bodegas.getNombre());
+            rs.updateString("No_documento", bodegas.getNo_documento());
+            rs.insertRow();
+            rs.moveToCurrentRow();
+            
+            guardado = true;
+        } catch (SQLException e) {
+            System.out.println("ERROR guardarBodegas(): "+e.getMessage());
+            e.printStackTrace();
+        }
+        finally
+	{
+            try{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+                if(con!=null){
+                    Conexion.closeConexion(con);
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+	}
+        return guardado;
+    }
+    
+    @SuppressWarnings("CallToPrintStackTrace")
+    public boolean borrarBodega(int id){
+        boolean resp = false;
+        try {
+            this.cargarDatos();
+            rs.beforeFirst();
+            while(rs.next()){
+                if(rs.getInt("BodegaID")==(id)){
+                    rs.deleteRow();
+                    resp=true;
+                }
+            }	
+	} 
+        catch (SQLException e) {
+            System.out.println("Error deleteBodega(): "+e.getMessage());
+            e.printStackTrace();
+	}
+        finally{
+            try{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+                if(con!=null){
+                    Conexion.closeConexion(con);
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+        
+        return resp;
+    }
+    
+    @SuppressWarnings("CallToPrintStackTrace")
+    public boolean editarBodega(Bodegas bodegas){
+       boolean resp = false;
+       
+       try{
+          this.cargarDatos();
+          rs.beforeFirst();
+          while(rs.next()){
+              if(rs.getInt("BodegaID")==(bodegas.getBodegaID())){
+                  
+                    
+                  rs.updateString("Nombre", bodegas.getNombre());
+                  rs.updateString("No_documento", bodegas.getNo_documento());
+                  rs.updateInt("Estado", 2);
+                  
+                  rs.updateRow();
+                  resp = true;
+                  break;
+              }
+          }
+       }
+       catch(SQLException e){
+           System.out.println("Error en editarBodega(): "+e.getMessage());
+            e.printStackTrace();
+       }
+       finally{
+            try {
+                    if(rs!=null){
+                    rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                    if(con!=null){
+                        Conexion.closeConexion(con);
+                    }
+            }catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+            }
+        }
+        return resp;
+       
+    }
     
 }
