@@ -79,4 +79,50 @@ public class Dt_Tienda {
         
         return listarTienda;      
     }
+    
+    @SuppressWarnings("CallToPrintStackTrace")
+    public boolean editarTienda(Tienda tien){
+	boolean resp=false;
+        try {
+            this.cargarDatos();
+            rs.beforeFirst();
+            while(rs.next()){
+                if(rs.getInt("TiendaID")==(tien.getTiendaID())){
+                    rs.updateString("Nombre",tien.getNombre());
+                    rs.updateString("Telefono",tien.getTelefono());
+                    rs.updateString("Email",tien.getEmail());
+                    rs.updateString("Direccion",tien.getEmail());
+                    rs.updateString("Ruc",tien.getRuc());
+                    rs.updateString("Hora_abierto",tien.getHora_abierto());
+                    rs.updateString("Hora_cerrado",tien.getHora_cerrado());
+                    
+                    rs.updateRow();
+                    
+                    
+                    resp=true;
+                }
+            }	
+	} 
+        catch (SQLException e) {
+            System.out.println("Error existePais(): "+e.getMessage());
+            e.printStackTrace();
+	}
+        finally{
+            try{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+                if(con!=null){
+                    Conexion.closeConexion(con);
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+		
+        return resp;
+    }
 }

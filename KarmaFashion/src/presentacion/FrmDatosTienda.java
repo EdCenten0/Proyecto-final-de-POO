@@ -7,6 +7,7 @@ package presentacion;
 import entidades.Tienda;
 import datos.Dt_Tienda;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -49,7 +50,7 @@ public class FrmDatosTienda extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jtAbierto = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jtnombre = new javax.swing.JTextField();
+        jtTiendaID = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jtTelefono = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -64,6 +65,8 @@ public class FrmDatosTienda extends javax.swing.JFrame {
         jtaDireccion = new javax.swing.JTextArea();
         jbEditar = new javax.swing.JButton();
         jtLimpiar = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jtnombre1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -176,6 +179,10 @@ public class FrmDatosTienda extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("TiendaID");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -186,20 +193,21 @@ public class FrmDatosTienda extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(30, 30, 30)
-                        .addComponent(jtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel4))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel4))
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel2))
                         .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtnombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtTiendaID, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jtAbierto, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtTelefono, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jtCerrado, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(6, 6, 6)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -224,17 +232,24 @@ public class FrmDatosTienda extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
                         .addComponent(jLabel1)
-                        .addGap(26, 26, 26)
+                        .addGap(10, 10, 10)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addGap(27, 27, 27)
+                            .addComponent(jLabel9)
+                            .addComponent(jtTiendaID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(29, 29, 29))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jtnombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))
+                        .addGap(11, 11, 11)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
-                        .addGap(26, 26, 26))
+                        .addGap(27, 27, 27))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -243,7 +258,7 @@ public class FrmDatosTienda extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 29, Short.MAX_VALUE)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jLabel7)
                                 .addGap(62, 62, 62)
                                 .addComponent(jLabel5)))
@@ -257,7 +272,7 @@ public class FrmDatosTienda extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtCerrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(jbEditar, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                    .addComponent(jbEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jtLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
                 .addGap(32, 32, 32)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -297,7 +312,35 @@ public class FrmDatosTienda extends javax.swing.JFrame {
     private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
         // TODO add your handling code here:
         
-        
+        //validamos que todos los campos sean ingresados por el usuario      
+        if(jtnombre1.getText().equals("") ||jtTiendaID.getText().equals("") || jtaDireccion.getText().equals("") ||jtAbierto.getText().equals("") || jtCerrado.getText().equals("")||jtCorreo.getText().equals("") || jtRuc.getText().equals("")||jtTelefono.getText().equals("") ){
+            JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            //construimos nuestro objeto con los valores del formulario
+            tienda.setTiendaID(Integer.parseInt(jtTiendaID.getText()));
+            tienda.setNombre(jtnombre1.getText());
+            tienda.setDireccion(jtaDireccion.getText());
+            tienda.setHora_abierto(jtAbierto.getText());
+            tienda.setHora_cerrado(jtCerrado.getText());
+            tienda.setEmail(jtCorreo.getText());
+            tienda.setRuc(jtRuc.getText());
+            tienda.setTelefono(jtTelefono.getText());
+            
+            //validamos que el metodo delete devuelve un true
+            if(dt_tienda.editarTienda(tienda)){
+                JOptionPane.showMessageDialog (this, "El Usuario fue editado con éxito!", 
+                  "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                actualizarTabla();
+                limpiarCampos();
+            }
+            else{
+               JOptionPane.showMessageDialog(this, 
+                  "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                  "ERROR", JOptionPane.ERROR_MESSAGE); 
+            }
+        }   
     }//GEN-LAST:event_jbEditarActionPerformed
 
     private void jtLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtLimpiarActionPerformed
@@ -308,13 +351,14 @@ public class FrmDatosTienda extends javax.swing.JFrame {
     private void jtDatosTiendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtDatosTiendaMouseClicked
         // TODO add your handling code here:
         int fila = jtDatosTienda.getSelectedRow();
-        jtnombre.setText(jtDatosTienda.getValueAt(fila, 2).toString());
-        jtTelefono.setText(jtDatosTienda.getValueAt(fila, 3).toString());
-        jtCorreo.setText(jtDatosTienda.getValueAt(fila, 2).toString());
-        jtaDireccion.setText(jtDatosTienda.getValueAt(fila, 3).toString());
-        jtRuc.setText(jtDatosTienda.getValueAt(fila, 2).toString());
-        jtAbierto.setText(jtDatosTienda.getValueAt(fila, 3).toString());
-        jtCerrado.setText(jtDatosTienda.getValueAt(fila, 2).toString());
+        jtTiendaID.setText(jtDatosTienda.getValueAt(fila, 0).toString());
+        jtnombre1.setText(jtDatosTienda.getValueAt(fila, 1).toString());
+        jtTelefono.setText(jtDatosTienda.getValueAt(fila, 2).toString());
+        jtCorreo.setText(jtDatosTienda.getValueAt(fila, 3).toString());
+        jtaDireccion.setText(jtDatosTienda.getValueAt(fila, 4).toString());
+        jtRuc.setText(jtDatosTienda.getValueAt(fila, 5).toString());
+        jtAbierto.setText(jtDatosTienda.getValueAt(fila, 6).toString());
+        jtCerrado.setText(jtDatosTienda.getValueAt(fila,7).toString());
         
     }//GEN-LAST:event_jtDatosTiendaMouseClicked
 
@@ -379,7 +423,7 @@ public class FrmDatosTienda extends javax.swing.JFrame {
         
        //recorremos cada elemento de la lista y creamos el objeto
         for(Tienda tien: listTienda){
-            Object[] datosTienda = new Object[]{tien.getTiendaID(),tien.getNombre(), tien.getTelefono(), tien.getEmail(),tien.getDireccion(), tien.getRuc(), tien.getHora_cerrado(), tien.getHora_abierto()};
+            Object[] datosTienda = new Object[]{tien.getTiendaID(),tien.getNombre(), tien.getTelefono(), tien.getEmail(),tien.getDireccion(), tien.getRuc(), tien.getHora_abierto(), tien.getHora_cerrado()};
             //asignamos un arreglo de objetos a una fila del modelo
             myData.addRow(datosTienda);
         }
@@ -388,12 +432,18 @@ public class FrmDatosTienda extends javax.swing.JFrame {
     }
     
     
+    private void actualizarTabla(){
+        myData.setColumnCount(0);
+        myData.setRowCount(0);
+        llenarTablaUsuarios();
+    }
+    
     private void limpiarCampos(){
         this.jtAbierto.setText("");
         this.jtCorreo.setText("");
         this.jtaDireccion.setText("");
         this.jtCerrado.setText("");
-        this.jtnombre.setText("");
+        this.jtTiendaID.setText("");
         this.jtRuc.setText("");
         this.jtTelefono.setText("");
         
@@ -409,6 +459,7 @@ public class FrmDatosTienda extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -420,7 +471,8 @@ public class FrmDatosTienda extends javax.swing.JFrame {
     private javax.swing.JButton jtLimpiar;
     private javax.swing.JTextField jtRuc;
     private javax.swing.JTextField jtTelefono;
+    private javax.swing.JTextField jtTiendaID;
     private javax.swing.JTextArea jtaDireccion;
-    private javax.swing.JTextField jtnombre;
+    private javax.swing.JTextField jtnombre1;
     // End of variables declaration//GEN-END:variables
 }
