@@ -3,18 +3,34 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package presentacion;
+import datos.Dt_Provedores;
+import entidades.Provedores;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
  * @author DELL
  */
 public class FrmProvedores extends javax.swing.JFrame {
+    
+    
+    Provedores pro = new Provedores();
+    Dt_Provedores dtPro = new Dt_Provedores();
+    
+    private ArrayList<Provedores> listPro = new ArrayList<Provedores>();
+    
+    //declaramos un filtro de datos para la tabla
+    TableRowSorter trsfiltro;
+    DefaultTableModel myData = new DefaultTableModel();
 
     /**
      * Creates new form FrmProvedores
      */
     public FrmProvedores() {
         initComponents();
+        llenarTablaProvedores();
     }
 
     /**
@@ -28,7 +44,7 @@ public class FrmProvedores extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtProvedores = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -52,7 +68,7 @@ public class FrmProvedores extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtProvedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -78,7 +94,12 @@ public class FrmProvedores extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jtProvedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtProvedoresMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jtProvedores);
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -120,7 +141,7 @@ public class FrmProvedores extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Sexo:");
 
-        jcb_sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccion...", "Masculino", "Femenino" }));
+        jcb_sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccion...", "Femenino", "Masculino" }));
 
         jb_guardar.setText("Guardar");
 
@@ -129,6 +150,11 @@ public class FrmProvedores extends javax.swing.JFrame {
         jb_eliminar.setText("Eliminar");
 
         jb_limpiarcampos.setText("Limpiar campos");
+        jb_limpiarcampos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_limpiarcamposActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -234,6 +260,27 @@ public class FrmProvedores extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jb_limpiarcamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_limpiarcamposActionPerformed
+        // TODO add your handling code here:
+        limpiarCampos();
+    }//GEN-LAST:event_jb_limpiarcamposActionPerformed
+
+    private void jtProvedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtProvedoresMouseClicked
+        // TODO add your handling code here:
+        int fila = jtProvedores.getSelectedRow();
+
+        //asignamos los valores a los campos del formulario
+        tf_provedoresID.setText(jtProvedores.getValueAt(fila, 0).toString());
+        tf_tiendaID.setText(jtProvedores.getValueAt(fila, 1).toString());
+        tf_nombre.setText(jtProvedores.getValueAt(fila, 2).toString());
+        tf_telefono.setText(jtProvedores.getValueAt(fila, 3).toString());
+        tf_cedula.setText(jtProvedores.getValueAt(fila, 4).toString());
+        tf_email.setText(jtProvedores.getValueAt(fila, 5).toString());
+        tf_direccion.setText(jtProvedores.getValueAt(fila, 6).toString());
+        jcb_sexo.setSelectedIndex(Integer.parseInt(jtProvedores.getValueAt(fila, 7).toString())+1);  
+        
+    }//GEN-LAST:event_jtProvedoresMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -268,6 +315,61 @@ public class FrmProvedores extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void llenarTablaProvedores()
+    {
+         //llenamos la lista
+        listPro = dtPro.listarProvedores();
+        
+        //creamos un arraylist con las columnas del modelo
+        ArrayList<Object> listNombreColumnas = new ArrayList<Object>();
+        listNombreColumnas.add("ProveedorID");
+        listNombreColumnas.add("TiendaID");
+        listNombreColumnas.add("Nombre");
+        listNombreColumnas.add("Telefono");
+        listNombreColumnas.add("Cedula");
+        listNombreColumnas.add("Email");
+        listNombreColumnas.add("Direccion");
+        listNombreColumnas.add("Sexo");
+  
+
+        
+        //recorremos cada elemento del arraylist y creamos un objeto
+        for(Object column : listNombreColumnas){
+            //asignamos las columnas al modelo
+            myData.addColumn(column);
+        }
+        
+       //recorremos cada elemento de la lista y creamos el objeto
+        for(Provedores pro: listPro){
+            Object[] datosPro = new Object[]{pro.getProvedorID(),pro.getTiendaID(), pro.getNombre(), pro.getTelefono(), pro.getCedula(), pro.getEmail(), pro.getDireccion(), pro.getSexo()};
+            //asignamos un arreglo de objetos a una fila del modelo
+            myData.addRow(datosPro);
+        }
+        //Asignamos el modelo y/o coleccion de datos a la tabla
+        jtProvedores.setModel(myData);
+
+    }
+     
+     
+    private void actualizarTabla(){
+        myData.setColumnCount(0);
+        myData.setRowCount(0);
+        llenarTablaProvedores();
+    }
+     
+     private void limpiarCampos(){
+        this.tf_cedula.setText("");
+        this.tf_direccion.setText("");
+        this.tf_email.setText("");
+        this.tf_nombre.setText("");
+        this.tf_provedoresID.setText("");
+        this.tf_telefono.setText("");
+        this.tf_tiendaID.setText("");
+        this.jcb_sexo.setSelectedIndex(0);
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -280,12 +382,12 @@ public class FrmProvedores extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton jb_editar;
     private javax.swing.JButton jb_eliminar;
     private javax.swing.JButton jb_guardar;
     private javax.swing.JButton jb_limpiarcampos;
     private javax.swing.JComboBox<String> jcb_sexo;
+    private javax.swing.JTable jtProvedores;
     private javax.swing.JTextField tf_cedula;
     private javax.swing.JTextField tf_direccion;
     private javax.swing.JTextField tf_email;
