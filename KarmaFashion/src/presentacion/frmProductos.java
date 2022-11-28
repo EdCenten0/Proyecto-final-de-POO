@@ -378,22 +378,21 @@ public class FrmProductos extends javax.swing.JFrame {
         }
         else{
             //construimos nuestro objeto con los valores del formulario
-            tp = (TipoProductos)this.jcb_producto_id.getItemAt(this.jcb_producto_id.getSelectedIndex());
-            //p.setTipo_producto(jcb_producto_id.getSelectedIndex());
+      
+            p.setProducto_id(Integer.parseInt(jtf_prod_id.getText()));
             p.setInventario_id(Integer.parseInt(jtf_inventario_id.getText()));
             p.setNombre(jtf_nombre.getText());
+            p.setDescripcion(jtf_descripcion.getText());
             p.setPrecio(Float.parseFloat(jtf_precio.getText()));
             p.setMarca(jtf_marca.getText());
             p.setFecha_ingreso(jtf_fecha_ingreso.getText());
+            tp = (TipoProductos)this.jcb_producto_id.getItemAt(this.jcb_producto_id.getSelectedIndex());
+            p.setTipo_producto(tp.getTipoProdId());
             //p.setPrecio(TOP_ALIGNMENT);
-            p.setDescripcion(jtf_descripcion.getText());
             
-            //productos = (Productos)this.jcb_producto_id.getItemAt(this.jcb_producto_id.getSelectedIndex());
-            //p.setProducto_id(productos.getProducto_id());
-            //p = (Productos)this.jcb_producto_id.getSelectedItem();
            
             //validamos que el metodo guardar devuelve un true
-            if(dt_p.existeProducto(p)){
+            if(dt_p.editarProductos(p)){
                 JOptionPane.showMessageDialog (this, "El registro fue actualizado con éxito!", 
                  "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
                 actualizarTabla();
