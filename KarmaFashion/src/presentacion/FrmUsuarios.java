@@ -370,7 +370,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
         }
         else{
             //construimos nuestro objeto con los valores del formulario
-            users.setRolID(Integer.parseInt(jtUsuarioID.getText()));
+            users.setUsuarioID(Integer.parseInt(jtUsuarioID.getText()));
             users.setUsername(jtUsuario.getText());
             users.setClave(jtClave.getText());
             r = (Roles)this.jcRol.getSelectedItem();
@@ -379,7 +379,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
             
             
             //validamos que el metodo delete devuelve un true
-            if(dt_user.eliminarUsuario(users.getRolID())){
+            if(dt_user.eliminarUsuario(users.getUsuarioID())){
                 JOptionPane.showMessageDialog (this, "El Usuario fue eliminado con éxito!", 
                   "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
                 actualizarTabla();

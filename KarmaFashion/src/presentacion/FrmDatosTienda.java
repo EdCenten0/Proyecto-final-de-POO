@@ -5,6 +5,11 @@
 package presentacion;
 
 import javax.swing.JPanel;
+import entidades.Tienda;
+import datos.Dt_Tienda;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -12,11 +17,23 @@ import javax.swing.JPanel;
  */
 public class FrmDatosTienda extends javax.swing.JFrame {
 
+    
+   
+    Tienda t = new Tienda();
+    
+    private Tienda tienda = new Tienda();
+    private Dt_Tienda dt_tienda = new Dt_Tienda();
+    private ArrayList<Tienda> listTienda = new ArrayList<Tienda>();
+    
+    //declaramos un filtro de datos para la tabla
+    DefaultTableModel myData = new DefaultTableModel();
+    
     /**
      * Creates new form FrmDatosTienda
      */
     public FrmDatosTienda() {
         initComponents();
+        llenarTablaUsuarios();
     }
 
     /**
@@ -30,44 +47,74 @@ public class FrmDatosTienda extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtDatosTienda = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jtNombre = new javax.swing.JTextField();
+        jtAbierto = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jtNombre1 = new javax.swing.JTextField();
+        jtTiendaID = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jtNombre2 = new javax.swing.JTextField();
+        jtTelefono = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jtNombre3 = new javax.swing.JTextField();
+        jtRuc = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jtNombre4 = new javax.swing.JTextField();
+        jtCerrado = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jtNombre5 = new javax.swing.JTextField();
+        jtCorreo = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jtaDireccion = new javax.swing.JTextArea();
+        jbEditar = new javax.swing.JButton();
+        jtLimpiar = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jtnombre1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtDatosTienda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "TiendaID", "Nombre", "Telefono", "Email", "Direccion", "Ruc", "Hora abierto", "Hora cerrado"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                true, false, false, false, false, false, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jtDatosTienda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtDatosTiendaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jtDatosTienda);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Symbol", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Datos de tienda:");
+
+        jtAbierto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtAbiertoActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -81,9 +128,9 @@ public class FrmDatosTienda extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Abierto:");
 
-        jtNombre3.addActionListener(new java.awt.event.ActionListener() {
+        jtRuc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtNombre3ActionPerformed(evt);
+                jtRucActionPerformed(evt);
             }
         });
 
@@ -91,9 +138,9 @@ public class FrmDatosTienda extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Correo electrónico:");
 
-        jtNombre4.addActionListener(new java.awt.event.ActionListener() {
+        jtCerrado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtNombre4ActionPerformed(evt);
+                jtCerradoActionPerformed(evt);
             }
         });
 
@@ -101,9 +148,9 @@ public class FrmDatosTienda extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Cerrado:");
 
-        jtNombre5.addActionListener(new java.awt.event.ActionListener() {
+        jtCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtNombre5ActionPerformed(evt);
+                jtCorreoActionPerformed(evt);
             }
         });
 
@@ -115,77 +162,120 @@ public class FrmDatosTienda extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Ruc:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        jtaDireccion.setColumns(20);
+        jtaDireccion.setRows(5);
+        jScrollPane2.setViewportView(jtaDireccion);
+
+        jbEditar.setText("Editar");
+        jbEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEditarActionPerformed(evt);
+            }
+        });
+
+        jtLimpiar.setText("Limpiar Campos");
+        jtLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtLimpiarActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("TiendaID");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(30, 30, 30)
-                        .addComponent(jtNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6))
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtNombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtNombre4, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtNombre5, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtNombre3, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 796, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel4))
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel2))
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtnombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtTiendaID, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtAbierto, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtTelefono, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtCerrado, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtRuc, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jbEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(80, 80, 80)
+                        .addComponent(jtLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel1)
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(10, 10, 10)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel7))
-                        .addGap(27, 27, 27)
+                            .addComponent(jLabel9)
+                            .addComponent(jtTiendaID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(29, 29, 29))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jtnombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))
+                        .addGap(11, 11, 11)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtNombre2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addComponent(jtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(27, 27, 27))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel7)
+                                .addGap(62, 62, 62)
+                                .addComponent(jLabel5)))
+                        .addGap(41, 41, 41)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtRuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
+                    .addComponent(jtAbierto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jtNombre5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtNombre4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtCerrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel8)
-                    .addComponent(jtNombre3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                    .addComponent(jbEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jtLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -201,19 +291,77 @@ public class FrmDatosTienda extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtNombre3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNombre3ActionPerformed
+    private void jtRucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtRucActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtNombre3ActionPerformed
+    }//GEN-LAST:event_jtRucActionPerformed
 
-    private void jtNombre4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNombre4ActionPerformed
+    private void jtCerradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtCerradoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtNombre4ActionPerformed
+    }//GEN-LAST:event_jtCerradoActionPerformed
 
-    private void jtNombre5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNombre5ActionPerformed
+    private void jtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtCorreoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtNombre5ActionPerformed
+    }//GEN-LAST:event_jtCorreoActionPerformed
+
+    private void jtAbiertoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtAbiertoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtAbiertoActionPerformed
+
+    private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
+        // TODO add your handling code here:
+        
+        //validamos que todos los campos sean ingresados por el usuario      
+        if(jtnombre1.getText().equals("") ||jtTiendaID.getText().equals("") || jtaDireccion.getText().equals("") ||jtAbierto.getText().equals("") || jtCerrado.getText().equals("")||jtCorreo.getText().equals("") || jtRuc.getText().equals("")||jtTelefono.getText().equals("") ){
+            JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            //construimos nuestro objeto con los valores del formulario
+            tienda.setTiendaID(Integer.parseInt(jtTiendaID.getText()));
+            tienda.setNombre(jtnombre1.getText());
+            tienda.setDireccion(jtaDireccion.getText());
+            tienda.setHora_abierto(jtAbierto.getText());
+            tienda.setHora_cerrado(jtCerrado.getText());
+            tienda.setEmail(jtCorreo.getText());
+            tienda.setRuc(jtRuc.getText());
+            tienda.setTelefono(jtTelefono.getText());
+            
+            //validamos que el metodo delete devuelve un true
+            if(dt_tienda.editarTienda(tienda)){
+                JOptionPane.showMessageDialog (this, "El Usuario fue editado con éxito!", 
+                  "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                actualizarTabla();
+                limpiarCampos();
+            }
+            else{
+               JOptionPane.showMessageDialog(this, 
+                  "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                  "ERROR", JOptionPane.ERROR_MESSAGE); 
+            }
+        }   
+    }//GEN-LAST:event_jbEditarActionPerformed
+
+    private void jtLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtLimpiarActionPerformed
+        // TODO add your handling code here:
+        limpiarCampos();
+    }//GEN-LAST:event_jtLimpiarActionPerformed
+
+    private void jtDatosTiendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtDatosTiendaMouseClicked
+        // TODO add your handling code here:
+        int fila = jtDatosTienda.getSelectedRow();
+        jtTiendaID.setText(jtDatosTienda.getValueAt(fila, 0).toString());
+        jtnombre1.setText(jtDatosTienda.getValueAt(fila, 1).toString());
+        jtTelefono.setText(jtDatosTienda.getValueAt(fila, 2).toString());
+        jtCorreo.setText(jtDatosTienda.getValueAt(fila, 3).toString());
+        jtaDireccion.setText(jtDatosTienda.getValueAt(fila, 4).toString());
+        jtRuc.setText(jtDatosTienda.getValueAt(fila, 5).toString());
+        jtAbierto.setText(jtDatosTienda.getValueAt(fila, 6).toString());
+        jtCerrado.setText(jtDatosTienda.getValueAt(fila,7).toString());
+        
+    }//GEN-LAST:event_jtDatosTiendaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -253,6 +401,58 @@ public class FrmDatosTienda extends javax.swing.JFrame {
     public JPanel getFondo(){
         return jPanel1;
     }
+    private void llenarTablaUsuarios()
+    {
+         //llenamos la lista
+        listTienda = dt_tienda.listarTienda();
+        
+        //creamos un arraylist con las columnas del modelo
+        ArrayList<Object> listNombreColumnas = new ArrayList<Object>();
+        listNombreColumnas.add("TiendaID");
+        listNombreColumnas.add("Nombre");
+        listNombreColumnas.add("Telefono");
+        listNombreColumnas.add("Email");
+        listNombreColumnas.add("Direccion");
+        listNombreColumnas.add("Ruc");
+        listNombreColumnas.add("Hora_abierto");
+        listNombreColumnas.add("Hora_cerrado");
+  
+
+        
+        //recorremos cada elemento del arraylist y creamos un objeto
+        for(Object column : listNombreColumnas){
+            //asignamos las columnas al modelo
+            myData.addColumn(column);
+        }
+        
+       //recorremos cada elemento de la lista y creamos el objeto
+        for(Tienda tien: listTienda){
+            Object[] datosTienda = new Object[]{tien.getTiendaID(),tien.getNombre(), tien.getTelefono(), tien.getEmail(),tien.getDireccion(), tien.getRuc(), tien.getHora_abierto(), tien.getHora_cerrado()};
+            //asignamos un arreglo de objetos a una fila del modelo
+            myData.addRow(datosTienda);
+        }
+        //Asignamos el modelo y/o coleccion de datos a la tabla
+        jtDatosTienda.setModel(myData);
+    }
+    
+    
+    private void actualizarTabla(){
+        myData.setColumnCount(0);
+        myData.setRowCount(0);
+        llenarTablaUsuarios();
+    }
+    
+    private void limpiarCampos(){
+        this.jtAbierto.setText("");
+        this.jtCorreo.setText("");
+        this.jtaDireccion.setText("");
+        this.jtCerrado.setText("");
+        this.jtTiendaID.setText("");
+        this.jtRuc.setText("");
+        this.jtTelefono.setText("");
+        
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -263,16 +463,20 @@ public class FrmDatosTienda extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jtNombre;
-    private javax.swing.JTextField jtNombre1;
-    private javax.swing.JTextField jtNombre2;
-    private javax.swing.JTextField jtNombre3;
-    private javax.swing.JTextField jtNombre4;
-    private javax.swing.JTextField jtNombre5;
+    private javax.swing.JButton jbEditar;
+    private javax.swing.JTextField jtAbierto;
+    private javax.swing.JTextField jtCerrado;
+    private javax.swing.JTextField jtCorreo;
+    private javax.swing.JTable jtDatosTienda;
+    private javax.swing.JButton jtLimpiar;
+    private javax.swing.JTextField jtRuc;
+    private javax.swing.JTextField jtTelefono;
+    private javax.swing.JTextField jtTiendaID;
+    private javax.swing.JTextArea jtaDireccion;
+    private javax.swing.JTextField jtnombre1;
     // End of variables declaration//GEN-END:variables
 }

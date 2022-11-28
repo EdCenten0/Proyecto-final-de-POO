@@ -9,12 +9,16 @@ import presentacion.*;
 
 
 import datos.Dt_inventarios;
+import datos.Dt_Productos;
 
 import entidades.Inventarios;
+import entidades.Bodegas;
 import java.time.LocalDate;
+import datos.Dt_bodegas;
 
 import java.util.ArrayList;
 import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -24,15 +28,18 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FrmInventarios extends javax.swing.JFrame {
     
+    Bodegas b = new Bodegas();
+    Inventarios inv = new Inventarios();
 
     private Dt_inventarios dt_inventario = new Dt_inventarios();
+    private Dt_bodegas dt_bodega = new Dt_bodegas();
+
     
-    
-    
+    private ArrayList<Bodegas> listBodega = new ArrayList<Bodegas>();
     private ArrayList<Inventarios> listInventario = new ArrayList<Inventarios>();
-    //private ArrayList<Bodega> listBodega = new ArrayList<Bodega>();
     
     Dt_inventarios dtInv = new Dt_inventarios();
+    Dt_Productos dtProductos = new Dt_Productos();
     
     DefaultTableModel myData = new DefaultTableModel();
 
@@ -440,10 +447,72 @@ public class FrmInventarios extends javax.swing.JFrame {
 
     private void jb_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_EliminarActionPerformed
         // TODO add your handling code here:
+        if(jf_Fecha.getText().equals("") || jf_compras.getText().equals("") || jcb_BodegaID.getSelectedIndex()==0||jf_ventas.getText().equals("") || jf_cantInicial.getText().equals("")||jf_saldoTotal.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            //construimos nuestro objeto con los valores del formulario
+            inv.setInventarioID(Integer.parseInt(tf_inventario.getText()));
+            inv.setFecha(jf_Fecha.getText());
+            inv.setMovimiento_neg(Integer.parseInt(jf_compras.getText()));
+            inv.setMovimiento_pos(Integer.parseInt(jf_ventas.getText()));
+            inv.setSaldo_final(Integer.parseInt(jf_saldoTotal.getText()));
+            inv.setCant_inicial(Integer.parseInt(jf_cantInicial.getText()));
+            b = (Bodegas)this.jcb_BodegaID.getSelectedItem();
+            inv.setBodegaID(b.getBodegaID());
+            
+            dtProductos.eliminarInventario_Productos(inv.getInventarioID());
+
+            //validamos que el metodo delete devuelve un true
+            if(dt_inventario.eliminarInventario(inv.getInventarioID())){
+                
+                
+                JOptionPane.showMessageDialog (this, "El Usuario fue editado con éxito!", 
+                  "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                actualizarTabla();
+                limpiarCampos();
+            }
+            else{
+               JOptionPane.showMessageDialog(this, 
+                  "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                  "ERROR", JOptionPane.ERROR_MESSAGE); 
+            }
+        }   
     }//GEN-LAST:event_jb_EliminarActionPerformed
 
     private void jb_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_EditarActionPerformed
         // TODO add your handling code here:
+        //validamos que todos los campos sean ingresados por el usuario      
+        if(jf_Fecha.getText().equals("") || jf_compras.getText().equals("") || jcb_BodegaID.getSelectedIndex()==0||jf_ventas.getText().equals("") || jf_cantInicial.getText().equals("")||jf_saldoTotal.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            //construimos nuestro objeto con los valores del formulario
+            inv.setInventarioID(Integer.parseInt(tf_inventario.getText()));
+            inv.setFecha(jf_Fecha.getText());
+            inv.setMovimiento_neg(Integer.parseInt(jf_compras.getText()));
+            inv.setMovimiento_pos(Integer.parseInt(jf_ventas.getText()));
+            inv.setSaldo_final(Integer.parseInt(jf_saldoTotal.getText()));
+            inv.setCant_inicial(Integer.parseInt(jf_cantInicial.getText()));
+            b = (Bodegas)this.jcb_BodegaID.getSelectedItem();
+            inv.setBodegaID(b.getBodegaID());
+            
+            
+            //validamos que el metodo delete devuelve un true
+            if(dt_inventario.editarInventario(inv)){
+                JOptionPane.showMessageDialog (this, "El Usuario fue editado con éxito!", 
+                  "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                actualizarTabla();
+                limpiarCampos();
+            }
+            else{
+               JOptionPane.showMessageDialog(this, 
+                  "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                  "ERROR", JOptionPane.ERROR_MESSAGE); 
+            }
+        }   
     }//GEN-LAST:event_jb_EditarActionPerformed
 
     private void jtBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtBuscarMouseClicked
@@ -457,7 +526,43 @@ public class FrmInventarios extends javax.swing.JFrame {
 
     private void jb_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_AgregarActionPerformed
         // TODO add your handling code here:
-        
+        /*if(jf_Fecha.getText().equals("") || jf_MoviPos.getText().equals("") || jcb_BodegaID.getSelectedIndex()==0){
+            JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            //construimos nuestro objeto con los valores del formulario
+            //r=(Usuarios);
+            b = (Bodegas)this.jcb_BodegaID.getSelectedItem();
+            inv.setBodegaID(b.getBodegaID());
+            inv.setUsername(jtUsuario.getText());
+            inv.setClave(jtClave.getText());
+            
+            //validamos que el id no exista en la tabla de la bd
+            if(dt_user.existeUsuario(u.getUsername())){
+                JOptionPane.showMessageDialog(this, "El nombre de Usuario ya existe, digite otro nombre!", 
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+                jtUsuario.setText("");
+                jtUsuario.grabFocus(); 
+                actualizarTabla();
+                limpiarCampos();
+            }
+            else{
+            
+                //validamos que el metodo guardar devuelve un true
+                if(dt_user.guardarUsuario(u)){
+                    JOptionPane.showMessageDialog (this, "El Usuario fue almacenado con éxito!", 
+                      "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                    actualizarTabla();
+                    limpiarCampos();
+                }
+                else{
+                   JOptionPane.showMessageDialog(this, 
+                      "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                      "ERROR", JOptionPane.ERROR_MESSAGE); 
+                }
+            }
+        }*/
         
         
     }//GEN-LAST:event_jb_AgregarActionPerformed
@@ -469,7 +574,7 @@ public class FrmInventarios extends javax.swing.JFrame {
         //asignamos los valores a los campos del formulario
         tf_inventario.setText(jtInventario.getValueAt(fila, 0).toString());
         jf_cantInicial.setText(jtInventario.getValueAt(fila, 2).toString());
-        //jcb_region.setSelectedIndex(Integer.parseInt(jtInventario.getValueAt(fila, 2).toString()));  
+        jcb_BodegaID.setSelectedIndex(Integer.parseInt(jtInventario.getValueAt(fila, 1).toString()));  
         jf_ventas.setText(jtInventario.getValueAt(fila, 3).toString());
         jf_compras.setText(jtInventario.getValueAt(fila, 4).toString());
         jf_saldoTotal.setText(jtInventario.getValueAt(fila, 5).toString());
@@ -548,29 +653,41 @@ public class FrmInventarios extends javax.swing.JFrame {
         //Tengo que usar a bodega aqui 
         private void llenarComboInventario(){
         //llenamos la lista
-        listInventario = dtInv.listarInventario();
+        listBodega = dt_bodega.listarBodegas();
         
         //recorremos cada elemento de la lista y creamos el objeto
-        for(Inventarios inv: listInventario){
+        for(Bodegas bod: listBodega){
             //asignamos el objeto creado al combobox
-            this.jcb_BodegaID.addItem(inv);   
+            this.jcb_BodegaID.addItem(bod);   
         }
-        
-       
-         
+          
+    }
+        private void limpiarCampos(){
+        this.jf_Fecha.setText("");
+        this.jf_compras.setText("");
+        this.jf_ventas.setText("");
+        this.jf_cantInicial.setText("");
+        this.tf_inventario.setText("");
+        this.jf_saldoTotal.setText("");
+        this.jcb_BodegaID.setSelectedIndex(0);
         
         
     }
         
+        private void actualizarTabla(){
+        myData.setColumnCount(0);
+        myData.setRowCount(0);
+        llenarTablaProductos();
+    }
         
-         private String fecha(){
+         /*private String fecha(){
             String hoy;
             LocalDate now = LocalDate.now();
             int year = now.getYear();
             int dia = now.getDayOfMonth();
             int month = now.getMonthValue();
             return hoy=(dia+"/"+month+"/"+year);
-        }
+        }*/
 
     public JPanel getFondo(){
         return jPanel1;
