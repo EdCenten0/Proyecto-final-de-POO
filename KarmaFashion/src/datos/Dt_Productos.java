@@ -82,6 +82,40 @@ public class Dt_Productos{
         return listarProd;      
     }
     
-    
+    @SuppressWarnings("CallToPrintStackTrace")
+    public boolean eliminarInventario_Productos(int inv){
+	boolean resp=false;
+        try {
+            this.cargarDatos();
+            rs.beforeFirst();
+            while(rs.next()){
+                if(rs.getInt("InventarioID")==(inv)){
+                    rs.deleteRow();
+                    resp=true;
+                }
+            }	
+	} 
+        catch (SQLException e) {
+            System.out.println("Error existePais(): "+e.getMessage());
+            e.printStackTrace();
+	}
+        finally{
+            try{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+                if(con!=null){
+                    Conexion.closeConexion(con);
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+		
+        return resp;
+    }
     
 }
