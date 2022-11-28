@@ -198,7 +198,7 @@ public class Dt_usuarios {
             this.cargarDatos();
             rs.beforeFirst();
             while(rs.next()){
-                if(rs.getInt("RolID")==id){
+                if(rs.getInt("UsuarioID")==id){
                     rs.deleteRow();
                     resp=true;
                 }

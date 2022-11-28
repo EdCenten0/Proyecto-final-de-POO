@@ -76,6 +76,85 @@ public class Dt_inventarios {
         return listaInvent;      
     }
     
+    @SuppressWarnings("CallToPrintStackTrace")
+    public boolean editarInventario(Inventarios inv){
+	boolean resp=false;
+        try {
+            this.cargarDatos();
+            rs.beforeFirst();
+            while(rs.next()){
+                if(rs.getInt("InventarioID")==(inv.getInventarioID())){
+                    rs.updateString("Fecha",inv.getFecha());
+                    rs.updateInt("BodegaID", inv.getBodegaID());
+                    rs.updateInt("Cant_inicial", inv.getCant_inicial());
+                    rs.updateInt("Saldo_final", inv.getSaldo_final());
+                    rs.updateInt("Movimiento_neg", inv.getMovimiento_neg());
+                    rs.updateInt("Movimiento_pos", inv.getMovimiento_pos());
+                    rs.updateRow();
+                    
+                    
+                    resp=true;
+                }
+            }	
+	} 
+        catch (SQLException e) {
+            System.out.println("Error existePais(): "+e.getMessage());
+            e.printStackTrace();
+	}
+        finally{
+            try{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+                if(con!=null){
+                    Conexion.closeConexion(con);
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+		
+        return resp;
+    }
     
+    
+    @SuppressWarnings("CallToPrintStackTrace")
+    public boolean eliminarInventario(int inv){
+	boolean resp=false;
+        try {
+            this.cargarDatos();
+            rs.beforeFirst();
+            while(rs.next()){
+                if(rs.getInt("InventarioID")==(inv)){
+                    rs.deleteRow();
+                    resp=true;
+                }
+            }	
+	} 
+        catch (SQLException e) {
+            System.out.println("Error existePais(): "+e.getMessage());
+            e.printStackTrace();
+	}
+        finally{
+            try{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+                if(con!=null){
+                    Conexion.closeConexion(con);
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+		
+        return resp;
+    }
    
 }
