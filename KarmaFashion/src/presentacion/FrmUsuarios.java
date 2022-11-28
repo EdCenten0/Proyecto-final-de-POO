@@ -407,35 +407,41 @@ public class FrmUsuarios extends javax.swing.JFrame {
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         else{
-            //construimos nuestro objeto con los valores del formulario
-            //r=(Usuarios);
-            r = (Roles)this.jcRol.getSelectedItem();
-            u.setRolID(r.getRolID());
-            u.setUsername(jtUsuario.getText());
-            u.setClave(jtClave.getText());
-            
-            //validamos que el id no exista en la tabla de la bd
-            if(dt_user.existeUsuario(u.getUsername())){
-                JOptionPane.showMessageDialog(this, "El nombre de Usuario ya existe, digite otro nombre!", 
-                    "ERROR", JOptionPane.WARNING_MESSAGE);
-                jtUsuario.setText("");
-                jtUsuario.grabFocus(); 
-                actualizarTabla();
-                limpiarCampos();
-            }
-            else{
-            
-                //validamos que el metodo guardar devuelve un true
-                if(dt_user.guardarUsuario(u)){
-                    JOptionPane.showMessageDialog (this, "El Usuario fue almacenado con éxito!", 
-                      "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+            if(jtUsuario.getText().length() > 15){
+                mostrarLength("Usuario", 15, jtUsuario.getText().length());
+            }else if(jtClave.getText().length() > 15){
+                mostrarLength("Clave", 15, jtClave.getText().length());
+            }else{
+                //construimos nuestro objeto con los valores del formulario
+                //r=(Usuarios);
+                r = (Roles)this.jcRol.getSelectedItem();
+                u.setRolID(r.getRolID());
+                u.setUsername(jtUsuario.getText());
+                u.setClave(jtClave.getText());
+
+                //validamos que el id no exista en la tabla de la bd
+                if(dt_user.existeUsuario(u.getUsername())){
+                    JOptionPane.showMessageDialog(this, "El nombre de Usuario ya existe, digite otro nombre!", 
+                        "ERROR", JOptionPane.WARNING_MESSAGE);
+                    jtUsuario.setText("");
+                    jtUsuario.grabFocus(); 
                     actualizarTabla();
                     limpiarCampos();
                 }
                 else{
-                   JOptionPane.showMessageDialog(this, 
-                      "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
-                      "ERROR", JOptionPane.ERROR_MESSAGE); 
+
+                    //validamos que el metodo guardar devuelve un true
+                    if(dt_user.guardarUsuario(u)){
+                        JOptionPane.showMessageDialog (this, "El Usuario fue almacenado con éxito!", 
+                          "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                        actualizarTabla();
+                        limpiarCampos();
+                    }
+                    else{
+                       JOptionPane.showMessageDialog(this, 
+                          "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                          "ERROR", JOptionPane.ERROR_MESSAGE); 
+                    }
                 }
             }
         }
@@ -463,25 +469,31 @@ public class FrmUsuarios extends javax.swing.JFrame {
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         else{
-            //construimos nuestro objeto con los valores del formulario
-            users.setUsuarioID(Integer.parseInt(jtUsuarioID.getText()));
-            users.setUsername(jtUsuario.getText());
-            users.setClave(jtClave.getText());
-            r = (Roles)this.jcRol.getSelectedItem();
-            users.setRolID(r.getRolID());
-            
-            
-            //validamos que el metodo delete devuelve un true
-            if(dt_user.editarUsuario(users)){
-                JOptionPane.showMessageDialog (this, "El Usuario fue editado con éxito!", 
-                  "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
-                actualizarTabla();
-                limpiarCampos();
-            }
-            else{
-               JOptionPane.showMessageDialog(this, 
-                  "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
-                  "ERROR", JOptionPane.ERROR_MESSAGE); 
+            if(jtUsuario.getText().length() > 15){
+                mostrarLength("Usuario", 15, jtUsuario.getText().length());
+            }else if(jtClave.getText().length() > 15){
+                mostrarLength("Clave", 15, jtClave.getText().length());
+            }else{
+                //construimos nuestro objeto con los valores del formulario
+                users.setUsuarioID(Integer.parseInt(jtUsuarioID.getText()));
+                users.setUsername(jtUsuario.getText());
+                users.setClave(jtClave.getText());
+                r = (Roles)this.jcRol.getSelectedItem();
+                users.setRolID(r.getRolID());
+
+
+                //validamos que el metodo delete devuelve un true
+                if(dt_user.editarUsuario(users)){
+                    JOptionPane.showMessageDialog (this, "El Usuario fue editado con éxito!", 
+                      "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                    actualizarTabla();
+                    limpiarCampos();
+                }
+                else{
+                   JOptionPane.showMessageDialog(this, 
+                      "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                      "ERROR", JOptionPane.ERROR_MESSAGE); 
+                }
             }
         }   
 
@@ -611,6 +623,11 @@ public class FrmUsuarios extends javax.swing.JFrame {
      
     public JPanel getFondo(){
         return jPanel1;
+    }
+    
+    private void mostrarLength(String nombre, int lengthOriginal, int lengthActual){
+        JOptionPane.showMessageDialog(this, "El limite de caracteres de "+ nombre +" es de "+ lengthOriginal +", usted ingresó " + lengthActual,"Limite de caracteres",JOptionPane.ERROR_MESSAGE);
+       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

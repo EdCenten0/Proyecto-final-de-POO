@@ -310,13 +310,21 @@ public class FrmBodegas extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btn_guardarMouseClicked
 
+    
+    
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
         if(tf_nombre.getText().equals("") || ta_noDocumento.getText().equals("")){
             JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         else{
-            bodegas.setTiendaID(1);
+            
+            if(ta_noDocumento.getText().length() > 10){
+                mostrarLength("No. documento",10 , ta_noDocumento.getText().length());
+            }else if(tf_nombre.getText().length() > 50){
+                 mostrarLength("Nombre",50 , tf_nombre.getText().length());
+            }else{
+                bodegas.setTiendaID(1);
             bodegas.setNombre(tf_nombre.getText());
             bodegas.setNo_documento(ta_noDocumento.getText());
             
@@ -341,6 +349,8 @@ public class FrmBodegas extends javax.swing.JFrame {
                       "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
                       "ERROR", JOptionPane.ERROR_MESSAGE); 
                 }
+            }
+            
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_guardarActionPerformed
@@ -373,22 +383,28 @@ public class FrmBodegas extends javax.swing.JFrame {
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         else{
-            bodegas.setBodegaID(Integer.parseInt(tf_bodegaID.getText()));
-            bodegas.setTiendaID(Integer.parseInt(tf_bodegaID.getText()));
-            bodegas.setNombre(tf_nombre.getText());
-            bodegas.setNo_documento(ta_noDocumento.getText());
-            
-            
-            if(dt_bodegas.editarBodega(bodegas)){
-                JOptionPane.showMessageDialog (this, "El registro fue actualizado con éxito!", 
-                  "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
-                actualizarTabla();
-                limpiarCampos();
-            }
-            else{
-                JOptionPane.showMessageDialog(this, 
-                  "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
-                  "ERROR", JOptionPane.ERROR_MESSAGE);
+            if(ta_noDocumento.getText().length() > 10){
+                mostrarLength("No. documento",10 , ta_noDocumento.getText().length());
+            }else if(tf_nombre.getText().length() > 50){
+                 mostrarLength("Nombre",50 , tf_nombre.getText().length());
+            }else{
+                bodegas.setBodegaID(Integer.parseInt(tf_bodegaID.getText()));
+                bodegas.setTiendaID(Integer.parseInt(tf_bodegaID.getText()));
+                bodegas.setNombre(tf_nombre.getText());
+                bodegas.setNo_documento(ta_noDocumento.getText());
+
+
+                if(dt_bodegas.editarBodega(bodegas)){
+                    JOptionPane.showMessageDialog (this, "El registro fue actualizado con éxito!", 
+                      "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                    actualizarTabla();
+                    limpiarCampos();
+                }
+                else{
+                    JOptionPane.showMessageDialog(this, 
+                      "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                      "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
             }
         }
         
@@ -482,6 +498,11 @@ public class FrmBodegas extends javax.swing.JFrame {
         
     public JPanel getFondo(){
         return jPanel1;
+    }
+    
+    private void mostrarLength(String nombre, int lengthOriginal, int lengthActual){
+        JOptionPane.showMessageDialog(this, "El limite de caracteres de "+ nombre +" es de "+ lengthOriginal +", usted ingresó " + lengthActual,"Limite de caracteres",JOptionPane.ERROR_MESSAGE);
+       
     }
         
     /**
