@@ -4,13 +4,14 @@
  */
 package presentacion;
 
-import datos.Dt_rol;
+
 import datos.Dt_rol;
 import entidades.Roles;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -66,13 +67,14 @@ public class FrmRol extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel2.setForeground(new java.awt.Color(255, 204, 204));
 
-        jbGuardar.setBackground(new java.awt.Color(255, 204, 204));
+        jbGuardar.setBackground(new java.awt.Color(153, 153, 153));
+        jbGuardar.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
         jbGuardar.setForeground(new java.awt.Color(0, 0, 0));
         jbGuardar.setText("Guardar");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -81,7 +83,7 @@ public class FrmRol extends javax.swing.JFrame {
             }
         });
 
-        jbEliminar.setBackground(new java.awt.Color(255, 204, 204));
+        jbEliminar.setBackground(new java.awt.Color(153, 153, 153));
         jbEliminar.setForeground(new java.awt.Color(0, 0, 0));
         jbEliminar.setText("Eliminar");
         jbEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +92,7 @@ public class FrmRol extends javax.swing.JFrame {
             }
         });
 
-        jbEditar.setBackground(new java.awt.Color(255, 204, 204));
+        jbEditar.setBackground(new java.awt.Color(153, 153, 153));
         jbEditar.setForeground(new java.awt.Color(0, 0, 0));
         jbEditar.setText("Editar");
         jbEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -99,7 +101,7 @@ public class FrmRol extends javax.swing.JFrame {
             }
         });
 
-        jbLimpiar.setBackground(new java.awt.Color(255, 204, 204));
+        jbLimpiar.setBackground(new java.awt.Color(153, 153, 153));
         jbLimpiar.setForeground(new java.awt.Color(0, 0, 0));
         jbLimpiar.setText("Limpiar campos");
         jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -109,7 +111,7 @@ public class FrmRol extends javax.swing.JFrame {
         });
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Rol ID:");
 
@@ -117,10 +119,19 @@ public class FrmRol extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre del rol:");
 
+        jtRol.setBackground(new java.awt.Color(204, 204, 204));
+        jtRol.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
+        jtRol.setForeground(new java.awt.Color(0, 0, 0));
+
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI Symbol", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Rol");
+
+        jtRolID.setEditable(false);
+        jtRolID.setBackground(new java.awt.Color(204, 204, 204));
+        jtRolID.setFont(new java.awt.Font("Segoe UI Symbol", 1, 12)); // NOI18N
+        jtRolID.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -129,48 +140,45 @@ public class FrmRol extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jbGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(27, 27, 27)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jtRolID, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtRol, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jbGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
+                        .addGap(18, 18, 18)
                         .addComponent(jbEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jbLimpiar)
-                        .addGap(15, 15, 15))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtRol, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtRolID, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 10, Short.MAX_VALUE))))
+                        .addGap(18, 18, 18)
+                        .addComponent(jbLimpiar)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jtRolID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jtRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbGuardar)
                     .addComponent(jbEliminar)
                     .addComponent(jbEditar)
                     .addComponent(jbLimpiar))
-                .addContainerGap())
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         TablaRol.setBackground(new java.awt.Color(204, 204, 204));
@@ -213,10 +221,10 @@ public class FrmRol extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(TablaRol);
 
-        jPanel3.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(new javax.swing.border.MatteBorder(null));
 
-        jtBuscar.setBackground(new java.awt.Color(255, 204, 204));
+        jtBuscar.setBackground(new java.awt.Color(255, 255, 255));
         jtBuscar.setForeground(new java.awt.Color(0, 0, 0));
         jtBuscar.setText("Buscar...");
         jtBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -237,7 +245,7 @@ public class FrmRol extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(272, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,21 +261,22 @@ public class FrmRol extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -327,32 +336,38 @@ public class FrmRol extends javax.swing.JFrame {
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         else{
-            //construimos nuestro objeto con los valores del formulario
-            //rl.setRolID(Integer.parseInt(jtRolID.getText()));
-            rl.setRol_name(jtRol.getText());
             
-            
-            //validamos que el id no exista en la tabla de la bd
-            if(dt_rol.existeRol(rl.getRol_name())){
-                JOptionPane.showMessageDialog(this, "El rol ya existe, digite otro rol!", 
-                    "ERROR", JOptionPane.WARNING_MESSAGE);
-                jtRolID.setText("");
-                jtRolID.grabFocus(); 
-            }
-            else{
-                //validamos que el metodo guardar devuelve un true
-                if(dt_rol.guardarRol(rl)){
-                    JOptionPane.showMessageDialog (this, "El rol fue almacenado con éxito!", 
-                      "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
-                    actualizarTabla();
-                    limpiarCampos();
+            if(jtRol.getText().length() > 15){
+                mostrarLength("Nombre de rol", 15, jtRol.getText().length());
+            }else{
+                //construimos nuestro objeto con los valores del formulario
+                //rl.setRolID(Integer.parseInt(jtRolID.getText()));
+                rl.setRol_name(jtRol.getText());
+
+
+                //validamos que el id no exista en la tabla de la bd
+                if(dt_rol.existeRol(rl.getRol_name())){
+                    JOptionPane.showMessageDialog(this, "El rol ya existe, digite otro rol!", 
+                        "ERROR", JOptionPane.WARNING_MESSAGE);
+                    jtRolID.setText("");
+                    jtRolID.grabFocus(); 
                 }
                 else{
-                   JOptionPane.showMessageDialog(this, 
-                      "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
-                      "ERROR", JOptionPane.ERROR_MESSAGE); 
+                    //validamos que el metodo guardar devuelve un true
+                    if(dt_rol.guardarRol(rl)){
+                        JOptionPane.showMessageDialog (this, "El rol fue almacenado con éxito!", 
+                          "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                        actualizarTabla();
+                        limpiarCampos();
+                    }
+                    else{
+                       JOptionPane.showMessageDialog(this, 
+                          "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                          "ERROR", JOptionPane.ERROR_MESSAGE); 
+                    }
                 }
             }
+            
         }
         
     }//GEN-LAST:event_jbGuardarActionPerformed
@@ -380,22 +395,26 @@ public class FrmRol extends javax.swing.JFrame {
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         else{
-            //construimos nuestro objeto con los valores del formulario
-            rl.setRolID(Integer.parseInt(jtRolID.getText()));
-            rl.setRol_name(jtRol.getText());
-            
-            
-            //validamos que el metodo actualizar devuelve un true
-            if(dt_rol.editarRol(rl)){
-                JOptionPane.showMessageDialog (this, "El rol fue actualizado con éxito!", 
-                  "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
-                actualizarTabla();
-                limpiarCampos();
-            }
-            else{
-               JOptionPane.showMessageDialog(this, 
-                  "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
-                  "ERROR", JOptionPane.ERROR_MESSAGE); 
+            if(jtRol.getText().length() > 15){
+                mostrarLength("Nombre de rol", 15, jtRol.getText().length());
+            }else{
+                //construimos nuestro objeto con los valores del formulario
+                rl.setRolID(Integer.parseInt(jtRolID.getText()));
+                rl.setRol_name(jtRol.getText());
+
+
+                //validamos que el metodo actualizar devuelve un true
+                if(dt_rol.editarRol(rl)){
+                    JOptionPane.showMessageDialog (this, "El rol fue actualizado con éxito!", 
+                      "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                    actualizarTabla();
+                    limpiarCampos();
+                }
+                else{
+                   JOptionPane.showMessageDialog(this, 
+                      "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                      "ERROR", JOptionPane.ERROR_MESSAGE); 
+                }
             }
         }   
     }//GEN-LAST:event_jbEditarActionPerformed
@@ -497,6 +516,15 @@ public class FrmRol extends javax.swing.JFrame {
      
      private void filtrarTabla(){
        trsfiltro.setRowFilter(RowFilter.regexFilter(jtBuscar.getText(), 1));
+    }
+     
+    public JPanel getFondo(){
+        return jPanel1;
+    }
+    
+    private void mostrarLength(String nombre, int lengthOriginal, int lengthActual){
+        JOptionPane.showMessageDialog(this, "El limite de caracteres de "+ nombre +" es de "+ lengthOriginal +", usted ingresó " + lengthActual,"Limite de caracteres",JOptionPane.ERROR_MESSAGE);
+       
     }
     
     

@@ -18,6 +18,7 @@ import java.awt.event.KeyEvent;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -84,7 +85,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(0, 0));
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(204, 204, 204));
 
         jtUsuarios.setBackground(new java.awt.Color(204, 204, 204));
@@ -131,8 +132,8 @@ public class FrmUsuarios extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jtUsuarios);
 
-        jbAgregar.setBackground(new java.awt.Color(255, 204, 204));
-        jbAgregar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jbAgregar.setBackground(new java.awt.Color(153, 153, 153));
+        jbAgregar.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
         jbAgregar.setForeground(new java.awt.Color(0, 0, 0));
         jbAgregar.setText("Agregar usuario");
         jbAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -141,8 +142,8 @@ public class FrmUsuarios extends javax.swing.JFrame {
             }
         });
 
-        jbEliminar.setBackground(new java.awt.Color(255, 204, 204));
-        jbEliminar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jbEliminar.setBackground(new java.awt.Color(153, 153, 153));
+        jbEliminar.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
         jbEliminar.setForeground(new java.awt.Color(0, 0, 0));
         jbEliminar.setText("Eliminar Usuario");
         jbEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -151,8 +152,8 @@ public class FrmUsuarios extends javax.swing.JFrame {
             }
         });
 
-        jbEditar.setBackground(new java.awt.Color(255, 204, 204));
-        jbEditar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jbEditar.setBackground(new java.awt.Color(153, 153, 153));
+        jbEditar.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
         jbEditar.setForeground(new java.awt.Color(0, 0, 0));
         jbEditar.setText("Editar Usuario");
         jbEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -161,31 +162,47 @@ public class FrmUsuarios extends javax.swing.JFrame {
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Serif", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI Symbol", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Usuarios");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Usuario ID:");
+
+        jtUsuario.setBackground(new java.awt.Color(204, 204, 204));
+        jtUsuario.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
+        jtUsuario.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Rol:");
 
+        jcRol.setBackground(new java.awt.Color(204, 204, 204));
+        jcRol.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
+        jcRol.setForeground(new java.awt.Color(0, 0, 0));
         jcRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Usuario:");
 
+        jtUsuarioID.setEditable(false);
+        jtUsuarioID.setBackground(new java.awt.Color(204, 204, 204));
+        jtUsuarioID.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
+        jtUsuarioID.setForeground(new java.awt.Color(0, 0, 0));
+
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Clave:");
+
+        jtClave.setBackground(new java.awt.Color(204, 204, 204));
+        jtClave.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
+        jtClave.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -195,18 +212,21 @@ public class FrmUsuarios extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
                             .addComponent(jLabel5))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtUsuario)
-                            .addComponent(jcRol, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jtUsuarioID)
-                            .addComponent(jtClave, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtClave, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jtUsuarioID, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jcRol, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -214,26 +234,26 @@ public class FrmUsuarios extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jtUsuarioID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jcRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(jtUsuarioID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(jcRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jtClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addGap(0, 14, Short.MAX_VALUE))
         );
 
-        jbLimpiar.setBackground(new java.awt.Color(255, 204, 204));
-        jbLimpiar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jbLimpiar.setBackground(new java.awt.Color(153, 153, 153));
+        jbLimpiar.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
         jbLimpiar.setForeground(new java.awt.Color(0, 0, 0));
         jbLimpiar.setText("Limpiar campos");
         jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -242,10 +262,11 @@ public class FrmUsuarios extends javax.swing.JFrame {
             }
         });
 
-        jPanel3.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(new javax.swing.border.MatteBorder(null));
 
-        jtbuscar.setBackground(new java.awt.Color(255, 204, 204));
+        jtbuscar.setBackground(new java.awt.Color(204, 204, 204));
+        jtbuscar.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
         jtbuscar.setForeground(new java.awt.Color(0, 0, 0));
         jtbuscar.setText("Buscar...");
         jtbuscar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -285,13 +306,13 @@ public class FrmUsuarios extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jbAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -299,7 +320,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
                         .addComponent(jbEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jbLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 11, Short.MAX_VALUE)))
+                        .addGap(0, 179, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -313,10 +334,11 @@ public class FrmUsuarios extends javax.swing.JFrame {
                     .addComponent(jbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbEditar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -385,35 +407,41 @@ public class FrmUsuarios extends javax.swing.JFrame {
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         else{
-            //construimos nuestro objeto con los valores del formulario
-            //r=(Usuarios);
-            r = (Roles)this.jcRol.getSelectedItem();
-            u.setRolID(r.getRolID());
-            u.setUsername(jtUsuario.getText());
-            u.setClave(jtClave.getText());
-            
-            //validamos que el id no exista en la tabla de la bd
-            if(dt_user.existeUsuario(u.getUsername())){
-                JOptionPane.showMessageDialog(this, "El nombre de Usuario ya existe, digite otro nombre!", 
-                    "ERROR", JOptionPane.WARNING_MESSAGE);
-                jtUsuario.setText("");
-                jtUsuario.grabFocus(); 
-                actualizarTabla();
-                limpiarCampos();
-            }
-            else{
-            
-                //validamos que el metodo guardar devuelve un true
-                if(dt_user.guardarUsuario(u)){
-                    JOptionPane.showMessageDialog (this, "El Usuario fue almacenado con éxito!", 
-                      "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+            if(jtUsuario.getText().length() > 15){
+                mostrarLength("Usuario", 15, jtUsuario.getText().length());
+            }else if(jtClave.getText().length() > 15){
+                mostrarLength("Clave", 15, jtClave.getText().length());
+            }else{
+                //construimos nuestro objeto con los valores del formulario
+                //r=(Usuarios);
+                r = (Roles)this.jcRol.getSelectedItem();
+                u.setRolID(r.getRolID());
+                u.setUsername(jtUsuario.getText());
+                u.setClave(jtClave.getText());
+
+                //validamos que el id no exista en la tabla de la bd
+                if(dt_user.existeUsuario(u.getUsername())){
+                    JOptionPane.showMessageDialog(this, "El nombre de Usuario ya existe, digite otro nombre!", 
+                        "ERROR", JOptionPane.WARNING_MESSAGE);
+                    jtUsuario.setText("");
+                    jtUsuario.grabFocus(); 
                     actualizarTabla();
                     limpiarCampos();
                 }
                 else{
-                   JOptionPane.showMessageDialog(this, 
-                      "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
-                      "ERROR", JOptionPane.ERROR_MESSAGE); 
+
+                    //validamos que el metodo guardar devuelve un true
+                    if(dt_user.guardarUsuario(u)){
+                        JOptionPane.showMessageDialog (this, "El Usuario fue almacenado con éxito!", 
+                          "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                        actualizarTabla();
+                        limpiarCampos();
+                    }
+                    else{
+                       JOptionPane.showMessageDialog(this, 
+                          "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                          "ERROR", JOptionPane.ERROR_MESSAGE); 
+                    }
                 }
             }
         }
@@ -441,25 +469,31 @@ public class FrmUsuarios extends javax.swing.JFrame {
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         else{
-            //construimos nuestro objeto con los valores del formulario
-            users.setUsuarioID(Integer.parseInt(jtUsuarioID.getText()));
-            users.setUsername(jtUsuario.getText());
-            users.setClave(jtClave.getText());
-            r = (Roles)this.jcRol.getSelectedItem();
-            users.setRolID(r.getRolID());
-            
-            
-            //validamos que el metodo delete devuelve un true
-            if(dt_user.editarUsuario(users)){
-                JOptionPane.showMessageDialog (this, "El Usuario fue editado con éxito!", 
-                  "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
-                actualizarTabla();
-                limpiarCampos();
-            }
-            else{
-               JOptionPane.showMessageDialog(this, 
-                  "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
-                  "ERROR", JOptionPane.ERROR_MESSAGE); 
+            if(jtUsuario.getText().length() > 15){
+                mostrarLength("Usuario", 15, jtUsuario.getText().length());
+            }else if(jtClave.getText().length() > 15){
+                mostrarLength("Clave", 15, jtClave.getText().length());
+            }else{
+                //construimos nuestro objeto con los valores del formulario
+                users.setUsuarioID(Integer.parseInt(jtUsuarioID.getText()));
+                users.setUsername(jtUsuario.getText());
+                users.setClave(jtClave.getText());
+                r = (Roles)this.jcRol.getSelectedItem();
+                users.setRolID(r.getRolID());
+
+
+                //validamos que el metodo delete devuelve un true
+                if(dt_user.editarUsuario(users)){
+                    JOptionPane.showMessageDialog (this, "El Usuario fue editado con éxito!", 
+                      "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                    actualizarTabla();
+                    limpiarCampos();
+                }
+                else{
+                   JOptionPane.showMessageDialog(this, 
+                      "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                      "ERROR", JOptionPane.ERROR_MESSAGE); 
+                }
             }
         }   
 
@@ -586,6 +620,15 @@ public class FrmUsuarios extends javax.swing.JFrame {
         this.jcRol.setSelectedIndex(0);
     }
      
+     
+    public JPanel getFondo(){
+        return jPanel1;
+    }
+    
+    private void mostrarLength(String nombre, int lengthOriginal, int lengthActual){
+        JOptionPane.showMessageDialog(this, "El limite de caracteres de "+ nombre +" es de "+ lengthOriginal +", usted ingresó " + lengthActual,"Limite de caracteres",JOptionPane.ERROR_MESSAGE);
+       
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

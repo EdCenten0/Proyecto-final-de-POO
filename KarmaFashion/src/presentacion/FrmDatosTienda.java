@@ -4,6 +4,7 @@
  */
 package presentacion;
 
+import javax.swing.JPanel;
 import entidades.Tienda;
 import datos.Dt_Tienda;
 import java.util.ArrayList;
@@ -397,6 +398,9 @@ public class FrmDatosTienda extends javax.swing.JFrame {
         });
     }
     
+    public JPanel getFondo(){
+        return jPanel1;
+    }
     private void llenarTablaUsuarios()
     {
          //llenamos la lista

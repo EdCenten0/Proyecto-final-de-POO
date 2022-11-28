@@ -90,7 +90,7 @@ public class Dt_Clientes {
             rs.moveToInsertRow();
             rs.updateInt("TiendaID", clientes.getTienda_id());
             rs.updateString("Nombre", clientes.getNombre());
-            rs.updateString("Cedula", clientes.getNombre());
+            rs.updateString("Cedula", clientes.getCedula());
             rs.updateString("Numero_telefonico", clientes.getNumero_telefonico());
             rs.updateString("Email", clientes.getEmail());
             rs.updateString("Direccion", clientes.getDireccion());
