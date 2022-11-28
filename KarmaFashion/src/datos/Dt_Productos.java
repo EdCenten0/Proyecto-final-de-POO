@@ -92,8 +92,8 @@ public class Dt_Productos{
             this.cargarDatos();
             rs.moveToInsertRow();
             //rs.updateInt("ProductoID", c.getProducto_id());
-            rs.updateInt("TipoproductoID", c.getTipo_producto());
             rs.updateInt("InventarioID", c.getInventario_id());
+            rs.updateInt("TipoproductoID", c.getTipo_producto());
             rs.updateString("Nombre", c.getNombre());
             rs.updateString("Descripcion", c.getDescripcion());
             rs.updateFloat("Precio", c.getPrecio());

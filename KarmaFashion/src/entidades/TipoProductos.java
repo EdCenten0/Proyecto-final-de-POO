@@ -11,7 +11,7 @@ package entidades;
 public class TipoProductos {
 
     
-    
+    private int tipoProdId;
     private String nombre;
     private String descripcion;
     private int estado;
@@ -21,10 +21,11 @@ public class TipoProductos {
     }
     
     //constructor
-    public TipoProductos(String nombre, String descripcion, int estado) {
+    public TipoProductos(String nombre, String descripcion, int estado, int tipoProdId) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.estado = estado;
+        this.tipoProdId = tipoProdId;
     }
     
     public String getNombre() {
@@ -51,10 +52,16 @@ public class TipoProductos {
         this.estado = estado;
     }
 
-    @Override
-    public String toString() {
-        return nombre;
+    public int getTipoProdId() {
+        return tipoProdId;
+    }
+
+    public void setTipoProdId(int tipoProdId) {
+        this.tipoProdId = tipoProdId;
     }
     
-    
+     @Override
+    public String toString() {
+        return this.getNombre();
+    }
 }

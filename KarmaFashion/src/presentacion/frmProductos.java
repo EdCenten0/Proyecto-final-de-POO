@@ -22,27 +22,26 @@ import javax.swing.table.TableRowSorter;
  */
 public class FrmProductos extends javax.swing.JFrame {
     
-    //atributos
-    //se declaran las entidades
-    private Productos productos = new Productos();
-    //se declaran las clases de datos
+    //Declaracion de objetos globlales
+    
+    //entidades
+    private Productos p = new Productos();
+    private TipoProductos tp = new TipoProductos();
+    
+    //clases
     private Dt_Productos dt_p = new Dt_Productos();
-    //se declaran las listas de datos
+    private dt_TipoProductos dTP = new dt_TipoProductos();
+    
+    //listas
     private ArrayList<Productos> listProductos = new ArrayList<Productos>();
     private ArrayList<TipoProductos> listTipoProductos = new ArrayList<TipoProductos>();
+     
     
     //se declara el modelo de datos de la tabla
     DefaultTableModel myData = new DefaultTableModel();
     //se declara un filtro para los datos de la tabla
     TableRowSorter trsfiltro;
     
-    //entidades
-    Productos p = new Productos();
-    TipoProductos tp = new TipoProductos();
-    
-    //datos
-    Dt_Productos dtp = new Dt_Productos(); 
-    dt_TipoProductos dTP = new dt_TipoProductos();
     
 
     /**
@@ -51,9 +50,10 @@ public class FrmProductos extends javax.swing.JFrame {
     //constructor
     public FrmProductos() {
         initComponents();
+        llenarComboTipProd();
         llenarTablaProd();
         limpiarCampos();
-        llenarComboTipProd();
+        
 
     }
 
@@ -378,7 +378,7 @@ public class FrmProductos extends javax.swing.JFrame {
         }
         else{
             //construimos nuestro objeto con los valores del formulario
-            p = (Productos)this.jcb_producto_id.getItemAt(this.jcb_producto_id.getSelectedIndex());
+            tp = (TipoProductos)this.jcb_producto_id.getItemAt(this.jcb_producto_id.getSelectedIndex());
             //p.setTipo_producto(jcb_producto_id.getSelectedIndex());
             p.setInventario_id(Integer.parseInt(jtf_inventario_id.getText()));
             p.setNombre(jtf_nombre.getText());
@@ -393,7 +393,7 @@ public class FrmProductos extends javax.swing.JFrame {
             //p = (Productos)this.jcb_producto_id.getSelectedItem();
            
             //validamos que el metodo guardar devuelve un true
-            if(dtp.editarProductos(p)){
+            if(dt_p.existeProducto(p)){
                 JOptionPane.showMessageDialog (this, "El registro fue actualizado con éxito!", 
                  "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
                 actualizarTabla();
@@ -418,18 +418,16 @@ public class FrmProductos extends javax.swing.JFrame {
         int fila = this.jtbl_productos.getSelectedRow();
         int idProd = 0; //guarda el idProductos que se obtiene de la tabla
         int size = 0; //guarda la cantidad de elementos que hay en el jcombobx de Locations
-        int pos = 0; //variable de control para recorrer las posiciones de los elementos en el jcombobox
+        int pos = 1; //variable de control para recorrer las posiciones de los elementos en el jcombobox
         
         //asignamos los valores a los campos del formulario
-        jtf_prod_id.setText(jtbl_productos.getValueAt(fila, 0).toString());
-        jtf_inventario_id.setText(jtbl_productos.getValueAt(fila, 1).toString());
-        jtf_nombre.setText(jtbl_productos.getValueAt(fila, 3).toString());
-        jtf_precio.setText(jtbl_productos.getValueAt(fila, 5).toString());
-        jtf_marca.setText(jtbl_productos.getValueAt(fila, 6).toString());
-        jtf_fecha_ingreso.setText(jtbl_productos.getValueAt(fila, 7).toString());
-        jtf_descripcion.setText(jtbl_productos.getValueAt(fila, 4).toString());
-        jcb_producto_id.setSelectedIndex(Integer.parseInt(jtbl_productos.getValueAt(fila, 2).toString()));
-        
+        this.jtf_prod_id.setText(jtbl_productos.getValueAt(fila, 0).toString());
+        this.jtf_inventario_id.setText(jtbl_productos.getValueAt(fila, 1).toString());
+        this.jtf_nombre.setText(jtbl_productos.getValueAt(fila, 3).toString());
+        this.jtf_descripcion.setText(jtbl_productos.getValueAt(fila, 4).toString());
+        this.jtf_precio.setText(jtbl_productos.getValueAt(fila, 5).toString());
+        this.jtf_marca.setText(jtbl_productos.getValueAt(fila, 6).toString());
+        this.jtf_fecha_ingreso.setText(jtbl_productos.getValueAt(fila, 7).toString());
         
         //obtenemos el idProductos del jtable
         idProd = Integer.parseInt(this.jtbl_productos.getValueAt(fila, 2).toString());
@@ -437,19 +435,18 @@ public class FrmProductos extends javax.swing.JFrame {
         
         size = this.jcb_producto_id.getItemCount(); //obtenemos la cantidad de elementos contenidos en el jcombobox
         System.out.println("size: "+size);
-        /*
         do{
-            pos++;
-            productos = (Productos)this.jcb_producto_id.getItemAt(pos);
-            if(productos.getProducto_id()==idProd){
+            
+            tp = (TipoProductos)this.jcb_producto_id.getItemAt(pos);
+            if(tp.getTipoProdId()==idProd){
                 //selecciono el objeto del jcombobox
                 this.jcb_producto_id.setSelectedIndex(pos);
                 System.out.println("pos: "+pos);
                 break;
             }
-            
+            pos++;
         }
-        while(pos<=size);*/
+        while(pos<=size);
         /*
 
         //asignamos los valores a los campos del formulario
@@ -478,7 +475,7 @@ public class FrmProductos extends javax.swing.JFrame {
             public void keyReleased(final KeyEvent e){
                 String caden = (jtf_buscar.getText()).toUpperCase();
                 jtf_buscar.setText(caden);
-                repaint();
+                repaint(); //actualiza los componentes
                 filtrarTabla();
             }
         });
@@ -505,24 +502,22 @@ public class FrmProductos extends javax.swing.JFrame {
         else{
             //construimos nuestro objeto con los valores del formulario
             
-            p.setInventario_id(Integer.parseInt(jtf_inventario_id.getText()));
-            p.setTipo_producto(jcb_producto_id.getSelectedIndex());
+            //p.setInventario_id(Integer.parseInt(jtf_inventario_id.getText()));
             p.setNombre(jtf_nombre.getText());
+            tp = (TipoProductos)this.jcb_producto_id.getItemAt(this.jcb_producto_id.getSelectedIndex());//dif
+            p.setTipo_producto(tp.getTipoProdId());
+            p.setInventario_id(Integer.parseInt(jtf_inventario_id.getText()));
             p.setPrecio(Float.parseFloat(jtf_precio.getText()));
             p.setMarca(jtf_marca.getText());
             p.setFecha_ingreso(jtf_fecha_ingreso.getText());
-            //p.setPrecio(TOP_ALIGNMENT);
             p.setDescripcion(jtf_descripcion.getText());
-            
-            //productos = (Productos)this.jcb_producto_id.getItemAt(this.jcb_producto_id.getSelectedIndex());
-            //p.setProducto_id(productos.getProducto_id());
-            //p = (Productos)this.jcb_producto_id.getSelectedItem();
             
             if(dt_p.existeProducto(p)){
                 JOptionPane.showMessageDialog(this, "El departamento que intenta ingresar ya existe, por favor revise sus datos e intente nuevamente!", "ERROR", JOptionPane.ERROR_MESSAGE);
+                
             }else{ 
                 //validamos que el metodo guardar devuelve un true
-                if(dtp.guardarProductos(p)){
+                if(dt_p.guardarProductos(p)){
                     JOptionPane.showMessageDialog (this, "El registro fue almacenado con éxito!", 
                       "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
                     actualizarTabla();
