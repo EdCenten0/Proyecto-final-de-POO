@@ -66,7 +66,7 @@ public class FrmClientes extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         ta_direccion = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btn_editar = new javax.swing.JButton();
         bt_eliminar = new javax.swing.JButton();
         bt_guardar = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -209,13 +209,13 @@ public class FrmClientes extends javax.swing.JFrame {
         jLabel3.setText("Clientes");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
-        jButton2.setBackground(new java.awt.Color(153, 153, 153));
-        jButton2.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setText("Editar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_editar.setBackground(new java.awt.Color(153, 153, 153));
+        btn_editar.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
+        btn_editar.setForeground(new java.awt.Color(0, 0, 0));
+        btn_editar.setText("Editar");
+        btn_editar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_editarActionPerformed(evt);
             }
         });
 
@@ -281,7 +281,7 @@ public class FrmClientes extends javax.swing.JFrame {
                         .addGap(33, 33, 33)
                         .addComponent(jButton5)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(btn_editar)
                         .addGap(18, 18, 18)
                         .addComponent(bt_eliminar)
                         .addGap(18, 18, 18)
@@ -303,7 +303,7 @@ public class FrmClientes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
-                    .addComponent(jButton2)
+                    .addComponent(btn_editar)
                     .addComponent(bt_eliminar)
                     .addComponent(bt_guardar))
                 .addGap(8, 8, 8)
@@ -335,34 +335,46 @@ public class FrmClientes extends javax.swing.JFrame {
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         else{
-            clientes.setTienda_id(1);
-            clientes.setCedula(tf_cedula.getText());
-            clientes.setNombre(tf_nombre.getText());
-            clientes.setNumero_telefonico(tf_numero_telefonico.getText());
-            clientes.setEmail(tf_email.getText());
-            clientes.setSexo(Integer.parseInt(tf_sexo.getText()));
-            clientes.setDireccion(ta_direccion.getText());
-            
-            
-//            VAlIDACION DE NOMBRES NO IGUALES
-//            if(dtc.existePais(c.getCountry_id())){
-//                JOptionPane.showMessageDialog(this, "El Id de pais ya existe!", 
-//                    "ERROR", JOptionPane.WARNING_MESSAGE);
-//                jtf_id.setText("");
-//                jtf_id.grabFocus(); 
-//            }
+            if(tf_cedula.getText().length() > 30){
+                mostrarLength("Cedula",30 , tf_cedula.getText().length());
+            }else if(tf_nombre.getText().length() > 50){
+                mostrarLength("Nombre",50 , tf_nombre.getText().length());
+            }else if(tf_numero_telefonico.getText().length() > 20){
+                mostrarLength("Numero telefonico", 20, tf_numero_telefonico.getText().length());
+            }else if(tf_email.getText().length() > 30){
+                mostrarLength("Email", 30, tf_email.getText().length());
+            }else if(ta_direccion.getText().length() > 200){
+                mostrarLength("Direccion", 200, ta_direccion.getText().length());
+            }else{
+                clientes.setTienda_id(1);
+                clientes.setCedula(tf_cedula.getText());
+                clientes.setNombre(tf_nombre.getText());
+                clientes.setNumero_telefonico(tf_numero_telefonico.getText());
+                clientes.setEmail(tf_email.getText());
+                clientes.setSexo(Integer.parseInt(tf_sexo.getText()));
+                clientes.setDireccion(ta_direccion.getText());
 
-            if(dt_clientes.guardarClientes(clientes)){
-                JOptionPane.showMessageDialog (this, "El registro fue almacenado con éxito!", 
-                      "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
-                    actualizarTabla();
-                    limpiarCampos();
-            } 
-            else{
-                   JOptionPane.showMessageDialog(this, 
-                      "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
-                      "ERROR", JOptionPane.ERROR_MESSAGE); 
-                }
+
+    //            VAlIDACION DE NOMBRES NO IGUALES
+    //            if(dtc.existePais(c.getCountry_id())){
+    //                JOptionPane.showMessageDialog(this, "El Id de pais ya existe!", 
+    //                    "ERROR", JOptionPane.WARNING_MESSAGE);
+    //                jtf_id.setText("");
+    //                jtf_id.grabFocus(); 
+    //            }
+
+                if(dt_clientes.guardarClientes(clientes)){
+                    JOptionPane.showMessageDialog (this, "El registro fue almacenado con éxito!", 
+                          "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                        actualizarTabla();
+                        limpiarCampos();
+                } 
+                else{
+                       JOptionPane.showMessageDialog(this, 
+                          "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                          "ERROR", JOptionPane.ERROR_MESSAGE); 
+                    }
+            }
         }
     }//GEN-LAST:event_bt_guardarActionPerformed
 
@@ -395,35 +407,48 @@ public class FrmClientes extends javax.swing.JFrame {
         limpiarCampos();
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
         // TODO add your handling code here:
         if(tf_clienteID.getText().equals("") || tf_cedula.getText().equals("") || tf_nombre.getText().equals("") || tf_numero_telefonico.getText().equals("") || tf_email.getText().equals("") || tf_sexo.getText().equals("") || ta_direccion.getText().equals("")){
             JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         else{
-            clientes.setCliente_id(Integer.parseInt(tf_clienteID.getText()));
-            clientes.setCedula(tf_cedula.getText());
-            clientes.setNombre(tf_nombre.getText());
-            clientes.setNumero_telefonico(tf_numero_telefonico.getText());
-            clientes.setEmail(tf_email.getText());
-            clientes.setSexo(Integer.parseInt(tf_sexo.getText()));
-            clientes.setDireccion(ta_direccion.getText());
             
-            if(dt_clientes.editarCliente(clientes)){
-                JOptionPane.showMessageDialog (this, "El registro fue actualizado con éxito!", 
-                  "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
-                actualizarTabla();
-                limpiarCampos();
-            }
-            else{
-                JOptionPane.showMessageDialog(this, 
-                  "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
-                  "ERROR", JOptionPane.ERROR_MESSAGE);
+            if(tf_cedula.getText().length() > 30){
+                mostrarLength("Cedula",30 , tf_cedula.getText().length());
+            }else if(tf_nombre.getText().length() > 50){
+                mostrarLength("Nombre",50 , tf_nombre.getText().length());
+            }else if(tf_numero_telefonico.getText().length() > 20){
+                mostrarLength("Numero telefonico", 20, tf_numero_telefonico.getText().length());
+            }else if(tf_email.getText().length() > 30){
+                mostrarLength("Email", 30, tf_email.getText().length());
+            }else if(ta_direccion.getText().length() > 200){
+                mostrarLength("Direccion", 200, ta_direccion.getText().length());
+            }else{
+                clientes.setCliente_id(Integer.parseInt(tf_clienteID.getText()));
+                clientes.setCedula(tf_cedula.getText());
+                clientes.setNombre(tf_nombre.getText());
+                clientes.setNumero_telefonico(tf_numero_telefonico.getText());
+                clientes.setEmail(tf_email.getText());
+                clientes.setSexo(Integer.parseInt(tf_sexo.getText()));
+                clientes.setDireccion(ta_direccion.getText());
+
+                if(dt_clientes.editarCliente(clientes)){
+                    JOptionPane.showMessageDialog (this, "El registro fue actualizado con éxito!", 
+                      "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                    actualizarTabla();
+                    limpiarCampos();
+                }
+                else{
+                    JOptionPane.showMessageDialog(this, 
+                      "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                      "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
             }
         }
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btn_editarActionPerformed
 
     private void bt_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_eliminarActionPerformed
         // TODO add your handling code here:
@@ -586,11 +611,16 @@ public class FrmClientes extends javax.swing.JFrame {
     public JPanel getFondo(){
         return jPanel1;
     }
+    
+    private void mostrarLength(String nombre, int lengthOriginal, int lengthActual){
+        JOptionPane.showMessageDialog(this, "El limite de caracteres de "+ nombre +" es de "+ lengthOriginal +", usted ingresó " + lengthActual,"Limite de caracteres",JOptionPane.ERROR_MESSAGE);
+       
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_eliminar;
     private javax.swing.JButton bt_guardar;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btn_editar;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -274,32 +274,38 @@ public class FrmAgregarUser extends javax.swing.JFrame {
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         else{
-            //construimos nuestro objeto con los valores del formulario
-            //r=(Usuarios);
-            r = (Roles)this.jcRol.getSelectedItem();
-            u.setRolID(r.getRolID());
-            u.setUsername(jtfUsuario.getText());
-            u.setClave(jpfContra1.getText());
-            
-            //validamos que el id no exista en la tabla de la bd
-            if(dt_user.existeUsuario(u.getUsername())){
-                JOptionPane.showMessageDialog(this, "El Usuario ya existe, digite otro!", 
-                    "ERROR", JOptionPane.WARNING_MESSAGE);
-                jtfUsuario.setText("");
-                jtfUsuario.grabFocus(); 
-            }
-            else{
-            
-                //validamos que el metodo guardar devuelve un true
-                if(dtUsuario.guardarUsuario(u)){
-                    JOptionPane.showMessageDialog (this, "El Usuario fue almacenado con éxito!", 
-                      "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
-                    this.setVisible(false);
+            if(jtfUsuario.getText().length() > 15){
+                mostrarLength("Usuario", 15, jtfUsuario.getText().length());
+            }else if(jpfContra1.getPassword().length > 15){
+                mostrarLength("Contraseña", 15, jpfContra1.getPassword().length);
+            }else{
+                //construimos nuestro objeto con los valores del formulario
+                //r=(Usuarios);
+                r = (Roles)this.jcRol.getSelectedItem();
+                u.setRolID(r.getRolID());
+                u.setUsername(jtfUsuario.getText());
+                u.setClave(jpfContra1.getText());
+
+                //validamos que el id no exista en la tabla de la bd
+                if(dt_user.existeUsuario(u.getUsername())){
+                    JOptionPane.showMessageDialog(this, "El Usuario ya existe, digite otro!", 
+                        "ERROR", JOptionPane.WARNING_MESSAGE);
+                    jtfUsuario.setText("");
+                    jtfUsuario.grabFocus(); 
                 }
                 else{
-                   JOptionPane.showMessageDialog(this, 
-                      "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
-                      "ERROR", JOptionPane.ERROR_MESSAGE); 
+
+                    //validamos que el metodo guardar devuelve un true
+                    if(dtUsuario.guardarUsuario(u)){
+                        JOptionPane.showMessageDialog (this, "El Usuario fue almacenado con éxito!", 
+                          "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                        this.setVisible(false);
+                    }
+                    else{
+                       JOptionPane.showMessageDialog(this, 
+                          "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                          "ERROR", JOptionPane.ERROR_MESSAGE); 
+                    }
                 }
             }
         }
@@ -368,7 +374,10 @@ public class FrmAgregarUser extends javax.swing.JFrame {
         
     }
     
-    
+    private void mostrarLength(String nombre, int lengthOriginal, int lengthActual){
+        JOptionPane.showMessageDialog(this, "El limite de caracteres de "+ nombre +" es de "+ lengthOriginal +", usted ingresó " + lengthActual,"Limite de caracteres",JOptionPane.ERROR_MESSAGE);
+       
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

@@ -4,7 +4,7 @@
  */
 package presentacion;
 
-import datos.Dt_rol;
+
 import datos.Dt_rol;
 import entidades.Roles;
 import java.awt.event.KeyAdapter;
@@ -336,32 +336,38 @@ public class FrmRol extends javax.swing.JFrame {
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         else{
-            //construimos nuestro objeto con los valores del formulario
-            //rl.setRolID(Integer.parseInt(jtRolID.getText()));
-            rl.setRol_name(jtRol.getText());
             
-            
-            //validamos que el id no exista en la tabla de la bd
-            if(dt_rol.existeRol(rl.getRol_name())){
-                JOptionPane.showMessageDialog(this, "El rol ya existe, digite otro rol!", 
-                    "ERROR", JOptionPane.WARNING_MESSAGE);
-                jtRolID.setText("");
-                jtRolID.grabFocus(); 
-            }
-            else{
-                //validamos que el metodo guardar devuelve un true
-                if(dt_rol.guardarRol(rl)){
-                    JOptionPane.showMessageDialog (this, "El rol fue almacenado con éxito!", 
-                      "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
-                    actualizarTabla();
-                    limpiarCampos();
+            if(jtRol.getText().length() > 15){
+                mostrarLength("Nombre de rol", 15, jtRol.getText().length());
+            }else{
+                //construimos nuestro objeto con los valores del formulario
+                //rl.setRolID(Integer.parseInt(jtRolID.getText()));
+                rl.setRol_name(jtRol.getText());
+
+
+                //validamos que el id no exista en la tabla de la bd
+                if(dt_rol.existeRol(rl.getRol_name())){
+                    JOptionPane.showMessageDialog(this, "El rol ya existe, digite otro rol!", 
+                        "ERROR", JOptionPane.WARNING_MESSAGE);
+                    jtRolID.setText("");
+                    jtRolID.grabFocus(); 
                 }
                 else{
-                   JOptionPane.showMessageDialog(this, 
-                      "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
-                      "ERROR", JOptionPane.ERROR_MESSAGE); 
+                    //validamos que el metodo guardar devuelve un true
+                    if(dt_rol.guardarRol(rl)){
+                        JOptionPane.showMessageDialog (this, "El rol fue almacenado con éxito!", 
+                          "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                        actualizarTabla();
+                        limpiarCampos();
+                    }
+                    else{
+                       JOptionPane.showMessageDialog(this, 
+                          "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                          "ERROR", JOptionPane.ERROR_MESSAGE); 
+                    }
                 }
             }
+            
         }
         
     }//GEN-LAST:event_jbGuardarActionPerformed
@@ -389,22 +395,26 @@ public class FrmRol extends javax.swing.JFrame {
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         else{
-            //construimos nuestro objeto con los valores del formulario
-            rl.setRolID(Integer.parseInt(jtRolID.getText()));
-            rl.setRol_name(jtRol.getText());
-            
-            
-            //validamos que el metodo actualizar devuelve un true
-            if(dt_rol.editarRol(rl)){
-                JOptionPane.showMessageDialog (this, "El rol fue actualizado con éxito!", 
-                  "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
-                actualizarTabla();
-                limpiarCampos();
-            }
-            else{
-               JOptionPane.showMessageDialog(this, 
-                  "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
-                  "ERROR", JOptionPane.ERROR_MESSAGE); 
+            if(jtRol.getText().length() > 15){
+                mostrarLength("Nombre de rol", 15, jtRol.getText().length());
+            }else{
+                //construimos nuestro objeto con los valores del formulario
+                rl.setRolID(Integer.parseInt(jtRolID.getText()));
+                rl.setRol_name(jtRol.getText());
+
+
+                //validamos que el metodo actualizar devuelve un true
+                if(dt_rol.editarRol(rl)){
+                    JOptionPane.showMessageDialog (this, "El rol fue actualizado con éxito!", 
+                      "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                    actualizarTabla();
+                    limpiarCampos();
+                }
+                else{
+                   JOptionPane.showMessageDialog(this, 
+                      "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                      "ERROR", JOptionPane.ERROR_MESSAGE); 
+                }
             }
         }   
     }//GEN-LAST:event_jbEditarActionPerformed
@@ -510,6 +520,11 @@ public class FrmRol extends javax.swing.JFrame {
      
     public JPanel getFondo(){
         return jPanel1;
+    }
+    
+    private void mostrarLength(String nombre, int lengthOriginal, int lengthActual){
+        JOptionPane.showMessageDialog(this, "El limite de caracteres de "+ nombre +" es de "+ lengthOriginal +", usted ingresó " + lengthActual,"Limite de caracteres",JOptionPane.ERROR_MESSAGE);
+       
     }
     
     
