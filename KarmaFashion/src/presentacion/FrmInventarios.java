@@ -11,7 +11,9 @@ import presentacion.*;
 import datos.Dt_inventarios;
 
 import entidades.Inventarios;
+import entidades.Bodegas;
 import java.time.LocalDate;
+import datos.Dt_bodegas;
 
 import java.util.ArrayList;
 
@@ -25,11 +27,11 @@ public class FrmInventarios extends javax.swing.JFrame {
     
 
     private Dt_inventarios dt_inventario = new Dt_inventarios();
+    private Dt_bodegas dt_bodega = new Dt_bodegas();
+
     
-    
-    
+    private ArrayList<Bodegas> listBodega = new ArrayList<Bodegas>();
     private ArrayList<Inventarios> listInventario = new ArrayList<Inventarios>();
-    //private ArrayList<Bodega> listBodega = new ArrayList<Bodega>();
     
     Dt_inventarios dtInv = new Dt_inventarios();
     
@@ -445,7 +447,7 @@ public class FrmInventarios extends javax.swing.JFrame {
         //asignamos los valores a los campos del formulario
         tf_inventario.setText(jtInventario.getValueAt(fila, 0).toString());
         jf_cantInicial.setText(jtInventario.getValueAt(fila, 2).toString());
-        //jcb_region.setSelectedIndex(Integer.parseInt(jtInventario.getValueAt(fila, 2).toString()));  
+        jcb_BodegaID.setSelectedIndex(Integer.parseInt(jtInventario.getValueAt(fila, 1).toString()));  
         jf_ventas.setText(jtInventario.getValueAt(fila, 3).toString());
         jf_compras.setText(jtInventario.getValueAt(fila, 4).toString());
         jf_saldoTotal.setText(jtInventario.getValueAt(fila, 5).toString());
@@ -524,16 +526,14 @@ public class FrmInventarios extends javax.swing.JFrame {
         //Tengo que usar a bodega aqui 
         private void llenarComboInventario(){
         //llenamos la lista
-        listInventario = dtInv.listarInventario();
+        listBodega = dt_bodega.listarBodegas();
         
         //recorremos cada elemento de la lista y creamos el objeto
-        for(Inventarios inv: listInventario){
+        for(Bodegas bod: listBodega){
             //asignamos el objeto creado al combobox
-            this.jcb_BodegaID.addItem(inv);   
+            this.jcb_BodegaID.addItem(bod);   
         }
         
-       
-         
         
     }
         
