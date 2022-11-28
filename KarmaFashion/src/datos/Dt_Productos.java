@@ -214,20 +214,20 @@ public class Dt_Productos{
     }    
     
     @SuppressWarnings("CallToPrintStackTrace")
-    public boolean deleteProductos(int id){
+    public boolean deleteProductos(Productos p){
 	boolean resp=false;
         try {
             this.cargarDatos();
             rs.beforeFirst();
             while(rs.next()){
-                if(rs.getInt("ProductoID")==id){
+                if(rs.getInt("ProductoID")==p.getProducto_id()){
                     rs.deleteRow();
                     resp=true;
                 }
             }	
 	} 
         catch (SQLException e) {
-            System.out.println("Error existeProductos(): "+e.getMessage());
+            System.out.println("Error deleteProductos(): "+e.getMessage());
             e.printStackTrace();
 	}
         finally{
