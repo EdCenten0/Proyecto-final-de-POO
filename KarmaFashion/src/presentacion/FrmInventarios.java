@@ -614,12 +614,12 @@ public class FrmInventarios extends javax.swing.JFrame {
         jf_saldoTotal.setText(jtInventario.getValueAt(fila, 6).toString());
         jf_Fecha.setText(jtInventario.getValueAt(fila, 7).toString());
         
-        listProductos = dtProductos.listarProductos();
+        listBodega = dt_bodega.listarBodegas();
         
         //recorremos cada elemento de la lista y creamos el objeto
-        for(Productos pro: listProductos){
+        for(Bodegas Bode: listBodega){
             //asignamos el objeto creado al combobox
-            listarNombre.add(pro.getNombre());
+            listarNombre.add(Bode.getNombre());
         }//[Calcetines, camisas, zapatillas]
         
         
@@ -631,19 +631,17 @@ public class FrmInventarios extends javax.swing.JFrame {
         //obtenemos el idLocations del jtable
         idLoc = Integer.parseInt(this.jtInventario.getValueAt(fila, 2).toString());
         System.out.println("idLoc: "+idLoc);
-        
         n = dt_bodega.SacarNombreBodega(idLoc);
             
           
-            for(int i=0;i<=idLoc;i++){
+            for(int i=0;i>=idLoc;i++){
                     if(n.equals(listarNombre.get(i))){
                     //selecciono el objeto del jcombobox
                     System.out.println("pos: "+pos);
+                    pos = listarNombre.size();
                     break;
                 }
-                    else{
-                            pos++;
-                            }
+                    
             }
             
             
