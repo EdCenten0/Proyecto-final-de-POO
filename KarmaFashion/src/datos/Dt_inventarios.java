@@ -160,6 +160,79 @@ public class Dt_inventarios {
     }
     
     
+    @SuppressWarnings("CallToPrintStackTrace")
+    public boolean existeInventario(int id){
+	boolean resp=false;
+        try {
+            this.cargarDatos();
+            rs.beforeFirst();
+            while(rs.next()){
+                if(rs.getInt("InventarioID")==(id)){
+                    resp=true;
+                }
+            }	
+	} 
+        catch (SQLException e) {
+            System.out.println("Error existePais(): "+e.getMessage());
+            e.printStackTrace();
+	}
+        finally{
+            try{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+                if(con!=null){
+                    Conexion.closeConexion(con);
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+		
+        return resp;
+    }
+    
+    
+    @SuppressWarnings("CallToPrintStackTrace")
+    public boolean AumentadorInventario(int id){
+	boolean resp=false;
+        int aumentador = 0;
+        
+        try {
+            this.cargarDatos();
+            rs.beforeFirst();
+            while(rs.next()){
+                if(rs.getInt("InventarioID")==(id)){
+                    aumentador = aumentador + rs.getInt("Saldo_final");
+                    
+                }
+            }	
+	} 
+        catch (SQLException e) {
+            System.out.println("Error existePais(): "+e.getMessage());
+            e.printStackTrace();
+	}
+        finally{
+            try{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+                if(con!=null){
+                    Conexion.closeConexion(con);
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+		
+        return resp;
+    }
     
    
 }

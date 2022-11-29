@@ -81,11 +81,11 @@ public class FrmInventarios extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         tf_inventario = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jf_compras = new javax.swing.JTextField();
+        jf_ventas = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jf_Fecha = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jf_ventas = new javax.swing.JTextField();
+        jf_compras = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jf_cantInicial = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -95,7 +95,7 @@ public class FrmInventarios extends javax.swing.JFrame {
         jb_Eliminar = new javax.swing.JButton();
         jb_Editar = new javax.swing.JButton();
         jcb_BodegaID = new javax.swing.JComboBox<>();
-        jcb_InventarioID = new javax.swing.JComboBox<>();
+        jcb_Producto = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jtBuscar = new javax.swing.JTextField();
@@ -161,12 +161,12 @@ public class FrmInventarios extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Movimientos negativos:");
 
-        jf_compras.setBackground(new java.awt.Color(204, 204, 204));
-        jf_compras.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
-        jf_compras.setForeground(new java.awt.Color(0, 0, 0));
-        jf_compras.addActionListener(new java.awt.event.ActionListener() {
+        jf_ventas.setBackground(new java.awt.Color(204, 204, 204));
+        jf_ventas.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
+        jf_ventas.setForeground(new java.awt.Color(0, 0, 0));
+        jf_ventas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jf_comprasActionPerformed(evt);
+                jf_ventasActionPerformed(evt);
             }
         });
 
@@ -183,12 +183,12 @@ public class FrmInventarios extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Movimientos positivos:");
 
-        jf_ventas.setBackground(new java.awt.Color(204, 204, 204));
-        jf_ventas.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
-        jf_ventas.setForeground(new java.awt.Color(0, 0, 0));
-        jf_ventas.addActionListener(new java.awt.event.ActionListener() {
+        jf_compras.setBackground(new java.awt.Color(204, 204, 204));
+        jf_compras.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
+        jf_compras.setForeground(new java.awt.Color(0, 0, 0));
+        jf_compras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jf_ventasActionPerformed(evt);
+                jf_comprasActionPerformed(evt);
             }
         });
 
@@ -196,6 +196,7 @@ public class FrmInventarios extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Saldo Total:");
 
+        jf_cantInicial.setEditable(false);
         jf_cantInicial.setBackground(new java.awt.Color(204, 204, 204));
         jf_cantInicial.setForeground(new java.awt.Color(0, 0, 0));
         jf_cantInicial.addActionListener(new java.awt.event.ActionListener() {
@@ -263,19 +264,19 @@ public class FrmInventarios extends javax.swing.JFrame {
             }
         });
 
-        jcb_InventarioID.setBackground(new java.awt.Color(204, 204, 204));
-        jcb_InventarioID.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
-        jcb_InventarioID.setForeground(new java.awt.Color(0, 0, 0));
-        jcb_InventarioID.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
-        jcb_InventarioID.addActionListener(new java.awt.event.ActionListener() {
+        jcb_Producto.setBackground(new java.awt.Color(204, 204, 204));
+        jcb_Producto.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
+        jcb_Producto.setForeground(new java.awt.Color(0, 0, 0));
+        jcb_Producto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
+        jcb_Producto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcb_InventarioIDActionPerformed(evt);
+                jcb_ProductoActionPerformed(evt);
             }
         });
 
         jLabel9.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Inventario ID:");
+        jLabel9.setText("Producto ID:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -298,7 +299,7 @@ public class FrmInventarios extends javax.swing.JFrame {
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                             .addComponent(jLabel9)
                                             .addGap(18, 18, 18)
-                                            .addComponent(jcb_InventarioID, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addComponent(jcb_Producto, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jb_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -318,7 +319,7 @@ public class FrmInventarios extends javax.swing.JFrame {
                                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jf_compras, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jf_ventas, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jf_saldoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jb_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -328,7 +329,7 @@ public class FrmInventarios extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jf_ventas, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jf_compras, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(14, 14, 14))
         );
         jPanel2Layout.setVerticalGroup(
@@ -347,7 +348,7 @@ public class FrmInventarios extends javax.swing.JFrame {
                             .addComponent(jLabel4))
                         .addGap(20, 20, 20)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jcb_InventarioID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcb_Producto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9))
                         .addGap(9, 9, 9)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -360,12 +361,12 @@ public class FrmInventarios extends javax.swing.JFrame {
                         .addGap(14, 14, 14))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jf_ventas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jf_compras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jf_compras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jf_ventas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jf_saldoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -459,13 +460,13 @@ public class FrmInventarios extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jf_comprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jf_comprasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jf_comprasActionPerformed
-
     private void jf_ventasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jf_ventasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jf_ventasActionPerformed
+
+    private void jf_comprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jf_comprasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jf_comprasActionPerformed
 
     private void jf_cantInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jf_cantInicialActionPerformed
         // TODO add your handling code here:
@@ -481,7 +482,7 @@ public class FrmInventarios extends javax.swing.JFrame {
 
     private void jb_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_EliminarActionPerformed
         // TODO add your handling code here:
-        if(jf_Fecha.getText().equals("") || jf_compras.getText().equals("") || jcb_BodegaID.getSelectedIndex()==0||jcb_InventarioID.getSelectedIndex()==0||jf_ventas.getText().equals("") || jf_cantInicial.getText().equals("")||jf_saldoTotal.getText().equals("")){
+        if(jf_Fecha.getText().equals("") || jf_ventas.getText().equals("") || jcb_BodegaID.getSelectedIndex()==0||jcb_Producto.getSelectedIndex()==0||jf_compras.getText().equals("") || jf_cantInicial.getText().equals("")||jf_saldoTotal.getText().equals("")){
             JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
@@ -489,12 +490,12 @@ public class FrmInventarios extends javax.swing.JFrame {
             //construimos nuestro objeto con los valores del formulario
             inv.setInventarioID(Integer.parseInt(tf_inventario.getText()));
             inv.setFecha(jf_Fecha.getText());
-            inv.setMovimiento_neg(Integer.parseInt(jf_compras.getText()));
-            inv.setMovimiento_pos(Integer.parseInt(jf_ventas.getText()));
+            inv.setMovimiento_neg(Integer.parseInt(jf_ventas.getText()));
+            inv.setMovimiento_pos(Integer.parseInt(jf_compras.getText()));
             inv.setSaldo_final(Integer.parseInt(jf_saldoTotal.getText()));
             inv.setCant_inicial(Integer.parseInt(jf_cantInicial.getText()));
             
-            pro = (Productos)this.jcb_InventarioID.getSelectedItem();
+            pro = (Productos)this.jcb_Producto.getSelectedItem();
             inv.setProductoID(pro.getProducto_id());
             b = (Bodegas)this.jcb_BodegaID.getSelectedItem();
             inv.setBodegaID(b.getBodegaID());
@@ -520,7 +521,7 @@ public class FrmInventarios extends javax.swing.JFrame {
     private void jb_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_EditarActionPerformed
         // TODO add your handling code here:
         //validamos que todos los campos sean ingresados por el usuario      
-        if(jf_Fecha.getText().equals("") || jf_compras.getText().equals("") || jcb_BodegaID.getSelectedIndex()==0|| jcb_InventarioID.getSelectedIndex()==0||jf_ventas.getText().equals("") || jf_cantInicial.getText().equals("")||jf_saldoTotal.getText().equals("")){
+        if(jf_Fecha.getText().equals("") || jf_ventas.getText().equals("") || jcb_BodegaID.getSelectedIndex()==0|| jcb_Producto.getSelectedIndex()==0||jf_compras.getText().equals("") || jf_cantInicial.getText().equals("")||jf_saldoTotal.getText().equals("")){
             JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
@@ -528,12 +529,12 @@ public class FrmInventarios extends javax.swing.JFrame {
             //construimos nuestro objeto con los valores del formulario
             inv.setInventarioID(Integer.parseInt(tf_inventario.getText()));
             inv.setFecha(jf_Fecha.getText());
-            inv.setMovimiento_neg(Integer.parseInt(jf_compras.getText()));
-            inv.setMovimiento_pos(Integer.parseInt(jf_ventas.getText()));
+            inv.setMovimiento_neg(Integer.parseInt(jf_ventas.getText()));
+            inv.setMovimiento_pos(Integer.parseInt(jf_compras.getText()));
             inv.setSaldo_final(Integer.parseInt(jf_saldoTotal.getText()));
             inv.setCant_inicial(Integer.parseInt(jf_cantInicial.getText()));
             
-            pro = (Productos)this.jcb_InventarioID.getSelectedItem();
+            pro = (Productos)this.jcb_Producto.getSelectedItem();
             inv.setProductoID(pro.getProducto_id());
             b = (Bodegas)this.jcb_BodegaID.getSelectedItem();
             inv.setBodegaID(b.getBodegaID());
@@ -565,15 +566,74 @@ public class FrmInventarios extends javax.swing.JFrame {
 
     private void jb_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_AgregarActionPerformed
         // TODO add your handling code here:
-        /*if(jf_Fecha.getText().equals("") || jf_MoviPos.getText().equals("") || jcb_BodegaID.getSelectedIndex()==0){
+        
+        int cantidad_inicial = 0;
+        int ventas = 0;
+        int compras = 0;
+        
+        if(jf_Fecha.getText().equals("") ||  jcb_BodegaID.getSelectedIndex()==0||jcb_Producto.getSelectedIndex()==0){
             JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         else{
             //construimos nuestro objeto con los valores del formulario
-            //r=(Usuarios);
+          
+            //comprobar si es igual de id
+            
+            
+            //Se crea uno nuevo
+            if(dt_inventario.existeInventario(Integer.parseInt((tf_inventario.getText())))){
+            
+            //Encontrar el sueldo final con 2 variables
+            inv.setMovimiento_neg(Integer.parseInt((jf_ventas.getText())));
+            inv.setMovimiento_pos(Integer.parseInt((jf_compras.getText())));
+            inv.setCant_inicial(Integer.parseInt((jf_cantInicial.getText())));
+            
+            cantidad_inicial = inv.getCant_inicial();
+            ventas = inv.getMovimiento_neg();
+            compras = inv.getMovimiento_pos();
+            
+            
+            //*****************************************//
+                
+                
+                
+            }   else{
+                    
+                    //se crea uno nuevo y la cantidad inicial inicia en 0
+                
+                
+                }
+            
+            
+            
+            
+            
+            //Encontrar el sueldo final con 2 variables
+            inv.setMovimiento_neg(Integer.parseInt((jf_ventas.getText())));
+            inv.setMovimiento_pos(Integer.parseInt((jf_compras.getText())));
+            inv.setCant_inicial(Integer.parseInt((jf_cantInicial.getText())));
+            
+            /*
+            int cantidad_inicial = inv.getCant_inicial();
+            int ventas = inv.getMovimiento_neg();
+            int compras = inv.getMovimiento_pos();
+            */
+            
+            //*****************************************//
+            
+            
             b = (Bodegas)this.jcb_BodegaID.getSelectedItem();
-            inv.setBodegaID(b.getBodegaID());
+            inv.setInventarioID(b.getBodegaID());
+            inv.setFecha(jf_Fecha.getText());
+            inv.setSaldo_final((cantidad_inicial+compras)-ventas);
+            
+            
+            
+            
+            
+            
+            /*
             inv.setUsername(jtUsuario.getText());
             inv.setClave(jtClave.getText());
             
@@ -600,8 +660,8 @@ public class FrmInventarios extends javax.swing.JFrame {
                       "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
                       "ERROR", JOptionPane.ERROR_MESSAGE); 
                 }
-            }
-        }*/
+            }*/
+        }
         
         
     }//GEN-LAST:event_jb_AgregarActionPerformed
@@ -613,10 +673,10 @@ public class FrmInventarios extends javax.swing.JFrame {
         //asignamos los valores a los campos del formulario
         tf_inventario.setText(jtInventario.getValueAt(fila, 0).toString());
         jcb_BodegaID.setSelectedIndex(Integer.parseInt(jtInventario.getValueAt(fila, 1).toString()));  
-        jcb_InventarioID.setSelectedIndex(Integer.parseInt(jtInventario.getValueAt(fila, 2).toString())); 
+        jcb_Producto.setSelectedIndex(Integer.parseInt(jtInventario.getValueAt(fila, 2).toString())); 
         jf_cantInicial.setText(jtInventario.getValueAt(fila, 3).toString());
-        jf_ventas.setText(jtInventario.getValueAt(fila, 4).toString());
-        jf_compras.setText(jtInventario.getValueAt(fila, 5).toString());
+        jf_compras.setText(jtInventario.getValueAt(fila, 4).toString());
+        jf_ventas.setText(jtInventario.getValueAt(fila, 5).toString());
         jf_saldoTotal.setText(jtInventario.getValueAt(fila, 6).toString());
         jf_Fecha.setText(jtInventario.getValueAt(fila, 7).toString());
         
@@ -626,9 +686,9 @@ public class FrmInventarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtBuscarActionPerformed
 
-    private void jcb_InventarioIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_InventarioIDActionPerformed
+    private void jcb_ProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_ProductoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jcb_InventarioIDActionPerformed
+    }//GEN-LAST:event_jcb_ProductoActionPerformed
 
     private void jtBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtBuscarKeyTyped
         // TODO add your handling code here:
@@ -736,19 +796,19 @@ public class FrmInventarios extends javax.swing.JFrame {
         //recorremos cada elemento de la lista y creamos el objeto
         for(Productos pro: listProductos){
             //asignamos el objeto creado al combobox
-            this.jcb_InventarioID.addItem(pro);   
+            this.jcb_Producto.addItem(pro);   
         }
           
     }
         private void limpiarCampos(){
         this.jf_Fecha.setText("");
-        this.jf_compras.setText("");
         this.jf_ventas.setText("");
+        this.jf_compras.setText("");
         this.jf_cantInicial.setText("");
         this.tf_inventario.setText("");
         this.jf_saldoTotal.setText("");
         this.jcb_BodegaID.setSelectedIndex(0);
-        this.jcb_InventarioID.setSelectedIndex(0);
+        this.jcb_Producto.setSelectedIndex(0);
     }
         
      private void filtrarTabla(){
@@ -784,7 +844,7 @@ public class FrmInventarios extends javax.swing.JFrame {
     private javax.swing.JButton jb_Eliminar;
     private javax.swing.JButton jb_Guardar;
     private javax.swing.JComboBox<Object> jcb_BodegaID;
-    private javax.swing.JComboBox<Object> jcb_InventarioID;
+    private javax.swing.JComboBox<Object> jcb_Producto;
     private javax.swing.JTextField jf_Fecha;
     private javax.swing.JTextField jf_cantInicial;
     private javax.swing.JTextField jf_compras;
