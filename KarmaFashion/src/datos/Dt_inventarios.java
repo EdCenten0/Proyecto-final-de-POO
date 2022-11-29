@@ -25,7 +25,7 @@ public class Dt_inventarios {
     {
         try{
             con = Conexion.getConnection(); //obtenemos la conexion a la base de datos
-            ps = con.prepareStatement("SELECT InventarioID,BodegaID,Cant_inicial,Movimiento_pos,Movimiento_neg,Saldo_final,Fecha,estado FROM Inventario", 
+            ps = con.prepareStatement("SELECT InventarioID,BodegaID,ProductoID,Cant_inicial,Movimiento_pos,Movimiento_neg,Saldo_final,Fecha,estado FROM Inventario", 
                     ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE, ResultSet.HOLD_CURSORS_OVER_COMMIT);
             rs = ps.executeQuery();
         }
@@ -44,6 +44,7 @@ public class Dt_inventarios {
                 Inventarios inv = new Inventarios();
                 inv.setInventarioID(rs.getInt("InventarioID"));
                 inv.setBodegaID(rs.getInt("BodegaID"));
+                inv.setProductoID(rs.getInt("ProductoID"));
                 inv.setCant_inicial(rs.getInt("Cant_inicial"));
                 inv.setMovimiento_pos(rs.getInt("Movimiento_pos"));
                 inv.setMovimiento_neg(rs.getInt("Movimiento_neg"));

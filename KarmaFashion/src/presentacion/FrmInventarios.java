@@ -10,11 +10,15 @@ import presentacion.*;
 
 import datos.Dt_inventarios;
 import datos.Dt_Productos;
+import datos.Dt_bodegas;
 
+import entidades.Productos;
 import entidades.Inventarios;
 import entidades.Bodegas;
+
+
 import java.time.LocalDate;
-import datos.Dt_bodegas;
+
 
 import java.util.ArrayList;
 import javax.swing.JPanel;
@@ -30,13 +34,16 @@ public class FrmInventarios extends javax.swing.JFrame {
     
     Bodegas b = new Bodegas();
     Inventarios inv = new Inventarios();
+    Productos pro = new Productos();
 
     private Dt_inventarios dt_inventario = new Dt_inventarios();
     private Dt_bodegas dt_bodega = new Dt_bodegas();
+    private Dt_Productos dt_producto = new Dt_Productos();
 
     
     private ArrayList<Bodegas> listBodega = new ArrayList<Bodegas>();
     private ArrayList<Inventarios> listInventario = new ArrayList<Inventarios>();
+    private ArrayList<Productos> listProductos = new ArrayList<Productos>();
     
     Dt_inventarios dtInv = new Dt_inventarios();
     Dt_Productos dtProductos = new Dt_Productos();
@@ -49,7 +56,8 @@ public class FrmInventarios extends javax.swing.JFrame {
     public FrmInventarios() {
         initComponents();
         llenarTablaProductos();
-        llenarComboInventario();
+        llenarComboBodega();
+        llenarComboProducto();
     }
 
     /**
@@ -78,12 +86,13 @@ public class FrmInventarios extends javax.swing.JFrame {
         jf_cantInicial = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jf_saldoTotal = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
         jb_Guardar = new javax.swing.JButton();
         jb_Agregar = new javax.swing.JButton();
         jb_Eliminar = new javax.swing.JButton();
         jb_Editar = new javax.swing.JButton();
         jcb_BodegaID = new javax.swing.JComboBox<>();
+        jcb_InventarioID = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jtBuscar = new javax.swing.JTextField();
 
@@ -95,20 +104,20 @@ public class FrmInventarios extends javax.swing.JFrame {
         jtInventario.setBackground(new java.awt.Color(204, 204, 204));
         jtInventario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Inventario ID", "Bodega ID", "Cantidad inicial", "Movimientos positivos", "Movimientos negativos", "Sueldo final", "Fecha"
+                "Inventario ID", "Bodega ID", "Producto ID", "Cantidad inicial", "Movimientos positivos", "Movimientos negativos", "Sueldo final", "Fecha"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, true, true, false, true
+                false, false, false, true, true, true, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -203,10 +212,6 @@ public class FrmInventarios extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI Symbol", 1, 30)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("Inventario");
-
         jb_Guardar.setBackground(new java.awt.Color(153, 153, 153));
         jb_Guardar.setForeground(new java.awt.Color(0, 0, 0));
         jb_Guardar.setText("Limpiar campos");
@@ -254,6 +259,20 @@ public class FrmInventarios extends javax.swing.JFrame {
             }
         });
 
+        jcb_InventarioID.setBackground(new java.awt.Color(204, 204, 204));
+        jcb_InventarioID.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
+        jcb_InventarioID.setForeground(new java.awt.Color(0, 0, 0));
+        jcb_InventarioID.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
+        jcb_InventarioID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcb_InventarioIDActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("Inventario ID:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -264,42 +283,39 @@ public class FrmInventarios extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel7)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(86, 86, 86)
-                                        .addComponent(jf_cantInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jb_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jb_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jf_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                        .addComponent(jf_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jf_cantInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                            .addComponent(jLabel9)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jcb_InventarioID, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jb_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jb_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(5, 5, 5))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel1))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(tf_inventario)
-                                            .addComponent(jcb_BodegaID, 0, 185, Short.MAX_VALUE)))
-                                    .addComponent(jLabel8))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tf_inventario)
+                                    .addComponent(jcb_BodegaID, 0, 185, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jf_compras, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jf_saldoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jf_compras, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jf_saldoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jb_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -317,23 +333,27 @@ public class FrmInventarios extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(tf_inventario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jcb_BodegaID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1)))
+                            .addComponent(jLabel4))
+                        .addGap(20, 20, 20)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(tf_inventario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jcb_InventarioID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addGap(9, 9, 9)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jcb_BodegaID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jf_cantInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jf_cantInicial)
-                            .addComponent(jLabel7)
-                            .addComponent(jb_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jb_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jb_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jb_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jf_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(14, 14, 14))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jf_ventas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -346,13 +366,13 @@ public class FrmInventarios extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jf_saldoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
-                        .addGap(28, 28, 28)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jf_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addGap(39, 39, 39)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jb_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(33, 33, 33))))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -380,7 +400,7 @@ public class FrmInventarios extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 775, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -407,8 +427,8 @@ public class FrmInventarios extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -578,18 +598,24 @@ public class FrmInventarios extends javax.swing.JFrame {
 
         //asignamos los valores a los campos del formulario
         tf_inventario.setText(jtInventario.getValueAt(fila, 0).toString());
-        jf_cantInicial.setText(jtInventario.getValueAt(fila, 2).toString());
-        jcb_BodegaID.setSelectedIndex(Integer.parseInt(jtInventario.getValueAt(fila, 1).toString()));  
-        jf_ventas.setText(jtInventario.getValueAt(fila, 3).toString());
-        jf_compras.setText(jtInventario.getValueAt(fila, 4).toString());
-        jf_saldoTotal.setText(jtInventario.getValueAt(fila, 5).toString());
-        jf_Fecha.setText(jtInventario.getValueAt(fila, 6).toString());
-        
+        jf_cantInicial.setText(jtInventario.getValueAt(fila, 3).toString());
+        jcb_InventarioID.setSelectedIndex(Integer.parseInt(jtInventario.getValueAt(fila, 2).toString()));  
+        jcb_BodegaID.setSelectedIndex(Integer.parseInt(jtInventario.getValueAt(fila, 2).toString()));  
+
+        jf_ventas.setText(jtInventario.getValueAt(fila, 4).toString());
+        jf_compras.setText(jtInventario.getValueAt(fila, 5).toString());
+        jf_saldoTotal.setText(jtInventario.getValueAt(fila, 6).toString());
+        jf_Fecha.setText(jtInventario.getValueAt(fila, 7).toString());
+
     }//GEN-LAST:event_jtInventarioMouseClicked
 
     private void jtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtBuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtBuscarActionPerformed
+
+    private void jcb_InventarioIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_InventarioIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcb_InventarioIDActionPerformed
 
     /**
      * @param args the command line arguments
@@ -636,6 +662,7 @@ public class FrmInventarios extends javax.swing.JFrame {
         ArrayList<Object> listNombreColumnas = new ArrayList<Object>();
         listNombreColumnas.add("InventarioID");
         listNombreColumnas.add("BodegaID");
+        listNombreColumnas.add("ProductoID");
         listNombreColumnas.add("Cant_inicial");
         listNombreColumnas.add("Movimiento_pos");
         listNombreColumnas.add("Movimiento_neg");
@@ -651,7 +678,7 @@ public class FrmInventarios extends javax.swing.JFrame {
         
        //recorremos cada elemento de la lista y creamos el objeto
         for(Inventarios inv: listInventario){
-            Object[] datosInv = new Object[]{inv.getInventarioID(), inv.getBodegaID(),inv.getCant_inicial(), inv.getMovimiento_pos(), inv.getMovimiento_neg(),inv.getSaldo_final(), inv.getFecha()};
+            Object[] datosInv = new Object[]{inv.getInventarioID(), inv.getBodegaID(),inv.getProductoID(),inv.getCant_inicial(), inv.getMovimiento_pos(), inv.getMovimiento_neg(),inv.getSaldo_final(), inv.getFecha()};
             //asignamos un arreglo de objetos a una fila del modelo
             myData.addRow(datosInv);
         }
@@ -659,8 +686,7 @@ public class FrmInventarios extends javax.swing.JFrame {
         jtInventario.setModel(myData);
     }
         
-        //Tengo que usar a bodega aqui 
-        private void llenarComboInventario(){
+        private void llenarComboBodega(){
         //llenamos la lista
         listBodega = dt_bodega.listarBodegas();
         
@@ -668,6 +694,18 @@ public class FrmInventarios extends javax.swing.JFrame {
         for(Bodegas bod: listBodega){
             //asignamos el objeto creado al combobox
             this.jcb_BodegaID.addItem(bod);   
+        }
+          
+    }
+        
+        private void llenarComboProducto(){
+        //llenamos la lista
+        listProductos = dtProductos.listarProductos();
+        
+        //recorremos cada elemento de la lista y creamos el objeto
+        for(Productos pro: listProductos){
+            //asignamos el objeto creado al combobox
+            this.jcb_InventarioID.addItem(pro);   
         }
           
     }
@@ -679,6 +717,7 @@ public class FrmInventarios extends javax.swing.JFrame {
         this.tf_inventario.setText("");
         this.jf_saldoTotal.setText("");
         this.jcb_BodegaID.setSelectedIndex(0);
+        this.jcb_InventarioID.setSelectedIndex(0);
         
         
     }
@@ -709,7 +748,7 @@ public class FrmInventarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -719,6 +758,7 @@ public class FrmInventarios extends javax.swing.JFrame {
     private javax.swing.JButton jb_Eliminar;
     private javax.swing.JButton jb_Guardar;
     private javax.swing.JComboBox<Object> jcb_BodegaID;
+    private javax.swing.JComboBox<Object> jcb_InventarioID;
     private javax.swing.JTextField jf_Fecha;
     private javax.swing.JTextField jf_cantInicial;
     private javax.swing.JTextField jf_compras;
