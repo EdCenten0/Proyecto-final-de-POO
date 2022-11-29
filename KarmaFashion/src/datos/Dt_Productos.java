@@ -26,7 +26,7 @@ public class Dt_Productos{
     {
         try{
             con = Conexion.getConnection(); //obtenemos la conexion a la base de datos
-            ps = con.prepareStatement("SELECT ProductoID, TipoproductoID, InventarioID, Nombre, Descripcion, Precio, Marca, Fecha_ingreso, Estado FROM Producto", 
+            ps = con.prepareStatement("SELECT ProductoID, TipoproductoID, Nombre, Descripcion, Precio,Marca, Fecha_ingreso, Estado FROM Producto", 
                     ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE, ResultSet.HOLD_CURSORS_OVER_COMMIT);
             rs = ps.executeQuery();
         }
@@ -38,7 +38,7 @@ public class Dt_Productos{
     
     @SuppressWarnings("CallToPrintStackTrace")
     public ArrayList<Productos> listarProductos(){
-        ArrayList<Productos> listarProd = new ArrayList<Productos>();
+        ArrayList<Productos> listaProd = new ArrayList<Productos>();
         try{
             this.cargarDatos();
             while(rs.next()){
@@ -49,14 +49,13 @@ public class Dt_Productos{
                 listaDepto.add(d);*/
                 p.setProducto_id(rs.getInt("ProductoID"));
                 p.setTipo_producto(rs.getInt("TipoproductoID"));
-                p.setInventario_id(rs.getInt("InventarioID"));
                 p.setNombre(rs.getString("Nombre"));
                 p.setDescripcion(rs.getString("Descripcion"));
-                p.setPrecio(rs.getFloat("Precio"));
+                p.setPrecio(rs.getDouble("Precio"));
                 p.setMarca(rs.getString("Marca"));
                 p.setFecha_ingreso(rs.getString("Fecha_ingreso"));
                 p.setEstado(rs.getInt("Estado"));
-                listarProd.add(p);
+                listaProd.add(p);
             }     
         }catch(SQLException e){
             System.out.println("El error en listarProd(): "+e.getMessage());
@@ -79,12 +78,12 @@ public class Dt_Productos{
         }
         
         
-        return listarProd;      
+        return listaProd;      
     }
     
     
     @SuppressWarnings("CallToPrintStackTrace")
-    public boolean guardarProductos (Productos c)
+    public boolean guardarProductos (Productos p)
     {
         //declaramos una bandera en falso
 	boolean guardado = false;
@@ -92,13 +91,12 @@ public class Dt_Productos{
             this.cargarDatos();
             rs.moveToInsertRow();
             //rs.updateInt("ProductoID", c.getProducto_id());
-            rs.updateInt("InventarioID", c.getInventario_id());
-            rs.updateInt("TipoproductoID", c.getTipo_producto());
-            rs.updateString("Nombre", c.getNombre());
-            rs.updateString("Descripcion", c.getDescripcion());
-            rs.updateFloat("Precio", c.getPrecio());
-            rs.updateString("Marca", c.getMarca());
-            rs.updateString("Fecha_ingreso", c.getFecha_ingreso());
+            rs.updateInt("TipoproductoID", p.getTipo_producto());
+            rs.updateString("Nombre", p.getNombre());
+            rs.updateString("Descripcion", p.getDescripcion());
+            rs.updateDouble("Precio", p.getPrecio());
+            rs.updateString("Marca", p.getMarca());
+            rs.updateString("Fecha_ingreso", p.getFecha_ingreso());
             //rs.updateInt("Estado", c.getEstado());
             //rs.updateInt("region_id", c.getRegion_id());
             rs.insertRow();
@@ -178,12 +176,12 @@ public class Dt_Productos{
             while(rs.next()){
                 if(rs.getInt("ProductoID")==p.getProducto_id()){
                     rs.updateInt("TipoproductoID", p.getTipo_producto());
-                    rs.updateInt("InventarioID", p.getInventario_id());
                     rs.updateString("Nombre", p.getNombre());
-                    rs.updateFloat("Precio", p.getPrecio());
+                    rs.updateDouble("Precio", p.getPrecio());
                     rs.updateString("Marca", p.getMarca());
                     rs.updateString("Fecha_ingreso", p.getFecha_ingreso());
                     rs.updateString("Descripcion", p.getDescripcion());
+                    rs.updateInt("Estado", p.getEstado());
                     rs.updateRow();
                     resp = true;
                     break;
