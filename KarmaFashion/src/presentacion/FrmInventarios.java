@@ -15,6 +15,8 @@ import datos.Dt_bodegas;
 import entidades.Productos;
 import entidades.Inventarios;
 import entidades.Bodegas;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 
 import java.time.LocalDate;
@@ -23,8 +25,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -45,10 +49,10 @@ public class FrmInventarios extends javax.swing.JFrame {
     private ArrayList<Inventarios> listInventario = new ArrayList<Inventarios>();
     private ArrayList<Productos> listProductos = new ArrayList<Productos>();
     
-    Dt_inventarios dtInv = new Dt_inventarios();
     Dt_Productos dtProductos = new Dt_Productos();
     
     DefaultTableModel myData = new DefaultTableModel();
+    TableRowSorter trsfiltro;
 
     /**
      * Creates new form FrmInventario
@@ -392,6 +396,11 @@ public class FrmInventarios extends javax.swing.JFrame {
                 jtBuscarActionPerformed(evt);
             }
         });
+        jtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtBuscarKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -621,6 +630,24 @@ public class FrmInventarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jcb_InventarioIDActionPerformed
 
+    private void jtBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtBuscarKeyTyped
+        // TODO add your handling code here:
+        jtBuscar.addKeyListener(new KeyAdapter(){
+            //Se ejecuta cuando el usuario libera una tecla
+            @Override
+            public void keyReleased(final KeyEvent e){
+                String cadena = (jtBuscar.getText()).toUpperCase();
+                jtBuscar.setText(cadena);
+                repaint();
+                filtrarTabla();
+            }
+        });
+        trsfiltro = new TableRowSorter(jtInventario.getModel());
+        jtInventario.setRowSorter(trsfiltro);
+        
+        
+    }//GEN-LAST:event_jtBuscarKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -722,8 +749,10 @@ public class FrmInventarios extends javax.swing.JFrame {
         this.jf_saldoTotal.setText("");
         this.jcb_BodegaID.setSelectedIndex(0);
         this.jcb_InventarioID.setSelectedIndex(0);
+    }
         
-        
+     private void filtrarTabla(){
+       trsfiltro.setRowFilter(RowFilter.regexFilter(jtBuscar.getText(),0));
     }
         
         private void actualizarTabla(){
@@ -732,14 +761,7 @@ public class FrmInventarios extends javax.swing.JFrame {
         llenarTablaProductos();
     }
         
-         /*private String fecha(){
-            String hoy;
-            LocalDate now = LocalDate.now();
-            int year = now.getYear();
-            int dia = now.getDayOfMonth();
-            int month = now.getMonthValue();
-            return hoy=(dia+"/"+month+"/"+year);
-        }*/
+        
 
     public JPanel getFondo(){
         return jPanel1;
