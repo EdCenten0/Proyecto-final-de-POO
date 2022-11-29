@@ -251,6 +251,9 @@ public class Principal extends javax.swing.JFrame {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel7.setText(" Inventarios");
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel7MouseEntered(evt);
             }
@@ -733,6 +736,11 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         showPanel(frmInventarios.getFondo());
     }//GEN-LAST:event_jPanel8MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        // TODO add your handling code here:
+        showPanel(frmInventarios.getFondo());
+    }//GEN-LAST:event_jLabel7MouseClicked
 
     private void showPanel(JPanel p){
         

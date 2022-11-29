@@ -186,6 +186,11 @@ public class FrmUsuarios extends javax.swing.JFrame {
         jcRol.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
         jcRol.setForeground(new java.awt.Color(0, 0, 0));
         jcRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
+        jcRol.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jcRolMouseClicked(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -524,6 +529,11 @@ public class FrmUsuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
         jtbuscar.setText("");
     }//GEN-LAST:event_jtbuscarMouseClicked
+
+    private void jcRolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcRolMouseClicked
+        // TODO add your handling code here:
+        llenarComboRol();
+    }//GEN-LAST:event_jcRolMouseClicked
 
     /**
      * @param args the command line arguments
