@@ -320,8 +320,8 @@ public class FrmBodegas extends javax.swing.JFrame {
         }
         else{
             
-            if(ta_noDocumento.getText().length() > 10){
-                mostrarLength("No. documento",10 , ta_noDocumento.getText().length());
+            if(ta_noDocumento.getText().length() > 20){
+                mostrarLength("No. documento",20 , ta_noDocumento.getText().length());
             }else if(tf_nombre.getText().length() > 50){
                  mostrarLength("Nombre",50 , tf_nombre.getText().length());
             }else{
@@ -384,8 +384,8 @@ public class FrmBodegas extends javax.swing.JFrame {
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         else{
-            if(ta_noDocumento.getText().length() > 10){
-                mostrarLength("No. documento",10 , ta_noDocumento.getText().length());
+            if(ta_noDocumento.getText().length() > 20){
+                mostrarLength("No. documento",20 , ta_noDocumento.getText().length());
             }else if(tf_nombre.getText().length() > 50){
                  mostrarLength("Nombre",50 , tf_nombre.getText().length());
             }else{

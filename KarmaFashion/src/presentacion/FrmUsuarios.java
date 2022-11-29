@@ -133,9 +133,9 @@ public class FrmUsuarios extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jtUsuarios);
 
         jbAgregar.setBackground(new java.awt.Color(153, 153, 153));
-        jbAgregar.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        jbAgregar.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
         jbAgregar.setForeground(new java.awt.Color(0, 0, 0));
-        jbAgregar.setText("Agregar usuario");
+        jbAgregar.setText("Guardar usuario");
         jbAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbAgregarActionPerformed(evt);
@@ -143,7 +143,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
         });
 
         jbEliminar.setBackground(new java.awt.Color(153, 153, 153));
-        jbEliminar.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        jbEliminar.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
         jbEliminar.setForeground(new java.awt.Color(0, 0, 0));
         jbEliminar.setText("Eliminar Usuario");
         jbEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -153,7 +153,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
         });
 
         jbEditar.setBackground(new java.awt.Color(153, 153, 153));
-        jbEditar.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        jbEditar.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
         jbEditar.setForeground(new java.awt.Color(0, 0, 0));
         jbEditar.setText("Editar Usuario");
         jbEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -232,7 +232,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jcRol, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,9 +258,9 @@ public class FrmUsuarios extends javax.swing.JFrame {
         );
 
         jbLimpiar.setBackground(new java.awt.Color(153, 153, 153));
-        jbLimpiar.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        jbLimpiar.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
         jbLimpiar.setForeground(new java.awt.Color(0, 0, 0));
-        jbLimpiar.setText("Limpiar campos");
+        jbLimpiar.setText("Vaciar campos");
         jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbLimpiarActionPerformed(evt);
@@ -268,12 +268,13 @@ public class FrmUsuarios extends javax.swing.JFrame {
         });
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(new javax.swing.border.MatteBorder(null));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jtbuscar.setBackground(new java.awt.Color(204, 204, 204));
         jtbuscar.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
         jtbuscar.setForeground(new java.awt.Color(0, 0, 0));
         jtbuscar.setText("Buscar...");
+        jtbuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
         jtbuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtbuscarMouseClicked(evt);
@@ -296,8 +297,8 @@ public class FrmUsuarios extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jtbuscar)
-                .addContainerGap())
+                .addComponent(jtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -318,14 +319,14 @@ public class FrmUsuarios extends javax.swing.JFrame {
                     .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jbAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbAgregar)
                         .addGap(18, 18, 18)
-                        .addComponent(jbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(jbEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbEliminar)
                         .addGap(18, 18, 18)
-                        .addComponent(jbLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 179, Short.MAX_VALUE)))
+                        .addComponent(jbEditar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbLimpiar)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -335,10 +336,10 @@ public class FrmUsuarios extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbEditar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
+                    .addComponent(jbAgregar)
+                    .addComponent(jbEliminar)
+                    .addComponent(jbLimpiar)
+                    .addComponent(jbEditar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

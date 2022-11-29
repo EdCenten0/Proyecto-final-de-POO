@@ -7,6 +7,7 @@ package presentacion;
 import entidades.Clientes;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import javax.swing.JPanel;
@@ -31,6 +32,7 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/retrato.png")));
         LocalDate now = LocalDate.now();
         int year = now.getYear();
         int dia = now.getDayOfMonth();

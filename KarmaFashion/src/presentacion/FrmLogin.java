@@ -10,6 +10,7 @@ import java.time.LocalDate;
 
 import entidades.Usuarios;
 import datos.Dt_usuarios;
+import java.awt.Toolkit;
 
 import presentacion.Principal;
 import presentacion.FrmAgregarUser;
@@ -38,11 +39,8 @@ public class FrmLogin extends javax.swing.JFrame {
      */
     public FrmLogin() {
         initComponents();
-        LocalDate now = LocalDate.now();
-        int year = now.getYear();
-        int dia = now.getDayOfMonth();
-        int month = now.getMonthValue();
-        jlabel_date.setText(dia+"/"+month+"/"+year);
+        
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/retrato.png")));
     }
 
     /**
