@@ -272,7 +272,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
 
         jtbuscar.setBackground(new java.awt.Color(204, 204, 204));
         jtbuscar.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
-        jtbuscar.setForeground(new java.awt.Color(0, 0, 0));
+        jtbuscar.setForeground(new java.awt.Color(102, 102, 102));
         jtbuscar.setText("Buscar...");
         jtbuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
         jtbuscar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -505,10 +505,10 @@ public class FrmUsuarios extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jbEditarActionPerformed
 
-    private void jtbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbuscarActionPerformed
+    private void jcRolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcRolMouseClicked
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jtbuscarActionPerformed
+        llenarComboRol();
+    }//GEN-LAST:event_jcRolMouseClicked
 
     private void jtbuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtbuscarKeyTyped
         // TODO add your handling code here:
@@ -526,15 +526,16 @@ public class FrmUsuarios extends javax.swing.JFrame {
         jtUsuarios.setRowSorter(trsfiltro);
     }//GEN-LAST:event_jtbuscarKeyTyped
 
+    private void jtbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbuscarActionPerformed
+        // TODO add your handling code here:
+        jtbuscar.setText("");
+
+    }//GEN-LAST:event_jtbuscarActionPerformed
+
     private void jtbuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbuscarMouseClicked
         // TODO add your handling code here:
         jtbuscar.setText("");
     }//GEN-LAST:event_jtbuscarMouseClicked
-
-    private void jcRolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcRolMouseClicked
-        // TODO add your handling code here:
-        llenarComboRol();
-    }//GEN-LAST:event_jcRolMouseClicked
 
     /**
      * @param args the command line arguments

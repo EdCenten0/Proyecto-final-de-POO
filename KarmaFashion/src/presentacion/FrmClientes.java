@@ -70,8 +70,8 @@ public class FrmClientes extends javax.swing.JFrame {
         bt_eliminar = new javax.swing.JButton();
         bt_guardar = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         jtf_buscar = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -249,8 +249,13 @@ public class FrmClientes extends javax.swing.JFrame {
             }
         });
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         jtf_buscar.setBackground(new java.awt.Color(204, 204, 204));
-        jtf_buscar.setForeground(new java.awt.Color(0, 0, 0));
+        jtf_buscar.setForeground(new java.awt.Color(102, 102, 102));
+        jtf_buscar.setText("Buscar...");
+        jtf_buscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
         jtf_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtf_buscarActionPerformed(evt);
@@ -262,35 +267,44 @@ public class FrmClientes extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Buscar:");
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jtf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(127, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jtf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jButton5)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_editar)
+                        .addGap(18, 18, 18)
+                        .addComponent(bt_eliminar)
+                        .addGap(18, 18, 18)
+                        .addComponent(bt_guardar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(47, 47, 47)
-                                .addComponent(jLabel1)
-                                .addGap(31, 31, 31)
-                                .addComponent(jtf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(jButton5)
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_editar)
-                                .addGap(18, 18, 18)
-                                .addComponent(bt_eliminar)
-                                .addGap(18, 18, 18)
-                                .addComponent(bt_guardar)))
-                        .addGap(56, 56, 56))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -304,10 +318,8 @@ public class FrmClientes extends javax.swing.JFrame {
                     .addComponent(btn_editar)
                     .addComponent(bt_eliminar)
                     .addComponent(bt_guardar))
-                .addGap(8, 8, 8)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(82, 82, 82))
@@ -343,6 +355,8 @@ public class FrmClientes extends javax.swing.JFrame {
                 mostrarLength("Email", 30, tf_email.getText().length());
             }else if(ta_direccion.getText().length() > 200){
                 mostrarLength("Direccion", 200, ta_direccion.getText().length());
+            }else if(Integer.parseInt(tf_sexo.getText()) != 1 || Integer.parseInt(tf_sexo.getText()) != 2 ){
+                JOptionPane.showMessageDialog(this, "Opciones validas para sexo: 1 (Hombre) o 2 (Mujer)","Opciones no validas",JOptionPane.ERROR_MESSAGE);
             }else{
                 clientes.setTienda_id(1);
                 clientes.setCedula(tf_cedula.getText());
@@ -398,6 +412,7 @@ public class FrmClientes extends javax.swing.JFrame {
 
     private void jtf_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtf_buscarActionPerformed
         // TODO add your handling code here:
+        jtf_buscar.setText("");
     }//GEN-LAST:event_jtf_buscarActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -423,6 +438,8 @@ public class FrmClientes extends javax.swing.JFrame {
                 mostrarLength("Email", 30, tf_email.getText().length());
             }else if(ta_direccion.getText().length() > 200){
                 mostrarLength("Direccion", 200, ta_direccion.getText().length());
+            }else if(Integer.parseInt(tf_sexo.getText()) != 1 || Integer.parseInt(tf_sexo.getText()) != 2 ){
+                JOptionPane.showMessageDialog(this, "Opciones validas para sexo: 1 (Hombre) o 2 (Mujer)","Opciones no validas",JOptionPane.ERROR_MESSAGE);
             }else{
                 clientes.setCliente_id(Integer.parseInt(tf_clienteID.getText()));
                 clientes.setCedula(tf_cedula.getText());
@@ -620,7 +637,6 @@ public class FrmClientes extends javax.swing.JFrame {
     private javax.swing.JButton bt_guardar;
     private javax.swing.JButton btn_editar;
     private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -630,6 +646,7 @@ public class FrmClientes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
