@@ -472,7 +472,7 @@ public class FrmInventarios extends javax.swing.JFrame {
 
     private void jb_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_EliminarActionPerformed
         // TODO add your handling code here:
-        if(jf_Fecha.getText().equals("") || jf_compras.getText().equals("") || jcb_BodegaID.getSelectedIndex()==0||jf_ventas.getText().equals("") || jf_cantInicial.getText().equals("")||jf_saldoTotal.getText().equals("")){
+        if(jf_Fecha.getText().equals("") || jf_compras.getText().equals("") || jcb_BodegaID.getSelectedIndex()==0||jcb_InventarioID.getSelectedIndex()==0||jf_ventas.getText().equals("") || jf_cantInicial.getText().equals("")||jf_saldoTotal.getText().equals("")){
             JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
@@ -484,10 +484,12 @@ public class FrmInventarios extends javax.swing.JFrame {
             inv.setMovimiento_pos(Integer.parseInt(jf_ventas.getText()));
             inv.setSaldo_final(Integer.parseInt(jf_saldoTotal.getText()));
             inv.setCant_inicial(Integer.parseInt(jf_cantInicial.getText()));
+            
+            pro = (Productos)this.jcb_InventarioID.getSelectedItem();
+            inv.setProductoID(pro.getProducto_id());
             b = (Bodegas)this.jcb_BodegaID.getSelectedItem();
             inv.setBodegaID(b.getBodegaID());
             
-            dtProductos.eliminarInventario_Productos(inv.getInventarioID());
 
             //validamos que el metodo delete devuelve un true
             if(dt_inventario.eliminarInventario(inv.getInventarioID())){
@@ -509,7 +511,7 @@ public class FrmInventarios extends javax.swing.JFrame {
     private void jb_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_EditarActionPerformed
         // TODO add your handling code here:
         //validamos que todos los campos sean ingresados por el usuario      
-        if(jf_Fecha.getText().equals("") || jf_compras.getText().equals("") || jcb_BodegaID.getSelectedIndex()==0||jf_ventas.getText().equals("") || jf_cantInicial.getText().equals("")||jf_saldoTotal.getText().equals("")){
+        if(jf_Fecha.getText().equals("") || jf_compras.getText().equals("") || jcb_BodegaID.getSelectedIndex()==0|| jcb_InventarioID.getSelectedIndex()==0||jf_ventas.getText().equals("") || jf_cantInicial.getText().equals("")||jf_saldoTotal.getText().equals("")){
             JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
@@ -521,6 +523,9 @@ public class FrmInventarios extends javax.swing.JFrame {
             inv.setMovimiento_pos(Integer.parseInt(jf_ventas.getText()));
             inv.setSaldo_final(Integer.parseInt(jf_saldoTotal.getText()));
             inv.setCant_inicial(Integer.parseInt(jf_cantInicial.getText()));
+            
+            pro = (Productos)this.jcb_InventarioID.getSelectedItem();
+            inv.setProductoID(pro.getProducto_id());
             b = (Bodegas)this.jcb_BodegaID.getSelectedItem();
             inv.setBodegaID(b.getBodegaID());
             
@@ -594,18 +599,78 @@ public class FrmInventarios extends javax.swing.JFrame {
 
     private void jtInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtInventarioMouseClicked
         // TODO add your handling code here:
-        int fila = jtInventario.getSelectedRow();
+        int fila = jtInventario.getSelectedRow();  
+        ArrayList listarNombre = new ArrayList();
+        
+
 
         //asignamos los valores a los campos del formulario
         tf_inventario.setText(jtInventario.getValueAt(fila, 0).toString());
         jf_cantInicial.setText(jtInventario.getValueAt(fila, 3).toString());
         jcb_InventarioID.setSelectedIndex(Integer.parseInt(jtInventario.getValueAt(fila, 2).toString()));  
-        jcb_BodegaID.setSelectedIndex(Integer.parseInt(jtInventario.getValueAt(fila, 2).toString()));  
 
         jf_ventas.setText(jtInventario.getValueAt(fila, 4).toString());
         jf_compras.setText(jtInventario.getValueAt(fila, 5).toString());
         jf_saldoTotal.setText(jtInventario.getValueAt(fila, 6).toString());
         jf_Fecha.setText(jtInventario.getValueAt(fila, 7).toString());
+        
+        listProductos = dtProductos.listarProductos();
+        
+        //recorremos cada elemento de la lista y creamos el objeto
+        for(Productos pro: listProductos){
+            //asignamos el objeto creado al combobox
+            listarNombre.add(pro.getNombre());
+        }//[Calcetines, camisas, zapatillas]
+        
+        
+         
+        //Combo de Bodega
+        int idLoc = 1; //guarda el idLocations que se obtiene de la tabla
+        String n;
+        int pos = 1; //variable de control para recorrer las posiciones de los elementos en el jcombobox
+        //obtenemos el idLocations del jtable
+        idLoc = Integer.parseInt(this.jtInventario.getValueAt(fila, 2).toString());
+        System.out.println("idLoc: "+idLoc);
+        
+        n = dt_bodega.SacarNombreBodega(idLoc);
+            
+          
+            for(int i=0;i<=idLoc;i++){
+                    if(n.equals(listarNombre.get(i))){
+                    //selecciono el objeto del jcombobox
+                    System.out.println("pos: "+pos);
+                    break;
+                }
+                    else{
+                            pos++;
+                            }
+            }
+            
+            
+        jcb_BodegaID.setSelectedIndex(pos);
+        
+        
+        //jcb_BodegaID.setSelectedIndex(Integer.parseInt(jtInventario.getValueAt(fila, 1).toString()));  
+
+        
+        /***************************************************************************************
+        size = this.jcb_BodegaID.getItemCount(); //obtenemos la cantidad de elementos contenidos en el jcombobox
+        System.out.println("size: "+size);
+        do{
+            
+            b = (Bodegas)this.jcb_BodegaID.getItemAt(pos);
+            if(b.getBodegaID()==idLoc){
+                //selecciono el objeto del jcombobox
+                this.jcb_BodegaID.setSelectedIndex(pos);
+                System.out.println("pos: "+pos);
+                break;
+            }
+            pos++;
+            
+        }
+        while(pos==size);
+        jcb_BodegaID.setSelectedIndex(pos); 
+*/
 
     }//GEN-LAST:event_jtInventarioMouseClicked
 

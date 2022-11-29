@@ -324,7 +324,7 @@ public class FrmBodegas extends javax.swing.JFrame {
             }else if(tf_nombre.getText().length() > 50){
                  mostrarLength("Nombre",50 , tf_nombre.getText().length());
             }else{
-                bodegas.setTiendaID(2);
+                bodegas.setTiendaID(Integer.parseInt(tbl_bodegas.getValueAt(0,1).toString()));
             bodegas.setNombre(tf_nombre.getText());
             bodegas.setNo_documento(ta_noDocumento.getText());
             

@@ -87,6 +87,7 @@ public class Dt_inventarios {
                 if(rs.getInt("InventarioID")==(inv.getInventarioID())){
                     rs.updateString("Fecha",inv.getFecha());
                     rs.updateInt("BodegaID", inv.getBodegaID());
+                    rs.updateInt("ProductoID", inv.getProductoID());
                     rs.updateInt("Cant_inicial", inv.getCant_inicial());
                     rs.updateInt("Saldo_final", inv.getSaldo_final());
                     rs.updateInt("Movimiento_neg", inv.getMovimiento_neg());
