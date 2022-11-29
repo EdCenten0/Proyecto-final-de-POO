@@ -208,6 +208,7 @@ public class Dt_bodegas {
                 if(rs.getInt("BodegaID")==(inv)){
                     nombre = rs.getString("Nombre");
                     resp=true;
+                    break;
                 }
             }	
 	} 

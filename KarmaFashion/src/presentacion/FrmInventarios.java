@@ -634,13 +634,15 @@ public class FrmInventarios extends javax.swing.JFrame {
         n = dt_bodega.SacarNombreBodega(idLoc);
             
           
-            for(int i=0;i>=idLoc;i++){
-                    if(n.equals(listarNombre.get(i))){
+            for(int i=0;i<=idLoc;i++){
+                    if(listarNombre.get(i).equals(n)){
                     //selecciono el objeto del jcombobox
                     System.out.println("pos: "+pos);
                     pos = listarNombre.size();
                     break;
-                }
+                }else{
+                        System.out.println("Salir"+(i+1));
+                    }
                     
             }
             
