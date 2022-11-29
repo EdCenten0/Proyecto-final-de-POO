@@ -123,7 +123,7 @@ public class FrmClientes extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("ClienteID:");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, -1, -1));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -138,7 +138,7 @@ public class FrmClientes extends javax.swing.JFrame {
                 tf_clienteIDActionPerformed(evt);
             }
         });
-        jPanel3.add(tf_clienteID, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 70, -1));
+        jPanel3.add(tf_clienteID, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 100, -1));
 
         tf_nombre.setBackground(new java.awt.Color(204, 204, 204));
         tf_nombre.setForeground(new java.awt.Color(0, 0, 0));
@@ -147,7 +147,7 @@ public class FrmClientes extends javax.swing.JFrame {
                 tf_nombreKeyTyped(evt);
             }
         });
-        jPanel3.add(tf_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 122, -1));
+        jPanel3.add(tf_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 180, -1));
 
         tf_cedula.setBackground(new java.awt.Color(204, 204, 204));
         tf_cedula.setForeground(new java.awt.Color(0, 0, 0));
@@ -156,7 +156,7 @@ public class FrmClientes extends javax.swing.JFrame {
                 tf_cedulaActionPerformed(evt);
             }
         });
-        jPanel3.add(tf_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 119, -1));
+        jPanel3.add(tf_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 180, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
@@ -175,26 +175,26 @@ public class FrmClientes extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Email:");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, -1, -1));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, -1, -1));
 
         tf_email.setBackground(new java.awt.Color(204, 204, 204));
         tf_email.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel3.add(tf_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 118, -1));
+        jPanel3.add(tf_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 120, -1));
 
         jLabel8.setBackground(new java.awt.Color(0, 0, 0));
         jLabel8.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Sexo:");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, -1, -1));
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, -1, -1));
 
         tf_sexo.setBackground(new java.awt.Color(204, 204, 204));
         tf_sexo.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel3.add(tf_sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 71, -1));
+        jPanel3.add(tf_sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 120, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Direccion:");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 50, -1, -1));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 30, -1, -1));
 
         ta_direccion.setBackground(new java.awt.Color(204, 204, 204));
         ta_direccion.setColumns(20);
@@ -270,30 +270,28 @@ public class FrmClientes extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jtf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jButton5)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_editar)
-                        .addGap(18, 18, 18)
-                        .addComponent(bt_eliminar)
-                        .addGap(18, 18, 18)
-                        .addComponent(bt_guardar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 799, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
-                .addContainerGap())
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addComponent(jLabel1)
+                                .addGap(31, 31, 31)
+                                .addComponent(jtf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addComponent(jButton5)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_editar)
+                                .addGap(18, 18, 18)
+                                .addComponent(bt_eliminar)
+                                .addGap(18, 18, 18)
+                                .addComponent(bt_guardar)))
+                        .addGap(56, 56, 56))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
