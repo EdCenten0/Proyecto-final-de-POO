@@ -216,7 +216,7 @@
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jf_compras" min="-2" pref="244" max="-2" attributes="0"/>
+                                      <Component id="jf_ventas" min="-2" pref="244" max="-2" attributes="0"/>
                                       <Component id="jf_saldoTotal" min="-2" pref="244" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
@@ -230,7 +230,7 @@
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jf_ventas" min="-2" pref="244" max="-2" attributes="0"/>
+                              <Component id="jf_compras" min="-2" pref="244" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
@@ -266,13 +266,13 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jf_ventas" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jf_compras" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel3" alignment="3" max="32767" attributes="0"/>
-                                  <Component id="jf_compras" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jf_ventas" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -342,7 +342,7 @@
                 <Property name="text" type="java.lang.String" value="Movimientos negativos:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jf_compras">
+            <Component class="javax.swing.JTextField" name="jf_ventas">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -355,7 +355,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jf_comprasActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jf_ventasActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
@@ -396,7 +396,7 @@
                 <Property name="text" type="java.lang.String" value="Movimientos positivos:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jf_ventas">
+            <Component class="javax.swing.JTextField" name="jf_compras">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -409,7 +409,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jf_ventasActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jf_comprasActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
