@@ -27,6 +27,7 @@ public class Principal extends javax.swing.JFrame {
     FrmUsuarios frmUsuarios = new FrmUsuarios();
     FrmDatosTienda frmDatosTienda = new FrmDatosTienda();
     FrmInventarios frmInventarios = new FrmInventarios();
+    FrmInfo frmInfo = new FrmInfo();
     /**
      * Creates new form Principal
      */
@@ -40,7 +41,7 @@ public class Principal extends javax.swing.JFrame {
         String[] meses = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto"," ;Septiembre"
             ,"Octubre","Noviembre","Diciemrbre"};
        jlabel_date.setText("                                          Hoy es "+dia+" de "+meses[month - 1]+" de "+year);
-       
+        showPanel(frmInfo.getFondo());
         
     }
     
@@ -75,6 +76,8 @@ public class Principal extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -85,6 +88,8 @@ public class Principal extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
 
         setLocationByPlatform(true);
         setUndecorated(true);
@@ -121,7 +126,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI Symbol", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel3.setText(" Clientes");
+        jLabel3.setText(" Principal");
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
@@ -133,9 +138,9 @@ public class Principal extends javax.swing.JFrame {
                 jLabel3MouseExited(evt);
             }
         });
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 20));
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 20));
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 178, 190, 20));
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 190, 20));
 
         jPanel12.setBackground(new java.awt.Color(255, 204, 204));
         jPanel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -169,7 +174,7 @@ public class Principal extends javax.swing.JFrame {
         });
         jPanel12.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 20));
 
-        jPanel2.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 190, -1));
+        jPanel2.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 190, -1));
 
         jPanel6.setBackground(new java.awt.Color(255, 204, 204));
         jPanel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -197,7 +202,7 @@ public class Principal extends javax.swing.JFrame {
         });
         jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 20));
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 190, 20));
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 190, 20));
 
         jPanel7.setBackground(new java.awt.Color(255, 204, 204));
         jPanel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -231,7 +236,7 @@ public class Principal extends javax.swing.JFrame {
         });
         jPanel7.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 20));
 
-        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 190, 20));
+        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 190, 20));
 
         jPanel8.setBackground(new java.awt.Color(255, 204, 204));
         jPanel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -265,7 +270,7 @@ public class Principal extends javax.swing.JFrame {
         });
         jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 20));
 
-        jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 190, 20));
+        jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 190, 20));
 
         jPanel10.setBackground(new java.awt.Color(255, 204, 204));
         jPanel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -299,7 +304,7 @@ public class Principal extends javax.swing.JFrame {
         });
         jPanel10.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 4, 40, -1));
 
-        jPanel2.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 190, -1));
+        jPanel2.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 190, -1));
 
         jPanel14.setBackground(new java.awt.Color(255, 204, 204));
         jPanel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -327,7 +332,7 @@ public class Principal extends javax.swing.JFrame {
         });
         jPanel14.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 20));
 
-        jPanel2.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 190, 20));
+        jPanel2.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 190, 20));
 
         jPanel9.setBackground(new java.awt.Color(255, 204, 204));
         jPanel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -361,7 +366,41 @@ public class Principal extends javax.swing.JFrame {
         });
         jPanel9.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 20));
 
-        jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 190, 20));
+        jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 190, 20));
+
+        jPanel11.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel11MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel11MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel11MouseExited(evt);
+            }
+        });
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel18.setFont(new java.awt.Font("Segoe UI Symbol", 1, 12)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel18.setText(" Clientes");
+        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel18MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel18MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel18MouseExited(evt);
+            }
+        });
+        jPanel11.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 20));
+
+        jPanel2.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 190, 20));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 630));
 
@@ -427,23 +466,33 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Ana Marbell Zepeda Almendarez");
-        content.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, -1, -1));
+        content.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, -1, -1));
 
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Creadores:");
-        content.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, -1, -1));
+        content.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 380, -1, -1));
 
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Isabel Denisse Aguilar Vílchez");
-        content.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, -1, -1));
+        content.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, -1, -1));
 
+        jLabel14.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel14.setText("Carlos Eduardo Chavarría Centeno");
-        content.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, -1, -1));
+        jLabel14.setText("<html>Sistema de gestión para comercio. Administre forma <br> óptima y sencilla la información de su negocio. <br>Esta herramienta le permitirá llevar un control de la <br> información de sus productos, inventarios<br>, sus clientes, proveedores, y demás.<br><br>Con esta aplicación podrá realizar acciones de bases de datos como:<br><br><ul><li>Lectura</li><li>Creación</li><li>Edición</li><li>Eliminado</li></html>");
+        content.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 370, 290));
 
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Francisco de Jesús Meléndez Simplina");
-        content.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, -1, -1));
+        content.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI Symbol", 0, 24)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setText("Bienvenido");
+        content.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel17.setText("Carlos Eduardo Chavarría Centeno");
+        content.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, -1, -1));
 
         jPanel1.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(197, 30, 870, 560));
 
@@ -560,13 +609,13 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         
-        showPanel(frmClientes.getFondo());
+        showPanel(frmInfo.getFondo());
         
     
     }//GEN-LAST:event_jPanel4MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        showPanel(frmClientes.getFondo());
+        showPanel(frmInfo.getFondo());
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel3MouseClicked
 
@@ -744,6 +793,41 @@ public class Principal extends javax.swing.JFrame {
         showPanel(frmInventarios.getFondo());
     }//GEN-LAST:event_jLabel7MouseClicked
 
+    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+        // TODO add your handling code here:
+        showPanel(frmClientes.getFondo());
+    }//GEN-LAST:event_jLabel18MouseClicked
+
+    private void jLabel18MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseEntered
+        // TODO add your handling code here:
+        jPanel11.setBackground(Color.PINK);
+        jLabel18.setForeground(Color.white);
+    }//GEN-LAST:event_jLabel18MouseEntered
+
+    private void jLabel18MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseExited
+        // TODO add your handling code here:
+        jPanel11.setBackground(new Color(255,204,204));
+        jLabel18.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jLabel18MouseExited
+
+    private void jPanel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel11MouseClicked
+        // TODO add your handling code here:
+        showPanel(frmClientes.getFondo());
+    }//GEN-LAST:event_jPanel11MouseClicked
+
+    private void jPanel11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel11MouseEntered
+        // TODO add your handling code here:
+        jPanel11.setBackground(Color.PINK);
+        jLabel18.setForeground(Color.white);
+        
+    }//GEN-LAST:event_jPanel11MouseEntered
+
+    private void jPanel11MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel11MouseExited
+        // TODO add your handling code here:
+        jPanel11.setBackground(new Color(255,204,204));
+        jLabel18.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jPanel11MouseExited
+
     private void showPanel(JPanel p){
         
         p.setSize(869, 495);
@@ -800,12 +884,15 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel content;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -816,6 +903,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
