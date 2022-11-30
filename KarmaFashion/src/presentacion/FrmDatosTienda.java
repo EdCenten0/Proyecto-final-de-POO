@@ -33,6 +33,7 @@ public class FrmDatosTienda extends javax.swing.JFrame {
 
     public FrmDatosTienda() {
         initComponents();
+        llenarTablaTienda();
         /*
         llenarTablaProveedores();
         limpiarCampos(); 
@@ -266,6 +267,11 @@ public class FrmDatosTienda extends javax.swing.JFrame {
                 "TiendaID", "Nombre", "Telefono", "Email", "Ruc", "Dirección", " Hora Abierto", "Hora Cerrado"
             }
         ));
+        jTable_Tienda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable_TiendaMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTable_Tienda);
 
         bt_guardar.setText("Guardar");
@@ -358,12 +364,57 @@ public class FrmDatosTienda extends javax.swing.JFrame {
 
     private void bt_Vaciar_CamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_Vaciar_CamposActionPerformed
         // TODO add your handling code here:
+        limpiarCampos();
        
     }//GEN-LAST:event_bt_Vaciar_CamposActionPerformed
 
     private void bt_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_EditarActionPerformed
         // TODO add your handling code here:
+      if(tf_tiendaID.getText().equals("") || tf_nombre.getText().equals("") || tf_telefono.getText().equals("") || tf_email.getText().equals("") || tf_ruc.getText().equals("") || ta_direccion.getText().equals("") || tf_hora_abierto.getText().equals("") || tf_hora_cerrado.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
         
+        }
+         else{
+             if(tf_nombre.getText().length() > 30){
+                mostrarLength("Nombre",30 , tf_nombre.getText().length());
+            }else if(tf_telefono.getText().length() > 20){
+                mostrarLength("Telefono",20 , tf_telefono.getText().length());
+            }else if(tf_email.getText().length() > 20){
+                mostrarLength("Email", 30, tf_email.getText().length());
+            }else if(tf_ruc.getText().length() > 30){
+                mostrarLength("Ruc", 30, tf_ruc.getText().length());
+            }else if(ta_direccion.getText().length() > 200){
+                mostrarLength("Direccion", 200, ta_direccion.getText().length());
+            }else if(tf_hora_abierto.getText().length() > 20){
+                mostrarLength("Hora_Abierto",20 , tf_hora_abierto.getText().length());
+            }else if(tf_hora_cerrado.getText().length() > 20){
+                mostrarLength("Hora_Cerrado",20 , tf_hora_cerrado.getText().length());
+            }else{
+                tienda.setTiendaID(Integer.parseInt(tf_tiendaID.getText()));
+                tienda.setNombre(tf_nombre.getText());
+                tienda.setTelefono(tf_telefono.getText());
+                tienda.setEmail(tf_email.getText());
+                tienda.setRuc(tf_ruc.getText());
+                tienda.setDireccion(ta_direccion.getText());
+                tienda.setHora_abierto(tf_hora_abierto.getText());
+                tienda.setHora_cerrado(tf_hora_cerrado.getText());
+                
+
+                if(dt_tienda.editarTienda(tienda)){
+                    JOptionPane.showMessageDialog (this, "El registro fue actualizado con éxito!", 
+                      "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                    actualizarTabla();
+                    limpiarCampos();
+                }
+                else{
+                    JOptionPane.showMessageDialog(this, 
+                      "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
+                      "ERROR", JOptionPane.ERROR_MESSAGE);
+         }
+
+    }                                         
+}
               
                 
     }//GEN-LAST:event_bt_EditarActionPerformed
@@ -415,10 +466,26 @@ public class FrmDatosTienda extends javax.swing.JFrame {
                     
                     
     }//GEN-LAST:event_bt_guardarActionPerformed
+}
+    private void jTable_TiendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_TiendaMouseClicked
+        // TODO add your handling code here:
+        int fila = jTable_Tienda.getSelectedRow();
+
+        tf_tiendaID.setText(jTable_Tienda.getValueAt(fila, 0).toString());
+        tf_nombre.setText(jTable_Tienda.getValueAt(fila, 1).toString());
+        tf_telefono.setText(jTable_Tienda.getValueAt(fila, 2).toString());
+        tf_email.setText(jTable_Tienda.getValueAt(fila, 3).toString());
+        tf_ruc.setText(jTable_Tienda.getValueAt(fila, 4).toString());
+        ta_direccion.setText(jTable_Tienda.getValueAt(fila, 5).toString());
+        tf_hora_abierto.setText(jTable_Tienda.getValueAt(fila, 6).toString());
+        tf_hora_cerrado.setText(jTable_Tienda.getValueAt(fila, 7).toString());
+        
+        
+    }//GEN-LAST:event_jTable_TiendaMouseClicked
 
     
     
-}
+
     /**
      * @param args the command line arguments
      */
@@ -456,6 +523,63 @@ public class FrmDatosTienda extends javax.swing.JFrame {
                 new FrmDatosTienda().setVisible(true);
             }
         });
+        
+     }
+    private void actualizarTabla(){
+        myData.setColumnCount(0);
+        myData.setRowCount(0);
+        this.llenarTablaTienda();
+    }   
+    private void limpiarCampos(){
+        this.tf_tiendaID.setText("");
+        this.tf_nombre.setText("");
+        this.tf_telefono.setText("");
+        this.tf_email.setText("");
+        this.tf_ruc.setText("");
+        this.ta_direccion.setText("");
+        this.tf_hora_abierto.setText("");
+        this.tf_hora_cerrado.setText("");
+        
+       
+    }
+    private void filtrarTabla(){
+       trsfiltro.setRowFilter(RowFilter.regexFilter(ta_buscar.getText(), 0));
+    }
+    
+    
+    
+    private void llenarTablaTienda()
+    {
+         //llenamos la lista
+        listTienda = dt_tienda.listarTienda();
+        
+        //creamos un arraylist con las columnas del modelo
+        ArrayList<Object> listNombreColumnas = new ArrayList<Object>();
+        listNombreColumnas.add("TiendaID");
+        listNombreColumnas.add("Nombre");
+        listNombreColumnas.add("Telefono");
+        listNombreColumnas.add("Email");
+        listNombreColumnas.add("Ruc");
+        listNombreColumnas.add("Direccion");
+        listNombreColumnas.add("Hora_abierto");
+        listNombreColumnas.add("Hora_cerrado");
+        
+        
+        
+        
+        for(Object column : listNombreColumnas){
+           
+            myData.addColumn(column);
+            
+        }
+        for(Tienda tie: listTienda){
+            Object[] datostie = new Object[]{tie.getTiendaID(), tie.getNombre(), tie.getTelefono(), tie.getEmail(), tie.getRuc(),tie.getDireccion(), tie.getHora_abierto(), tie.getHora_cerrado()};
+            
+            myData.addRow(datostie);
+        }
+        
+        
+         jTable_Tienda.setModel(myData);
         
      }   
         private void mostrarLength(String nombre, int lengthOriginal, int lengthActual){
