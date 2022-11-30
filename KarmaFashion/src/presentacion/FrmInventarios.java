@@ -86,7 +86,7 @@ public class FrmInventarios extends javax.swing.JFrame {
         jf_cantInicial = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jf_saldoTotal = new javax.swing.JTextField();
-        jb_Guardar = new javax.swing.JButton();
+        jf_Limpiar = new javax.swing.JButton();
         jb_Agregar = new javax.swing.JButton();
         jb_Eliminar = new javax.swing.JButton();
         jb_Editar = new javax.swing.JButton();
@@ -213,12 +213,12 @@ public class FrmInventarios extends javax.swing.JFrame {
             }
         });
 
-        jb_Guardar.setBackground(new java.awt.Color(153, 153, 153));
-        jb_Guardar.setForeground(new java.awt.Color(0, 0, 0));
-        jb_Guardar.setText("Limpiar campos");
-        jb_Guardar.addActionListener(new java.awt.event.ActionListener() {
+        jf_Limpiar.setBackground(new java.awt.Color(153, 153, 153));
+        jf_Limpiar.setForeground(new java.awt.Color(0, 0, 0));
+        jf_Limpiar.setText("Limpiar campos");
+        jf_Limpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jb_GuardarActionPerformed(evt);
+                jf_LimpiarActionPerformed(evt);
             }
         });
 
@@ -320,7 +320,7 @@ public class FrmInventarios extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jb_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jb_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jf_Limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel5)
@@ -372,7 +372,7 @@ public class FrmInventarios extends javax.swing.JFrame {
                             .addComponent(jb_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jb_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jb_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jb_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jf_Limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(33, 33, 33))))
         );
 
@@ -472,9 +472,10 @@ public class FrmInventarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jf_saldoTotalActionPerformed
 
-    private void jb_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_GuardarActionPerformed
+    private void jf_LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jf_LimpiarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jb_GuardarActionPerformed
+        limpiarCampos();
+    }//GEN-LAST:event_jf_LimpiarActionPerformed
 
     private void jb_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_EliminarActionPerformed
         // TODO add your handling code here:
@@ -861,10 +862,10 @@ public class FrmInventarios extends javax.swing.JFrame {
     private javax.swing.JButton jb_Agregar;
     private javax.swing.JButton jb_Editar;
     private javax.swing.JButton jb_Eliminar;
-    private javax.swing.JButton jb_Guardar;
     private javax.swing.JComboBox<Object> jcb_BodegaID;
     private javax.swing.JComboBox<Object> jcb_Producto;
     private javax.swing.JTextField jf_Fecha;
+    private javax.swing.JButton jf_Limpiar;
     private javax.swing.JTextField jf_cantInicial;
     private javax.swing.JTextField jf_compras;
     private javax.swing.JTextField jf_saldoTotal;

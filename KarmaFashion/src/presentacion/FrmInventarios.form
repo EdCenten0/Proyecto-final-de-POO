@@ -222,7 +222,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jb_Editar" min="-2" pref="96" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jb_Guardar" min="-2" pref="118" max="-2" attributes="0"/>
+                                      <Component id="jf_Limpiar" min="-2" pref="118" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -291,7 +291,7 @@
                                   <Component id="jb_Agregar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                                   <Component id="jb_Eliminar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                                   <Component id="jb_Editar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                                  <Component id="jb_Guardar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="jf_Limpiar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                           </Group>
@@ -467,7 +467,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jf_saldoTotalActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jb_Guardar">
+            <Component class="javax.swing.JButton" name="jf_Limpiar">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="99" red="99" type="rgb"/>
@@ -478,7 +478,7 @@
                 <Property name="text" type="java.lang.String" value="Limpiar campos"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jb_GuardarActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jf_LimpiarActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jb_Agregar">
