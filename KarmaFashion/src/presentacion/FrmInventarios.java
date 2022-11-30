@@ -467,7 +467,7 @@ public class FrmInventarios extends javax.swing.JFrame {
             b = (Bodegas)this.jcb_BodegaID.getSelectedItem();
             inv.setBodegaID(b.getBodegaID());
             
-            dtProductos.eliminarInventario_Productos(inv.getInventarioID());
+            //dtProductos.eliminarInventario_Productos(inv.getInventarioID());
 
             //validamos que el metodo delete devuelve un true
             if(dt_inventario.eliminarInventario(inv.getInventarioID())){
