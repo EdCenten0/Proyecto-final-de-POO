@@ -281,5 +281,54 @@ public class Dt_inventarios {
         return aumentador;
     }
     
+    @SuppressWarnings("CallToPrintStackTrace")
+    public int Movimiento(Inventarios inv){
+	boolean resp=false;
+        int aumentador = 0;
+        
+        try {
+            this.cargarDatos();
+            while(rs.next()){
+                rs.moveToCurrentRow();
+
+                if(rs.getInt("InventarioID")==(inv.getInventarioID())){
+
+            rs.moveToInsertRow();
+            rs.updateInt("BodegaID", inv.getBodegaID());
+            rs.updateInt("ProductoID", inv.getProductoID());
+            rs.updateInt("Cant_inicial", inv.getCant_inicial());
+            rs.updateInt("Movimiento_pos", inv.getMovimiento_pos());
+            rs.updateInt("Movimiento_neg", inv.getMovimiento_neg());
+            rs.updateInt("Saldo_final", inv.getSaldo_final());
+            rs.updateString("Fecha", inv.getFecha()); 
+            rs.insertRow();
+            rs.moveToCurrentRow();
+
+                }
+            }	
+	} 
+        catch (SQLException e) {
+            System.out.println("Error existePais(): "+e.getMessage());
+            e.printStackTrace();
+	}
+        finally{
+            try{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+                if(con!=null){
+                    Conexion.closeConexion(con);
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+		
+        return aumentador;
+    }
+    
    
 }

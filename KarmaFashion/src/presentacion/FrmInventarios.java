@@ -575,51 +575,73 @@ public class FrmInventarios extends javax.swing.JFrame {
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         else{
-          
+            
+            
             int id = 0;
             
+            
+            
             //comprueba si esta vacio el id
-            if(tf_inventario.getText().equals("")){
-                id = 0;
-            }else{
-                id = Integer.parseInt((tf_inventario.getText()));
-            }
+                if(tf_inventario.getText().equals("")){
+                    id = 0;
+                }
+                else{
+                    id = Integer.parseInt((tf_inventario.getText()));
+                }
             
             
             
             //comprobar si es igual de id
             if(dt_inventario.existeInventario(id)){
+                
+            inv.setInventarioID(Integer.parseInt((tf_inventario.getText())));
+
+            int numero = dt_inventario.AumentadorInventario(inv.getInventarioID());
+            System.out.println("cantidad de saldo:"+numero);
+            
+            inv.setCant_inicial(numero);//Integer.parseInt((jf_cantInicial.getText()))
             
             //Encontrar el sueldo final con 2 variables
             if(jf_ventas.getText().equals("")){
-                    inv.setMovimiento_neg(0);
-                    }else{
-                        inv.setMovimiento_neg(Integer.parseInt((jf_ventas.getText())));
-                    }
+               inv.setMovimiento_neg(0);
+            }
+            else{
+                inv.setMovimiento_neg(Integer.parseInt((jf_ventas.getText())));
+            }
                     
             if(jf_compras.getText().equals("")){
-                    inv.setMovimiento_pos(0);
-                }else{
-                    inv.setMovimiento_pos(Integer.parseInt((jf_compras.getText())));
-                }
+                    
+                inv.setMovimiento_pos(0);
+            }
+            else{
+                inv.setMovimiento_pos(Integer.parseInt((jf_compras.getText())));
+            }
             
             
-            inv.setCant_inicial(dt_inventario.AumentadorInventario(cantidad_inicial));//Integer.parseInt((jf_cantInicial.getText()))
+            
             
             cantidad_inicial = inv.getCant_inicial();
             ventas = inv.getMovimiento_neg();
             compras = inv.getMovimiento_pos();
             inv.setSaldo_final((cantidad_inicial+compras)-ventas);
             
-            dt_inventario.editarInventario(inv);
-
+            inv.setFecha(jf_Fecha.getText());
+                    
+            pro = (Productos)this.jcb_Producto.getSelectedItem();
+            inv.setProductoID(pro.getProducto_id());
+            b = (Bodegas)this.jcb_BodegaID.getSelectedItem();
+            inv.setBodegaID(b.getBodegaID());
+            
+            
+            dt_inventario.Movimiento(inv);
             //*****************************************//
                 
                 
                 
-            }   else{
-                    
+            }else{
                     //se crea uno nuevo y la cantidad inicial inicia en 0
+
+                    inv.setCant_inicial(cantidad_inicial);
                     inv.setFecha(jf_Fecha.getText());
                     
                     pro = (Productos)this.jcb_Producto.getSelectedItem();
@@ -640,9 +662,6 @@ public class FrmInventarios extends javax.swing.JFrame {
                         inv.setMovimiento_pos(Integer.parseInt((jf_compras.getText())));
                     }
                     
-                    
-                    inv.setCant_inicial(cantidad_inicial);
-            
                     cantidad_inicial = inv.getCant_inicial();
                     ventas = inv.getMovimiento_neg();
                     compras = inv.getMovimiento_pos();
