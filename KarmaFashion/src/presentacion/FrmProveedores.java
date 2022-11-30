@@ -88,7 +88,7 @@ public class FrmProveedores extends javax.swing.JFrame {
         bt_eliminar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         bt_guardar = new javax.swing.JButton();
-        jtf_buscarKeyTyped = new javax.swing.JTextField();
+        jtf_buscar = new javax.swing.JTextField();
 
         jInternalFrame1.setVisible(true);
 
@@ -285,9 +285,17 @@ public class FrmProveedores extends javax.swing.JFrame {
             }
         });
 
-        jtf_buscarKeyTyped.addActionListener(new java.awt.event.ActionListener() {
+        jtf_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtf_buscarKeyTypedActionPerformed(evt);
+                jtf_buscarActionPerformed(evt);
+            }
+        });
+        jtf_buscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtf_buscarKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtf_buscarKeyTyped(evt);
             }
         });
 
@@ -313,7 +321,7 @@ public class FrmProveedores extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jtf_buscarKeyTyped, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE))))
+                                .addComponent(jtf_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE))))
                     .addComponent(jScrollPane1)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -332,7 +340,7 @@ public class FrmProveedores extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jtf_buscarKeyTyped, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -498,27 +506,9 @@ public class FrmProveedores extends javax.swing.JFrame {
         
     }//GEN-LAST:event_bt_guardarActionPerformed
 
-    private void jtf_buscarKeyTypedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtf_buscarKeyTypedActionPerformed
-        // TODO add your handling code here:
-        jtf_buscarKeyTyped.addKeyListener(new KeyAdapter(){
-            
-            @Override
-            public void keyReleased(final KeyEvent e){
-                String cadena = (jtf_buscarKeyTyped.getText()).toUpperCase();
-                jtf_buscarKeyTyped.setText(cadena);
-                repaint();
-                filtrarTabla();
-            }     
-
-            private void filtrarTabla() {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-            }
-        });
-        
-        trsfiltro = new TableRowSorter(jTable_proveedores.getModel());
-        jTable_proveedores.setRowSorter(trsfiltro);
-        
-    }//GEN-LAST:event_jtf_buscarKeyTypedActionPerformed
+    private void jtf_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtf_buscarActionPerformed
+      
+    }//GEN-LAST:event_jtf_buscarActionPerformed
 
     private void jTable_proveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_proveedoresMouseClicked
         // TODO add your handling code here:
@@ -533,6 +523,30 @@ public class FrmProveedores extends javax.swing.JFrame {
         tf_email.setText(jTable_proveedores.getValueAt(fila, 6).toString());
         ta_direccion.setText(jTable_proveedores.getValueAt(fila, 7).toString());
     }//GEN-LAST:event_jTable_proveedoresMouseClicked
+
+    private void jtf_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_buscarKeyReleased
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_jtf_buscarKeyReleased
+
+    private void jtf_buscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_buscarKeyTyped
+        // TODO add your handling code here:
+        jtf_buscar.addKeyListener(new KeyAdapter(){
+            //Se ejecuta cuando el usuario libera una tecla
+            @Override
+            public void keyReleased(final KeyEvent e){
+                String cadena = (jtf_buscar.getText()).toUpperCase();
+                jtf_buscar.setText(cadena);
+                repaint();
+                filtrarTabla();
+            }
+        });
+        trsfiltro = new TableRowSorter(jTable_proveedores.getModel());
+        jTable_proveedores.setRowSorter(trsfiltro);
+        
+    
+    }//GEN-LAST:event_jtf_buscarKeyTyped
        
     /**
      * @param args the command line arguments
@@ -624,7 +638,7 @@ public class FrmProveedores extends javax.swing.JFrame {
     
     
     private void filtrarTabla(){
-       trsfiltro.setRowFilter(RowFilter.regexFilter(jtf_buscarKeyTyped.getText(), 2));
+       trsfiltro.setRowFilter(RowFilter.regexFilter(jtf_buscar.getText(), 0));
     }
     
     public JPanel getFondo(){
@@ -660,7 +674,7 @@ public class FrmProveedores extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable_proveedores;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jtf_buscarKeyTyped;
+    private javax.swing.JTextField jtf_buscar;
     private javax.swing.JTextArea ta_direccion;
     private javax.swing.JTextField tf_cedula;
     private javax.swing.JTextField tf_email;
