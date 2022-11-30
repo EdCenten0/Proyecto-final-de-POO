@@ -627,10 +627,10 @@ public class FrmInventarios extends javax.swing.JFrame {
             
             inv.setFecha(jf_Fecha.getText());
                     
-            pro = (Productos)this.jcb_Producto.getSelectedItem();
-            inv.setProductoID(pro.getProducto_id());
-            b = (Bodegas)this.jcb_BodegaID.getSelectedItem();
-            inv.setBodegaID(b.getBodegaID());
+            inv.setProductoID(jcb_Producto.getSelectedIndex());  
+            
+            inv.setBodegaID(jcb_BodegaID.getSelectedIndex());
+            
             
             
             dt_inventario.Movimiento(inv);
@@ -646,8 +646,11 @@ public class FrmInventarios extends javax.swing.JFrame {
                     
                     pro = (Productos)this.jcb_Producto.getSelectedItem();
                     inv.setProductoID(pro.getProducto_id());
+                    
                     b = (Bodegas)this.jcb_BodegaID.getSelectedItem();
                     inv.setBodegaID(b.getBodegaID());
+                    
+                      
                     
                     if(jf_ventas.getText().equals("")){
                         inv.setMovimiento_neg(0);

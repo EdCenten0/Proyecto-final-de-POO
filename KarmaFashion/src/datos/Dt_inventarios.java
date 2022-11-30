@@ -303,6 +303,7 @@ public class Dt_inventarios {
             rs.updateString("Fecha", inv.getFecha()); 
             rs.insertRow();
             rs.moveToCurrentRow();
+            
 
                 }
             }	
