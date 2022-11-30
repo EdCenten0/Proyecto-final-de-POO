@@ -163,8 +163,10 @@ public class Dt_Proveedores {
           rs.beforeFirst();
           while(rs.next()){
               if(rs.getInt("ProveedorID")==(proveedores.getProveedor_id())){
+                  rs.updateInt("TiendaID",proveedores.getTienda_id());
                   rs.updateString("Nombre", proveedores.getNombre());
                   rs.updateString("Cedula", proveedores.getCedula());
+                  rs.updateString("Telefono", proveedores.getTelefono());
                   rs.updateString("Email", proveedores.getEmail());
                   rs.updateString("Direccion", proveedores.getDireccion());
                   rs.updateInt("Sexo", proveedores.getSexo());

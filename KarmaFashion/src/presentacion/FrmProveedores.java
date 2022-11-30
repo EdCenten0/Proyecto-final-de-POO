@@ -163,8 +163,6 @@ public class FrmProveedores extends javax.swing.JFrame {
             }
         });
 
-        tf_tiendaID.setEditable(false);
-
         tf_cedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_cedulaActionPerformed(evt);
@@ -430,6 +428,7 @@ public class FrmProveedores extends javax.swing.JFrame {
                 mostrarLength("Direccion", 200, ta_direccion.getText().length());
             }else{
                 proveedor.setProveedor_id(Integer.parseInt(tf_proveedorID.getText()));
+                proveedor.setTienda_id(Integer.parseInt(tf_tiendaID.getText()));
                 proveedor.setNombre(tf_nombre.getText());
                 proveedor.setTelefono(tf_telefono.getText());
                 proveedor.setCedula(tf_cedula.getText());
@@ -455,7 +454,7 @@ public class FrmProveedores extends javax.swing.JFrame {
 }
     private void bt_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_guardarActionPerformed
         // TODO add your handling code here:
-        if(tf_proveedorID.getText().equals("") || tf_nombre.getText().equals("") || tf_telefono.getText().equals("") || tf_cedula.getText().equals("") || tf_sexo.getText().equals("") || tf_email.getText().equals("") || ta_direccion.getText().equals("")){
+        if(tf_nombre.getText().equals("") || tf_telefono.getText().equals("") || tf_cedula.getText().equals("") || tf_sexo.getText().equals("") || tf_email.getText().equals("") || ta_direccion.getText().equals("")){
             JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
@@ -471,7 +470,8 @@ public class FrmProveedores extends javax.swing.JFrame {
             }else if(ta_direccion.getText().length() > 200){
                 mostrarLength("Direccion", 200, ta_direccion.getText().length());
             }else{
-                proveedor.setProveedor_id(Integer.parseInt(tf_proveedorID.getText()));
+               
+                proveedor.setTienda_id(Integer.parseInt(tf_tiendaID.getText()));
                 proveedor.setNombre(tf_nombre.getText());
                 proveedor.setTelefono(tf_telefono.getText());
                 proveedor.setCedula(tf_cedula.getText());
@@ -521,7 +521,16 @@ public class FrmProveedores extends javax.swing.JFrame {
 
     private void jTable_proveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_proveedoresMouseClicked
         // TODO add your handling code here:
-        
+        int fila = jTable_proveedores.getSelectedRow();
+
+        tf_proveedorID.setText(jTable_proveedores.getValueAt(fila, 0).toString());
+        tf_tiendaID.setText(jTable_proveedores.getValueAt(fila, 1).toString());
+        tf_nombre.setText(jTable_proveedores.getValueAt(fila, 2).toString());
+        tf_telefono.setText(jTable_proveedores.getValueAt(fila, 3).toString());
+        tf_cedula.setText(jTable_proveedores.getValueAt(fila, 4).toString());
+        tf_sexo.setText(jTable_proveedores.getValueAt(fila, 5).toString());
+        tf_email.setText(jTable_proveedores.getValueAt(fila, 6).toString());
+        ta_direccion.setText(jTable_proveedores.getValueAt(fila, 7).toString());
     }//GEN-LAST:event_jTable_proveedoresMouseClicked
        
     /**
@@ -600,6 +609,7 @@ public class FrmProveedores extends javax.swing.JFrame {
     
         private void limpiarCampos(){
         this.tf_proveedorID.setText("");
+        this.tf_tiendaID.setText("");
         this.tf_nombre.setText("");
         this.tf_telefono.setText("");
         this.tf_cedula.setText("");

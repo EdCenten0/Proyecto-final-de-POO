@@ -381,9 +381,6 @@
             <Component class="javax.swing.JTextField" name="tf_nombre">
             </Component>
             <Component class="javax.swing.JTextField" name="tf_tiendaID">
-              <Properties>
-                <Property name="editable" type="boolean" value="false"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="tf_telefono">
             </Component>
