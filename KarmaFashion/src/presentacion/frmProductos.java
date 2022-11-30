@@ -550,7 +550,7 @@ public class FrmProductos extends javax.swing.JFrame {
             p.setDescripcion(jTextArea1.getText());
 
             if(dt_p.existeProducto(p)){
-                JOptionPane.showMessageDialog(this, "El departamento que intenta ingresar ya existe, por favor revise sus datos e intente nuevamente!", "ERROR", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "El producto que intenta ingresar ya existe, por favor revise sus datos e intente nuevamente!", "ERROR", JOptionPane.ERROR_MESSAGE);
 
             }else{
                 //validamos que el metodo guardar devuelve un true
