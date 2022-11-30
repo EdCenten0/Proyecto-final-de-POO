@@ -84,7 +84,6 @@ public class FrmTipoProductos extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jtbl_tipo_producto.setBackground(new java.awt.Color(204, 204, 204));
-        jtbl_tipo_producto.setForeground(new java.awt.Color(0, 0, 0));
         jtbl_tipo_producto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -106,23 +105,19 @@ public class FrmTipoProductos extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Nombre:");
 
         jtf_nombre.setBackground(new java.awt.Color(204, 204, 204));
         jtf_nombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Descripcion: ");
 
         jtf_descripcion.setBackground(new java.awt.Color(204, 204, 204));
         jtf_descripcion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Symbol", 0, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Tipos de productos");
 
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("TipoProdID:");
 
         jtf_tipoProdId.setEditable(false);
@@ -170,7 +165,6 @@ public class FrmTipoProductos extends javax.swing.JFrame {
         );
 
         btn_nuevo.setBackground(new java.awt.Color(153, 153, 153));
-        btn_nuevo.setForeground(new java.awt.Color(0, 0, 0));
         btn_nuevo.setText("Vaciar campos");
         btn_nuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,7 +173,6 @@ public class FrmTipoProductos extends javax.swing.JFrame {
         });
 
         btn_guardar.setBackground(new java.awt.Color(153, 153, 153));
-        btn_guardar.setForeground(new java.awt.Color(0, 0, 0));
         btn_guardar.setText("Guardar");
         btn_guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,7 +181,6 @@ public class FrmTipoProductos extends javax.swing.JFrame {
         });
 
         btn_editar.setBackground(new java.awt.Color(153, 153, 153));
-        btn_editar.setForeground(new java.awt.Color(0, 0, 0));
         btn_editar.setText("Editar");
         btn_editar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,7 +189,6 @@ public class FrmTipoProductos extends javax.swing.JFrame {
         });
 
         btn_suprimir.setBackground(new java.awt.Color(153, 153, 153));
-        btn_suprimir.setForeground(new java.awt.Color(0, 0, 0));
         btn_suprimir.setText("Suprimir");
         btn_suprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -208,11 +199,9 @@ public class FrmTipoProductos extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Buscar:");
 
         tf_buscar.setBackground(new java.awt.Color(204, 204, 204));
-        tf_buscar.setForeground(new java.awt.Color(0, 0, 0));
         tf_buscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 tf_buscarKeyTyped(evt);
@@ -283,8 +272,8 @@ public class FrmTipoProductos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

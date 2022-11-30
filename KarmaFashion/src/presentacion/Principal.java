@@ -30,6 +30,7 @@ public class Principal extends javax.swing.JFrame {
     FrmInfo frmInfo = new FrmInfo();
     FrmProductos frmProductos = new FrmProductos();
     FrmTipoProductos frmTipoProductos1 = new FrmTipoProductos();
+    FrmProveedores frmProveedores = new FrmProveedores();
     /**
      * Creates new form Principal
      */
@@ -285,6 +286,9 @@ public class Principal extends javax.swing.JFrame {
         jPanel14.setBackground(new java.awt.Color(255, 204, 204));
         jPanel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel14MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel14MouseEntered(evt);
             }
@@ -299,6 +303,9 @@ public class Principal extends javax.swing.JFrame {
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel16.setText(" Proveedores");
         jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel16MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel16MouseEntered(evt);
             }
@@ -916,6 +923,16 @@ public class Principal extends javax.swing.JFrame {
         jPanel15.setBackground(new Color(255,204,204));
         jLabel19.setForeground(Color.BLACK);
     }//GEN-LAST:event_jPanel15MouseExited
+
+    private void jPanel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel14MouseClicked
+        // TODO add your handling code here:
+        showPanel(frmProveedores.getFondo());
+    }//GEN-LAST:event_jPanel14MouseClicked
+
+    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
+        // TODO add your handling code here:
+        showPanel(frmProveedores.getFondo());
+    }//GEN-LAST:event_jLabel16MouseClicked
 
     private void showPanel(JPanel p){
         
