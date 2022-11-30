@@ -98,7 +98,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt;Sistema de gesti&#xf3;n para comercio. Administre forma &lt;br&gt; &#xf3;ptima y sencilla la informaci&#xf3;n de su negocio. &lt;br&gt;Esta herramienta le permitir&#xe1; llevar un control de la &lt;br&gt; informaci&#xf3;n de sus productos, inventarios&lt;br&gt;, sus clientes, proveedores, y dem&#xe1;s.&lt;br&gt;&lt;br&gt;Con esta aplicaci&#xf3;n podr&#xe1; realizar acciones de bases de datos como:&lt;br&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Lectura&lt;/li&gt;&lt;li&gt;Creaci&#xf3;n&lt;/li&gt;&lt;li&gt;Edici&#xf3;n&lt;/li&gt;&lt;li&gt;Eliminado&lt;/li&gt;&lt;/html&gt;"/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;Sistema de gesti&#xf3;n para comercio. Administre forma &lt;br&gt; &#xf3;ptima y sencilla la informaci&#xf3;n de su negocio. &lt;br&gt;Esta herramienta le permitir&#xe1; llevar un control de la &lt;br&gt; informaci&#xf3;n de sus productos, inventarios,&lt;br&gt;sus clientes, proveedores, y dem&#xe1;s.&lt;br&gt;&lt;br&gt;Con esta aplicaci&#xf3;n podr&#xe1; realizar acciones de bases de datos como:&lt;br&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Lectura&lt;/li&gt;&lt;li&gt;Creaci&#xf3;n&lt;/li&gt;&lt;li&gt;Edici&#xf3;n&lt;/li&gt;&lt;li&gt;Eliminado&lt;/li&gt;&lt;/html&gt;"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

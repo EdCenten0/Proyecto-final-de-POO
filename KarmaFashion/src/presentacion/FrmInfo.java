@@ -55,7 +55,7 @@ public class FrmInfo extends javax.swing.JFrame {
 
         jLabel14.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel14.setText("<html>Sistema de gestión para comercio. Administre forma <br> óptima y sencilla la información de su negocio. <br>Esta herramienta le permitirá llevar un control de la <br> información de sus productos, inventarios<br>, sus clientes, proveedores, y demás.<br><br>Con esta aplicación podrá realizar acciones de bases de datos como:<br><br><ul><li>Lectura</li><li>Creación</li><li>Edición</li><li>Eliminado</li></html>");
+        jLabel14.setText("<html>Sistema de gestión para comercio. Administre forma <br> óptima y sencilla la información de su negocio. <br>Esta herramienta le permitirá llevar un control de la <br> información de sus productos, inventarios,<br>sus clientes, proveedores, y demás.<br><br>Con esta aplicación podrá realizar acciones de bases de datos como:<br><br><ul><li>Lectura</li><li>Creación</li><li>Edición</li><li>Eliminado</li></html>");
         content.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 370, 290));
 
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));

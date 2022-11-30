@@ -28,6 +28,8 @@ public class Principal extends javax.swing.JFrame {
     FrmDatosTienda frmDatosTienda = new FrmDatosTienda();
     FrmInventarios frmInventarios = new FrmInventarios();
     FrmInfo frmInfo = new FrmInfo();
+    FrmProductos frmProductos = new FrmProductos();
+    FrmTipoProductos frmTipoProductos1 = new FrmTipoProductos();
     /**
      * Creates new form Principal
      */
@@ -179,6 +181,9 @@ public class Principal extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(255, 204, 204));
         jPanel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel6MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel6MouseEntered(evt);
             }
@@ -193,6 +198,9 @@ public class Principal extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel5.setText(" Productos  ");
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel5MouseEntered(evt);
             }
@@ -827,6 +835,17 @@ public class Principal extends javax.swing.JFrame {
         jPanel11.setBackground(new Color(255,204,204));
         jLabel18.setForeground(Color.BLACK);
     }//GEN-LAST:event_jPanel11MouseExited
+
+    private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
+        // TODO add your handling code here:
+        showPanel(frmProductos.getFondo());
+    }//GEN-LAST:event_jPanel6MouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        // TODO add your handling code here:
+        showPanel(frmProductos.getFondo());
+        
+    }//GEN-LAST:event_jLabel5MouseClicked
 
     private void showPanel(JPanel p){
         
