@@ -5,11 +5,15 @@
 package presentacion;
 
 
-
 //Datos
 import datos.Dt_inventarios;
 import datos.Dt_Productos;
 import datos.Dt_bodegas;
+
+import entidades.Inventarios;
+import entidades.Bodegas;
+
+
 
 //Entidades
 import entidades.Productos;

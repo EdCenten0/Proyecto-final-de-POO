@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author cchav
+ * @author Carlos Eduardo Chavarria Centeno y Francisco de Jesús Meléndez Simplina
  */
 public class FrmLogin extends javax.swing.JFrame {
     

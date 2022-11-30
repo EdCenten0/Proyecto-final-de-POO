@@ -22,7 +22,7 @@ import javax.swing.table.TableRowSorter;
 
 /**
  *
- * @author Francisco de Jesus Melendez Simplina
+ * @author Francisco De Jesús Meléndez Simplina
  */
 public class FrmRol extends javax.swing.JFrame {
     

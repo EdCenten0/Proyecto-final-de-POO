@@ -6,7 +6,7 @@ package entidades;
 
 /**
  *
- * @author cchav
+ * @author Carlos Eduardo Chavarria Centeno 
  */
 public class Bodegas {
     

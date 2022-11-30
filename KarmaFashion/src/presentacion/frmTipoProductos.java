@@ -3,14 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package presentacion;
-import entidades.Productos;
+
 import entidades.TipoProductos;
 import datos.Dt_Productos;
 import datos.Dt_TipoProductos;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-//import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.RowFilter;
@@ -19,7 +18,7 @@ import javax.swing.table.TableRowSorter;
 
 /**
  *
- * @author dagui
+ * @author Isabel Denisse Aguilar Vilchez 
  */
 
 public class FrmTipoProductos extends javax.swing.JFrame {

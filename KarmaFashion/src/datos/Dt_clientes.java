@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author cchav
+ * @author Carlos Eduardo Chavarria Centeno 
  */
 public class Dt_clientes {
     

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Elsner
+ * @author Isabel Denisse Aguilar Vilchez 
  */
 public class Dt_Productos{
     //atributos

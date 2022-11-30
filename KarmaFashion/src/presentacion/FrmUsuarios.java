@@ -10,6 +10,9 @@ import datos.Dt_usuarios;
 
 //Entidades
 import entidades.Roles;
+
+
+
 import entidades.Usuarios;
 
 
@@ -29,7 +32,6 @@ import javax.swing.table.TableRowSorter;
  */
 public class FrmUsuarios extends javax.swing.JFrame {
     
-    private FrmAgregarUser AgregarUsuario = new FrmAgregarUser();
     ArrayList<Roles> listaRol = new ArrayList<Roles>();
     
     Roles r = new Roles();

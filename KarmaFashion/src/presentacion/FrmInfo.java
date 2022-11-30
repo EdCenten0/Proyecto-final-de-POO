@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author cchav
+ * @author Carlos Eduardo Chavarria Centeno 
  */
 public class FrmInfo extends javax.swing.JFrame {
 
