@@ -575,33 +575,32 @@ public class FrmInventarios extends javax.swing.JFrame {
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         else{
-            
-            
             int id = 0;
-            
-            
-            
-            //comprueba si esta vacio el id
+
+            //*****************comprueba si el id esta vacio ******************************//
                 if(tf_inventario.getText().equals("")){
                     id = 0;
                 }
                 else{
                     id = Integer.parseInt((tf_inventario.getText()));
                 }
-            
-            
-            
-            //comprobar si es igual de id
-            if(dt_inventario.existeInventario(id)){
-                
-            inv.setInventarioID(Integer.parseInt((tf_inventario.getText())));
 
+            //comprobar si id existe
+            if(dt_inventario.existeInventario(id)){ //Se encarga a realizar los movimientos positivos y negativos
+            
+            //***********************Agregar el saldo final anterior***********************//
+            inv.setInventarioID(Integer.parseInt((tf_inventario.getText())));
             int numero = dt_inventario.AumentadorInventario(inv.getInventarioID());
-            System.out.println("cantidad de saldo:"+numero);
+            inv.setCant_inicial(numero);
+
+            //*****************************Datos generales********************************//
+            inv.setFecha(jf_Fecha.getText());
+            inv.setProductoID(jcb_Producto.getSelectedIndex());  
+            inv.setBodegaID(jcb_BodegaID.getSelectedIndex());
             
-            inv.setCant_inicial(numero);//Integer.parseInt((jf_cantInicial.getText()))
             
-            //Encontrar el sueldo final con 2 variables
+            
+            //**************************Movimiento negativo***************************//
             if(jf_ventas.getText().equals("")){
                inv.setMovimiento_neg(0);
             }
@@ -609,6 +608,7 @@ public class FrmInventarios extends javax.swing.JFrame {
                 inv.setMovimiento_neg(Integer.parseInt((jf_ventas.getText())));
             }
                     
+            //**************************Movimiento Positivo***************************//
             if(jf_compras.getText().equals("")){
                     
                 inv.setMovimiento_pos(0);
@@ -616,34 +616,27 @@ public class FrmInventarios extends javax.swing.JFrame {
             else{
                 inv.setMovimiento_pos(Integer.parseInt((jf_compras.getText())));
             }
-            
-            
-            
-            
+
+            //**************************Calculo de saldo final***************************//
             cantidad_inicial = inv.getCant_inicial();
             ventas = inv.getMovimiento_neg();
             compras = inv.getMovimiento_pos();
             inv.setSaldo_final((cantidad_inicial+compras)-ventas);
             
-            inv.setFecha(jf_Fecha.getText());
-                    
-            inv.setProductoID(jcb_Producto.getSelectedIndex());  
-            
-            inv.setBodegaID(jcb_BodegaID.getSelectedIndex());
-            
-            
-            
+            //*********llamar a la funcion que imprimira los datos a la tabla*************//
             dt_inventario.Movimiento(inv);
-            //*****************************************//
-                
-                
-                
-            }else{
-                    //se crea uno nuevo y la cantidad inicial inicia en 0
+        
+            }
+            
+            else{//se crea uno nuevo y la cantidad inicial inicia en 0
+            
+                //***********************Datos generales***********************//
 
                     inv.setCant_inicial(cantidad_inicial);
                     inv.setFecha(jf_Fecha.getText());
                     
+                //**************************Combo box**************************//
+
                     pro = (Productos)this.jcb_Producto.getSelectedItem();
                     inv.setProductoID(pro.getProducto_id());
                     
@@ -651,7 +644,7 @@ public class FrmInventarios extends javax.swing.JFrame {
                     inv.setBodegaID(b.getBodegaID());
                     
                       
-                    
+                //**************************Movimiento Positivo***************************//
                     if(jf_ventas.getText().equals("")){
                         inv.setMovimiento_neg(0);
                     }else{
@@ -659,51 +652,29 @@ public class FrmInventarios extends javax.swing.JFrame {
 
                     }
                     
+                //**************************Movimiento Negativo***************************//
                     if(jf_compras.getText().equals("")){
                         inv.setMovimiento_pos(0);
                     }else{
                         inv.setMovimiento_pos(Integer.parseInt((jf_compras.getText())));
                     }
                     
+                //**************************Calculo de saldo final***************************//
                     cantidad_inicial = inv.getCant_inicial();
                     ventas = inv.getMovimiento_neg();
                     compras = inv.getMovimiento_pos();
-                
                     inv.setSaldo_final((cantidad_inicial+compras)-ventas);
                     
+                //*********llamar a la funcion que imprimira los datos a la tabla*************//
                     dt_inventario.guardarInventario(inv);
                     
                 }
             
-            JOptionPane.showMessageDialog (this, "El Usuario fue almacenado con éxito!", 
+            JOptionPane.showMessageDialog (this, "El inventario fue almacenado con éxito!", 
             "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
             actualizarTabla();
             limpiarCampos();
-            
-            
-            
-            /*
-            //Encontrar el sueldo final con 2 variables
-            inv.setMovimiento_neg(Integer.parseInt((jf_ventas.getText())));
-            inv.setMovimiento_pos(Integer.parseInt((jf_compras.getText())));
-            inv.setCant_inicial(Integer.parseInt((jf_cantInicial.getText())));
-            
-            /*
-            int cantidad_inicial = inv.getCant_inicial();
-            int ventas = inv.getMovimiento_neg();
-            int compras = inv.getMovimiento_pos();
-            */
-            
-            //*****************************************//
-            
-            /*
-            b = (Bodegas)this.jcb_BodegaID.getSelectedItem();
-            inv.setInventarioID(b.getBodegaID());
-            inv.setFecha(jf_Fecha.getText());
-            inv.setSaldo_final((cantidad_inicial+compras)-ventas);
-            */
-            
-            
+    
         }
     }//GEN-LAST:event_jb_AgregarActionPerformed
 
