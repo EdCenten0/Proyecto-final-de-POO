@@ -43,15 +43,15 @@ public class FrmInfo extends javax.swing.JFrame {
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("<html>Ana Marbell Zepeda Almendarez<html>");
-        content.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, -1, -1));
+        content.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 160, -1, -1));
 
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("<html>Creadores:<html>");
-        content.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 380, -1, -1));
+        content.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 40, -1, -1));
 
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("<html>Isabel Denisse Aguilar Vílchez<html>");
-        content.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, -1, -1));
+        content.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
@@ -60,7 +60,7 @@ public class FrmInfo extends javax.swing.JFrame {
 
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("<html>Francisco de Jesús Meléndez Simplina<html>");
-        content.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, -1, -1));
+        content.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Symbol", 0, 24)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
@@ -69,22 +69,22 @@ public class FrmInfo extends javax.swing.JFrame {
 
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("<html>Carlos Eduardo Chavarría Centeno<html>");
-        content.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, -1, -1));
+        content.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 100, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, 864, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 12, Short.MAX_VALUE)
+                .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();

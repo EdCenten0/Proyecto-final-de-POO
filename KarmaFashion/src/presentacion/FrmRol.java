@@ -74,7 +74,7 @@ public class FrmRol extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(new javax.swing.border.MatteBorder(null));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setForeground(new java.awt.Color(255, 204, 204));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
@@ -178,7 +178,7 @@ public class FrmRol extends javax.swing.JFrame {
         jScrollPane1.setViewportView(TablaRol);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(new javax.swing.border.MatteBorder(null));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jtBuscar.setBackground(new java.awt.Color(255, 255, 255));
         jtBuscar.setForeground(new java.awt.Color(102, 102, 102));
