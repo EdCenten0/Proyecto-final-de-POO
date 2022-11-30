@@ -20,7 +20,7 @@ import javax.swing.table.TableRowSorter;
 import javax.swing.RowFilter;
 /**
  *
- * @author cchav
+ * @author Carlos Eduardo Chavarria Centeno 
  */
 public class FrmBodegas extends javax.swing.JFrame {
 

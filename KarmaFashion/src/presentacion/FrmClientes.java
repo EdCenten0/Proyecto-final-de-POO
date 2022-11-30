@@ -18,7 +18,7 @@ import javax.swing.RowFilter;
 
 /**
  *
- * @author cchav
+ * @author Carlos Eduardo Chavarria Centeno 
  */
 public class FrmClientes extends javax.swing.JFrame {
 

@@ -3,11 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package presentacion;
-import java.awt.Toolkit;
+
+
 /**
- *
- * @author cchav
+ * Integrantes:
+ * 
+ * Ana Marbell Zepeda Almendarez
+ * Carlos Eduardo Chavarria Centeno 
+ * Francisco De Jesús Meléndez Simplina
+ * Isabel Denisse Aguilar Vilchez 
+ * 
  */
+
 public class KarmaFashion {
 
     /**

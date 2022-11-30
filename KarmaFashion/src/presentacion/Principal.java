@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author cchav
+ * @author Carlos Eduardo Chavarria Centeno 
  */
 public class Principal extends javax.swing.JFrame {
 

@@ -6,7 +6,7 @@ package entidades;
 
 /**
  *
- * @author dagui
+ * @author Isabel Denisse Aguilar Vilchez 
  */
 public class TipoProductos {
 

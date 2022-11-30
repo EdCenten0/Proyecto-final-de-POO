@@ -4,22 +4,19 @@
  */
 package presentacion;
 
-import presentacion.*;
-
-
 
 import datos.Dt_inventarios;
 import datos.Dt_Productos;
+import datos.Dt_bodegas;
 
 import entidades.Inventarios;
 import entidades.Bodegas;
-import java.time.LocalDate;
-import datos.Dt_bodegas;
+
+
 
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.JOptionPane;
-
 import javax.swing.table.DefaultTableModel;
 
 /**

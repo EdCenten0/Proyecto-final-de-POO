@@ -6,7 +6,7 @@ package entidades;
 
 /**
  *
- * @author DELL
+ * @author Francisco De Jesús Meléndez Simplina
  */
 public class Usuarios {
     private int usuarioID;

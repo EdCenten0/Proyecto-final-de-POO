@@ -19,7 +19,7 @@ import javax.swing.table.TableRowSorter;
 
 /**
  *
- * @author dagui
+ * @author Isabel Denisse Aguilar Vilchez 
  */
 public class FrmProductos extends javax.swing.JFrame {
     

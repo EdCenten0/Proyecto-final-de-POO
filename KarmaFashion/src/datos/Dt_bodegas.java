@@ -1,7 +1,6 @@
 package datos;
 
 import entidades.Bodegas;
-import entidades.Clientes;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,7 +14,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author cchav
+ * @author Carlos Eduardo Chavarria Centeno 
  */
 public class Dt_bodegas {
     

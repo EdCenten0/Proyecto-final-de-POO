@@ -18,7 +18,7 @@ import javax.swing.table.TableRowSorter;
 
 /**
  *
- * @author DELL
+ * @author Francisco De Jesús Meléndez Simplina
  */
 public class FrmRol extends javax.swing.JFrame {
     
