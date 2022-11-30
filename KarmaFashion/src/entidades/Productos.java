@@ -17,7 +17,7 @@ public class Productos {
     private int tipo_producto;
     private String nombre;
     private String descripcion;
-    private double precio;
+    private float precio;
     private String marca;
     private String fecha_ingreso;
     private int estado;
@@ -27,7 +27,7 @@ public class Productos {
     }
     
     //constructor2
-    public Productos(int producto_id, int tipo_producto, int inventario_id, String nombre, String descripcion, double precio, String marca, String fecha_ingreso, int estado) {
+    public Productos(int producto_id, int tipo_producto, int inventario_id, String nombre, String descripcion, float precio, String marca, String fecha_ingreso, int estado) {
         this.producto_id = producto_id;
         this.tipo_producto = tipo_producto;
         
@@ -76,7 +76,7 @@ public class Productos {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(float precio) {
         this.precio = precio;
     }
 

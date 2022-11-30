@@ -71,7 +71,8 @@ public class dt_TipoProductos {
          return listaTipoProductos;
     }
     
-     @SuppressWarnings("CallToPrintStackTrace")
+    
+    @SuppressWarnings("CallToPrintStackTrace")
         public TipoProductos getTipoProductosByID(int idTipoProductos){
         TipoProductos tipo_productos = new TipoProductos();
         try{
@@ -106,5 +107,162 @@ public class dt_TipoProductos {
         }
         
         return tipo_productos;
+    }
+        
+    @SuppressWarnings("CallToPrintStackTrace")
+    public boolean guardarTipoProducto (TipoProductos tP)
+    {
+        //declaramos una bandera en falso
+	boolean guardado = false;
+	try {
+            this.cargarDatos();
+            rs.moveToInsertRow();
+            //(nombre de la columna en sql, el atributo de la entidad)
+            //rs.updateInt("TipoproductoID", tP.getTipoProdId());// el campo en la tabla es autoincremental
+            rs.updateString("Nombre", tP.getNombre());
+            rs.updateString("Descripcion", tP.getDescripcion());
+            rs.insertRow();
+            rs.moveToCurrentRow();
+            //si el flujo llega hasta acá el registro se almacenó
+            guardado = true; //hacemos verdadera la bandera
+	}
+	catch (SQLException e) {
+            System.out.println("ERROR guardarDepto(): "+e.getMessage());
+            e.printStackTrace();
+	}
+	finally
+	{
+            try{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+                if(con!=null){
+                    Conexion.closeConexion(con);
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+	}
+        //returnamos el valor de la bandera
+	return guardado;
     }    
+        
+    @SuppressWarnings("CallToPrintStackTrace")
+    public boolean editarTipoProducto(TipoProductos tP)
+    {
+        //declaramos una bandera en falso
+	boolean resp=false;
+        try
+        {
+            this.cargarDatos();
+            rs.beforeFirst();
+            while(rs.next()){
+                if(rs.getInt("TipoproductoID")==tP.getTipoProdId()){
+                    rs.updateString("Nombre", tP.getNombre());
+                    rs.updateString("Descripcion", tP.getDescripcion());
+                    rs.updateRow();
+                    resp = true;
+                    break;
+                }
+            }
+        }
+        catch(SQLException e){
+            System.out.println("Error en editarDepto(): "+e.getMessage());
+            e.printStackTrace();
+        }
+        finally{
+            try {
+                    if(rs!=null){
+                    rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                    if(con!=null){
+                        Conexion.closeConexion(con);
+                    }
+            }catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+            }
+        }
+        return resp;
+    }    
+        
+    @SuppressWarnings("CallToPrintStackTrace")
+    public boolean deleteTipoProducto(TipoProductos tP){
+	boolean resp=false;
+        try {
+            this.cargarDatos();
+            rs.beforeFirst();
+            while(rs.next()){
+                if(rs.getInt("TipoproductoID")==tP.getTipoProdId()){
+                    rs.deleteRow();
+                    resp=true;
+                }
+            }	
+	} 
+        catch (SQLException e) {
+            System.out.println("Error deleteTipoProducto(): "+e.getMessage());
+            e.printStackTrace();
+	}
+        finally{
+            try{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+                if(con!=null){
+                    Conexion.closeConexion(con);
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+		
+        return resp;
+    }    
+        
+
+  @SuppressWarnings("CallToPrintStackTrace")
+    public boolean existeTipoProducto(int id){
+	boolean resp=false;
+        try {
+            this.cargarDatos();
+            rs.beforeFirst();
+            while(rs.next()){
+                if(rs.getInt("TipoproductoID")==(id)){
+                    resp=true;
+                }
+            }	
+	} 
+        catch (SQLException e) {
+            System.out.println("Error existeTipoProducto(): "+e.getMessage());
+            e.printStackTrace();
+	}
+        finally{
+            try{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+                if(con!=null){
+                    Conexion.closeConexion(con);
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+		
+        return resp;
+    }
+
 }
+

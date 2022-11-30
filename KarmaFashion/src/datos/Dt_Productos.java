@@ -51,7 +51,7 @@ public class Dt_Productos{
                 p.setTipo_producto(rs.getInt("TipoproductoID"));
                 p.setNombre(rs.getString("Nombre"));
                 p.setDescripcion(rs.getString("Descripcion"));
-                p.setPrecio(rs.getDouble("Precio"));
+                p.setPrecio(rs.getFloat("Precio"));
                 p.setMarca(rs.getString("Marca"));
                 p.setFecha_ingreso(rs.getString("Fecha_ingreso"));
                 p.setEstado(rs.getInt("Estado"));
