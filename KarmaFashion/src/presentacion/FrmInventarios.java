@@ -493,6 +493,16 @@ public class FrmInventarios extends javax.swing.JFrame {
 
     private void jb_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_GuardarActionPerformed
         // TODO add your handling code here:
+        tf_inventario.setText("");
+        jcb_BodegaID.setSelectedIndex(0);
+        jcb_Producto.setSelectedIndex(0);
+        jf_Fecha.setText("");
+        jf_ventas.setText("");
+        jf_compras.setText("");
+        jf_saldoTotal.setText("");
+        jf_cantInicial.setText("");
+        
+        
     }//GEN-LAST:event_jb_GuardarActionPerformed
 
     private void jb_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_EliminarActionPerformed
