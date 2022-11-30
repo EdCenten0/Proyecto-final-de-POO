@@ -87,7 +87,6 @@ public class FrmClientes extends javax.swing.JFrame {
 
         jTable_clientes.setBackground(new java.awt.Color(204, 204, 204));
         jTable_clientes.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
-        jTable_clientes.setForeground(new java.awt.Color(0, 0, 0));
         jTable_clientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
