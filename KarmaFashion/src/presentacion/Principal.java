@@ -66,8 +66,6 @@ public class Principal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
@@ -82,6 +80,8 @@ public class Principal extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jPanel15 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -179,40 +179,6 @@ public class Principal extends javax.swing.JFrame {
         jPanel12.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 20));
 
         jPanel2.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 190, -1));
-
-        jPanel6.setBackground(new java.awt.Color(255, 204, 204));
-        jPanel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel6MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel6MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel6MouseExited(evt);
-            }
-        });
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI Symbol", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel5.setText(" Productos  ");
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel5MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel5MouseExited(evt);
-            }
-        });
-        jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 20));
-
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 190, 20));
 
         jPanel7.setBackground(new java.awt.Color(255, 204, 204));
         jPanel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -430,7 +396,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel19.setFont(new java.awt.Font("Segoe UI Symbol", 1, 12)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(51, 51, 51));
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel19.setText(" Productos  ");
+        jLabel19.setText(" Tipo de productos");
         jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel19MouseClicked(evt);
@@ -442,9 +408,43 @@ public class Principal extends javax.swing.JFrame {
                 jLabel19MouseExited(evt);
             }
         });
-        jPanel15.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 20));
+        jPanel15.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 20));
 
-        jPanel2.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 190, 20));
+        jPanel2.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 190, 20));
+
+        jPanel6.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel6MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel6MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel6MouseExited(evt);
+            }
+        });
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI Symbol", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel5.setText(" Productos  ");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel5MouseExited(evt);
+            }
+        });
+        jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 20));
+
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 190, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 630));
 
@@ -522,7 +522,7 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel14.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel14.setText("<html>Sistema de gestión para comercio. Administre forma <br> óptima y sencilla la información de su negocio. <br>Esta herramienta le permitirá llevar un control de la <br> información de sus productos, inventarios<br>, sus clientes, proveedores, y demás.<br><br>Con esta aplicación podrá realizar acciones de bases de datos como:<br><br><ul><li>Lectura</li><li>Creación</li><li>Edición</li><li>Eliminado</li></html>");
+        jLabel14.setText("<html>Sistema de gestión para comercio. Administre forma <br> óptima y sencilla la información de su negocio. <br>Esta herramienta le permitirá llevar un control de la <br> información de sus productos, inventarios,<br>sus clientes, proveedores, y demás.<br><br>Con esta aplicación podrá realizar acciones de bases de datos como:<br><br><ul><li>Lectura</li><li>Creación</li><li>Edición</li><li>Eliminado</li></html>");
         content.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 370, 290));
 
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
@@ -885,26 +885,36 @@ public class Principal extends javax.swing.JFrame {
 
     private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
         // TODO add your handling code here:
+        showPanel(frmTipoProductos1.getFondo());
     }//GEN-LAST:event_jLabel19MouseClicked
 
     private void jLabel19MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseEntered
         // TODO add your handling code here:
+        jPanel15.setBackground(Color.PINK);
+        jLabel19.setForeground(Color.white);
     }//GEN-LAST:event_jLabel19MouseEntered
 
     private void jLabel19MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseExited
         // TODO add your handling code here:
+        jPanel15.setBackground(new Color(255,204,204));
+        jLabel19.setForeground(Color.BLACK);
     }//GEN-LAST:event_jLabel19MouseExited
 
     private void jPanel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel15MouseClicked
         // TODO add your handling code here:
+        showPanel(frmTipoProductos1.getFondo());
     }//GEN-LAST:event_jPanel15MouseClicked
 
     private void jPanel15MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel15MouseEntered
         // TODO add your handling code here:
+        jPanel15.setBackground(Color.PINK);
+        jLabel19.setForeground(Color.white);
     }//GEN-LAST:event_jPanel15MouseEntered
 
     private void jPanel15MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel15MouseExited
         // TODO add your handling code here:
+        jPanel15.setBackground(new Color(255,204,204));
+        jLabel19.setForeground(Color.BLACK);
     }//GEN-LAST:event_jPanel15MouseExited
 
     private void showPanel(JPanel p){

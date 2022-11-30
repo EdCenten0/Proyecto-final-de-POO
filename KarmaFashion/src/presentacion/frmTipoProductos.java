@@ -12,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 //import java.util.Iterator;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -512,6 +513,10 @@ public class FrmTipoProductos extends javax.swing.JFrame {
        trsfiltro.setRowFilter(RowFilter.regexFilter(tf_buscar.getText(), 1));
     }
     
+    
+    public JPanel getFondo(){
+        return jPanel1;
+    }
     /*private void filtrarTabla(){
        trsfiltro.setRowFilter(RowFilter.regexFilter(jtf_buscar.getText(), 1));
     }*/
