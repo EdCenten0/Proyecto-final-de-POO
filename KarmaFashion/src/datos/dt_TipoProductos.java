@@ -14,7 +14,7 @@ import java.util.ArrayList;
  *
  * @author dagui
  */
-public class dt_TipoProductos {
+public class Dt_TipoProductos {
     //atributos
     private Connection con = null;
     private PreparedStatement ps = null;

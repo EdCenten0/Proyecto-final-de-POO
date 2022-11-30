@@ -6,7 +6,7 @@ package presentacion;
 import entidades.Productos;
 import datos.Dt_Productos;
 import entidades.TipoProductos;
-import datos.dt_TipoProductos;
+import datos.Dt_TipoProductos;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ public class FrmProductos extends javax.swing.JFrame {
     
     //clases
     private Dt_Productos dt_p = new Dt_Productos();
-    private dt_TipoProductos dTP = new dt_TipoProductos();
+    private Dt_TipoProductos dTP = new Dt_TipoProductos();
     
     //listas
     private ArrayList<Productos> listProductos = new ArrayList<Productos>();

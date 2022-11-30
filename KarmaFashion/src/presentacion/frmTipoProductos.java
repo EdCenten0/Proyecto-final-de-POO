@@ -6,7 +6,7 @@ package presentacion;
 import entidades.Productos;
 import entidades.TipoProductos;
 import datos.Dt_Productos;
-import datos.dt_TipoProductos;
+import datos.Dt_TipoProductos;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ public class FrmTipoProductos extends javax.swing.JFrame {
     TipoProductos tP = new TipoProductos();
    
     //datos
-    dt_TipoProductos dtTiPr = new dt_TipoProductos();
+    Dt_TipoProductos dtTiPr = new Dt_TipoProductos();
     
     //declaramos el modelo de datos de la tabla 
     DefaultTableModel myData = new DefaultTableModel();
