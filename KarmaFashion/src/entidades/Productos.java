@@ -15,7 +15,6 @@ public class Productos {
     
     private int producto_id;
     private int tipo_producto;
-    private int inventario_id;
     private String nombre;
     private String descripcion;
     private float precio;
@@ -25,14 +24,13 @@ public class Productos {
     
     //constructor
     public Productos(){
-        
     }
     
     //constructor2
     public Productos(int producto_id, int tipo_producto, int inventario_id, String nombre, String descripcion, float precio, String marca, String fecha_ingreso, int estado) {
         this.producto_id = producto_id;
         this.tipo_producto = tipo_producto;
-        this.inventario_id = inventario_id;
+        
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
@@ -58,14 +56,6 @@ public class Productos {
         this.tipo_producto = tipo_producto;
     }
 
-    public int getInventario_id() {
-        return inventario_id;
-    }
-
-    public void setInventario_id(int inventario_id) {
-        this.inventario_id = inventario_id;
-    }
-
     public String getNombre() {
         return nombre;
     }
@@ -82,7 +72,7 @@ public class Productos {
         this.descripcion = descripcion;
     }
 
-    public float getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
@@ -113,5 +103,12 @@ public class Productos {
     public void setEstado(int estado) {
         this.estado = estado;
     }
+
+    /*
+    @Override
+    public String toString() {
+        return super.toString(); 
+    }*/
+    
     
 }

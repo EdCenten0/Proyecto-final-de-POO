@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package datos;
-import entidades.Productos;
+import entidades.TipoProductos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,21 +12,21 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Elsner
+ * @author dagui
  */
-public class Dt_Productos{
+public class dt_TipoProductos {
     //atributos
     private Connection con = null;
     private PreparedStatement ps = null;
     private ResultSet rs = null;
     
-     //metodos
+    //metodos
      @SuppressWarnings("CallToPrintStackTrace")
     public void cargarDatos()
     {
         try{
             con = Conexion.getConnection(); //obtenemos la conexion a la base de datos
-            ps = con.prepareStatement("SELECT ProductoID, TipoproductoID, Nombre, Descripcion, Precio,Marca, Fecha_ingreso, Estado FROM Producto", 
+            ps = con.prepareStatement("SELECT TipoproductoID, Nombre, Descripcion, Estado FROM Tipoproducto", 
                     ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE, ResultSet.HOLD_CURSORS_OVER_COMMIT);
             rs = ps.executeQuery();
         }
@@ -37,28 +37,57 @@ public class Dt_Productos{
     }
     
     @SuppressWarnings("CallToPrintStackTrace")
-    public ArrayList<Productos> listarProductos(){
-        ArrayList<Productos> listaProd = new ArrayList<Productos>();
+    public ArrayList<TipoProductos> listarTipoProductos(){
+        ArrayList<TipoProductos> listaTipoProductos = new ArrayList<TipoProductos>();
         try{
             this.cargarDatos();
             while(rs.next()){
-                Productos p = new Productos();
-                /*d.setDepartment_id(rs.getInt("department_id"));
-                d.setDepartment_name(rs.getString("department_name"));
-                d.setLocation_id(rs.getInt("location_id"));
-                listaDepto.add(d);*/
-                p.setProducto_id(rs.getInt("ProductoID"));
-                p.setTipo_producto(rs.getInt("TipoproductoID"));
-                p.setNombre(rs.getString("Nombre"));
-                p.setDescripcion(rs.getString("Descripcion"));
-                p.setPrecio(rs.getFloat("Precio"));
-                p.setMarca(rs.getString("Marca"));
-                p.setFecha_ingreso(rs.getString("Fecha_ingreso"));
-                p.setEstado(rs.getInt("Estado"));
-                listaProd.add(p);
+                TipoProductos tipProd = new TipoProductos();
+                tipProd.setTipoProdId(rs.getInt("TipoproductoID"));
+                tipProd.setNombre(rs.getString("Nombre"));
+                tipProd.setDescripcion(rs.getString("Descripcion"));
+                tipProd.setEstado(rs.getInt("Estado"));
+                listaTipoProductos.add(tipProd);
+            }
+        }catch(SQLException e){
+            System.out.println("El error en listarTipoProductos(): "+e.getMessage());
+            e.printStackTrace();
+        }
+        finally{
+            try{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+                if(con!=null){
+                    Conexion.closeConexion(con);
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+         return listaTipoProductos;
+    }
+    
+    
+    @SuppressWarnings("CallToPrintStackTrace")
+        public TipoProductos getTipoProductosByID(int idTipoProductos){
+        TipoProductos tipo_productos = new TipoProductos();
+        try{
+            this.cargarDatos();
+            while(rs.next()){
+                if(idTipoProductos==rs.getInt("TipoproductoID")){
+                    tipo_productos.setTipoProdId(rs.getInt("TipoproductoID"));
+                    tipo_productos.setNombre(rs.getString("Nombre"));
+                    tipo_productos.setDescripcion(rs.getString("Descripcion"));
+                    break;
+                }
+                
             }     
         }catch(SQLException e){
-            System.out.println("El error en listarProd(): "+e.getMessage());
+            System.out.println("El error en getLocationByID(): "+e.getMessage());
             e.printStackTrace();
         }
         finally{
@@ -77,35 +106,28 @@ public class Dt_Productos{
             }  
         }
         
-        
-        return listaProd;      
+        return tipo_productos;
     }
-    
-    
+        
     @SuppressWarnings("CallToPrintStackTrace")
-    public boolean guardarProductos (Productos p)
+    public boolean guardarTipoProducto (TipoProductos tP)
     {
         //declaramos una bandera en falso
 	boolean guardado = false;
 	try {
             this.cargarDatos();
             rs.moveToInsertRow();
-            //rs.updateInt("ProductoID", c.getProducto_id());
-            rs.updateInt("TipoproductoID", p.getTipo_producto());
-            rs.updateString("Nombre", p.getNombre());
-            rs.updateString("Descripcion", p.getDescripcion());
-            rs.updateDouble("Precio", p.getPrecio());
-            rs.updateString("Marca", p.getMarca());
-            rs.updateString("Fecha_ingreso", p.getFecha_ingreso());
-            //rs.updateInt("Estado", c.getEstado());
-            //rs.updateInt("region_id", c.getRegion_id());
+            //(nombre de la columna en sql, el atributo de la entidad)
+            //rs.updateInt("TipoproductoID", tP.getTipoProdId());// el campo en la tabla es autoincremental
+            rs.updateString("Nombre", tP.getNombre());
+            rs.updateString("Descripcion", tP.getDescripcion());
             rs.insertRow();
             rs.moveToCurrentRow();
             //si el flujo llega hasta acá el registro se almacenó
             guardado = true; //hacemos verdadera la bandera
 	}
 	catch (SQLException e) {
-            System.out.println("ERROR guardarProductos(): "+e.getMessage());
+            System.out.println("ERROR guardarDepto(): "+e.getMessage());
             e.printStackTrace();
 	}
 	finally
@@ -126,62 +148,21 @@ public class Dt_Productos{
 	}
         //returnamos el valor de la bandera
 	return guardado;
-    }
-    
-    
+    }    
+        
     @SuppressWarnings("CallToPrintStackTrace")
-    public boolean existeProducto(Productos p){
-	boolean resp=false;
-        try {
-            this.cargarDatos();
-            rs.beforeFirst();
-            while(rs.next()){
-                if(rs.getString("Nombre").equals(p.getNombre())){
-                    resp=true;
-                }
-            }	
-	} 
-        catch (SQLException e) {
-            System.out.println("Error existeProducto(): "+e.getMessage());
-            e.printStackTrace();
-	}
-        finally{
-            try{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-                if(con!=null){
-                    Conexion.closeConexion(con);
-                }
-            }catch(SQLException e){
-                e.printStackTrace();
-            }
-        }
-		
-        return resp;
-    }
-    
-    
-    @SuppressWarnings("CallToPrintStackTrace")
-    public boolean editarProductos(Productos p)
+    public boolean editarTipoProducto(TipoProductos tP)
     {
+        //declaramos una bandera en falso
 	boolean resp=false;
         try
         {
             this.cargarDatos();
             rs.beforeFirst();
             while(rs.next()){
-                if(rs.getInt("ProductoID")==p.getProducto_id()){
-                    rs.updateInt("TipoproductoID", p.getTipo_producto());
-                    rs.updateString("Nombre", p.getNombre());
-                    rs.updateDouble("Precio", p.getPrecio());
-                    rs.updateString("Marca", p.getMarca());
-                    rs.updateString("Fecha_ingreso", p.getFecha_ingreso());
-                    rs.updateString("Descripcion", p.getDescripcion());
-                    rs.updateInt("Estado", p.getEstado());
+                if(rs.getInt("TipoproductoID")==tP.getTipoProdId()){
+                    rs.updateString("Nombre", tP.getNombre());
+                    rs.updateString("Descripcion", tP.getDescripcion());
                     rs.updateRow();
                     resp = true;
                     break;
@@ -189,7 +170,7 @@ public class Dt_Productos{
             }
         }
         catch(SQLException e){
-            System.out.println("Error en editarProducto(): "+e.getMessage());
+            System.out.println("Error en editarDepto(): "+e.getMessage());
             e.printStackTrace();
         }
         finally{
@@ -210,22 +191,58 @@ public class Dt_Productos{
         }
         return resp;
     }    
-    
+        
     @SuppressWarnings("CallToPrintStackTrace")
-    public boolean deleteProductos(Productos p){
+    public boolean deleteTipoProducto(TipoProductos tP){
 	boolean resp=false;
         try {
             this.cargarDatos();
             rs.beforeFirst();
             while(rs.next()){
-                if(rs.getInt("ProductoID")==p.getProducto_id()){
+                if(rs.getInt("TipoproductoID")==tP.getTipoProdId()){
                     rs.deleteRow();
                     resp=true;
                 }
             }	
 	} 
         catch (SQLException e) {
-            System.out.println("Error deleteProductos(): "+e.getMessage());
+            System.out.println("Error deleteTipoProducto(): "+e.getMessage());
+            e.printStackTrace();
+	}
+        finally{
+            try{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+                if(con!=null){
+                    Conexion.closeConexion(con);
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+		
+        return resp;
+    }    
+        
+
+  @SuppressWarnings("CallToPrintStackTrace")
+    public boolean existeTipoProducto(int id){
+	boolean resp=false;
+        try {
+            this.cargarDatos();
+            rs.beforeFirst();
+            while(rs.next()){
+                if(rs.getInt("TipoproductoID")==(id)){
+                    resp=true;
+                }
+            }	
+	} 
+        catch (SQLException e) {
+            System.out.println("Error existeTipoProducto(): "+e.getMessage());
             e.printStackTrace();
 	}
         finally{
@@ -246,5 +263,6 @@ public class Dt_Productos{
 		
         return resp;
     }
-    
+
 }
+

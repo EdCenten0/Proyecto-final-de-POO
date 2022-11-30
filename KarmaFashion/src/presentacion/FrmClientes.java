@@ -23,7 +23,7 @@ import javax.swing.RowFilter;
 public class FrmClientes extends javax.swing.JFrame {
 
     private Clientes clientes = new Clientes();
-    private Dt_Clientes dt_clientes = new Dt_Clientes();
+    private Dt_clientes dt_clientes = new Dt_clientes();
     private ArrayList<Clientes> listClientes = new ArrayList<Clientes>();
     
     DefaultTableModel myData = new DefaultTableModel();
