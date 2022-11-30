@@ -230,13 +230,13 @@ public class dt_TipoProductos {
         
 
   @SuppressWarnings("CallToPrintStackTrace")
-    public boolean existeTipoProducto(int id){
+    public boolean existeTipoProducto(String nombre){
 	boolean resp=false;
         try {
             this.cargarDatos();
             rs.beforeFirst();
             while(rs.next()){
-                if(rs.getInt("TipoproductoID")==(id)){
+                if(rs.getString("Nombre").equals(nombre)){
                     resp=true;
                 }
             }	

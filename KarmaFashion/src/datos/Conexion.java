@@ -18,7 +18,7 @@ public class Conexion {
     private static Conexion conx = null;
     //atributos
     private static Connection con = null;
-    private static String url = "jdbc:sqlserver://localhost;databaseName=karma_fashion_DB;Persist Security Info=True;";
+    private static String url = "jdbc:sqlserver://localhost;databaseName=karma_fashion_BD;Persist Security Info=True;";
     private static String user = "sa";
     private static String password = "1234";
     

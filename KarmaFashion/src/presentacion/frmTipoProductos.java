@@ -317,8 +317,8 @@ public class FrmTipoProductos extends javax.swing.JFrame {
             tP.setDescripcion(jtf_descripcion.getText());
             
             //validamos que el id no exista en la tabla de la bd
-            if(dtTiPr.existeTipoProducto(tP.getTipoProdId())){
-                JOptionPane.showMessageDialog(this, "El nombre de producto ya existe!", 
+            if(dtTiPr.existeTipoProducto(tP.getNombre())){
+                JOptionPane.showMessageDialog(this, "El tipo producto ya existe!", 
                     "ERROR", JOptionPane.WARNING_MESSAGE);
                 jtf_nombre.setText("");
                 jtf_nombre.grabFocus(); 
