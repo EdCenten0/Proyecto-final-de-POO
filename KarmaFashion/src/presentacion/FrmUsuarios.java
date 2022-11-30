@@ -484,7 +484,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
 
                 //validamos que el metodo delete devuelve un true
                 if(dt_user.editarUsuario(users)){
-                    JOptionPane.showMessageDialog (this, "El Usuario fue editado con éxito!", 
+                    JOptionPane.showMessageDialog (this, "El Usuario fue actualizado con éxito!", 
                       "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
                     actualizarTabla();
                     limpiarCampos();

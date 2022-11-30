@@ -486,6 +486,10 @@ public class FrmInventarios extends javax.swing.JFrame {
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         else{
+            
+            
+            
+            
             //construimos nuestro objeto con los valores del formulario
             inv.setInventarioID(Integer.parseInt(tf_inventario.getText()));
             inv.setFecha(jf_Fecha.getText());
@@ -504,7 +508,7 @@ public class FrmInventarios extends javax.swing.JFrame {
             if(dt_inventario.eliminarInventario(inv.getInventarioID())){
                 
                 
-                JOptionPane.showMessageDialog (this, "El Usuario fue editado con éxito!", 
+                JOptionPane.showMessageDialog (this, "El inventario fue eliminado con éxito!", 
                   "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
                 actualizarTabla();
                 limpiarCampos();
@@ -542,7 +546,7 @@ public class FrmInventarios extends javax.swing.JFrame {
             
             //validamos que el metodo delete devuelve un true
             if(dt_inventario.editarInventario(inv)){
-                JOptionPane.showMessageDialog (this, "El Usuario fue editado con éxito!", 
+                JOptionPane.showMessageDialog (this, "El inventario fue editar con éxito!", 
                   "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
                 actualizarTabla();
                 limpiarCampos();
@@ -840,6 +844,7 @@ public class FrmInventarios extends javax.swing.JFrame {
     public JPanel getFondo(){
         return jPanel1;
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
