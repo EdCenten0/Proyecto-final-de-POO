@@ -8,6 +8,7 @@ import datos.Dt_Proveedores;
 
 
 import entidades.Proveedores;
+import entidades.Tienda;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -41,6 +42,7 @@ public class FrmProveedores extends javax.swing.JFrame {
      */
     public FrmProveedores() {
         initComponents();
+        llenarTablaProveedores();
         /*
         llenarTablaProveedores();
         limpiarCampos(); 
@@ -86,7 +88,7 @@ public class FrmProveedores extends javax.swing.JFrame {
         bt_eliminar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         bt_guardar = new javax.swing.JButton();
-        jtf_buscarKeyTyped = new javax.swing.JTextField();
+        jtf_buscar = new javax.swing.JTextField();
 
         jInternalFrame1.setVisible(true);
 
@@ -117,7 +119,20 @@ public class FrmProveedores extends javax.swing.JFrame {
             new String [] {
                 "ProveedorID", "TiendaID", "Nombre", "Telefono", "Cedula", "Sexo", "Email", "Direccion"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jTable_proveedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable_proveedoresMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable_proveedores);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -147,8 +162,6 @@ public class FrmProveedores extends javax.swing.JFrame {
                 tf_proveedorIDActionPerformed(evt);
             }
         });
-
-        tf_tiendaID.setEditable(false);
 
         tf_cedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -272,9 +285,17 @@ public class FrmProveedores extends javax.swing.JFrame {
             }
         });
 
-        jtf_buscarKeyTyped.addActionListener(new java.awt.event.ActionListener() {
+        jtf_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtf_buscarKeyTypedActionPerformed(evt);
+                jtf_buscarActionPerformed(evt);
+            }
+        });
+        jtf_buscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtf_buscarKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtf_buscarKeyTyped(evt);
             }
         });
 
@@ -300,7 +321,7 @@ public class FrmProveedores extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jtf_buscarKeyTyped, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE))))
+                                .addComponent(jtf_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE))))
                     .addComponent(jScrollPane1)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -319,7 +340,7 @@ public class FrmProveedores extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jtf_buscarKeyTyped, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -363,6 +384,7 @@ public class FrmProveedores extends javax.swing.JFrame {
         else{
           
             proveedor.setProveedor_id(Integer.parseInt(tf_proveedorID.getText()));
+            proveedor.setTienda_id(Integer.parseInt(tf_tiendaID.getText()));
             proveedor.setNombre(tf_nombre.getText());
             proveedor.setTelefono(tf_telefono.getText());
             proveedor.setCedula(tf_cedula.getText());
@@ -373,9 +395,9 @@ public class FrmProveedores extends javax.swing.JFrame {
            if(dt_proveedor.borrarProveedor(proveedor.getProveedor_id())){
                  JOptionPane.showMessageDialog (this, "El registro fue eliminado con éxito!", 
                   "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
-                /*actualizarTabla();
+                actualizarTabla();
                 limpiarCampos();
-                 */
+                 
             }
             else{
                JOptionPane.showMessageDialog(this, 
@@ -415,6 +437,7 @@ public class FrmProveedores extends javax.swing.JFrame {
                 mostrarLength("Direccion", 200, ta_direccion.getText().length());
             }else{
                 proveedor.setProveedor_id(Integer.parseInt(tf_proveedorID.getText()));
+                proveedor.setTienda_id(Integer.parseInt(tf_tiendaID.getText()));
                 proveedor.setNombre(tf_nombre.getText());
                 proveedor.setTelefono(tf_telefono.getText());
                 proveedor.setCedula(tf_cedula.getText());
@@ -440,7 +463,7 @@ public class FrmProveedores extends javax.swing.JFrame {
 }
     private void bt_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_guardarActionPerformed
         // TODO add your handling code here:
-        if(tf_proveedorID.getText().equals("") || tf_nombre.getText().equals("") || tf_telefono.getText().equals("") || tf_cedula.getText().equals("") || tf_sexo.getText().equals("") || tf_email.getText().equals("") || ta_direccion.getText().equals("")){
+        if(tf_nombre.getText().equals("") || tf_telefono.getText().equals("") || tf_cedula.getText().equals("") || tf_sexo.getText().equals("") || tf_email.getText().equals("") || ta_direccion.getText().equals("")){
             JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
@@ -456,7 +479,8 @@ public class FrmProveedores extends javax.swing.JFrame {
             }else if(ta_direccion.getText().length() > 200){
                 mostrarLength("Direccion", 200, ta_direccion.getText().length());
             }else{
-                proveedor.setProveedor_id(Integer.parseInt(tf_proveedorID.getText()));
+               
+                proveedor.setTienda_id(Integer.parseInt(tf_tiendaID.getText()));
                 proveedor.setNombre(tf_nombre.getText());
                 proveedor.setTelefono(tf_telefono.getText());
                 proveedor.setCedula(tf_cedula.getText());
@@ -482,27 +506,47 @@ public class FrmProveedores extends javax.swing.JFrame {
         
     }//GEN-LAST:event_bt_guardarActionPerformed
 
-    private void jtf_buscarKeyTypedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtf_buscarKeyTypedActionPerformed
+    private void jtf_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtf_buscarActionPerformed
+      
+    }//GEN-LAST:event_jtf_buscarActionPerformed
+
+    private void jTable_proveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_proveedoresMouseClicked
         // TODO add your handling code here:
-        jtf_buscarKeyTyped.addKeyListener(new KeyAdapter(){
-            
+        int fila = jTable_proveedores.getSelectedRow();
+
+        tf_proveedorID.setText(jTable_proveedores.getValueAt(fila, 0).toString());
+        tf_tiendaID.setText(jTable_proveedores.getValueAt(fila, 1).toString());
+        tf_nombre.setText(jTable_proveedores.getValueAt(fila, 2).toString());
+        tf_telefono.setText(jTable_proveedores.getValueAt(fila, 3).toString());
+        tf_cedula.setText(jTable_proveedores.getValueAt(fila, 4).toString());
+        tf_sexo.setText(jTable_proveedores.getValueAt(fila, 5).toString());
+        tf_email.setText(jTable_proveedores.getValueAt(fila, 6).toString());
+        ta_direccion.setText(jTable_proveedores.getValueAt(fila, 7).toString());
+    }//GEN-LAST:event_jTable_proveedoresMouseClicked
+
+    private void jtf_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_buscarKeyReleased
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_jtf_buscarKeyReleased
+
+    private void jtf_buscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_buscarKeyTyped
+        // TODO add your handling code here:
+        jtf_buscar.addKeyListener(new KeyAdapter(){
+            //Se ejecuta cuando el usuario libera una tecla
             @Override
             public void keyReleased(final KeyEvent e){
-                String cadena = (jtf_buscarKeyTyped.getText()).toUpperCase();
-                jtf_buscarKeyTyped.setText(cadena);
+                String cadena = (jtf_buscar.getText()).toUpperCase();
+                jtf_buscar.setText(cadena);
                 repaint();
                 filtrarTabla();
-            }     
-
-            private void filtrarTabla() {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
-        
         trsfiltro = new TableRowSorter(jTable_proveedores.getModel());
         jTable_proveedores.setRowSorter(trsfiltro);
         
-    }//GEN-LAST:event_jtf_buscarKeyTypedActionPerformed
+    
+    }//GEN-LAST:event_jtf_buscarKeyTyped
        
     /**
      * @param args the command line arguments
@@ -552,6 +596,7 @@ public class FrmProveedores extends javax.swing.JFrame {
         //creamos un arraylist con las columnas del modelo
         ArrayList<Object> listNombreColumnas = new ArrayList<Object>();
         listNombreColumnas.add("ProveedorID");
+        listNombreColumnas.add("TiendaID");
         listNombreColumnas.add("Nombre");
         listNombreColumnas.add("Telefono");
         listNombreColumnas.add("Cedula");
@@ -567,7 +612,7 @@ public class FrmProveedores extends javax.swing.JFrame {
         
        
         for(Proveedores prov: listProveedores){
-            Object[] datosProv = new Object[]{prov.getProveedor_id(), prov.getNombre(), prov.getTelefono(), prov.getCedula(),prov.getSexo(), prov.getEmail(), prov.getDireccion()};
+            Object[] datosProv = new Object[]{prov.getProveedor_id(), prov.getTienda_id(), prov.getNombre(), prov.getTelefono(), prov.getCedula(),prov.getSexo(), prov.getEmail(), prov.getDireccion()};
             
             myData.addRow(datosProv);
         }
@@ -579,6 +624,7 @@ public class FrmProveedores extends javax.swing.JFrame {
     
         private void limpiarCampos(){
         this.tf_proveedorID.setText("");
+        this.tf_tiendaID.setText("");
         this.tf_nombre.setText("");
         this.tf_telefono.setText("");
         this.tf_cedula.setText("");
@@ -592,7 +638,7 @@ public class FrmProveedores extends javax.swing.JFrame {
     
     
     private void filtrarTabla(){
-       trsfiltro.setRowFilter(RowFilter.regexFilter(jtf_buscarKeyTyped.getText(), 2));
+       trsfiltro.setRowFilter(RowFilter.regexFilter(jtf_buscar.getText(), 0));
     }
     
     public JPanel getFondo(){
@@ -628,7 +674,7 @@ public class FrmProveedores extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable_proveedores;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jtf_buscarKeyTyped;
+    private javax.swing.JTextField jtf_buscar;
     private javax.swing.JTextArea ta_direccion;
     private javax.swing.JTextField tf_cedula;
     private javax.swing.JTextField tf_email;
