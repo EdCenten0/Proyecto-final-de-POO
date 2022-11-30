@@ -29,7 +29,6 @@ import javax.swing.table.TableRowSorter;
  */
 public class FrmUsuarios extends javax.swing.JFrame {
     
-    private FrmAgregarUser AgregarUsuario = new FrmAgregarUser();
     ArrayList<Roles> listaRol = new ArrayList<Roles>();
     
     Roles r = new Roles();
