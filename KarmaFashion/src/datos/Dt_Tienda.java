@@ -46,7 +46,7 @@ public class Dt_Tienda {
             this.cargarDatos();
             rs.beforeFirst();
             while(rs.next()){
-                if(rs.getInt("tienda_id")==tie.getTiendaID()){
+                if(rs.getInt("TiendaID")==tie.getTiendaID()){
                     rs.updateString("Nombre", tie.getNombre());
                     rs.updateString("Telefono", tie.getTelefono());
                     rs.updateString("Email", tie.getEmail());
