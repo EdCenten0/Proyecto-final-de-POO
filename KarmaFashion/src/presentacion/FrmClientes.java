@@ -8,7 +8,7 @@ package presentacion;
 import entidades.Clientes;
 
 //Datos
-import datos.Dt_Clientes;
+import datos.Dt_clientes;
 
 
 

@@ -318,11 +318,10 @@ public class FrmInventarios extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jf_ventas, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jf_saldoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jf_ventas, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jf_saldoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jb_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -566,10 +565,6 @@ public class FrmInventarios extends javax.swing.JFrame {
         jtBuscar.setText("");
     }//GEN-LAST:event_jtBuscarMouseClicked
 
-    private void jcb_BodegaIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_BodegaIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcb_BodegaIDActionPerformed
-
     private void jb_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_AgregarActionPerformed
         // TODO add your handling code here:
         
@@ -727,6 +722,14 @@ public class FrmInventarios extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jtBuscarKeyTyped
+
+    private void jcb_BodegaIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_BodegaIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcb_BodegaIDActionPerformed
+
+    private void jcb_BodegaIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcb_BodegaIDMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcb_BodegaIDMouseClicked
 
     /**
      * @param args the command line arguments
