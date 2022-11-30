@@ -4,7 +4,7 @@
  */
 package presentacion;
 import entidades.Clientes;
-import datos.Dt_Clientes;
+import datos.Dt_clientes;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
