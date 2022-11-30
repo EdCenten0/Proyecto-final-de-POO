@@ -1,4 +1,4 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -11,6 +11,7 @@ package entidades;
 public class Inventarios {
     private int inventarioID;
     private int bodegaID;
+    private int productoID;
     private int cant_inicial;
     private int movimiento_pos;
     private int movimiento_neg;
@@ -21,9 +22,10 @@ public class Inventarios {
     public Inventarios() {
     }
 
-    public Inventarios(int inventarioID, int bodegaID, int cant_inicial, int movimiento_pos, int movimiento_neg, int saldo_final, String fecha, int estado) {
+    public Inventarios(int inventarioID, int bodegaID, int productoID, int cant_inicial, int movimiento_pos, int movimiento_neg, int saldo_final, String fecha, int estado) {
         this.inventarioID = inventarioID;
         this.bodegaID = bodegaID;
+        this.productoID = productoID;
         this.cant_inicial = cant_inicial;
         this.movimiento_pos = movimiento_pos;
         this.movimiento_neg = movimiento_neg;
@@ -31,6 +33,8 @@ public class Inventarios {
         this.fecha = fecha;
         this.estado = estado;
     }
+    
+    
 
     public int getInventarioID() {
         return inventarioID;
@@ -46,6 +50,14 @@ public class Inventarios {
 
     public void setBodegaID(int bodegaID) {
         this.bodegaID = bodegaID;
+    }
+
+    public int getProductoID() {
+        return productoID;
+    }
+
+    public void setProductoID(int productoID) {
+        this.productoID = productoID;
     }
 
     public int getCant_inicial() {
@@ -76,8 +88,8 @@ public class Inventarios {
         return saldo_final;
     }
 
-    public void setSaldo_final(int precio) {
-        this.saldo_final = precio;
+    public void setSaldo_final(int saldo_final) {
+        this.saldo_final = saldo_final;
     }
 
     public String getFecha() {
@@ -95,6 +107,8 @@ public class Inventarios {
     public void setEstado(int estado) {
         this.estado = estado;
     }
+
+   
 
     @Override
     public String toString() {

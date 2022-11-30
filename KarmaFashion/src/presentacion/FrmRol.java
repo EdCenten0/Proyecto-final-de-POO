@@ -4,9 +4,13 @@
  */
 package presentacion;
 
-
+//Datos
 import datos.Dt_rol;
+
+//Entidades
 import entidades.Roles;
+
+//Librerias de java
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -18,13 +22,12 @@ import javax.swing.table.TableRowSorter;
 
 /**
  *
- * @author DELL
+ * @author Francisco de Jesus Melendez Simplina
  */
 public class FrmRol extends javax.swing.JFrame {
     
     ArrayList<Roles> listaRol = new ArrayList<Roles>();
     
-    Dt_rol dtR = new Dt_rol();
     private Roles rl = new Roles();
     private Dt_rol dt_rol = new Dt_rol();
     
@@ -349,7 +352,8 @@ public class FrmRol extends javax.swing.JFrame {
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         // TODO add your handling code here:
-        //validamos que todos los campos sean ingresados por el usuario      
+
+        //**********************************Comprueba si todas las casillas estan llenas***********************************//
         if( jtRol.getText().equals("")){
             JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
                     "ERROR", JOptionPane.WARNING_MESSAGE);
@@ -408,7 +412,8 @@ public class FrmRol extends javax.swing.JFrame {
 
     private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
         // TODO add your handling code here:
-        //validamos que todos los campos sean ingresados por el usuario      
+        
+        //**********************************Comprueba si todas las casillas estan llenas***********************************//
         if(jtRolID.getText().equals("") || jtRolID.getText().equals("") ){
             JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
                     "ERROR", JOptionPane.WARNING_MESSAGE);

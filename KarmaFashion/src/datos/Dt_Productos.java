@@ -26,7 +26,7 @@ public class Dt_Productos{
     {
         try{
             con = Conexion.getConnection(); //obtenemos la conexion a la base de datos
-            ps = con.prepareStatement("SELECT ProductoID, TipoproductoID, Nombre, Descripcion, Precio,Marca, Fecha_ingreso, Estado FROM Producto", 
+            ps = con.prepareStatement("SELECT ProductoID,TipoproductoID,Nombre,Descripcion,Precio,Marca,Fecha_ingreso,Estado FROM Producto", 
                     ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE, ResultSet.HOLD_CURSORS_OVER_COMMIT);
             rs = ps.executeQuery();
         }
@@ -43,10 +43,7 @@ public class Dt_Productos{
             this.cargarDatos();
             while(rs.next()){
                 Productos p = new Productos();
-                /*d.setDepartment_id(rs.getInt("department_id"));
-                d.setDepartment_name(rs.getString("department_name"));
-                d.setLocation_id(rs.getInt("location_id"));
-                listaDepto.add(d);*/
+                
                 p.setProducto_id(rs.getInt("ProductoID"));
                 p.setTipo_producto(rs.getInt("TipoproductoID"));
                 p.setNombre(rs.getString("Nombre"));

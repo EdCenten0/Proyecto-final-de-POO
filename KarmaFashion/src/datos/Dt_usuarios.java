@@ -5,8 +5,6 @@
 package datos;
 
 import entidades.Usuarios;
-import entidades.Roles;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
