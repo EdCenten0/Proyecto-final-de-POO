@@ -4,7 +4,6 @@
  */
 package presentacion;
 
-import presentacion.*;
 
 
 
@@ -19,7 +18,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 
-import java.time.LocalDate;
 
 
 import java.util.ArrayList;
@@ -577,7 +575,6 @@ public class FrmInventarios extends javax.swing.JFrame {
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         else{
-            //construimos nuestro objeto con los valores del formulario
           
             int id = 0;
             
@@ -606,6 +603,7 @@ public class FrmInventarios extends javax.swing.JFrame {
                     inv.setMovimiento_pos(Integer.parseInt((jf_compras.getText())));
                 }
             
+            
             inv.setCant_inicial(dt_inventario.AumentadorInventario(cantidad_inicial));//Integer.parseInt((jf_cantInicial.getText()))
             
             cantidad_inicial = inv.getCant_inicial();
@@ -613,7 +611,7 @@ public class FrmInventarios extends javax.swing.JFrame {
             compras = inv.getMovimiento_pos();
             inv.setSaldo_final((cantidad_inicial+compras)-ventas);
             
-            dt_inventario.guardarInventario(inv);
+            dt_inventario.editarInventario(inv);
 
             //*****************************************//
                 
