@@ -6,15 +6,15 @@ package entidades;
 
 /**
  *
- * @author DELL
+ * @author AZEPEDA
  */
 public class Tienda {
     private int tiendaID;
     private String nombre;
     private String telefono;
     private String email;
-    private String direccion;
     private String ruc;
+    private String direccion;
     private String hora_abierto;
     private String hora_cerrado;
     private int estado;
@@ -22,13 +22,13 @@ public class Tienda {
     public Tienda() {
     }
 
-    public Tienda(int tiendaID, String nombre, String telefono, String email, String direccion, String ruc, String hora_abierto, String hora_cerrado, int estado) {
+    public Tienda(int tiendaID, String nombre, String telefono, String email,String ruc, String direccion,String hora_abierto, String hora_cerrado, int estado) {
         this.tiendaID = tiendaID;
         this.nombre = nombre;
         this.telefono = telefono;
         this.email = email;
-        this.direccion = direccion;
         this.ruc = ruc;
+        this.direccion = direccion;
         this.hora_abierto = hora_abierto;
         this.hora_cerrado = hora_cerrado;
         this.estado = estado;
@@ -66,20 +66,20 @@ public class Tienda {
         this.email = email;
     }
 
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
     public String getRuc() {
         return ruc;
     }
 
     public void setRuc(String ruc) {
         this.ruc = ruc;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public String getHora_abierto() {
@@ -105,6 +105,9 @@ public class Tienda {
     public void setEstado(int estado) {
         this.estado = estado;
     }
+
     
+    }
     
-}
+
+

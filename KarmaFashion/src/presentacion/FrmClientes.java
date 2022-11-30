@@ -80,7 +80,6 @@ public class FrmClientes extends javax.swing.JFrame {
 
         jTable_clientes.setBackground(new java.awt.Color(204, 204, 204));
         jTable_clientes.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
-        jTable_clientes.setForeground(new java.awt.Color(0, 0, 0));
         jTable_clientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -121,18 +120,15 @@ public class FrmClientes extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("ClienteID:");
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Nombre:");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 80, 50, -1));
 
         tf_clienteID.setEditable(false);
         tf_clienteID.setBackground(new java.awt.Color(204, 204, 204));
-        tf_clienteID.setForeground(new java.awt.Color(0, 0, 0));
         tf_clienteID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_clienteIDActionPerformed(evt);
@@ -141,7 +137,6 @@ public class FrmClientes extends javax.swing.JFrame {
         jPanel3.add(tf_clienteID, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 70, -1));
 
         tf_nombre.setBackground(new java.awt.Color(204, 204, 204));
-        tf_nombre.setForeground(new java.awt.Color(0, 0, 0));
         tf_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 tf_nombreKeyTyped(evt);
@@ -150,7 +145,6 @@ public class FrmClientes extends javax.swing.JFrame {
         jPanel3.add(tf_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 122, -1));
 
         tf_cedula.setBackground(new java.awt.Color(204, 204, 204));
-        tf_cedula.setForeground(new java.awt.Color(0, 0, 0));
         tf_cedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_cedulaActionPerformed(evt);
@@ -159,59 +153,48 @@ public class FrmClientes extends javax.swing.JFrame {
         jPanel3.add(tf_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 119, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Cedula:");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 50, 40, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Numero telefonico:");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 109, -1, -1));
 
         tf_numero_telefonico.setBackground(new java.awt.Color(204, 204, 204));
-        tf_numero_telefonico.setForeground(new java.awt.Color(0, 0, 0));
         jPanel3.add(tf_numero_telefonico, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 106, 124, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Email:");
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, -1, -1));
 
         tf_email.setBackground(new java.awt.Color(204, 204, 204));
-        tf_email.setForeground(new java.awt.Color(0, 0, 0));
         jPanel3.add(tf_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 118, -1));
 
         jLabel8.setBackground(new java.awt.Color(0, 0, 0));
         jLabel8.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Sexo:");
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, -1, -1));
 
         tf_sexo.setBackground(new java.awt.Color(204, 204, 204));
-        tf_sexo.setForeground(new java.awt.Color(0, 0, 0));
         jPanel3.add(tf_sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 71, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Direccion:");
         jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 50, -1, -1));
 
         ta_direccion.setBackground(new java.awt.Color(204, 204, 204));
         ta_direccion.setColumns(20);
-        ta_direccion.setForeground(new java.awt.Color(0, 0, 0));
         ta_direccion.setRows(5);
         jScrollPane2.setViewportView(ta_direccion);
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, 242, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Symbol", 1, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Clientes");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
         btn_editar.setBackground(new java.awt.Color(153, 153, 153));
         btn_editar.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
-        btn_editar.setForeground(new java.awt.Color(0, 0, 0));
         btn_editar.setText("Editar");
         btn_editar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,7 +204,6 @@ public class FrmClientes extends javax.swing.JFrame {
 
         bt_eliminar.setBackground(new java.awt.Color(153, 153, 153));
         bt_eliminar.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
-        bt_eliminar.setForeground(new java.awt.Color(0, 0, 0));
         bt_eliminar.setText("Eliminar");
         bt_eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -231,7 +213,6 @@ public class FrmClientes extends javax.swing.JFrame {
 
         bt_guardar.setBackground(new java.awt.Color(153, 153, 153));
         bt_guardar.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
-        bt_guardar.setForeground(new java.awt.Color(0, 0, 0));
         bt_guardar.setText("Guardar");
         bt_guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -241,7 +222,6 @@ public class FrmClientes extends javax.swing.JFrame {
 
         jButton5.setBackground(new java.awt.Color(153, 153, 153));
         jButton5.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(0, 0, 0));
         jButton5.setText("Vaciar campos");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -250,7 +230,6 @@ public class FrmClientes extends javax.swing.JFrame {
         });
 
         jtf_buscar.setBackground(new java.awt.Color(204, 204, 204));
-        jtf_buscar.setForeground(new java.awt.Color(0, 0, 0));
         jtf_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtf_buscarActionPerformed(evt);
@@ -262,7 +241,6 @@ public class FrmClientes extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Buscar:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -602,7 +580,9 @@ public class FrmClientes extends javax.swing.JFrame {
         
     }
     
+    private void editarTienda(){
     
+    }
     
     private void filtrarTabla(){
        trsfiltro.setRowFilter(RowFilter.regexFilter(jtf_buscar.getText(), 2));
@@ -611,6 +591,7 @@ public class FrmClientes extends javax.swing.JFrame {
     public JPanel getFondo(){
         return jPanel1;
     }
+    
     
     private void mostrarLength(String nombre, int lengthOriginal, int lengthActual){
         JOptionPane.showMessageDialog(this, "El limite de caracteres de "+ nombre +" es de "+ lengthOriginal +", usted ingresó " + lengthActual,"Limite de caracteres",JOptionPane.ERROR_MESSAGE);
