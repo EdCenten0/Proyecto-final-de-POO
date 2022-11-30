@@ -245,7 +245,6 @@ public class Dt_inventarios {
     
     @SuppressWarnings("CallToPrintStackTrace")
     public int AumentadorInventario(int id){
-	boolean resp=false;
         int aumentador = 0;
         
         try {
@@ -283,7 +282,6 @@ public class Dt_inventarios {
     
     @SuppressWarnings("CallToPrintStackTrace")
     public int Movimiento(Inventarios inv){
-	boolean resp=false;
         int aumentador = 0;
         
         try {

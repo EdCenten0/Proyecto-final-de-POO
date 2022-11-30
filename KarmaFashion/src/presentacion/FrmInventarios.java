@@ -6,20 +6,19 @@ package presentacion;
 
 
 
-
+//Datos
 import datos.Dt_inventarios;
 import datos.Dt_Productos;
 import datos.Dt_bodegas;
 
+//Entidades
 import entidades.Productos;
 import entidades.Inventarios;
 import entidades.Bodegas;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-
-
-
+//Librerias de java
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.JOptionPane;
@@ -47,7 +46,6 @@ public class FrmInventarios extends javax.swing.JFrame {
     private ArrayList<Inventarios> listInventario = new ArrayList<Inventarios>();
     private ArrayList<Productos> listProductos = new ArrayList<Productos>();
     
-    Dt_Productos dtProductos = new Dt_Productos();
     
     DefaultTableModel myData = new DefaultTableModel();
     TableRowSorter trsfiltro;
@@ -480,6 +478,9 @@ public class FrmInventarios extends javax.swing.JFrame {
 
     private void jb_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_EliminarActionPerformed
         // TODO add your handling code here:
+        
+        
+        //**********************************Comprueba si todas las casillas estan llenas***********************************//
         if(jf_Fecha.getText().equals("") || jf_ventas.getText().equals("") || jcb_BodegaID.getSelectedIndex()==0||jcb_Producto.getSelectedIndex()==0||jf_compras.getText().equals("") || jf_cantInicial.getText().equals("")||jf_saldoTotal.getText().equals("")){
             JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
                     "ERROR", JOptionPane.WARNING_MESSAGE);
@@ -518,7 +519,8 @@ public class FrmInventarios extends javax.swing.JFrame {
 
     private void jb_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_EditarActionPerformed
         // TODO add your handling code here:
-        //validamos que todos los campos sean ingresados por el usuario      
+        
+        //**********************************Comprueba si todas las casillas estan llenas***********************************//
         if(jf_Fecha.getText().equals("") || jf_ventas.getText().equals("") || jcb_BodegaID.getSelectedIndex()==0|| jcb_Producto.getSelectedIndex()==0||jf_compras.getText().equals("") || jf_cantInicial.getText().equals("")||jf_saldoTotal.getText().equals("")){
             JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
                     "ERROR", JOptionPane.WARNING_MESSAGE);
@@ -569,7 +571,7 @@ public class FrmInventarios extends javax.swing.JFrame {
         int ventas = 0;
         int compras = 0;
         
-        
+        //**********************************Comprueba si todas las casillas estan llenas***********************************//
         if(jf_Fecha.getText().equals("") ||  jcb_BodegaID.getSelectedIndex()==0||jcb_Producto.getSelectedIndex()==0){
             JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
                     "ERROR", JOptionPane.WARNING_MESSAGE);
@@ -803,7 +805,7 @@ public class FrmInventarios extends javax.swing.JFrame {
         
         private void llenarComboProducto(){
         //llenamos la lista
-        listProductos = dtProductos.listarProductos();
+        listProductos = dt_producto.listarProductos();
         
         //recorremos cada elemento de la lista y creamos el objeto
         for(Productos pro: listProductos){
