@@ -376,6 +376,7 @@ public class FrmProveedores extends javax.swing.JFrame {
         else{
           
             proveedor.setProveedor_id(Integer.parseInt(tf_proveedorID.getText()));
+            proveedor.setTienda_id(Integer.parseInt(tf_tiendaID.getText()));
             proveedor.setNombre(tf_nombre.getText());
             proveedor.setTelefono(tf_telefono.getText());
             proveedor.setCedula(tf_cedula.getText());
@@ -386,9 +387,9 @@ public class FrmProveedores extends javax.swing.JFrame {
            if(dt_proveedor.borrarProveedor(proveedor.getProveedor_id())){
                  JOptionPane.showMessageDialog (this, "El registro fue eliminado con éxito!", 
                   "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
-                /*actualizarTabla();
+                actualizarTabla();
                 limpiarCampos();
-                 */
+                 
             }
             else{
                JOptionPane.showMessageDialog(this, 
