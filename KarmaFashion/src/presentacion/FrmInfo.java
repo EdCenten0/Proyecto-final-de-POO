@@ -42,15 +42,15 @@ public class FrmInfo extends javax.swing.JFrame {
         content.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Ana Marbell Zepeda Almendarez");
+        jLabel2.setText("<html>Ana Marbell Zepeda Almendarez<html>");
         content.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, -1, -1));
 
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel11.setText("Creadores:");
+        jLabel11.setText("<html>Creadores:<html>");
         content.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 380, -1, -1));
 
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel13.setText("Isabel Denisse Aguilar Vílchez");
+        jLabel13.setText("<html>Isabel Denisse Aguilar Vílchez<html>");
         content.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
@@ -59,7 +59,7 @@ public class FrmInfo extends javax.swing.JFrame {
         content.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 370, 290));
 
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel15.setText("Francisco de Jesús Meléndez Simplina");
+        jLabel15.setText("<html>Francisco de Jesús Meléndez Simplina<html>");
         content.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Symbol", 0, 24)); // NOI18N
@@ -68,7 +68,7 @@ public class FrmInfo extends javax.swing.JFrame {
         content.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel17.setText("Carlos Eduardo Chavarría Centeno");
+        jLabel17.setText("<html>Carlos Eduardo Chavarría Centeno<html>");
         content.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
