@@ -8,6 +8,7 @@ import datos.Dt_Proveedores;
 
 
 import entidades.Proveedores;
+import entidades.Tienda;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -41,6 +42,7 @@ public class FrmProveedores extends javax.swing.JFrame {
      */
     public FrmProveedores() {
         initComponents();
+        llenarTablaProveedores();
         /*
         llenarTablaProveedores();
         limpiarCampos(); 
@@ -117,7 +119,20 @@ public class FrmProveedores extends javax.swing.JFrame {
             new String [] {
                 "ProveedorID", "TiendaID", "Nombre", "Telefono", "Cedula", "Sexo", "Email", "Direccion"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jTable_proveedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable_proveedoresMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable_proveedores);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -503,6 +518,11 @@ public class FrmProveedores extends javax.swing.JFrame {
         jTable_proveedores.setRowSorter(trsfiltro);
         
     }//GEN-LAST:event_jtf_buscarKeyTypedActionPerformed
+
+    private void jTable_proveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_proveedoresMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jTable_proveedoresMouseClicked
        
     /**
      * @param args the command line arguments
@@ -552,6 +572,7 @@ public class FrmProveedores extends javax.swing.JFrame {
         //creamos un arraylist con las columnas del modelo
         ArrayList<Object> listNombreColumnas = new ArrayList<Object>();
         listNombreColumnas.add("ProveedorID");
+        listNombreColumnas.add("TiendaID");
         listNombreColumnas.add("Nombre");
         listNombreColumnas.add("Telefono");
         listNombreColumnas.add("Cedula");
@@ -567,7 +588,7 @@ public class FrmProveedores extends javax.swing.JFrame {
         
        
         for(Proveedores prov: listProveedores){
-            Object[] datosProv = new Object[]{prov.getProveedor_id(), prov.getNombre(), prov.getTelefono(), prov.getCedula(),prov.getSexo(), prov.getEmail(), prov.getDireccion()};
+            Object[] datosProv = new Object[]{prov.getProveedor_id(), prov.getTienda_id(), prov.getNombre(), prov.getTelefono(), prov.getCedula(),prov.getSexo(), prov.getEmail(), prov.getDireccion()};
             
             myData.addRow(datosProv);
         }

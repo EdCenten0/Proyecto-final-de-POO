@@ -567,7 +567,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
         // TODO add your handling code here:
-        showPanel(frmDatosTienda.getFondo());
+       // showPanel(frmDatosTienda.getFondo());
     }//GEN-LAST:event_jLabel12MouseClicked
 
     private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
@@ -726,7 +726,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jPanel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel12MouseClicked
         // TODO add your handling code here:
-        showPanel(frmDatosTienda.getFondo());
+        //showPanel(frmDatosTienda.getFondo());
     }//GEN-LAST:event_jPanel12MouseClicked
 
     private void jPanel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseClicked
