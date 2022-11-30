@@ -104,11 +104,11 @@ public class Productos {
         this.estado = estado;
     }
 
-    /*
     @Override
     public String toString() {
-        return super.toString(); 
-    }*/
+        return nombre;
+    }
+    
     
     
 }

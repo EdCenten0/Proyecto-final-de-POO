@@ -3,18 +3,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package presentacion;
+
+//Datos
 import datos.Dt_rol;
 import datos.Dt_usuarios;
+
+//Entidades
 import entidades.Roles;
 
 
 
 import entidades.Usuarios;
+
+
+//Librerias de java
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
-
-
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -374,7 +378,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         // TODO add your handling code here:
         
-        //validamos que todos los campos sean ingresados por el usuario      
+        //**********************************Comprueba si todas las casillas estan llenas***********************************//
         if(jtUsuario.getText().equals("") || jtClave.getText().equals("") || jcRol.getSelectedIndex()==0){
             JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
                     "ERROR", JOptionPane.WARNING_MESSAGE);
@@ -413,6 +417,8 @@ public class FrmUsuarios extends javax.swing.JFrame {
 
     private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
         // TODO add your handling code here:
+        
+        //**********************************Comprueba si todas las casillas estan llenas***********************************//
         if(jtUsuario.getText().equals("") || jtClave.getText().equals("") || jcRol.getSelectedIndex()==0){
             JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
                     "ERROR", JOptionPane.WARNING_MESSAGE);
@@ -424,7 +430,6 @@ public class FrmUsuarios extends javax.swing.JFrame {
                 mostrarLength("Clave", 15, jtClave.getText().length());
             }else{
                 //construimos nuestro objeto con los valores del formulario
-                //r=(Usuarios);
                 r = (Roles)this.jcRol.getSelectedItem();
                 u.setRolID(r.getRolID());
                 u.setUsername(jtUsuario.getText());
@@ -464,7 +469,6 @@ public class FrmUsuarios extends javax.swing.JFrame {
 
         //asignamos los valores a los campos del formulario
         jtUsuarioID.setText(jtUsuarios.getValueAt(fila, 0).toString());
-         
         jcRol.setSelectedIndex(Integer.parseInt(jtUsuarios.getValueAt(fila, 1).toString()));  
         jtUsuario.setText(jtUsuarios.getValueAt(fila, 2).toString());
         jtClave.setText(jtUsuarios.getValueAt(fila, 3).toString());
@@ -474,7 +478,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
     private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
         // TODO add your handling code here:
         
-        //validamos que todos los campos sean ingresados por el usuario      
+        //**********************************Comprueba si todas las casillas estan llenas***********************************//
         if(jtUsuario.getText().equals("") || jtClave.getText().equals("") || jcRol.getSelectedIndex()==0){
             JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
                     "ERROR", JOptionPane.WARNING_MESSAGE);
@@ -588,9 +592,7 @@ public class FrmUsuarios extends javax.swing.JFrame {
         listNombreColumnas.add("RolID");
         listNombreColumnas.add("Username");
         listNombreColumnas.add("Clave");
-  
 
-        
         //recorremos cada elemento del arraylist y creamos un objeto
         for(Object column : listNombreColumnas){
             //asignamos las columnas al modelo

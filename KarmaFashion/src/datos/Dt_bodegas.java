@@ -161,8 +161,6 @@ public class Dt_bodegas {
           rs.beforeFirst();
           while(rs.next()){
               if(rs.getInt("BodegaID")==(bodegas.getBodegaID())){
-                  
-                    
                   rs.updateString("Nombre", bodegas.getNombre());
                   rs.updateString("No_documento", bodegas.getNo_documento());
                   rs.updateInt("Estado", 2);
@@ -195,6 +193,45 @@ public class Dt_bodegas {
         }
         return resp;
        
+    }
+    
+    
+    @SuppressWarnings("CallToPrintStackTrace")
+    public String SacarNombreBodega(int inv){
+	boolean resp=false;
+        String nombre = "";
+        try {
+            this.cargarDatos();
+            rs.beforeFirst();
+            while(rs.next()){
+                if(rs.getInt("BodegaID")==(inv)){
+                    nombre = rs.getString("Nombre");
+                    resp=true;
+                    break;
+                }
+            }	
+	} 
+        catch (SQLException e) {
+            System.out.println("Error existePais(): "+e.getMessage());
+            e.printStackTrace();
+	}
+        finally{
+            try{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+                if(con!=null){
+                    Conexion.closeConexion(con);
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+		
+        return nombre;
     }
     
 }
