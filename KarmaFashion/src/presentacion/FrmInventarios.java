@@ -571,6 +571,7 @@ public class FrmInventarios extends javax.swing.JFrame {
         int ventas = 0;
         int compras = 0;
         
+        
         if(jf_Fecha.getText().equals("") ||  jcb_BodegaID.getSelectedIndex()==0||jcb_Producto.getSelectedIndex()==0){
             JOptionPane.showMessageDialog(this, "Todos los campos son requeridos!", 
                     "ERROR", JOptionPane.WARNING_MESSAGE);
@@ -578,22 +579,42 @@ public class FrmInventarios extends javax.swing.JFrame {
         else{
             //construimos nuestro objeto con los valores del formulario
           
+            int id = 0;
+            
+            //comprueba si esta vacio el id
+            if(tf_inventario.getText().equals("")){
+                id = 0;
+            }else{
+                id = Integer.parseInt((tf_inventario.getText()));
+            }
+            
+            
+            
             //comprobar si es igual de id
-            
-            
-            //Se crea uno nuevo
-            if(dt_inventario.existeInventario(Integer.parseInt((tf_inventario.getText())))){
+            if(dt_inventario.existeInventario(id)){
             
             //Encontrar el sueldo final con 2 variables
-            inv.setMovimiento_neg(Integer.parseInt((jf_ventas.getText())));
-            inv.setMovimiento_pos(Integer.parseInt((jf_compras.getText())));
-            inv.setCant_inicial(Integer.parseInt((jf_cantInicial.getText())));
+            if(jf_ventas.getText().equals("")){
+                    inv.setMovimiento_neg(0);
+                    }else{
+                        inv.setMovimiento_neg(Integer.parseInt((jf_ventas.getText())));
+                    }
+                    
+            if(jf_compras.getText().equals("")){
+                    inv.setMovimiento_pos(0);
+                }else{
+                    inv.setMovimiento_pos(Integer.parseInt((jf_compras.getText())));
+                }
+            
+            inv.setCant_inicial(dt_inventario.AumentadorInventario(cantidad_inicial));//Integer.parseInt((jf_cantInicial.getText()))
             
             cantidad_inicial = inv.getCant_inicial();
             ventas = inv.getMovimiento_neg();
             compras = inv.getMovimiento_pos();
+            inv.setSaldo_final((cantidad_inicial+compras)-ventas);
             
-            
+            dt_inventario.guardarInventario(inv);
+
             //*****************************************//
                 
                 
@@ -601,14 +622,47 @@ public class FrmInventarios extends javax.swing.JFrame {
             }   else{
                     
                     //se crea uno nuevo y la cantidad inicial inicia en 0
+                    inv.setFecha(jf_Fecha.getText());
+                    
+                    pro = (Productos)this.jcb_Producto.getSelectedItem();
+                    inv.setProductoID(pro.getProducto_id());
+                    b = (Bodegas)this.jcb_BodegaID.getSelectedItem();
+                    inv.setBodegaID(b.getBodegaID());
+                    
+                    if(jf_ventas.getText().equals("")){
+                        inv.setMovimiento_neg(0);
+                    }else{
+                        inv.setMovimiento_neg(Integer.parseInt((jf_ventas.getText())));
+
+                    }
+                    
+                    if(jf_compras.getText().equals("")){
+                        inv.setMovimiento_pos(0);
+                    }else{
+                        inv.setMovimiento_pos(Integer.parseInt((jf_compras.getText())));
+                    }
+                    
+                    
+                    inv.setCant_inicial(cantidad_inicial);
+            
+                    cantidad_inicial = inv.getCant_inicial();
+                    ventas = inv.getMovimiento_neg();
+                    compras = inv.getMovimiento_pos();
                 
-                
+                    inv.setSaldo_final((cantidad_inicial+compras)-ventas);
+                    
+                    dt_inventario.guardarInventario(inv);
+                    
                 }
             
+            JOptionPane.showMessageDialog (this, "El Usuario fue almacenado con éxito!", 
+            "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+            actualizarTabla();
+            limpiarCampos();
             
             
             
-            
+            /*
             //Encontrar el sueldo final con 2 variables
             inv.setMovimiento_neg(Integer.parseInt((jf_ventas.getText())));
             inv.setMovimiento_pos(Integer.parseInt((jf_compras.getText())));
@@ -622,48 +676,15 @@ public class FrmInventarios extends javax.swing.JFrame {
             
             //*****************************************//
             
-            
+            /*
             b = (Bodegas)this.jcb_BodegaID.getSelectedItem();
             inv.setInventarioID(b.getBodegaID());
             inv.setFecha(jf_Fecha.getText());
             inv.setSaldo_final((cantidad_inicial+compras)-ventas);
+            */
             
             
-            
-            
-            
-            
-            /*
-            inv.setUsername(jtUsuario.getText());
-            inv.setClave(jtClave.getText());
-            
-            //validamos que el id no exista en la tabla de la bd
-            if(dt_user.existeUsuario(u.getUsername())){
-                JOptionPane.showMessageDialog(this, "El nombre de Usuario ya existe, digite otro nombre!", 
-                    "ERROR", JOptionPane.WARNING_MESSAGE);
-                jtUsuario.setText("");
-                jtUsuario.grabFocus(); 
-                actualizarTabla();
-                limpiarCampos();
-            }
-            else{
-            
-                //validamos que el metodo guardar devuelve un true
-                if(dt_user.guardarUsuario(u)){
-                    JOptionPane.showMessageDialog (this, "El Usuario fue almacenado con éxito!", 
-                      "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
-                    actualizarTabla();
-                    limpiarCampos();
-                }
-                else{
-                   JOptionPane.showMessageDialog(this, 
-                      "Revise los datos e intente nuevamente. Si el error persiste contacte al Administrador del Sistema.", 
-                      "ERROR", JOptionPane.ERROR_MESSAGE); 
-                }
-            }*/
         }
-        
-        
     }//GEN-LAST:event_jb_AgregarActionPerformed
 
     private void jtInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtInventarioMouseClicked
