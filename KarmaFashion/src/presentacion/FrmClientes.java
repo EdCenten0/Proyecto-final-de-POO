@@ -450,7 +450,7 @@ public class FrmClientes extends javax.swing.JFrame {
                 mostrarLength("Email", 30, tf_email.getText().length());
             }else if(ta_direccion.getText().length() > 200){
                 mostrarLength("Direccion", 200, ta_direccion.getText().length());
-            }else if(Integer.parseInt(tf_sexo.getText()) != 1 || Integer.parseInt(tf_sexo.getText()) != 2 ){
+            }else if(Integer.parseInt(tf_sexo.getText()) != 1 &&     Integer.parseInt(tf_sexo.getText()) != 2 ){
                 JOptionPane.showMessageDialog(this, "Opciones validas para sexo: 1 (Hombre) o 2 (Mujer)","Opciones no validas",JOptionPane.ERROR_MESSAGE);
             }else{
                 clientes.setCliente_id(Integer.parseInt(tf_clienteID.getText()));
