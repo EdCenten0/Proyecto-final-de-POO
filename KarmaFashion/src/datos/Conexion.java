@@ -18,8 +18,8 @@ public class Conexion {
     private static Conexion conx = null;
     //atributos
     private static Connection con = null;
-    private static String url = "jdbc:sqlserver://localhost;databaseName=karma_fashion_BD;Persist Security Info=True;";
-    private static String user = "sa";
+    private static String url = "jdbc:mysql://localhost:3306/karma2?serverTimezone";
+    private static String user = "root";
     private static String password = "1234";
     
     //constructor
@@ -67,7 +67,7 @@ public class Conexion {
     public static void crearConexion()
     {
         try {
-           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+           Class.forName("com.mysql.cj.jdbc.Driver");
            con= DriverManager.getConnection(url, user, password);
            System.out.println("Se conectó a la BD karma_fashion_DB");
         } 
